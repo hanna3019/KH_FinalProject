@@ -9,7 +9,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script src="http://code.jquery.com/jquery-latest.js"></script>
-<link rel="stylesheet" href="${path}/resources/css/join_f.css?f">
+<link rel="stylesheet" href="${path}/resources/css/join_f.css?l">
 <title>Insert title here</title>
 </head>
 <body>
@@ -29,7 +29,9 @@
 				</tr>
 				<tr>
 					<td class="closer">*아이디</td>
-					<td><input id="userId" name="userId" type="text" required placeholder=""></td>
+					<td><input id="userId" name="userId" type="text" required placeholder=""><br>
+						<span class="idCheck">이미 사용중인 아이디 입니다</span>
+					</td>
 				</tr>
 				<tr>
 					<td class="closer">*비밀번호</td>
@@ -41,7 +43,7 @@
 				</tr>
 				<tr>
 					<td class="closer">*전화번호</td>
-					<td><input name="tel" placeholder="전화번호"></td>
+					<td><input name="tel" type="text" placeholder="전화번호"></td>
 				</tr>
 				<tr>
 					<td class="closer">&nbsp;성별</td>
@@ -73,7 +75,7 @@
 				<tr>
 					<td class="closer">&nbsp;경력</td>
 					<td>
-						<input name="career" type="text" placeholder="">
+						<input name="career" type="number" placeholder="">&nbsp;년
 					</td>
 				</tr>
 
@@ -109,6 +111,10 @@
 			</table>
 			
 			<script>
+			
+			
+			
+			
 				$(function(){
 					/* 서비스 카테고리 가져옴*/
 					$("#jobSelect").change(function(){
@@ -152,7 +158,7 @@
 									$("#regionSelectDetail").empty();
 									$("#regionSelectDetail").append("<option value='0'>전제</option>");
 									for(let i in list){
-										let value = list[i].cityNum;
+										let value = list[i].city;
 										let optionLabel = list[i].city;
 										let option = $("<option value="+ value +">"+optionLabel+"</option>");
 										$("#regionSelectDetail").append(option);
@@ -177,24 +183,34 @@
 				});
 			</script>
 			<div class="joinTou">
-				<div class="tou1" colspan="2"><input class="agree" type="checkbox" name="agree" required
-						value="Y,N">이용약관 동의 (필수)
+				<div class="tou1" colspan="2"><input class="agree" id="agree1" type="checkbox" name="agree" required
+						value="Y,N"><label for="agree1">이용약관 동의 (필수)</label>
 				</div>
-				<div class="tou2" colspan="2"><input class="agree" type="checkbox" name="agree" required
-						value="Y,N">개인정보
-					수집 및 동의
-					(필수)</div>
+				<div class="tou2" colspan="2"><input class="agree" id="agree2" type="checkbox" name="agree" required
+						value="Y,N"><label for="agree2">개인정보 수집 및 동의 (필수)</label></div>
 
-				<div class="tou3" colspan="2"><input class="agree" type="checkbox" name="agree" required value="Y,N">만
-					14세 이상 (필수)
+				<div class="tou3" colspan="2"><input class="agree" id="agree3" type="checkbox" name="agree" required value="Y,N">
+					<label for="agree3">만 14세 이상 (필수)</label>
 				</div>
 			</div>
 
 			<div class="joinSubmit">
-				<input class="submit" type="submit" value="회원가입">
+				<input class="submit" type="button" value="회원가입" onclick="inputCheck();">
 				<input class="submit" type="reset" value="돌아가기">
 			</div>
 		</form>
+		
+		<script type="text/javascript">
+			function inputCheck(){
+				if(freeEnrollFrm.pass.value != freeEnrollFrm.repwd.value){
+					alert("비밀번호가 일치하지 않습니다");
+					freeEnrollFrm.repwd.focus();
+					return;
+				}
+				freeEnrollFrm.submit();
+			}
+		</script>
+		
 	</div>
 <!-- footer -->
 	<jsp:include page="../common/footer.jsp"/>

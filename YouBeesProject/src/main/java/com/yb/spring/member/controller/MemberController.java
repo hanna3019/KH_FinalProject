@@ -76,11 +76,7 @@ public class MemberController {
 		}
 	}
 	
-	
-	
-	
-	
-	
+
 	
 	/* 일반고객 회원가입 */
 	

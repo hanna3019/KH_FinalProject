@@ -37,7 +37,14 @@ body {
 	padding: 1rem;
 }
 
-input {
+.idCheck{
+	font-size: 0.8rem;
+	padding-left:0.3rem;
+}
+#userId{
+	margin:1rem 0 0 0;
+}
+input[type=text], input[type=password] {
 	width: 17.5rem;
 	height: 1.9rem;
 	border-radius: 0.5rem;
@@ -45,7 +52,15 @@ input {
 	padding: 0rem 0.5rem;
 	margin: 1rem 0;
 }
-
+input[type=number]{
+	width:9rem;
+	height: 1.9rem;
+	border-radius: 0.5rem;
+	border: 1px solid #eee;
+	padding: 0rem 0.5rem;
+	margin: 1rem 0;
+	text-align:center;
+}
 #check {
 	border: 1px solid #eee;
 	width: 5rem;
@@ -70,6 +85,8 @@ input {
 #jobSelect, #jobSelect2 {
 	width: 5rem;
 	height: 1.8rem;
+	border: 1px solid #eee;
+	border-radius: 0.5rem;
 }
 
 .jobSelected {
@@ -77,12 +94,15 @@ input {
 	color: darkgray;
 	font-size: 0.9rem;
 	text-decoration: underline;
+	
 }
 
 #regionSelect,
 #regionSelectDetail {
 	width: 5rem;
 	height: 1.8rem;
+	border: 1px solid #eee;
+	border-radius: 0.5rem;
 
 }
 
