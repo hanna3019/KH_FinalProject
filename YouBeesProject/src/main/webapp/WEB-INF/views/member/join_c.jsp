@@ -58,10 +58,21 @@
             </div>
 
             <div class="joinSubmit">
-                <input class="submit" type="submit" value="회원가입">
+                <input class="submit" type="button" value="회원가입" onClick="inputCheck();">
                 <input class="submit" type="reset" value="돌아가기">
             </div>
         </form>
+        	<script type="text/javascript">
+        		function inputCheck(){
+        			if(customerEnrollFrm.pass.value != customerEnrollFrm.repwd.value){
+        				alert("비밀번호가 일치하지 않습니다");
+        				customerEnrollFrm.repwd.focus();
+        				return;
+        			}
+        				customerEnrollFrm.submit();
+        		}
+        	</script>
+        
     </div>
 <!-- footer -->
 	<jsp:include page="../common/footer.jsp"/>
