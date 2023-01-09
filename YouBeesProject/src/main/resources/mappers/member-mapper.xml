@@ -31,4 +31,8 @@
 			   values(seq_free.nextval, #{name}, #{userId}, #{pass}, #{tel}, #{career}, #{gender}, #{serviceNum}, #{location}, 'F', 'Y')
 	</insert>
 	
+	<insert id="insertCustomer">
+  		insert into customer 
+  				values(seq_cus.nextval, #{name},#{userId},  #{pass},  #{phone}, 'C', 'Y')
+    </insert>
 </mapper>

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.google.gson.Gson;
 import com.yb.spring.member.model.service.MemberService;
 import com.yb.spring.member.model.vo.Categories;
+import com.yb.spring.member.model.vo.Customer;
 import com.yb.spring.member.model.vo.Freelancer;
 import com.yb.spring.member.model.vo.Location;
 
@@ -31,9 +32,9 @@ public class MemberController {
 		return "member/joinMain";
 	}
 	
-	@RequestMapping("customerEnrollForm.me")
+	@RequestMapping("CustomerEnrollForm.me")
 	public String customerEnrollForm() {
-		return "member/join_n";
+		return "member/join_c";
 	}
 	
 	@RequestMapping("FreelancerEnrollForm.me")
@@ -76,18 +77,22 @@ public class MemberController {
 		}
 	}
 	
-	
-	
-	
-	
-	
-	
+
 	/* 일반고객 회원가입 */
 	
-	
-	
-	
-	
-	
-	
+	@RequestMapping("CustomerInsert.me")
+	public String insertCustomer(Customer c, Model model, HttpSession session) {
+		String encPwd = bcryptPasswordEncoder.encode(c.getPass());
+		c.setPass(encPwd);
+		
+		int result = mService.insertCustomer(c);
+		if(result > 0) {
+			session.setAttribute("alertMsg", "회원가입이 완료되었습니다");
+			return "redirect:/";
+		}else {
+			model.addAttribute("errorMsg", "회원가입 실패");
+			return "member/join_c";
+		}
+	}
+
 }

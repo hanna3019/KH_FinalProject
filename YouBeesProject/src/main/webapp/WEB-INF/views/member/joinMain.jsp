@@ -21,7 +21,7 @@
         <div class="joinTitle">회원가입</div>
         <div class="joinSelectBox">
             <div class="normalBox">
-                <a href="customerEnrollForm.me" class="joinform">
+                <a href="CustomerEnrollForm.me" class="joinForm">
                     <img class="normalImg" src="${path}/resources/source/reading.png" alt="회원로고"></a>
                 <div>
                     <p>일반회원</p>
