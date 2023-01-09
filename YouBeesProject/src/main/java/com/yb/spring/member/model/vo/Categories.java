@@ -15,5 +15,5 @@ public class Categories {
 	private int cateNum;
 	private int serviceNum;
 	private String name;
-	
+	//
 }
