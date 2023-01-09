@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="${path}/resources/css/join_n.css">
+    <link rel="stylesheet" href="${path}/resources/css/join_c.css?l">
 
     <title>Document</title>
 
@@ -16,7 +16,7 @@
 	<jsp:include page="../common/header.jsp"/>
 	
     <div class="container">
-        <form action="" method="">
+        <form action="CustomerInsert.me" method="post" name="customerEnrollFrm">
             <table id="loginTable">
                 <div class="title">일반 회원가입</div>
                 <tr>
@@ -25,15 +25,17 @@
                 </tr>
                 <tr>
                     <td class="closer">*아이디</td>
-                    <td><input id="userId" name="id" type="text" required placeholder=""></td>
+                    <td><input id="userId" name="userId" type="text" required placeholder=""><br>
+                    <span class="idCheck">이미 사용중인 아이디입니다</span>
+                    </td>
                 </tr>
                 <tr>
                     <td class="closer">*비밀번호</td>
-                    <td><input type="password" name="password" required placeholder=""></td></br>
+                    <td><input type="password" name="pass" required placeholder=""></td></br>
                 </tr>
                 <tr>
                     <td class="closer">*비밀번호 확인</td>
-                    <td><input name="password" name="repwd" required placeholder=""></td>
+                    <td><input type="password" name="repwd" required placeholder=""></td>
                 </tr>
                 <tr>
                     <td class="closer">*전화번호</td>

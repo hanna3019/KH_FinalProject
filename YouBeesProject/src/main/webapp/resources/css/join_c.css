@@ -47,6 +47,15 @@ input {
 	margin: 1rem 0;
 }
 
+.idCheck{
+	font-size : 0.8rem; 
+	padding-left : 0.3rem;
+	
+}
+
+#userId{
+	margin : 1rem 0 0 0;
+}
 #check {
 	border: 1px solid #eee;
 	width: 5rem;

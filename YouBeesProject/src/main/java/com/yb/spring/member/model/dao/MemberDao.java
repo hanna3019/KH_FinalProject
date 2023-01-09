@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.yb.spring.member.model.vo.Categories;
+import com.yb.spring.member.model.vo.Customer;
 import com.yb.spring.member.model.vo.Freelancer;
 import com.yb.spring.member.model.vo.Location;
 
@@ -23,6 +24,10 @@ public class MemberDao {
 	
 	public int insertFreelancer(SqlSessionTemplate sqlSession, Freelancer f) {
 		return sqlSession.insert("memberMapper.insertFreelancer", f);
+	}
+	
+	public int insertCustomer(SqlSessionTemplate sqlSession, Customer c) {
+		return sqlSession.insert("memberMapper.insertCustomer", c);
 	}
 	
 }

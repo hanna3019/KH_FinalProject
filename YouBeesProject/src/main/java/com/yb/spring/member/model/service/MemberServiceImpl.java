@@ -29,7 +29,7 @@ public class MemberServiceImpl implements MemberService{
 
 	@Override
 	public int insertCustomer(Customer c) {
-		return 0;
+		return mDao.insertCustomer(sqlSession, c);
 	}
 
 	@Override
