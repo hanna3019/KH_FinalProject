@@ -29,7 +29,7 @@
 				</tr>
 				<tr>
 					<td class="closer">*아이디</td>
-					<td><input id="userId" name="id" type="text" required placeholder="">td>
+					<td><input id="userId" name="id" type="text" required placeholder="">
 				</tr>
 				<tr>
 					<td class="closer">*비밀번호</td>
