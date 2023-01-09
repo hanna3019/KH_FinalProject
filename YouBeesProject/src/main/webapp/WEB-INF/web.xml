@@ -6,7 +6,10 @@
 	<!-- The definition of the Root Spring Container shared by all Servlets and Filters -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>/WEB-INF/spring/root-context.xml</param-value>
+		<param-value>
+			/WEB-INF/spring/root-context.xml
+			/WEB-INF/spring/spring-security.xml
+		</param-value>
 	</context-param>
 	
 	<!-- Creates the Spring Container shared by all Servlets and Filters -->
@@ -29,5 +32,29 @@
 		<servlet-name>appServlet</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
+
+<!-- 모든 요청은 encodingFilter의 필터명을 호출한다. -->
+   <filter-mapping>
+     <filter-name>encodingFilter</filter-name>
+     <url-pattern>*</url-pattern>
+   </filter-mapping>
+   <!-- encoding 패턴 (Post 등의 헤더 값 인코딩 설정) -->
+   <filter>
+     <!-- 필터명을 설정 - encodingFilter -->
+     <filter-name>encodingFilter</filter-name>
+     <!-- 호출할 클래스 이름을 설정 (package 포함) -->
+     <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+     <!-- 클래스에서 사용할 파라미터 데이터 -->
+     <init-param>
+       <!-- 문자 코드 설정 -->
+       <param-name>encoding</param-name>
+       <param-value>UTF-8</param-value>
+     </init-param>
+     <init-param>
+       <!-- 문자 코드 강제 변환 설정 -->
+       <param-name>forceEncoding</param-name>
+       <param-value>true</param-value>
+     </init-param>
+   </filter>
 
 </web-app>

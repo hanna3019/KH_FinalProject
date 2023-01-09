@@ -1,0 +1,73 @@
+* {
+  padding: 0;
+  margin: 0 auto;
+}
+
+body {
+  width: 100%;
+}
+
+.joinTitle {
+  font-size: 1.8rem;
+  margin-bottom: 5rem;
+  font-weight: bold;
+}
+
+.joinMainContainer {
+  padding-top: 15rem;
+  width: 970px;
+  text-align: center;
+  height: 43.125rem;
+}
+
+.joinSelectBox {
+  margin: 0 auto;
+}
+
+.normalBox {
+  box-sizing: border-box;
+  display: inline-block;
+  width: 15.625rem;
+  height: 12.5rem;
+  padding: 1.25rem;
+  margin: 0 2rem;
+  border: 0.3rem solid black;
+  background-color: white;
+  text-align: center;
+  border-radius: 1.3rem;
+  font-size: 1.5rem;
+}
+
+.normalBox:hover {
+  border: 3px solid #ffd100;
+  box-shadow: 1rem 1rem 1rem #eee;
+  cursor: pointer;
+}
+
+.normalImg {
+  width: 6rem;
+}
+
+.freelancerBox {
+  box-sizing: border-box;
+  display: inline-block;
+  width: 15.625rem;
+  height: 12.5rem;
+  padding: 1.25rem;
+  margin: 0 2rem;
+  border: 0.3rem solid black;
+  background-color: white;
+  text-align: center;
+  border-radius: 1.3rem;
+  font-size: 1.5rem;
+}
+
+.freelancerBox:hover {
+  border: 3px solid #ffd100;
+  box-shadow: 1rem 1rem 1rem #eee;
+  cursor: pointer;
+}
+
+.freelaceImg {
+  width: 6rem;
+}

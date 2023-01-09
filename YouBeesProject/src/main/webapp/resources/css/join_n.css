@@ -1,0 +1,140 @@
+* {
+	padding: 0;
+	margin: 0 auto;
+
+}
+
+body {
+	width: 100%;
+}
+
+.title {
+	text-align: center;
+	font-size: 1.8rem;
+	margin: 2rem 0;
+	font-weight: bold;
+}
+
+.container {
+	padding-top: 9.5rem;
+	margin: auto;
+	width: 970px;
+	margin-bottom: 9.375rem;
+}
+
+#loginTable {
+	border-bottom: 1px solid #eee;
+	border-top: 1px solid #eee;
+	text-align: left;
+	margin-bottom: 1.5rem;
+	padding: 2rem 0;
+}
+
+#loginTable tr {
+	height: 3.75rem;
+}
+
+#loginTable .closer {
+	padding: 1rem;
+}
+
+input {
+	width: 17.5rem;
+	height: 1.9rem;
+	border-radius: 0.5rem;
+	border: 1px solid #eee;
+	padding: 0rem 0.5rem;
+	margin: 1rem 0;
+}
+
+#check {
+	border: 1px solid #eee;
+	width: 5rem;
+	height: 1.6rem;
+	color: black;
+	cursor: pointer;
+}
+
+#radio {
+	width: 1.1rem;
+	vertical-align: middle;
+	margin-right: 0.9rem;
+}
+
+#radio2 {
+	width: 1.1rem;
+	vertical-align: middle;
+	margin-right: 0.9rem;
+	margin-left: 3rem;
+}
+
+#jobSelect {
+	width: 5rem;
+	height: 1.8rem;
+}
+
+.jobSelected {
+	margin-left: 0.8rem;
+	color: darkgray;
+	font-size: 0.9rem;
+	text-decoration: underline;
+}
+
+#regionSelect,
+#regionSelectDetail {
+	width: 5rem;
+	height: 1.8rem;
+
+}
+
+.regionSelected {
+	margin-left: 0.8rem;
+	color: darkgray;
+	font-size: 0.9rem;
+	text-decoration: underline;
+}
+
+.agreeForm {
+	width: 15rem;
+	margin: 0 auto 6rem;
+}
+
+.tou {
+	margin: 1rem 0 6rem 24rem;
+	height: 5rem;
+}
+
+.tou1,
+.tou2,
+.tou3 {
+	height: 1rem;
+	padding: 0.5rem;
+}
+
+.agree {
+	width: 0.8rem;
+	height: 0.8rem;
+	margin-right: 1.5rem;
+}
+
+.joinSubmit {
+	display: flex;
+	justify-content: center;
+}
+
+.submit {
+	width: 6.25rem;
+	height: 3.125rem;
+	border-radius: 0.625rem;
+	background-color: #ffd100;
+	color: #202020;
+	border: none;
+	margin-top: 3rem;
+	margin: 0 1rem;
+}
+
+.submit:hover {
+	color: white;
+	cursor: pointer;
+
+}
