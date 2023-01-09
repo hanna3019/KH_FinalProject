@@ -33,7 +33,7 @@ public class MemberController {
 	}
 	
 	@RequestMapping("CustomerEnrollForm.me")
-	public String customerEnrollForm() {
+	public String CustomerEnrollForm() {
 		return "member/join_c";
 	}
 	

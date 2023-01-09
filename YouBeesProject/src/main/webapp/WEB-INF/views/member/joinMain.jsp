@@ -20,7 +20,7 @@
     <div class="joinMainContainer">
         <div class="joinTitle">회원가입</div>
         <div class="joinSelectBox">
-            <div class="normalBox" onclick="location.href='customerEnrollForm.me'">
+            <div class="normalBox" onclick="location.href='CustomerEnrollForm.me'">
                     <img class="normalImg" src="${path}/resources/source/reading.png" alt="회원로고">
                 <div>
                     <p>일반회원</p>
