@@ -12,7 +12,6 @@ body {
 	text-align: center;
 	font-size: 1.8rem;
 	margin: 2rem 0;
-	font-weight: bold;
 }
 
 .container {
@@ -38,7 +37,7 @@ body {
 	padding: 1rem;
 }
 
-#loginTable input {
+input {
 	width: 17.5rem;
 	height: 1.9rem;
 	border-radius: 0.5rem;

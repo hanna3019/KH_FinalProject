@@ -9,7 +9,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script src="http://code.jquery.com/jquery-latest.js"></script>
-<link rel="stylesheet" href="${path}/resources/css/join_f.css?dd">
+<link rel="stylesheet" href="${path}/resources/css/join_f.css?f">
 <title>Insert title here</title>
 </head>
 <body>
@@ -22,18 +22,18 @@
 		<form action="FreelancerInsert.me" method="post" name="freeEnrollFrm">
 
 			<table id="loginTable">
-				<div class="title">프리랜서 회원가입</h2>
+				<div class="title">프리랜서 회원가입</div>
 				<tr>
 					<td class="closer">*이름</td>
 					<td><input name="name" type="text" required placeholder=""></td>
 				</tr>
 				<tr>
 					<td class="closer">*아이디</td>
-					<td><input id="userId" name="id" type="text" required placeholder="">
+					<td><input id="userId" name="userId" type="text" required placeholder=""></td>
 				</tr>
 				<tr>
 					<td class="closer">*비밀번호</td>
-					<td><input type="password" name="pass" required placeholder=""></td></br>
+					<td><input type="password" name="pass" required placeholder=""></td>
 				</tr>
 				<tr>
 					<td class="closer">*비밀번호 확인</td>
@@ -43,8 +43,6 @@
 					<td class="closer">*전화번호</td>
 					<td><input name="tel" placeholder="전화번호"></td>
 				</tr>
-
-
 				<tr>
 					<td class="closer">&nbsp;성별</td>
 					<td>
@@ -73,10 +71,9 @@
 				</tr>
 
 				<tr>
-					<td class="closer" name="career">&nbsp;경력</td>
+					<td class="closer">&nbsp;경력</td>
 					<td>
-						<input name="year" type="text" placeholder="">
-					</td>
+						<input name="career" type="text" placeholder="">
 					</td>
 				</tr>
 

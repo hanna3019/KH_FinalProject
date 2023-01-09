@@ -24,7 +24,7 @@ public class MemberServiceImpl implements MemberService{
 
 	@Override
 	public int insertFreelancer(Freelancer f) {
-		return 0;
+		return mDao.insertFreelancer(sqlSession, f);
 	}
 
 	@Override

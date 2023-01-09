@@ -25,4 +25,10 @@
 		from city
 		where loc_num = #{lNum}
 	</select>
+	
+	<insert id="insertFreelancer">
+		insert into freelancer
+			   values(seq_free.nextval, #{name}, #{userId}, #{pass}, #{tel}, #{career}, #{gender}, #{serviceNum}, #{location}, 'F', 'Y')
+	</insert>
+	
 </mapper>

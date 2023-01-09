@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +22,9 @@ public class MemberController {
 	
 	@Autowired
 	private MemberService mService;
+	
+	@Autowired
+	private BCryptPasswordEncoder bcryptPasswordEncoder;
 	
 	@RequestMapping("joinMain.me")
 	public String selectJoin() {
@@ -59,10 +63,17 @@ public class MemberController {
 	/* 프리랜서 회원가입 */
 	@RequestMapping("FreelancerInsert.me")
 	public String insertFreelancer(Freelancer f, Model model, HttpSession session) {
+		String encPwd = bcryptPasswordEncoder.encode(f.getPass());
+		f.setPass(encPwd);
 		
-		
-		
-		return "";
+		int result = mService.insertFreelancer(f);
+		if(result > 0) {
+			session.setAttribute("alertMsg", "회원가입이 완료되었습니다");
+			return "redirect:/";
+		}else {
+			model.addAttribute("errorMsg", "회원가입 실패");
+			return "member/join_f";
+		}
 	}
 	
 	
@@ -74,7 +85,7 @@ public class MemberController {
 	/* 일반고객 회원가입 */
 	
 	
-	//승원
+	
 	
 	
 	

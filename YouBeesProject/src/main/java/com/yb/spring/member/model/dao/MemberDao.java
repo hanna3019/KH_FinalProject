@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.yb.spring.member.model.vo.Categories;
+import com.yb.spring.member.model.vo.Freelancer;
 import com.yb.spring.member.model.vo.Location;
 
 @Repository
@@ -20,5 +21,8 @@ public class MemberDao {
 		return (ArrayList)sqlSession.selectList("memberMapper.selectServiceList", sNum);
 	}
 	
+	public int insertFreelancer(SqlSessionTemplate sqlSession, Freelancer f) {
+		return sqlSession.insert("memberMapper.insertFreelancer", f);
+	}
 	
 }
