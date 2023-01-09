@@ -11,7 +11,6 @@ import com.yb.spring.member.model.vo.Categories;
 import com.yb.spring.member.model.vo.Customer;
 import com.yb.spring.member.model.vo.Freelancer;
 import com.yb.spring.member.model.vo.Location;
-import com.yb.spring.member.model.vo.Member;
 
 @Service
 public class MemberServiceImpl implements MemberService{
@@ -30,11 +29,6 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public int insertCustomer(Customer c) {
 		return mDao.insertCustomer(sqlSession, c);
-	}
-
-	@Override
-	public Member loginMember(Member m) {
-		return null;
 	}
 
 	@Override
@@ -69,5 +63,15 @@ public class MemberServiceImpl implements MemberService{
 	
 	public int deleteCusMember2(String userId) {
 		return 0;
+	}
+
+	@Override
+	public Freelancer loginMember(Freelancer m) {
+		return null;
+	}
+
+	@Override
+	public Customer loginMember(Customer m) {
+		return null;
 	}
 }

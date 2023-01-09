@@ -6,7 +6,6 @@ import com.yb.spring.member.model.vo.Categories;
 import com.yb.spring.member.model.vo.Customer;
 import com.yb.spring.member.model.vo.Freelancer;
 import com.yb.spring.member.model.vo.Location;
-import com.yb.spring.member.model.vo.Member;
 
 public interface MemberService {
 	
@@ -17,7 +16,10 @@ public interface MemberService {
 	int insertCustomer(Customer c);
 	
 	// 로그인 서비스
-	Member loginMember(Member m);
+	Freelancer loginMember(Freelancer m);
+	
+	// 로그인 서비스
+	Customer loginMember(Customer m);
 	
 	// 프리랜서 아이디 중복체크 서비스(ajax)
 	int freeIdCheck(String checkId);
