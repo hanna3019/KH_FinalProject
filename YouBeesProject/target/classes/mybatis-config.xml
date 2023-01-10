@@ -8,7 +8,6 @@
 	<typeAliases>
 		<typeAlias type="com.yb.spring.member.model.vo.Freelancer" alias="Freelancer"/>
 		<typeAlias type="com.yb.spring.member.model.vo.Customer" alias="Customer"/>
-		<typeAlias type="com.yb.spring.member.model.vo.Member" alias="Member"/>
 		<typeAlias type="com.yb.spring.member.model.vo.Categories" alias="Categories"/>
 		<typeAlias type="com.yb.spring.member.model.vo.Location" alias="Location"/>
 	</typeAliases>

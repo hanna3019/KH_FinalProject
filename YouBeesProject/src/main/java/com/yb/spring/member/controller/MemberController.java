@@ -64,7 +64,7 @@ public class MemberController {
 	/* 프리랜서 회원가입 */
 	@RequestMapping("FreelancerInsert.me")
 	public String insertFreelancer(Freelancer f, Model model, HttpSession session) {
-		String encPwd = bcryptPasswordEncoder.encode(f.getPass());
+		String encPwd = bcryptPasswordEncoder.encode(f.getPass);
 		f.setPass(encPwd);
 		
 		int result = mService.insertFreelancer(f);
