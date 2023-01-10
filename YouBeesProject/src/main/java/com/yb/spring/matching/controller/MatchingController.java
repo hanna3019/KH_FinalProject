@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.yb.spring.matching.model.service.MatchingService;
 import com.yb.spring.member.model.vo.Categories;
+import com.yb.spring.member.model.vo.Location;
 
 @Controller
 public class MatchingController {
@@ -24,5 +25,12 @@ public class MatchingController {
 		return "matching/matchingPage";
 	}
 	
-	
+	@RequestMapping("freelancerList.ma")
+	public String freelancerList(Model model) {
+		ArrayList<Location> lList = mService.selectLocationList();
+		ArrayList<Location> cList = mService.selectCityList();
+		model.addAttribute("lList", lList);
+		model.addAttribute("cList", cList);
+		return "matching/freelancerList";
+	}
 }

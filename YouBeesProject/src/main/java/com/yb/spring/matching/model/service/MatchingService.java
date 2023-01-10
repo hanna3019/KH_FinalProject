@@ -3,6 +3,7 @@ package com.yb.spring.matching.model.service;
 import java.util.ArrayList;
 
 import com.yb.spring.member.model.vo.Categories;
+import com.yb.spring.member.model.vo.Location;
 
 public interface MatchingService {
 	
@@ -25,7 +26,8 @@ public interface MatchingService {
 	
 	
 	// 지역 목록 가져오기
-	
+	ArrayList<Location> selectLocationList();
+	ArrayList<Location> selectCityList();
 	
 	// 프리랜서 프로필 정보 가져오기
 	

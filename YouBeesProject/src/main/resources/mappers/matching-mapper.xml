@@ -8,10 +8,27 @@
 		<result column="name" property="name"/>	
 	</resultMap>
 
+	<resultMap type="Location" id="locationResult">
+		<result column="city_num" property="cityNum"/>
+		<result column="loc_num" property="locNum"/>
+		<result column="city" property="city"/>
+		<result column="location" property="location"/>
+	</resultMap>
+	
 	<select id="selectServiceList" resultMap="serviceResult">
 		select *
 		from categories
 		where service_num = #{sNum}
+	</select>
+	
+	<select id="selectLocationList" resultMap="locationResult">
+		select *
+		from location
+	</select>
+	
+	<select id="selectCityList" resultMap="locationResult">
+		select *
+		from city
 	</select>
 	
 </mapper>

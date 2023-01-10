@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.yb.spring.matching.model.dao.MatchingDao;
 import com.yb.spring.member.model.vo.Categories;
+import com.yb.spring.member.model.vo.Location;
 
 @Service
 public class MatchingServiceImpl implements MatchingService{
@@ -20,6 +21,16 @@ public class MatchingServiceImpl implements MatchingService{
 	@Override
 	public ArrayList<Categories> selectServiceList(int sNum) {
 		return mDao.selectServiceList(sqlSession, sNum);
+	}
+
+	@Override
+	public ArrayList<Location> selectLocationList() {
+		return mDao.selectLocationList(sqlSession);
+	}
+
+	@Override
+	public ArrayList<Location> selectCityList() {
+		return mDao.selectCityList(sqlSession);
 	}
 
 }
