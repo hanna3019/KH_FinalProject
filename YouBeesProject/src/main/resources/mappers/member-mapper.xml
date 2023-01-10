@@ -35,7 +35,7 @@
   		insert into customer 
   				values(seq_cus.nextval, #{name},#{userId},  #{pass},  #{phone}, 'C', 'Y')
     </insert>
-    
+
     <select id="idCheck" resultType="_int">
 		    select count(*)
 			from (select user_id
@@ -45,4 +45,5 @@
 			from freelancer)
 			where user_id = #{checkId}
 	</select>
+
 </mapper>
