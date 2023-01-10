@@ -26,9 +26,9 @@
             <div class="region">
                 <div><button class="openMask">지역<img src="source/dropdown.png" alt="" class="drp_icon"></button></div>
                 <div class="selected">
-                    <div class="location">경기 남양주시<img src="${path}/resources/source/x.png" onclick="" class="close_region"></div>
-                    <div class="location">경기 남양주시<img src="${path}/resources/source/x.png" onclick="" class="close_region"></div>
-                    <div class="location">경기 남양주시<img src="${path}/resources/source/x.png" onclick="" class="close_region"></div>
+                    <div class="location"><img src="${path}/resources/source/x.png" onclick="" class="close_region"></div>
+                    <div class="location"><img src="${path}/resources/source/x.png" onclick="" class="close_region"></div>
+                    <div class="location"><img src="${path}/resources/source/x.png" onclick="" class="close_region"></div>
                 </div>
             </div>
 
