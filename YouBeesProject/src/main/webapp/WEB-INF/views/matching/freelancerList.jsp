@@ -9,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" type="text/css" href="${path}/resources/css/free_list.css?s">
+    <link rel="stylesheet" type="text/css" href="${path}/resources/css/free_list.css?a">
     <script src="http://code.jquery.com/jquery-latest.js"></script>
     <script type="text/javascript" src="${path}/resources/js/free_list.js?s"></script>
 </head>
@@ -27,8 +27,8 @@
                 <div><button class="openMask">지역<img src="source/dropdown.png" alt="" class="drp_icon"></button></div>
                 <div class="selected">
                     <div class="location">경기 남양주시<img src="${path}/resources/source/x.png" onclick="" class="close_region"></div>
-                    <div class="location">경기 고양시<img src="${path}/resources/source/x.png" onclick="" class="close_region"></div>
-                    <div class="location">서울 전체<img src="${path}/resources/source/x.png" onclick="" class="close_region"></div>
+                    <div class="location">경기 남양주시<img src="${path}/resources/source/x.png" onclick="" class="close_region"></div>
+                    <div class="location">경기 남양주시<img src="${path}/resources/source/x.png" onclick="" class="close_region"></div>
                 </div>
             </div>
 
