@@ -11,7 +11,7 @@
     <title>Document</title>
     <link rel="stylesheet" type="text/css" href="${path}/resources/css/free_list.css?s">
     <script src="http://code.jquery.com/jquery-latest.js"></script>
-    <script type="text/javascript" src="${path}/resources/js/free_list.js?a"></script>
+    <script type="text/javascript" src="${path}/resources/js/free_list.js?s"></script>
 </head>
 
 <body>

@@ -26,7 +26,7 @@ public class MatchingController {
 	}
 	
 	@RequestMapping("freelancerList.ma")
-	public String freelancerList(Model model) {
+	public String freelancerList(int category, Model model) {
 		ArrayList<Location> lList = mService.selectLocationList();
 		ArrayList<Location> cList = mService.selectCityList();
 		model.addAttribute("lList", lList);
