@@ -19,7 +19,7 @@
 
 	<div class="container">
 
-		<form action="FreelancerInsert.me" method="post" name="freeEnrollFrm">
+		<form action="FreelancerInsert.me" method="post" name="freeEnrollFrm" id="freeEnrollFrm">
 
 			<table id="loginTable">
 				<div class="title">프리랜서 회원가입</div>
@@ -111,10 +111,7 @@
 			</table>
 			
 			<script>
-			
-			
-			
-			
+
 				$(function(){
 					/* 서비스 카테고리 가져옴*/
 					$("#jobSelect").change(function(){
@@ -179,7 +176,6 @@
 							$(".regionSelected").text($("#regionSelectDetail option:selected").text());							
 						}
 					})
-					
 				});
 			</script>
 			<div class="joinTou">
@@ -209,6 +205,36 @@
 				}
 				freeEnrollFrm.submit();
 			}
+			
+			$(function(){
+				const $idInput = $("#userId");
+				$idInput.keyup(function(){
+					if($idInput.val().length >= 5){
+						$.ajax({
+							url: "idCheck.me",
+							data: {checkId:$idInput.val()},
+							success:function(result){
+								if(result == "NNN"){
+									$(".idCheck").show();
+									$(".idCheck").css("color", "red").text("이미 존재하는 아이디입니다");
+									$("#freeEnrollFrm :submit").attr("disabled", true);									
+								}else{
+									$(".idCheck").show();
+									$(".idCheck").css("color", "green").text("멋진 아이디 입니다!");
+									$("#freeEnrollFrm :submit").attr("disabled", false);
+								}
+								
+							},
+							error:function(){
+	    						console.log("아이디 중복체크 ajax통신 실패");
+	    					}
+						});
+					}else{
+						$(".idCheck").hide();
+						$("#freeEnrollFrm :submit").attr("disabled", true);
+					}
+				}
+			})
 		</script>
 		
 	</div>

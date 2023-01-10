@@ -61,6 +61,8 @@ public class MemberController {
 		return new Gson().toJson(list);
 	}
 	
+	
+	
 	/* 프리랜서 회원가입 */
 	@RequestMapping("FreelancerInsert.me")
 	public String insertFreelancer(Freelancer f, Model model, HttpSession session) {
@@ -76,10 +78,8 @@ public class MemberController {
 			return "member/join_f";
 		}
 	}
-	
 
 	/* 일반고객 회원가입 */
-	
 	@RequestMapping("CustomerInsert.me")
 	public String insertCustomer(Customer c, Model model, HttpSession session) {
 		String encPwd = bcryptPasswordEncoder.encode(c.getPass());
