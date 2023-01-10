@@ -76,7 +76,7 @@ public class MemberController {
 			return "member/join_f";
 		}
 	}
-	
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
 
 	/* 일반고객 회원가입 */
 	
@@ -95,4 +95,20 @@ public class MemberController {
 		}
 	}
 
-}
+	
+	
+	@ResponseBody
+	@RequestMapping("idCheck.me")
+	public String idCheck(String checkId) {
+		int count = mService.idCheck(checkId);
+			if(count > 0) {
+				return "NNN";
+			}else {
+			return	"YYY";
+			}
+		}
+		
+
+		
+	}
+

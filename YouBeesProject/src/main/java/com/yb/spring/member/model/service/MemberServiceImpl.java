@@ -42,13 +42,8 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
-	public int freeIdCheck(String checkId) {
-		return 0;
-	}
-
-	@Override
-	public int cusIdCheck(String checkId) {
-		return 0;
+	public int idCheck(String checkId) {
+		return mDao.idCheck(sqlSession, checkId);
 	}
 
 	@Override
