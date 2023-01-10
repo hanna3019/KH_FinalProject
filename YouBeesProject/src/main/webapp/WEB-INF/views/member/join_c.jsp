@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
@@ -7,7 +8,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
     <link rel="stylesheet" href="${path}/resources/css/join_c.css?l">
+    
 
     <title>Document</title>
 
@@ -16,7 +19,7 @@
 	<jsp:include page="../common/header.jsp"/>
 	
     <div class="container">
-        <form action="CustomerInsert.me" method="post" name="customerEnrollFrm">
+        <form action="CustomerInsert.me" method="post" name="customerEnrollFrm" id="customerEnrollFrm">
             <table id="loginTable">
                 <div class="title">일반 회원가입</div>
                 <tr>
@@ -26,7 +29,7 @@
                 <tr>
                     <td class="closer">*아이디</td>
                     <td><input id="userId" name="userId" type="text" required placeholder=""><br>
-                    <span class="idCheck">이미 사용중인 아이디입니다</span>
+                    <span class="idCheck"></span>
                     </td>
                 </tr>
                 <tr>
@@ -58,7 +61,7 @@
             </div>
 
             <div class="joinSubmit">
-                <input class="submit" type="button" value="회원가입" onClick="inputCheck();">
+                <input class="submit" type="button" value="회원가입" onClick="inputCheck();" id="submitBtn">
                 <input class="submit" type="reset" value="돌아가기">
             </div>
         </form>
@@ -71,11 +74,9 @@
         			}
         				customerEnrollFrm.submit();
         		}
-        	</script>
         	
-        	 <script>
         		$(function(){
-        			const $idInput = $("#customerEnrollFrm input[name = userId]");
+        			const $idInput = $("#userId");
         			       $idInput.keyup(function(){
         			    	   if($idInput.val().length >= 5) {
         			    	   $.ajax({
@@ -83,21 +84,21 @@
         			    		   data:{checkId:$idInput.val()},
         			    		   success:function(result){
         			    			   if(result == "NNN"){
-        			    				   $("#idCheck").show();
-        			    				   $("#idCheck").css("color", "red").text("중복된 아이디 입니다");
-        			    				   $("#customerEnrollFrm :submit").attr("disabled", true);
+        			    				   $(".idCheck").show();
+        			    				   $(".idCheck").css("color", "red").text("중복된 아이디 입니다");
+        			    				   $("#customerEnrollFrm #submitBtn").attr("disabled", true);
         			    			   } else{
-        			    				   $("#idCheck").show();
-        			    				   $("#idCheck").css("color", "green").text("사용가능한 아이디 입니다");
-        			    				   $("#customerEnrollFrm :submit").attr("disabled", false);
+        			    				   $(".idCheck").show();
+        			    				   $(".idCheck").css("color", "green").text("사용가능한 아이디 입니다");
+        			    				   $("#customerEnrollFrm #submitBtn").attr("disabled", false);
         			    			   }
         			    		   }, error:function(){
-        			    			   consol.log("오류가 발생했습니다");
+        			    			   console.log("오류가 발생했습니다");
         			    		   }
         			    	   });
         			    	 } else{
-        			    		 $("idCheck").hide();
-        		    				$("#customerEnrollFrm :submit()").attr("disabled", true);
+        			    		 $(".idCheck").hide();
+        		    				$("#customerEnrollFrm #submitBtn").attr("disabled", true);
         		    			}    			
         			    	   
         			       })                          
