@@ -99,7 +99,7 @@ public class MemberController {
 	@RequestMapping("idCheck.me")
 	public String idCheck(String checkId) {
 		int count = mService.idCheck(checkId);
-		return count > 0 ? "NNN" : "YYY";
+			return count > 0 ? "NNN" : "YYY";
 	}
 	
 		

@@ -216,11 +216,11 @@
 							success:function(result){
 								if(result == "NNN"){
 									$(".idCheck").show();
-									$(".idCheck").css("color", "red").text("이미 존재하는 아이디입니다");
+									$(".idCheck").css("color", "red").text("중복된 아이디 입니다");
 									$("#freeEnrollFrm #enrollBtn").attr("disabled", true);									
 								}else{
 									$(".idCheck").show();
-									$(".idCheck").css("color", "green").text("멋진 아이디 입니다!");
+									$(".idCheck").css("color", "green").text("사용가능한 아이디 입니다");
 									$("#freeEnrollFrm #enrollBtn").attr("disabled", false);
 								}
 								

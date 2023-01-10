@@ -43,7 +43,7 @@
 			union all
 			select user_id
 			from freelancer)
-			where user_id=#{checkId};
-	</select>  
+			where user_id = #{checkId}
+	</select>
 
 </mapper>
