@@ -33,6 +33,7 @@
                 <a href="#">회원가입</a>
                 <span>|</span>
                 <a href="#">홈으로</a>
+                <!-- ㅋ -->
             </div>
         </form>
     </main>
