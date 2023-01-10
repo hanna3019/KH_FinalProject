@@ -55,10 +55,6 @@ public class MemberServiceImpl implements MemberService{
 	public int deleteCusMember(String userId) {
 		return 0;
 	}
-	
-	public int deleteCusMember2(String userId) {
-		return 0;
-	}
 
 	@Override
 	public Freelancer loginMember(Freelancer m) {

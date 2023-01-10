@@ -11,4 +11,14 @@ public class BoardController {
 		return "board/boardList";
 	}
 	
+	@RequestMapping("boardWriteForm.bo")
+	public String boardWriteForm() {
+		return "board/boardWrite";
+	}
+	
+	@RequestMapping("boardRead.bo")
+	public String boardRead() {
+		return "board/boardRead";
+	}
+	
 }

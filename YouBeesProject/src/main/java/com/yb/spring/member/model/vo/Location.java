@@ -15,4 +15,5 @@ public class Location {
 	private int cityNum;
 	private int locNum;
 	private String city;
+	private String location;
 }

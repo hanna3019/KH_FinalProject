@@ -19,7 +19,7 @@
 
 	<div class="container">
 
-		<form action="FreelancerInsert.me" method="post" name="freeEnrollFrm">
+		<form action="FreelancerInsert.me" method="post" name="freeEnrollFrm" id="freeEnrollFrm">
 
 			<table id="loginTable">
 				<div class="title">프리랜서 회원가입</div>
@@ -30,7 +30,7 @@
 				<tr>
 					<td class="closer">*아이디</td>
 					<td><input id="userId" name="userId" type="text" required placeholder=""><br>
-						<span class="idCheck">이미 사용중인 아이디 입니다</span>
+						<span class="idCheck"></span>
 					</td>
 				</tr>
 				<tr>
@@ -111,10 +111,7 @@
 			</table>
 			
 			<script>
-			
-			
-			
-			
+
 				$(function(){
 					/* 서비스 카테고리 가져옴*/
 					$("#jobSelect").change(function(){
@@ -179,7 +176,6 @@
 							$(".regionSelected").text($("#regionSelectDetail option:selected").text());							
 						}
 					})
-					
 				});
 			</script>
 			<div class="joinTou">
@@ -195,7 +191,7 @@
 			</div>
 
 			<div class="joinSubmit">
-				<input class="submit" type="button" value="회원가입" onclick="inputCheck();">
+				<input class="submit" type="button" value="회원가입" id="enrollBtn" onclick="inputCheck();">
 				<input class="submit" type="reset" value="돌아가기">
 			</div>
 		</form>
@@ -209,6 +205,36 @@
 				}
 				freeEnrollFrm.submit();
 			}
+			
+			$(function(){
+				const $idInput = $("#userId");
+				$idInput.keyup(function(){
+					if($idInput.val().length >= 5){
+						$.ajax({
+							url: "idCheck.me",
+							data: {checkId:$idInput.val()},
+							success:function(result){
+								if(result == "NNN"){
+									$(".idCheck").show();
+									$(".idCheck").css("color", "red").text("중복된 아이디 입니다");
+									$("#freeEnrollFrm #enrollBtn").attr("disabled", true);									
+								}else{
+									$(".idCheck").show();
+									$(".idCheck").css("color", "green").text("사용가능한 아이디 입니다");
+									$("#freeEnrollFrm #enrollBtn").attr("disabled", false);
+								}
+								
+							},
+							error:function(){
+	    						console.log("아이디 중복체크 ajax통신 실패");
+	    					}
+						});
+					}else{
+						$(".idCheck").hide();
+						$("#freeEnrollFrm #enrollBtn").attr("disabled", true);
+					}
+				})
+			})
 		</script>
 		
 	</div>

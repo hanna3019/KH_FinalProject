@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="matchingMapper">
+	
+	<resultMap type="Categories" id="serviceResult">
+		<result column="cate_num" property="cateNum"/>
+		<result column="service_num" property="serviceNum"/>
+		<result column="name" property="name"/>	
+	</resultMap>
+
+	<resultMap type="Location" id="locationResult">
+		<result column="city_num" property="cityNum"/>
+		<result column="loc_num" property="locNum"/>
+		<result column="city" property="city"/>
+		<result column="location" property="location"/>
+	</resultMap>
+	
+	<select id="selectServiceList" resultMap="serviceResult">
+		select *
+		from categories
+		where service_num = #{sNum}
+	</select>
+	
+	<select id="selectLocationList" resultMap="locationResult">
+		select *
+		from location
+	</select>
+	
+	<select id="selectCityList" resultMap="locationResult">
+		select *
+		from city
+	</select>
+	
+</mapper>
