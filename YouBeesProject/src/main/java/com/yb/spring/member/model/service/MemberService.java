@@ -21,11 +21,8 @@ public interface MemberService {
 	// 로그인 서비스
 	Customer loginMember(Customer m);
 	
-	// 프리랜서 아이디 중복체크 서비스(ajax)
-	int freeIdCheck(String checkId);
-	
-	// 일반고객 아이디 중복체크 서비스(ajax)
-	int cusIdCheck(String checkId);
+	// 아이디 중복체크 서비스(ajax)
+	int idCheck(String checkId);
 	
 	// 프리랜서 회원탈퇴 서비스
 	int deleteFreeMember(String userId);

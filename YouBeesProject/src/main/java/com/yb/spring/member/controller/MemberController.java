@@ -95,4 +95,16 @@ public class MemberController {
 		}
 	}
 
+	
+	
+	@ResponseBody
+	@RequestMapping("idCheck.me")
+	public String idCheck(String checkId) {
+		int count = mService.idCheck(checkId);
+		return count > 0 ? "NNN" : "YYY";
+	}
+		
+
+		
 }
+

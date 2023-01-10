@@ -30,7 +30,7 @@
 				<tr>
 					<td class="closer">*아이디</td>
 					<td><input id="userId" name="userId" type="text" required placeholder=""><br>
-						<span class="idCheck">이미 사용중인 아이디 입니다</span>
+						<span class="idCheck"></span>
 					</td>
 				</tr>
 				<tr>
@@ -191,7 +191,7 @@
 			</div>
 
 			<div class="joinSubmit">
-				<input class="submit" type="button" value="회원가입" onclick="inputCheck();">
+				<input class="submit" type="button" value="회원가입" id="enrollBtn" onclick="inputCheck();">
 				<input class="submit" type="reset" value="돌아가기">
 			</div>
 		</form>
@@ -217,11 +217,11 @@
 								if(result == "NNN"){
 									$(".idCheck").show();
 									$(".idCheck").css("color", "red").text("이미 존재하는 아이디입니다");
-									$("#freeEnrollFrm :submit").attr("disabled", true);									
+									$("#freeEnrollFrm #enrollBtn").attr("disabled", true);									
 								}else{
 									$(".idCheck").show();
 									$(".idCheck").css("color", "green").text("멋진 아이디 입니다!");
-									$("#freeEnrollFrm :submit").attr("disabled", false);
+									$("#freeEnrollFrm #enrollBtn").attr("disabled", false);
 								}
 								
 							},
@@ -231,9 +231,9 @@
 						});
 					}else{
 						$(".idCheck").hide();
-						$("#freeEnrollFrm :submit").attr("disabled", true);
+						$("#freeEnrollFrm #enrollBtn").attr("disabled", true);
 					}
-				}
+				})
 			})
 		</script>
 		

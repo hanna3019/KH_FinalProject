@@ -72,6 +72,37 @@
         				customerEnrollFrm.submit();
         		}
         	</script>
+        	
+        	<script>
+        		$(function(){
+        			const $idInput = $("#customerEnrollFrm input[name = userId]");
+        			       $idInput.keyup(function(){
+        			    	   if($idInput.val().length >= 5) {
+        			    	   $.ajax({
+        			    		   url:"idCheck.me",
+        			    		   data:{checkId:$idInput.val()},
+        			    		   success:function(result){
+        			    			   if(result == "NNN"){
+        			    				   $("#idCheck").show();
+        			    				   $("#idCheck").css("color", "red").text("중복된 아이디 입니다");
+        			    				   $("#customerEnrollFrm :submit").attr("disabled", true);
+        			    			   } else{
+        			    				   $("#idCheck").show();
+        			    				   $("#idCheck").css("color", "green").text("사용가능한 아이디 입니다");
+        			    				   $("#customerEnrollFrm :submit").attr("disabled", false);
+        			    			   }
+        			    		   }, error:function(){
+        			    			   system.out.println("오류가 발생했습니다");
+        			    		   }
+        			    	   });
+        			    	 } else{
+        			    		 $("idCheck").hide();
+        		    				$("#customerEnrollFrm :submit()").attr("disabled", true);
+        		    			}    			
+        			    	   
+        			       })                          
+        		})
+        	</script>
         
     </div>
 <!-- footer -->
