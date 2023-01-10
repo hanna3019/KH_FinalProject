@@ -73,7 +73,7 @@
         		}
         	</script>
         	
-        	<script>
+        	 <script>
         		$(function(){
         			const $idInput = $("#customerEnrollFrm input[name = userId]");
         			       $idInput.keyup(function(){
@@ -92,7 +92,7 @@
         			    				   $("#customerEnrollFrm :submit").attr("disabled", false);
         			    			   }
         			    		   }, error:function(){
-        			    			   system.out.println("오류가 발생했습니다");
+        			    			   consol.log("오류가 발생했습니다");
         			    		   }
         			    	   });
         			    	 } else{
@@ -102,7 +102,7 @@
         			    	   
         			       })                          
         		})
-        	</script>
+        	</script> 
         
     </div>
 <!-- footer -->

@@ -29,8 +29,9 @@ public class MemberDao {
 	public int insertCustomer(SqlSessionTemplate sqlSession, Customer c) {
 		return sqlSession.insert("memberMapper.insertCustomer", c);
 	}
-	public int idCheck(SqlSessionTemplate sqlSession, String checkId) {
-		return sqlSession.selectOne("memberMapper.idCheck", checkId);
-	}
+	
+	  public int idCheck(SqlSessionTemplate sqlSession, String checkId) { return
+	  sqlSession.selectOne("memberMapper.idCheck", checkId); }
+	 
 	
 }
