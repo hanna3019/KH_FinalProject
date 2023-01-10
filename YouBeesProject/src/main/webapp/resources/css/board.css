@@ -12,7 +12,7 @@
 }
 
 .board_container {
-	width: 60%;
+	width: 970px;
 	padding-top: 100px;
 }
 
@@ -55,26 +55,52 @@
 	padding: 2rem 0 2rem 5rem;
 }
 
+.search_form {
+	margin-left: 9rem;
+}
+
+.search_bar {
+	width: 20rem;
+	height: 2rem;
+	padding: 0.2rem 0 0.2rem 1.5rem;
+	outline: none;
+	border: 0.1rem solid #ffd100;
+	border-radius: 2rem;
+}
+
+.search_btn {
+	width: 1rem;
+	position: relative;
+	right: 2.3rem;
+	top: 0.23rem;
+	cursor: pointer;
+}
+
 .write_button {
 	background-color: #ffd100;
 	color: #202020;
 	border: none;
 	border-radius: 0.7rem;
 	cursor: pointer;
-	padding: 0.7rem 1.3rem;
+	padding: 1rem 1.8rem;
 	font-weight: bold;
-	margin-right: 3rem;
+	margin-right: 1.8rem;
+	font-size: 1rem;
 }
 
 .board_comment {
-	margin: 1.5rem;
+	margin: 0 1.5rem;
 	border-bottom: 1px solid #eee;
 }
 
 .board_comment li {
 	box-sizing: border-box;
 	border: none;
-	margin: 1rem;
+}
+
+.board_content {
+	padding: 1.5rem 0;
+	border-bottom: 1px solid #eee;
 }
 
 .board_post {
@@ -124,7 +150,8 @@
 	display: flex;
 	align-items: center;
 	margin: 0;
-	color: #555;
+	color: gray;
+	font-weight: bold;
 	font-size: 0.7rem;
 }
 
