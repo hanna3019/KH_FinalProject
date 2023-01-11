@@ -47,6 +47,16 @@ public class MemberController {
 		return "member/login";
 	}
 	
+	@RequestMapping("mypage.me")
+	public String mypage() {
+		return "member/mypage_f";
+	}
+	
+	@RequestMapping("freeProfile.me")
+	public String freeProfile() {
+		return "member/freeProfile";
+	}
+	
 	@ResponseBody
 	@RequestMapping(value="selectServiceList", produces="application/json; charset=utf-8")
 	public String selectServiceList(int sNum){
@@ -66,7 +76,7 @@ public class MemberController {
 	/* 프리랜서 회원가입 */
 	@RequestMapping("FreelancerInsert.me")
 	public String insertFreelancer(Freelancer f, Model model, HttpSession session) {
-		String encPwd = bcryptPasswordEncoder.encode(f.getPass);
+		String encPwd = bcryptPasswordEncoder.encode(f.getPass());
 		f.setPass(encPwd);
 		
 		int result = mService.insertFreelancer(f);

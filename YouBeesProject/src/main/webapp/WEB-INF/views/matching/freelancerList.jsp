@@ -26,9 +26,9 @@
             <div class="region">
                 <div><button class="openMask">지역<img src="${path}/resources/source/dropdown.png" alt="" class="drp_icon"></button></div>
                 <div class="selected">
-                    <div class="location"><img src="${path}/resources/source/x.png" onclick="" class="close_region"></div>
-                    <div class="location"><img src="${path}/resources/source/x.png" onclick="" class="close_region"></div>
-                    <div class="location"><img src="${path}/resources/source/x.png" onclick="" class="close_region"></div>
+                    <div class="location"><img src="${path}/resources/source/x.png" class="close_region"></div>
+                    <%-- <div class="location"><img src="${path}/resources/source/x.png" class="close_region"></div>
+                    <div class="location"><img src="${path}/resources/source/x.png" class="close_region"></div> --%>
                 </div>
             </div>
 
@@ -135,14 +135,21 @@
 		    /* 지역 선택 후 div에 띄우기 */
 		    $(".cityList>li").on({
 		    	'click' : function(){
-		    		let value = $(this).text();
+		    		let $close = $(".location").children();
+		    		let value = $(this).text();		    		
+		    		$(".location").empty();
+		    		$(".location").append($close);
 		    		$(".location").append(value).show();
 		    		$("#mask, .window").hide();
 		    	}
 		    })
 		    
+		    $(document).on("click", ".close_region", function() {
+		    		$(".location").hide();    
+		    });
+		   
 		});
-		
+	
 		
 		
 		</script>
@@ -171,7 +178,6 @@
             </ul>
         </div>
     </div>
-    
     
 <!-- footer -->
 	<jsp:include page="../common/footer.jsp"/>

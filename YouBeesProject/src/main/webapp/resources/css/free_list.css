@@ -91,6 +91,7 @@ ul li {
     font-size: 0.8rem;
     position: relative;
     display: none;
+    right: 8rem;
 }
 
 .close_region {
@@ -99,10 +100,6 @@ ul li {
     left: 5.1rem;
     top: -0.3rem;
     cursor: pointer;
-}
-
-.location:not(:last-of-type) {
-    padding-right: 2.7rem;
 }
 
 .price form {
