@@ -19,7 +19,5 @@ public class Customer {
 	private String phone;
 	private String type;
 	private String status;
-	
-	
-	
+		
 }
