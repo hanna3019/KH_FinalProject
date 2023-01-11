@@ -24,7 +24,7 @@
             </div>
             <div class="col-1">
                 <div class="text">비밀번호</div>
-                <input type="pass" placeholder="비밀번호를 입력하세요.">
+                <input type="password" name="pass" placeholder="비밀번호를 입력하세요.">
             </div>
             <input type="submit" id="lg_submit" value="로그인">
 
