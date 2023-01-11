@@ -35,7 +35,9 @@ public class MatchingController {
 	public String freelancerList(int category, Model model) {
 		ArrayList<Location> lList = mService.selectLocationList();
 		ArrayList<Location> cList = mService.selectCityList();
-		ArrayList<FreelancerProfile> fList = mService.selectFreelancerList(category);
+		/*
+		 * ArrayList<FreelancerProfile> fList = mService.selectFreelancerList(category);
+		 */
 		model.addAttribute("lList", lList);
 		model.addAttribute("cList", cList);
 		return "matching/freelancerList";
