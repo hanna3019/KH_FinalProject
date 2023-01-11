@@ -241,7 +241,8 @@ td {
     border-radius: 1rem;
     width: 15rem;
     height: 10rem;
-    padding-top: 1rem;
+    padding: 1.5rem 0;
+    box-sizing:border-box;
 }
 
 .quick_area h4 {
