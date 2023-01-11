@@ -103,7 +103,7 @@
 							<option value="17">제주</option>
 						</select>
 						<select id="regionSelectDetail" name="location">
-							<option value="">전체</option>
+							<option value="">선택</option>
 						</select>
 						<span class="regionSelected"></span>
 					</td>
@@ -148,12 +148,14 @@
 					$("#regionSelect").change(function(){
 						if($(this).val() != ""){
 							let lnum = $(this).val();
+							let location = $("#regionSelect  option:selected").text();
 							$.ajax({
 								url: "selectLocationList",
 								data: {lNum:$(this).val()},
 								success: function(list){
 									$("#regionSelectDetail").empty();
-									$("#regionSelectDetail").append("<option value='0'>전제</option>");
+									$("#regionSelectDetail").append("<option value='0'>선택</option>");
+									$("#regionSelectDetail").append("<option value='0'>"+ location +"전체</option>");
 									for(let i in list){
 										let value = list[i].city;
 										let optionLabel = list[i].city;

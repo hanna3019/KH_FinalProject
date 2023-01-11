@@ -1,0 +1,268 @@
+@font-face {
+    font-family: 'NanumSquareNeo-Variable';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    padding: 0;
+    font-family: 'NanumSquareNeo-Variable';
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+ul li {
+    list-style: none;
+}
+
+.inline {
+    display: inline;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+}
+
+.hidden {
+    display: none;
+}
+
+td {
+    font-size: 0.9rem;
+}
+
+#profile_container {
+    width: 970px;
+    margin: 0 auto 5rem;
+    padding-top: 130px;
+}
+
+.title {
+    width: 40rem;
+    margin: 0 auto;
+}
+
+.title h2,
+.title h4 {
+    padding: 0.5rem 0;
+}
+
+.f13 {
+    font-size: 13px;
+}
+
+#profile_tbl {
+    width: 40rem;
+    border: 2px solid #ffd100;
+    border-radius: 1rem;
+    font-weight: bold;
+    padding-bottom: 1rem;
+    margin-top: 1rem;
+}
+
+#profile_tbl .prof_box {
+    display: inline-block;
+    width: 32.8%;
+    text-align: center;
+}
+
+#profile_tbl .prof_box .small_box {
+    height: 2rem;
+    font-size: 1.5rem;
+    margin-top: 1rem;
+}
+
+.pro_img {
+    width: 7rem;
+    height: 7rem;
+    vertical-align: bottom;
+    border-radius: 0.5rem;
+}
+
+.star_img {
+    width: 1.5rem;
+    vertical-align: middle;
+}
+
+.img_small {
+    width: 1rem;
+    vertical-align: bottom;
+}
+
+.bookmark {
+    width: 3rem;
+}
+
+.badge {
+    width: 2rem;
+}
+
+.f20 {
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+.f14 {
+    font-size: 14px;
+    color: #737373;
+}
+
+.f12 {
+    font-size: 0.8rem;
+    color: #737373;
+}
+
+#profile_cnt {
+    width: 40rem;
+    text-align: left;
+    padding-left: 1rem;
+    border-bottom: 1px solid #333533;
+    margin: 3rem auto 0;
+}
+
+#profile_cnt td {
+    padding-bottom: 3rem;
+    padding-top: 1rem;
+}
+
+.detail {
+    margin: 0;
+    line-height: 1.5;
+    color: #555555;
+}
+
+.review_img {
+    width: 1.6rem;
+    vertical-align: bottom;
+}
+
+.review_area {
+    width: 40rem;
+    border-bottom: 1px solid #eee;
+    margin-left: 10.3rem;
+}
+
+.review_area td {
+    padding: 0.3rem 0;
+}
+
+#review_tbl {
+    text-align: left;
+    width: 40rem;
+    margin-top: 2rem;
+    margin: 0 auto;
+}
+
+#review_tbl .first_row {
+    padding-top: 2rem;
+    font-weight: bold;
+}
+
+#review_tbl td {
+    padding: 0.3rem 1rem;
+}
+
+.review {
+    line-height: 1.5rem;
+}
+
+.regBtn {
+    font-size: 13px;
+    color: #3807a8;
+}
+
+.regBtn:hover {
+    cursor: pointer;
+}
+
+.profile_container input[type=text] {
+    height: 2rem;
+    padding: 0 0.5rem;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+    border-radius: 0.5rem;
+}
+
+.profile_container input[type=text]:focus {
+    border: 2px solid #555;
+}
+
+.profile_container textarea {
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+    border-radius: 0.5rem;
+}
+
+.certification {
+    width: 9rem;
+    height: 9rem;
+    border-radius: 0.5rem;
+}
+
+/*퀵메뉴*/
+.quick_area {
+    position: sticky;
+    top: 15rem;
+    z-index: 100;
+    border: 1px solid #eee;
+    border-radius: 1rem;
+    width: 30rem;
+    height: 10rem;
+    padding-top: 1rem;
+}
+
+.quick_area h4 {
+    color: gray;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.quick_area div {
+    height: 3.5rem;
+    display: flex;
+    justify-content: center;
+}
+
+.quick_area img {
+    width: 1.5rem;
+    vertical-align: middle;
+}
+
+.quick_area div button:first-child {
+    background-color: #737373;
+    border: 1px solid #737373;
+    border-radius: 0.3rem;
+    width: 3.5rem;
+    height: 3.5rem;
+    margin-right: 0.5rem;
+}
+
+.quick_area div button:first-child:hover {
+    background-color: #555555;
+}
+
+.quick_area div button:last-child {
+    background-color: #ffd100;
+    color: #555555;
+    border: 2px solid #ffd100;
+    font-weight: bold;
+    font-size: 1rem;
+    border-radius: 0.3rem;
+    width: 60%;
+    height: 100%;
+}
+
+.quick_area button:hover {
+    cursor: pointer;
+}
