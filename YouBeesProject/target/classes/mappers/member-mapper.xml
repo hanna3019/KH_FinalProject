@@ -14,6 +14,12 @@
 		<result column="city" property="city"/>	
 	</resultMap>
 	
+	<resultMap type="Customer" id="customerResult">
+		<result column="user_id" property="userId"/>
+		<result column="pass" property="pass"/>
+		<result column="type" property="type"/>
+	</resultMap>
+	
 	<select id="selectServiceList" resultMap="serviceResult">
 		select *
 		from categories
@@ -45,5 +51,10 @@
 			from freelancer)
 			where user_id = #{checkId}
 	</select>
+	<select id="loginMember" resultMap="customerResult">
+  	select user_id, pass, type
+  	  from customer
+  	 where status = 'Y' and user_id = #{userId}
+  	</select>
 
 </mapper>

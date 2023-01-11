@@ -11,21 +11,20 @@
     <link rel="stylesheet" href="${path}/resources/css/login.css">
     <title>Document</title>
 </head>
-
 <body>
 <!-- header -->
 	<jsp:include page="../common/header.jsp"/>
 	
     <main class="login_content">
         <div class="login_title">로그인</div>
-        <form action="" method="post" class="login_form">
+        <form action="loginForm.me" method="post" class="login_form">
             <div class="col-1">
                 <div class="text">아이디</div>
                 <input type="text" name="userId" placeholder="아이디를 입력하세요.">
             </div>
             <div class="col-1">
                 <div class="text">비밀번호</div>
-                <input type="password" placeholder="비밀번호를 입력하세요.">
+                <input type="password" name="pass" placeholder="비밀번호를 입력하세요.">
             </div>
             <input type="submit" id="lg_submit" value="로그인">
 
@@ -33,7 +32,6 @@
                 <a href="#">회원가입</a>
                 <span>|</span>
                 <a href="#">홈으로</a>
-                <!-- ㅋ -->
             </div>
         </form>
     </main>
@@ -41,5 +39,15 @@
 <!-- footer -->
 	<jsp:include page="../common/footer.jsp"/>
 </body>
-
+<script>
+ 
+    /* 로그인 버튼 클릭 메서드 */
+    $(".login_button").click(function(){
+        
+        alert("로그인 버튼 작동");
+        
+    });
+ 
+</script>
+ 
 </html>

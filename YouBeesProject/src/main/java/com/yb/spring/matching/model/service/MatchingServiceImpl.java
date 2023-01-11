@@ -36,7 +36,13 @@ public class MatchingServiceImpl implements MatchingService{
 
 	@Override
 	public ArrayList<FreelancerProfile> selectFreelancerList(int category) {
-		return mDao.selectFreelancerList(sqlSession, category);
+		// TODO Auto-generated method stub
+		return null;
 	}
+
+	/*
+	 * @Override public ArrayList<FreelancerProfile> selectFreelancerList(int
+	 * category) { return mDao.selectFreelancerList(sqlSession, category); }
+	 */
 
 }

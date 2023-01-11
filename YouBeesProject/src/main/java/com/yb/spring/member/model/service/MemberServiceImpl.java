@@ -62,7 +62,7 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
-	public Customer loginMember(Customer m) {
-		return null;
+	public Customer loginMember(Customer c) {
+		return mDao.loginMember(sqlSession, c);
 	}
 }
