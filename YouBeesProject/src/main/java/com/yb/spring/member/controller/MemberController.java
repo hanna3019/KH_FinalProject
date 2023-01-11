@@ -3,6 +3,7 @@ package com.yb.spring.member.controller;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
 import com.yb.spring.member.model.service.MemberService;
@@ -61,12 +63,10 @@ public class MemberController {
 		return new Gson().toJson(list);
 	}
 	
-	
-	
 	/* 프리랜서 회원가입 */
 	@RequestMapping("FreelancerInsert.me")
 	public String insertFreelancer(Freelancer f, Model model, HttpSession session) {
-		String encPwd = bcryptPasswordEncoder.encode(f.getPass);
+		String encPwd = bcryptPasswordEncoder.encode(f.getPass());
 		f.setPass(encPwd);
 		
 		int result = mService.insertFreelancer(f);
@@ -101,7 +101,26 @@ public class MemberController {
 		int count = mService.idCheck(checkId);
 			return count > 0 ? "NNN" : "YYY";
 	}
-	
+	/*로그인*/
+	@RequestMapping("login.me")
+	public ModelAndView loginMemeber(Customer c, ModelAndView mv, HttpSession session) {
 		
+		Customer loginUser = mService.loginMember(c);
+		
+		if(loginUser == null && bcryptPasswordEncoder.matches(c.getPass(), loginUser.getPass())) {
+			session.setAttribute("loginUser", loginUser);
+			mv.setViewName("redirect:/");
+		}else {
+			mv.addObject("errorMsg", "로그인 실패");
+			mv.setViewName("member/login");
+		}
+		return mv;
+	}
+	/*로그아웃*/
+	@RequestMapping("logout.me")
+	public String logoutMember(HttpSession session) {
+		session.invalidate();
+		return "redirect:/";
+	}
 }
 
