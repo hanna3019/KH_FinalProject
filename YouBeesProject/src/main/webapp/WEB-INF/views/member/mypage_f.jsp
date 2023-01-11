@@ -25,7 +25,6 @@
                 <img class="profileImg" src="${path}/resources/source/freelance.png" alt="프리랜서로고" onclick=""></a>
                 <div class="userInfo">
                     <div>변진주 프리랜서님</div>
-                    <p>pearl@naver.com</p>
                 </div>
             </div>
 
