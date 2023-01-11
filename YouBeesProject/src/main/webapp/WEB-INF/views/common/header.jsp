@@ -22,12 +22,11 @@
                     <input class="searchBox" placeholder="무슨 서비스가 필요하신가요?"><img src="${path}/resources/source/search.png" alt="search"
                         class="searchBtn">
                 </li>
-                <li><a href="loginForm.me">로그인</a></li>
-                <li><a href="joinMain.me">회원가입</a></li>
-                <!-- 로그인 후
+                <!-- <li><a href="loginForm.me">로그인</a></li>
+                <li><a href="joinMain.me">회원가입</a></li> -->
+                <!-- 로그인 후 -->
                 <li><a href="">로그아웃</a></li>
-                <li><a href="">홍길동님</a></li>
-                 -->
+                <li><a href="mypage.me">홍길동 님</a></li>
             </ul>
         </nav>
     </header>

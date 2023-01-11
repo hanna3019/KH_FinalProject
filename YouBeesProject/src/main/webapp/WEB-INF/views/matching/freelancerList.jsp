@@ -24,11 +24,11 @@
             <div class="h2">영어통번역</div>
 
             <div class="region">
-                <div><button class="openMask">지역<img src="source/dropdown.png" alt="" class="drp_icon"></button></div>
+                <div><button class="openMask">지역<img src="${path}/resources/source/dropdown.png" alt="" class="drp_icon"></button></div>
                 <div class="selected">
-                    <div class="location">경기 남양주시<img src="${path}/resources/source/x.png" onclick="" class="close_region"></div>
-                    <div class="location">경기 고양시<img src="${path}/resources/source/x.png" onclick="" class="close_region"></div>
-                    <div class="location">서울 전체<img src="${path}/resources/source/x.png" onclick="" class="close_region"></div>
+                    <div class="location"><img src="${path}/resources/source/x.png" class="close_region"></div>
+                    <%-- <div class="location"><img src="${path}/resources/source/x.png" class="close_region"></div>
+                    <div class="location"><img src="${path}/resources/source/x.png" class="close_region"></div> --%>
                 </div>
             </div>
 
@@ -63,7 +63,7 @@
             <table class="free_pro">
                 <tr>
                     <td colspan="4">
-                    <a href=""><h4>프리랜서 이름</h4></a>
+                    <a href="freelancerDetail.ma"><h4>프리랜서 이름</h4></a>
                     </td>
                     <td rowspan="3" class="pro_img"><img src="${path}/resources/source/profile.png" alt="" class="pro_img"></td>
                 </tr>
@@ -117,10 +117,12 @@
         
 		<script>
 		$(function () {
+			/* 지역리스트 */
 		    $("ul.locationList>li").click(function () {
 		        $(this).next().toggleClass("hidden")
 		    });
-
+			
+		    /* 좋아요 누르기 */
 		    $(".bookmark_icon").on({
 		        'click': function () {
 		            let src = ($(this).attr('src') === '${path}/resources/source/heart.png')
@@ -129,7 +131,26 @@
 		            $(this).attr('src', src);
 		        }
 		    });
+		    
+		    /* 지역 선택 후 div에 띄우기 */
+		    $(".cityList>li").on({
+		    	'click' : function(){
+		    		let $close = $(".location").children();
+		    		let value = $(this).text();		    		
+		    		$(".location").empty();
+		    		$(".location").append($close);
+		    		$(".location").append(value).show();
+		    		$("#mask, .window").hide();
+		    	}
+		    })
+		    
+		    $(document).on("click", ".close_region", function() {
+		    		$(".location").hide();    
+		    });
+		   
 		});
+	
+		
 		
 		</script>
 
@@ -157,7 +178,6 @@
             </ul>
         </div>
     </div>
-    
     
 <!-- footer -->
 	<jsp:include page="../common/footer.jsp"/>

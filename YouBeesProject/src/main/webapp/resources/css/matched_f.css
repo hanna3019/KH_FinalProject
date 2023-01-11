@@ -1,0 +1,110 @@
+@font-face {
+    font-family: 'NanumSquareNeo-Variable';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    padding: 0;
+    margin: 0 auto;
+    font-family: 'NanumSquareNeo-Variable';
+}
+
+main {
+    width: 970px;
+    height: 50rem;
+    padding-top: 130px;
+}
+
+.mainTitle {
+    border-bottom: 1px solid rgb(164, 164, 164);
+    padding: 0 0 2rem 5rem;
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.requestProfile {
+    display: flex;
+    padding: 2rem;
+    align-items: center;
+    border-bottom: 1px solid lightgray;
+    position: relative;
+}
+
+.requestProfile:last-of-type {
+    border-bottom: none;
+}
+
+.user {
+    width: 5rem;
+    height: 5rem;
+}
+
+.requestInfo {
+    width: 40%;
+}
+
+.requestInfo:hover {
+    cursor: pointer;
+}
+
+.requestInfo div {
+    padding: 0.3rem;
+}
+
+.userName {
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-left: 0;
+}
+
+.location {
+    margin-left: 0;
+    font-size: 0.8rem;
+}
+
+.detail {
+    margin-left: 0;
+    color: gray;
+    font-size: 0.7rem;
+}
+
+.requestTimeNdelete {
+    display: flex;
+    flex-direction: column;
+}
+
+.createTime {
+    margin: 0 1.5rem 1.5rem;
+    color: rgb(165, 165, 165);
+    font-size: small;
+    text-align: center;
+}
+
+.delete {
+    width: 0.7rem;
+    position: absolute;
+    right: 2rem;
+    top: 1rem;
+}
+
+.delete:hover {
+    cursor: pointer;
+}
+
+.btns input {
+    margin: 0 0.3rem;
+}
+
+.chatBtn {
+    background-color: #202020;
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+}
+
+.chatBtn:hover {
+    cursor: pointer;
+}

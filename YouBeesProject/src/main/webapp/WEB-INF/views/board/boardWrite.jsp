@@ -17,15 +17,15 @@
 	<jsp:include page="../common/header.jsp"/>
 	
     <div class="main_container">
-        <form action="" method="post" class="write_form">
+        <form action="insert.bo" method="post" class="write_form" enctype="multipart/form-data">
             <div class="name_box">
                 <label for="name_content">
-                    <input type="text" name="name_content" placeholder="제목을 입력해 주세요.">
+                    <input type="text" id="name_contnet" name="title" placeholder="제목을 입력해 주세요.">
                 </label>
             </div>
 
             <div class="service_region">
-                <select class="service_box">
+                <select class="service_box" name="serviceNum">
                     <option value="service">(선택) 서비스</option>
                     <option value="1">통번역</option>
 					<option value="2">마케팅</option>
@@ -34,7 +34,7 @@
 					<option value="5">인쇄</option>
 					<option value="6">기타</option>
                 </select>
-                <select class="region_box">
+                <select class="region_box" name="location">
                     <option value="">(선택) 지역</option>
 					<option value="1">서울</option>
 					<option value="2">세종</option>
@@ -56,14 +56,14 @@
                 </select>
             </div>
 
-            <textarea class="content_write"
+            <textarea class="content_write" name="content"
                 placeholder="궁금한 점 또는 하고 싶은 말을 자유롭게 작성해 보세요.&#13;&#10;타인에게 불쾌감을 주거나 커뮤니티 이용정책에 위배되는 글은 숨김처리 및 삭제될 수 있습니다."></textarea>
 
             <div class="image_upload">
                 <label for="file_input">
                     <img src="${path}/resources/source/camera.png" class="camimg" />
                 </label>
-                <input id="file_input" type="file" />
+                <input id="file_input" type="file" name="upfile" />
                 <span class="imgCnt">0/1</span>
                 <div class="uploadedFile">
                 </div>

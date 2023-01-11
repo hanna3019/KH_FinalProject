@@ -30,6 +30,7 @@
 		<article class="board_comment">
 			<ul>
 				<li>
+					
 					<a href="boardRead.bo">
 						<div class="board_content">
 							<div class="board_post">
