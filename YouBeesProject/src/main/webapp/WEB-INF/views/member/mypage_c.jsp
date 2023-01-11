@@ -25,7 +25,6 @@
                 <img class="profileImg" src="${path}/resources/source/reading.png" alt="일반고객로고" onclick=""></a>
                 <div class="userInfo">
                     <div>정한나 고객님</div>
-                    <p>hanna@naver.com</p>
                 </div>
             </div>
 

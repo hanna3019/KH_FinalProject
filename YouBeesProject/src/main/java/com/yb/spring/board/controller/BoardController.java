@@ -2,7 +2,6 @@ package com.yb.spring.board.controller;
 
 import java.io.File;
 import java.io.IOException;
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -12,9 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.yb.spring.board.model.service.BoardService;
 import com.yb.spring.board.model.vo.Board;
@@ -73,12 +70,10 @@ public String boardWriteForm(Board b, MultipartFile upfile, HttpSession session,
 		return "board/boardWrite";
 	}
 	
-	
 
-	
 	@RequestMapping("boardRead.bo")
 	public String boardRead() {
-		return "";
+		return "board/boardRead";
 	}
 	
 }

@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.yb.spring.matching.model.service.MatchingService;
+import com.yb.spring.matching.model.vo.FreelancerProfile;
 import com.yb.spring.member.model.vo.Categories;
 import com.yb.spring.member.model.vo.Location;
 
@@ -34,6 +35,7 @@ public class MatchingController {
 	public String freelancerList(int category, Model model) {
 		ArrayList<Location> lList = mService.selectLocationList();
 		ArrayList<Location> cList = mService.selectCityList();
+		ArrayList<FreelancerProfile> fList = mService.selectFreelancerList(category);
 		model.addAttribute("lList", lList);
 		model.addAttribute("cList", cList);
 		return "matching/freelancerList";

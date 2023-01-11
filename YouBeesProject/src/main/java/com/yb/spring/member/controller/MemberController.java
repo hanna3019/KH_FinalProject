@@ -49,7 +49,7 @@ public class MemberController {
 	
 	@RequestMapping("mypage.me")
 	public String mypage() {
-		return "member/mypage_f";
+		return "member/mypage_c";
 	}
 	
 	@RequestMapping("freeProfile.me")
