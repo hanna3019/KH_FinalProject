@@ -60,7 +60,7 @@
 
                             글로벌 비즈니스를 준비 하신다면
                             회사 소개서 홈페이지 등 번역 뿐만 아니라 회사의 소개 영상등에 원어민 까지 저희 커넥투에서 함께 글로벌로 나아가시기 바랍니다.
-                            </>
+                         <div/>
                             <textarea name="" id="detail_revise" class="hidden" cols="80" rows="10"></textarea>
                     </td>
                 </tr>
@@ -178,7 +178,7 @@
                 <td colspan="2" class="f12">2023.01.02</td>
             </tr>
         </table>
-
+	</div>
 <!-- footer -->
 	<jsp:include page="../common/footer.jsp"/>
 </body>
