@@ -26,7 +26,7 @@
                 <li><a href="joinMain.me">회원가입</a></li>
                 <!-- 로그인 후
                 <li><a href="">로그아웃</a></li>
-                <li><a href="">홍길동님</a></li>
+                <li><a href="">홍길동 님</a></li>
                  -->
             </ul>
         </nav>

@@ -33,4 +33,9 @@ public class MatchingController {
 		model.addAttribute("cList", cList);
 		return "matching/freelancerList";
 	}
+	
+	@RequestMapping("freelancerDetail.ma")
+	public String freelancerDetail() {
+		return "matching/freelancerDetail";
+	}
 }

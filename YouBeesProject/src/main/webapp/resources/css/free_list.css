@@ -90,6 +90,7 @@ ul li {
     text-align: center;
     font-size: 0.8rem;
     position: relative;
+    display: none;
 }
 
 .close_region {
