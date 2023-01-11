@@ -163,10 +163,11 @@
 
         <div class="quick_area">
             <h4>프리랜서에게 요청을 보내보세요!</h4>
-            <div>
-                <button>
-                    <img src="${path}/resources/source/heart3.png" alt="">
+            <div>   
+                <button class="heart_box">
+                    <img src="${path}/resources/source/heart3.png" alt=찜하기 class="heart_icon">
                 </button>
+             
                 <button class="openMask">요청하기</button>
             </div>
         </div>
@@ -213,9 +214,21 @@
                 <button type="submit" value="sendRequest" class="request_send">요청전송</button>
             </div>
         </form>
-
-    </div>
-    
+			
+		<script>
+		 /* 좋아요 누르기 */
+				    $(".heart_box").on({
+				        'click': function () {
+				            let src = ($(".heart_icon").attr('src') === '${path}/resources/source/heart3.png')
+				                ? '/spring/resources/source/heart2.png'
+				                : '/spring/resources/source/heart3.png';
+				            $(".heart_icon").attr('src', src);
+				        }
+				    });
+		</script>
+		
+	</div>
+		    
 <!-- footer -->
 	<jsp:include page="../common/footer.jsp"/>
 </body>
