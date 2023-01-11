@@ -1,0 +1,69 @@
+* {
+	padding: 0;
+	margin: 0 auto;
+}
+
+body {
+	width: 100%;
+	height: 100%;
+}
+
+.myPageContainer {
+	margin: 0 auto;
+	width: 970px;
+	height: 42rem;
+	padding-top: 8.5rem;
+}
+
+.myPageContainer a {
+	text-decoration: none;
+	color: black;
+}
+
+.myPageTitle {
+	font-size: 1.8rem;
+	font-weight: bold;
+	padding-bottom: 2rem;
+	border-bottom: 1px solid #eee;
+}
+
+.profileBox {
+	display: flex;
+	margin-top: 2rem;
+	cursor: pointer;
+}
+
+.profileImg {
+	width: 6rem;
+	height: 6rem;
+	margin: auto 0;
+}
+
+.userInfo {
+	margin: auto 0;
+	margin-left: 2rem;
+}
+
+.userInfo div {
+	font-size: 1.1rem;
+	font-weight: bold;
+}
+
+.userInfo p {
+	color: darkgray;
+	font-size: 0.9rem;
+}
+
+#profileContent {
+	float: left;
+	margin-top: 2.5rem;
+}
+
+tr {
+	margin: 0 auto;
+	height: 4.5rem;
+}
+
+.title {
+	float: left;
+}

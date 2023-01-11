@@ -17,6 +17,11 @@ public class MatchingController {
 	@Autowired
 	private MatchingService mService;
 	
+	@RequestMapping("matchedFree.ma")
+	public String matchedFree() {
+		return "matching/matched_f";
+	}
+	
 	@RequestMapping("selectCategories.ma")
 	public String selectCategories(int sNum, String sName, Model model) {
 		ArrayList<Categories> sList = mService.selectServiceList(sNum);
