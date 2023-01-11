@@ -306,7 +306,7 @@ td {
 /* 팝업으로 뜨는 윈도우 css */
 .window {
     display: none;
-    position: absolute;
+    position: fixed;
     left: 40%;
     top: 20%;
     width: 30rem;
