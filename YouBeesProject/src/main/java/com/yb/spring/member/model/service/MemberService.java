@@ -19,7 +19,7 @@ public interface MemberService {
 	Freelancer loginMember(Freelancer m);
 	
 	// 로그인 서비스
-	Customer loginMember(Customer m);
+	Customer loginMember(Customer c);
 	
 	// 아이디 중복체크 서비스(ajax)
 	int idCheck(String checkId);

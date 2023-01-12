@@ -51,10 +51,11 @@
 			from freelancer)
 			where user_id = #{checkId}
 	</select>
+	
 	<select id="loginMember" resultMap="customerResult">
-  	select user_id, pass, type
-  	  from customer
-  	 where status = 'Y' and user_id = #{userId}
+	  	select user_id, pass, type
+	  	  from customer
+	  	 where status = 'Y' and user_id = #{userId}
   	</select>
 
 </mapper>
