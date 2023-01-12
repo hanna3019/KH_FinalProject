@@ -3,6 +3,7 @@ package com.yb.spring.member.controller;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
 import com.yb.spring.member.model.service.MemberService;
@@ -48,8 +50,12 @@ public class MemberController {
 	}
 	
 	@RequestMapping("mypage.me")
-	public String mypage() {
-		return "member/mypage_f";
+	public String mypage(String type) {
+		if(type.equals("F")) {
+			return "member/mypage_f";			
+		}else {
+			return "member/mypage_c";						
+		}
 	}
 	
 	@RequestMapping("freeProfile.me")
@@ -62,6 +68,16 @@ public class MemberController {
 		return "redirect:/";
 	}
 	
+	@RequestMapping("myInfoEdit.me")
+	public String myInfoEdit() {
+		return "member/myInfoEdit";
+	}
+	
+	@RequestMapping("main.me")
+	public String main() {
+		return "../views/main";
+	}
+
 	@ResponseBody
 	@RequestMapping(value="selectServiceList", produces="application/json; charset=utf-8")
 	public String selectServiceList(int sNum){
@@ -75,8 +91,6 @@ public class MemberController {
 		ArrayList<Location> list = mService.selectLocationList(lNum);
 		return new Gson().toJson(list);
 	}
-	
-	
 	
 	/* 프리랜서 회원가입 */
 	@RequestMapping("FreelancerInsert.me")
@@ -116,7 +130,32 @@ public class MemberController {
 		int count = mService.idCheck(checkId);
 			return count > 0 ? "NNN" : "YYY";
 	}
-	
+	/*로그인*/
+	@RequestMapping("login.me")
+	public ModelAndView loginMemeber(Customer c, ModelAndView mv, HttpSession session) {
+		Customer loginUser = mService.loginMember(c.getUserId());
 		
+		if(loginUser != null && bcryptPasswordEncoder.matches(c.getPass(), loginUser.getPass())) {
+			if(loginUser.getType().equals("F")) {
+				Freelancer loginUserF = mService.loginMemberF(c.getUserId());
+				session.setAttribute("loginUserF", loginUserF);
+				mv.setViewName("redirect:/");
+			}else {
+				Customer loginUserC = mService.loginMemberC(c.getUserId());
+				session.setAttribute("loginUserC", loginUserC);
+				mv.setViewName("redirect:/");
+			}
+		}else {
+			mv.addObject("errorMsg", "로그인 실패");
+			mv.setViewName("member/login");
+		}
+		return mv;
+	}
+	/*로그아웃*/
+	@RequestMapping("logout.me")
+	public String logoutMember(HttpSession session) {
+		session.invalidate();
+		return "redirect:/";
+	}
 }
 

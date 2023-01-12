@@ -2,6 +2,7 @@ package com.yb.spring.matching.model.service;
 
 import java.util.ArrayList;
 
+import com.yb.spring.matching.model.vo.FreelancerProfile;
 import com.yb.spring.member.model.vo.Categories;
 import com.yb.spring.member.model.vo.Location;
 
@@ -11,7 +12,7 @@ public interface MatchingService {
 	ArrayList<Categories> selectServiceList(int sNum);
 	
 	// 서비스별 프리랜서 리스트 (정렬해서 가져오기 + 지역/가격 필터링)
-	
+	ArrayList<FreelancerProfile> selectFreelancerList(int category);
 	
 	// 프리랜서 평점
 	

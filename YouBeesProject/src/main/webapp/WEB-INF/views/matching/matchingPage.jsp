@@ -48,7 +48,7 @@
     <div class="categories">
         <h2 class="title">${sName}</h2>
         <c:forEach var="c" items="${sList}">
-	        <div onclick="location.href='freelancerList.ma?category=${c.cateNum}'"><img src="${path}/resources/source/service${c.cateNum}.jpg" alt="">
+	        <div onclick="location.href='freelancerList.ma?category=${c.cateNum}&cName=${c.name}'"><img src="${path}/resources/source/service${c.cateNum}.jpg" alt="">
 	            <p>${c.name}</p>
 	        </div>        
         </c:forEach>

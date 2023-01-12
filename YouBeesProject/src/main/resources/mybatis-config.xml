@@ -10,6 +10,8 @@
 		<typeAlias type="com.yb.spring.member.model.vo.Customer" alias="Customer"/>
 		<typeAlias type="com.yb.spring.member.model.vo.Categories" alias="Categories"/>
 		<typeAlias type="com.yb.spring.member.model.vo.Location" alias="Location"/>
+		<typeAlias type="com.yb.spring.board.model.vo.Board" alias="Board"/>
+		<typeAlias type="com.yb.spring.matching.model.vo.FreelancerProfile" alias="FreelancerProfile"/>
 	</typeAliases>
 	
 	<mappers>
