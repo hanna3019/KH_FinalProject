@@ -50,8 +50,12 @@ public class MemberController {
 	}
 	
 	@RequestMapping("mypage.me")
-	public String mypage() {
-		return "member/mypage_f";
+	public String mypage(String type) {
+		if(type.equals("F")) {
+			return "member/mypage_f";			
+		}else {
+			return "member/mypage_c";						
+		}
 	}
 	
 	@RequestMapping("freeProfile.me")

@@ -31,10 +31,10 @@
 		                <li><a href="logout.me">로그아웃</a></li>
 		                <c:choose>
 		                	<c:when test="${empty loginUserF}">
-		                		<li><a href="mypage.me">${loginUserC.name} 님</a></li>
+		                		<li><a href="mypage.me?type=C">${loginUserC.name} 님</a></li>
 		                	</c:when>
 		                	<c:otherwise>		                	
-		                		<li><a href="mypage.me">${loginUserF.name} 님</a></li>
+		                		<li><a href="mypage.me?type=F">${loginUserF.name} 님</a></li>
 		                	</c:otherwise>
 		                </c:choose>
                 	</c:otherwise>
