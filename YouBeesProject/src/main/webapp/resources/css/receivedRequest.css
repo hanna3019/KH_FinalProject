@@ -109,6 +109,7 @@ main {
     z-index: 10000;
 }
 
+
 .window .request_title {
     background-color: #ffd100;
     display: flex;
