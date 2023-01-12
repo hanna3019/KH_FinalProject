@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import com.yb.spring.matching.model.vo.FreelancerProfile;
 import com.yb.spring.member.model.vo.Categories;
+import com.yb.spring.member.model.vo.Freelancer;
 import com.yb.spring.member.model.vo.Location;
 
 public interface MatchingService {
@@ -31,7 +32,7 @@ public interface MatchingService {
 	ArrayList<Location> selectCityList();
 	
 	// 프리랜서 프로필 정보 가져오기
-	
+	FreelancerProfile selectFreelancerDetail(int fNum);
 	
 	// 프리랜서의 매칭횟수 가져오기
 	

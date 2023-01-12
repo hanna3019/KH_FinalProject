@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.yb.spring.matching.model.service.MatchingService;
 import com.yb.spring.matching.model.vo.FreelancerProfile;
 import com.yb.spring.member.model.vo.Categories;
+import com.yb.spring.member.model.vo.Freelancer;
 import com.yb.spring.member.model.vo.Location;
 
 @Controller
@@ -36,8 +37,10 @@ public class MatchingController {
 		ArrayList<Location> lList = mService.selectLocationList();
 		ArrayList<Location> cList = mService.selectCityList();
 		ArrayList<FreelancerProfile> fList = mService.selectFreelancerList(category);
-		System.out.println(category);
-		System.out.println(fList.size());
+		for(int i = 0; i<fList.size(); i++) {
+			System.out.println(fList.get(i).getCategory());
+			System.out.println(fList.get(i).getF().getName());
+		}
 		model.addAttribute("lList", lList);
 		model.addAttribute("cList", cList);
 		model.addAttribute("fList", fList);
@@ -46,7 +49,9 @@ public class MatchingController {
 	}
 	
 	@RequestMapping("freelancerDetail.ma")
-	public String freelancerDetail() {
+	public String freelancerDetail(int fNum, Model model) {
+		FreelancerProfile f = mService.selectFreelancerDetail(fNum);
+		model.addAttribute("f", f);
 		return "matching/freelancerDetail";
 	}
 }

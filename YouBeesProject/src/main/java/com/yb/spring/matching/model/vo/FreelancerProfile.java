@@ -18,12 +18,11 @@ import lombok.ToString;
 public class FreelancerProfile {
 	private int freeNum;
 	private String frContent;
-	private Date callTime;
+	private String callTime;
 	private String fileName;
 	private Date regDate;
 	private String oneContent;
 	private int price;
 	private String category;
 	private Freelancer f;
-		
 }

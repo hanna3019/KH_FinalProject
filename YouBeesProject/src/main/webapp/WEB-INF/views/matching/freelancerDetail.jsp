@@ -22,9 +22,9 @@
         <div class="profile_main">
             <div class="title">
                 <img class="pro_img" src="${path}/resources/source/santa.jpg" alt="프로필사진">
-                <h2>변진주</h2>
-                <p class="inline f13">독일어 통번역 &emsp;<img class="img_small" src="${path}/resources/source/location.png" alt="">서울시 강남구</p>
-                <h4>한줄 소개가 들어갈 자리입니다!</h4>
+                <h2>${f.f.name}</h2>
+                <p class="inline f13">${f.category} &emsp;<img class="img_small" src="${path}/resources/source/location.png" alt="">서울시 강남구</p>
+                <h4>${f.oneContent}</h4>
             </div>
 
             <div id="profile_tbl">
@@ -49,13 +49,7 @@
                 <tr>
                     <td>
                         <div class="detail">
-                            안녕하세요! 저희 YB는 기존의 번역회사 보다 유연하고 합리적인 가격으로 서비스를 제공 드리고자 실무진들이 구성한 회사로
-                            경험 많은 실무진들과 다수의 IR, 회사 소개서 번역 뿐만 아니라 유튜브 채널 등 다양한 분야의 번역을 진행하였던 전문 번역가님들과 함께 하고 있습니다.
-
-                            또한 영어, 중국어, 일본어 등의 기본 언어 뿐만 아니라 다양한 언어의 번역 및 더빙이 가능합니다.
-
-                            글로벌 비즈니스를 준비 하신다면
-                            회사 소개서 홈페이지 등 번역 뿐만 아니라 회사의 소개 영상등에 원어민 까지 저희 YB에서 함께 글로벌로 나아가시기 바랍니다.
+                           ${f.frContent}
                         </div>
                     </td>
                 </tr>
@@ -63,7 +57,7 @@
                     <th>활동지역</th>
                 </tr>
                 <tr>
-                    <td>서울시 관악구</td>
+                    <td>${f.f.location}</td>
                 </tr>
                 <tr>
                     <th>작업물 및 자격정보</th>
@@ -80,13 +74,13 @@
                     <th>연락가능시간</th>
                 </tr>
                 <tr>
-                    <td>00시 ~ 00시</td>
+                    <td>${f.callTime}</td>
                 </tr>
                 <tr>
                     <th>경력</th>
                 </tr>
                 <tr>
-                    <td>00년</td>
+                    <td>${f.f.career}</td>
                 </tr>
             </table>
             <table class="review_area">

@@ -59,20 +59,20 @@
                 </form>
             </div>
 
-            <c:forEach var="list" items="${fList}">
+            <c:forEach var="l" items="${fList}">
 	            <table class="free_pro">
 	                <tr>
 	                    <td colspan="4">
-	                    <a href="freelancerDetail.ma"><h4>${list.category}</h4></a>
+	                    <a href="freelancerDetail.ma?fNum=${l.freeNum}"><h4>${l.f.name}</h4></a>
 	                    </td>
 	                    <td rowspan="3" class="pro_img"><img src="${path}/resources/source/profile.png" alt="" class="pro_img"></td>
 	                </tr>
 	                <tr>
-	                    <td colspan="4" class="title">한줄 소개가 들어갈 곳입니다!</td>
+	                    <td colspan="4" class="title">${l.oneContent}</td>
 	                </tr>
 	                <tr class="review">
 	                    <td width="15%"><img src="${path}/resources/source/star.png" alt="" class="review"> 3.5(256)</td>
-	                    <td width="15%">경력 00년</td>
+	                    <td width="15%">경력 ${l.f.career}</td>
 	                    <td width="20%">평균응답시간 1시간</td>
 	                    <td><img src="${path}/resources/source/heart.png" alt="" class="bookmark_icon">찜하기</td>
 	                </tr>

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import com.yb.spring.matching.model.vo.FreelancerProfile;
 import com.yb.spring.member.model.vo.Categories;
+import com.yb.spring.member.model.vo.Freelancer;
 import com.yb.spring.member.model.vo.Location;
 
 @Repository
@@ -25,7 +26,10 @@ public class MatchingDao {
 	}
 
 	public ArrayList<FreelancerProfile> selectFreelancerList(SqlSessionTemplate sqlSession, int category){
-		return (ArrayList)sqlSession.selectList("matchingMapper.selectFreelancerList");
+		return (ArrayList)sqlSession.selectList("matchingMapper.selectFreelancerList", category);
 	}
 	
+	public FreelancerProfile selectFreelancerDetail(SqlSessionTemplate sqlSession, int fNum) {
+		return sqlSession.selectOne("matchingMapper.selectFreelancerDetail", fNum);
+	}
 }

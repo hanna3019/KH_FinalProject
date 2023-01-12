@@ -57,7 +57,7 @@
 	
 	<insert id="insertCustomer">
   		insert into customer 
-  				values(seq_cus.nextval, #{name},#{userId},  #{pass},  #{phone}, 'C', 'Y')
+  				values(seq_cus.nextval, #{name},#{userId},  #{pass},  #{phone}, 'C', null, 'Y')
     </insert>
 
     <select id="idCheck" resultType="_int">
