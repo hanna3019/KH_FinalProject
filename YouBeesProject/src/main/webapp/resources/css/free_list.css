@@ -40,6 +40,7 @@ ul li {
     font-size: 1.8rem;
     font-weight: bold;
     margin: 1.5rem 0 4rem;
+    padding: 2rem 0;
 }
 
 .filter button {
@@ -126,6 +127,7 @@ ul li {
 .free_list .search {
     padding: 1.5rem 0;
     border-bottom: 1px solid #333;
+    padding: 2rem 0;
 }
 
 .search #order {
