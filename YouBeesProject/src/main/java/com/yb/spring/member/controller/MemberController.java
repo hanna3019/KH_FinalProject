@@ -63,6 +63,11 @@ public class MemberController {
 		return "member/freeProfile";
 	}
 	
+	@RequestMapping("myInfoEdit.me")
+	public String myInfoEdit() {
+		return "member/myInfoEdit";
+	}
+	
 	@RequestMapping("main.me")
 	public String main() {
 		return "../views/main";
@@ -143,8 +148,7 @@ public class MemberController {
 	}
 	/*로그아웃*/
 	@RequestMapping("logout.me")
-	public String logoutMember(HttpSession session, Model model) {
-		model.addAttribute("logoutMsg", "로그아웃이 완료되었습니다");
+	public String logoutMember(HttpSession session) {
 		session.invalidate();
 		return "redirect:/";
 	}
