@@ -33,7 +33,7 @@
                 <div class="createTime">2시간 전</div>
 
              
-                <button type="button" class="detailBtnopenMask">
+                <button type="button" class="detailBtn openMask">
                     상세보기
                 </button>
 			</div>
@@ -84,7 +84,7 @@
                 <div class="createTime">2시간 전</div>
 
                 <!-- Button trigger modal -->
-                <button type="button" class="detailBtnopenMask">
+                <button type="button" class="detailBtn openMask">
                     상세보기
                 </button>
              </div>
