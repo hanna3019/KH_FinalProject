@@ -30,7 +30,7 @@
             <div class="memHome">
                 <a href="joinMain.me">회원가입</a>
                 <span>|</span>
-                <a href="#">홈으로</a>
+                <a href="main.me">홈으로</a>
             </div>
         </form>
     </main>
@@ -38,15 +38,5 @@
 <!-- footer -->
 	<jsp:include page="../common/footer.jsp"/>
 </body>
-<script>
- 
-    /* 로그인 버튼 클릭 메서드 */
-    $(".login_button").click(function(){
-        
-        alert("로그인 버튼 작동");
-        
-    });
- 
-</script>
- 
+
 </html>

@@ -59,6 +59,11 @@ public class MemberController {
 		return "member/freeProfile";
 	}
 	
+	@RequestMapping("main.me")
+	public String main() {
+		return "../views/main";
+	}
+
 	@ResponseBody
 	@RequestMapping(value="selectServiceList", produces="application/json; charset=utf-8")
 	public String selectServiceList(int sNum){

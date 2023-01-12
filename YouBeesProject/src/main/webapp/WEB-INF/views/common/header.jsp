@@ -15,7 +15,7 @@
     <header>
         <nav>
             <ul>
-                <li><img src="${path}/resources/source/logo.png" alt="logo" class="logo" onclick=""></li>
+                <li><img src="${path}/resources/source/logo.png" alt="logo" class="logo" onclick="location.href='main.me'"></li>
                 <li><a href="selectCategories.ma?sNum=1&sName=통번역"><span>프리랜서매칭</span></a></li>
                 <li><a href="boardList.bo"><span>커뮤니티</span></a></li>
                 <li>
