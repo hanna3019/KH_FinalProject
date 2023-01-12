@@ -45,7 +45,7 @@
             <div class="window">
                 <div class="request_title">
                     <span>요청서</span>
-                    <a href="#" class="close">X</a>
+                    <div class="close">X</div>
                 </div>
                 <div class="request_form">
                     <div class="quest1">
