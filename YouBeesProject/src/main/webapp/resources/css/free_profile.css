@@ -288,9 +288,6 @@ td {
 .quick_area button:hover {
     cursor: pointer;
 }
-.quick_area button:hover img {
-	
-}
 
 /* 마스크 띄우기 */
 #mask {
