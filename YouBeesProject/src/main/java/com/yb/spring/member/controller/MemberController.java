@@ -51,7 +51,7 @@ public class MemberController {
 	
 	@RequestMapping("mypage.me")
 	public String mypage() {
-		return "member/mypage_c";
+		return "member/mypage_f";
 	}
 	
 	@RequestMapping("freeProfile.me")
@@ -139,7 +139,8 @@ public class MemberController {
 	}
 	/*로그아웃*/
 	@RequestMapping("logout.me")
-	public String logoutMember(HttpSession session) {
+	public String logoutMember(HttpSession session, Model model) {
+		model.addAttribute("logoutMsg", "로그아웃이 완료되었습니다");
 		session.invalidate();
 		return "redirect:/";
 	}
