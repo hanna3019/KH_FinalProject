@@ -62,6 +62,11 @@ public class MemberController {
 	public String freeProfile() {
 		return "member/freeProfile";
 	}
+
+	@RequestMapping("toMain.me")
+	public String toMain() {
+		return "redirect:/";
+	}
 	
 	@RequestMapping("myInfoEdit.me")
 	public String myInfoEdit() {

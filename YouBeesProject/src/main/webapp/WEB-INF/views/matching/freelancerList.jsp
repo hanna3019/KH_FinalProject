@@ -126,7 +126,6 @@
                 <span>지역 선택</span>
                 <span style="text-align:center; font-size: small;"><a href="#" class="close">닫기X</a></span>
             </div>
-            
             <ul class="locationList">
             <c:forEach var='l' items='${lList}'>
                 <li class="loca">&ensp;${l.location}</li>
