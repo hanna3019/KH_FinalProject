@@ -32,14 +32,16 @@ public class MatchingController {
 	}
 	
 	@RequestMapping("freelancerList.ma")
-	public String freelancerList(int category, Model model) {
+	public String freelancerList(int category, String cName, Model model) {
 		ArrayList<Location> lList = mService.selectLocationList();
 		ArrayList<Location> cList = mService.selectCityList();
-		/*
-		 * ArrayList<FreelancerProfile> fList = mService.selectFreelancerList(category);
-		 */
+		ArrayList<FreelancerProfile> fList = mService.selectFreelancerList(category);
+		System.out.println(category);
+		System.out.println(fList.size());
 		model.addAttribute("lList", lList);
 		model.addAttribute("cList", cList);
+		model.addAttribute("fList", fList);
+		model.addAttribute("cName", cName);
 		return "matching/freelancerList";
 	}
 	

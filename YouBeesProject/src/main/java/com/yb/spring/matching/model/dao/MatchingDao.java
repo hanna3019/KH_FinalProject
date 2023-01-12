@@ -23,10 +23,9 @@ public class MatchingDao {
 	public ArrayList<Location> selectCityList(SqlSessionTemplate sqlSession){
 		return (ArrayList)sqlSession.selectList("matchingMapper.selectCityList");
 	}
+
+	public ArrayList<FreelancerProfile> selectFreelancerList(SqlSessionTemplate sqlSession, int category){
+		return (ArrayList)sqlSession.selectList("matchingMapper.selectFreelancerList");
+	}
 	
-	/*
-	 * public ArrayList<FreelancerProfile> selectFreelancerList(SqlSessionTemplate
-	 * sqlSession, int categories){ return
-	 * (ArrayList)sqlSession.selectFreelancerList(); }
-	 */
 }

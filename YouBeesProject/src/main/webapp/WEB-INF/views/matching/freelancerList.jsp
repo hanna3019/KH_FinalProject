@@ -21,14 +21,12 @@
     <div id="container">
 
         <div class="filter">
-            <div class="h2">영어통번역</div>
+            <div class="h2">${cName}</div>
 
             <div class="region">
                 <div><button class="openMask">지역<img src="${path}/resources/source/dropdown.png" alt="" class="drp_icon"></button></div>
                 <div class="selected">
                     <div class="location"><img src="${path}/resources/source/x.png" class="close_region"></div>
-                    <%-- <div class="location"><img src="${path}/resources/source/x.png" class="close_region"></div>
-                    <div class="location"><img src="${path}/resources/source/x.png" class="close_region"></div> --%>
                 </div>
             </div>
 
@@ -49,6 +47,7 @@
 
         <div class="free_list">
             <div class="search">
+            
                 <form action="" method="">
                     <input class="search_bar" type="text" placeholder="어떤 프리랜서를 찾고 계신가요?">
                     <img src="${path}/resources/source/search.png" alt="" class="search_btn" onclick="">
@@ -60,59 +59,25 @@
                 </form>
             </div>
 
-            <table class="free_pro">
-                <tr>
-                    <td colspan="4">
-                    <a href="freelancerDetail.ma"><h4>프리랜서 이름</h4></a>
-                    </td>
-                    <td rowspan="3" class="pro_img"><img src="${path}/resources/source/profile.png" alt="" class="pro_img"></td>
-                </tr>
-                <tr>
-                    <td colspan="4" class="title">한줄 소개가 들어갈 곳입니다!</td>
-                </tr>
-                <tr class="review">
-                    <td width="15%"><img src="${path}/resources/source/star.png" alt="" class="review"> 3.5(256)</td>
-                    <td width="15%">경력 00년</td>
-                    <td width="20%">평균응답시간 1시간</td>
-                    <td><img src="${path}/resources/source/heart.png" alt="" class="bookmark_icon">찜하기</td>
-                </tr>
-            </table>
-            <table class="free_pro">
-                <tr>
-                    <td colspan="4">
-                    <a href=""><h4>프리랜서 이름</h4></a>
-                    </td>
-                    <td rowspan="3" class="pro_img"><img src="${path}/resources/source/profile.png" alt="" class="pro_img"></td>
-                </tr>
-                <tr>
-                    <td colspan="4" class="title">한줄 소개가 들어갈 곳입니다!</td>
-                </tr>
-                <tr class="review">
-                    <td width="15%"><img src="${path}/resources/source/star.png" alt="" class="review"> 3.5(52)</td>
-                    <td width="15%">경력 00년</td>
-                    <td width="20%">평균응답시간 1시간</td>
-                    <td><img src="${path}/resources/source/heart.png" alt="" class="bookmark_icon">찜하기</td>
-                </tr>
-            </table>
-            <table class="free_pro">
-                <tr>
-                    <td colspan="4"><a href="">
-                            <h4>프리랜서 이름</h4>
-                        </a>
-                    </td>
-                    <td rowspan="3" class="pro_img"><img src="${path}/resources/source/profile.png" alt="" class="pro_img"></td>
-                </tr>
-                <tr>
-                    <td colspan="4" class="title">한줄 소개가 들어갈 곳입니다!</td>
-                </tr>
-                <tr class="review">
-                    <td width="15%"><img src="${path}/resources/source/star.png" alt="" class="review"> 3.5(1,182)</td>
-                    <td width="15%">경력 00년</td>
-                    <td width="20%">평균응답시간 5분</td>
-                    <td><img src="${path}/resources/source/heart.png" alt="" class="bookmark_icon">찜하기</td>
-                </tr>
-            </table>
-
+            <c:forEach var="list" items="${fList}">
+	            <table class="free_pro">
+	                <tr>
+	                    <td colspan="4">
+	                    <a href="freelancerDetail.ma"><h4>${list.category}</h4></a>
+	                    </td>
+	                    <td rowspan="3" class="pro_img"><img src="${path}/resources/source/profile.png" alt="" class="pro_img"></td>
+	                </tr>
+	                <tr>
+	                    <td colspan="4" class="title">한줄 소개가 들어갈 곳입니다!</td>
+	                </tr>
+	                <tr class="review">
+	                    <td width="15%"><img src="${path}/resources/source/star.png" alt="" class="review"> 3.5(256)</td>
+	                    <td width="15%">경력 00년</td>
+	                    <td width="20%">평균응답시간 1시간</td>
+	                    <td><img src="${path}/resources/source/heart.png" alt="" class="bookmark_icon">찜하기</td>
+	                </tr>
+	            </table>
+            </c:forEach>
         </div>
         
 		<script>
