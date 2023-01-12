@@ -57,12 +57,18 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
-	public Freelancer loginMember(Freelancer m) {
-		return null;
+	public Customer loginMember(String userId) {
+		return mDao.loginMember(sqlSession, userId);
+	}
+	
+	@Override
+	public Freelancer loginMemberF(String userId) {
+		return mDao.loginMemberF(sqlSession, userId);
 	}
 
 	@Override
-	public Customer loginMember(Customer c) {
-		return mDao.loginMember(sqlSession, c);
+	public Customer loginMemberC(String userId) {
+		return mDao.loginMemberC(sqlSession, userId);
 	}
+
 }

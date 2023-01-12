@@ -14,10 +14,9 @@
 <body>
 <!-- header -->
 	<jsp:include page="../common/header.jsp"/>
-	
     <main class="login_content">
         <div class="login_title">로그인</div>
-        <form action="loginForm.me" method="post" class="login_form">
+        <form action="login.me" method="post" class="login_form">
             <div class="col-1">
                 <div class="text">아이디</div>
                 <input type="text" name="userId" placeholder="아이디를 입력하세요.">
