@@ -119,12 +119,18 @@ public class MemberController {
 	/*로그인*/
 	@RequestMapping("login.me")
 	public ModelAndView loginMemeber(Customer c, ModelAndView mv, HttpSession session) {
+		Customer loginUser = mService.loginMember(c.getUserId());
 		
-		Customer loginUser = mService.loginMember(c);
-		
-		if(loginUser == null && bcryptPasswordEncoder.matches(c.getPass(), loginUser.getPass())) {
-			session.setAttribute("loginUser", loginUser);
-			mv.setViewName("redirect:/");
+		if(loginUser != null && bcryptPasswordEncoder.matches(c.getPass(), loginUser.getPass())) {
+			if(loginUser.getType().equals("F")) {
+				Freelancer loginUserF = mService.loginMemberF(c.getUserId());
+				session.setAttribute("loginUserF", loginUserF);
+				mv.setViewName("redirect:/");
+			}else {
+				Customer loginUserC = mService.loginMemberC(c.getUserId());
+				session.setAttribute("loginUserC", loginUserC);
+				mv.setViewName("redirect:/");
+			}
 		}else {
 			mv.addObject("errorMsg", "로그인 실패");
 			mv.setViewName("member/login");

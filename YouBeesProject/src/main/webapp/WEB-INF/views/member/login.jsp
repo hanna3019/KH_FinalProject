@@ -14,7 +14,6 @@
 <body>
 <!-- header -->
 	<jsp:include page="../common/header.jsp"/>
-	
     <main class="login_content">
         <div class="login_title">로그인</div>
         <form action="login.me" method="post" class="login_form">

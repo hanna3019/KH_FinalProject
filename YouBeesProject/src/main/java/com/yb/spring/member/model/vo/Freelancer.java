@@ -12,7 +12,7 @@ import lombok.ToString;
 @Getter
 @ToString
 public class Freelancer {
-	private int freeId;
+	private int freeNum;
 	private String name;
 	private String userId;
 	private String pass;

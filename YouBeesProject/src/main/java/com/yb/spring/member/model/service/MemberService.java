@@ -16,10 +16,13 @@ public interface MemberService {
 	int insertCustomer(Customer c);
 	
 	// 로그인 서비스
-	Freelancer loginMember(Freelancer m);
-	
+	Customer loginMember(String userId);
+
 	// 로그인 서비스
-	Customer loginMember(Customer c);
+	Freelancer loginMemberF(String userId);
+
+	// 로그인 서비스
+	Customer loginMemberC(String userId);	
 	
 	// 아이디 중복체크 서비스(ajax)
 	int idCheck(String checkId);
