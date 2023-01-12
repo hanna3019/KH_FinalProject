@@ -28,7 +28,7 @@
             <input type="submit" id="lg_submit" value="로그인">
 
             <div class="memHome">
-                <a href="#">회원가입</a>
+                <a href="joinMain.me">회원가입</a>
                 <span>|</span>
                 <a href="#">홈으로</a>
             </div>
