@@ -11,29 +11,26 @@
     <link rel="stylesheet" href="${path}/resources/css/login.css">
     <title>Document</title>
 </head>
-
 <body>
 <!-- header -->
 	<jsp:include page="../common/header.jsp"/>
-	
     <main class="login_content">
         <div class="login_title">로그인</div>
-        <form action="" method="post" class="login_form">
+        <form action="login.me" method="post" class="login_form">
             <div class="col-1">
                 <div class="text">아이디</div>
                 <input type="text" name="userId" placeholder="아이디를 입력하세요.">
             </div>
             <div class="col-1">
                 <div class="text">비밀번호</div>
-                <input type="password" placeholder="비밀번호를 입력하세요.">
+                <input type="password" name="pass" placeholder="비밀번호를 입력하세요.">
             </div>
             <input type="submit" id="lg_submit" value="로그인">
 
             <div class="memHome">
-                <a href="#">회원가입</a>
+                <a href="joinMain.me">회원가입</a>
                 <span>|</span>
-                <a href="#">홈으로</a>
-                <!-- ㅋ -->
+                <a href="main.me">홈으로</a>
             </div>
         </form>
     </main>
