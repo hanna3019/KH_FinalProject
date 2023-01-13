@@ -28,7 +28,7 @@
 		                <li><a href="joinMain.me">회원가입</a></li>
                 	</c:when>
                 	<c:otherwise>
-		                <li><a href="">로그아웃</a></li>
+		                <li><a href="logout.me">로그아웃</a></li>
 		                <li><a href="mypage.me">홍길동 님</a></li>
                 	</c:otherwise>
                 </c:choose>
