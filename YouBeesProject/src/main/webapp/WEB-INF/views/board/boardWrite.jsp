@@ -48,7 +48,7 @@ function resetimg() {
                     <input type="text" id="name_contnet" name="title" placeholder="제목을 입력해 주세요.">
                 </label>
             </div>
-
+			<input type="hidden" name="cusNum" value="${loginUserC.cusNum}">
             <div class="service_region">
                 <select class="service_box" name="serviceNum">
                     <option value="service">(선택) 서비스</option>

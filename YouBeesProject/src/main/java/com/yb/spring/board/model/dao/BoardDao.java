@@ -36,7 +36,7 @@ public class BoardDao {
 		return sqlSession.selectOne("boardMapper.selectBoard", bnum);
 	}
 	
-	public int insertReply(SqlSessionTemplate sqlSession, Comments c) {
-		return sqlSession.insert("boardMapper.insertReply", c);
+	public int insertComment(SqlSessionTemplate sqlSession, Comments c) {
+		return sqlSession.insert("boardMapper.insertComment", c);
 	}
 }
