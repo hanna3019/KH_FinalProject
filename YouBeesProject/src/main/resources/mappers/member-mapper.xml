@@ -14,6 +14,30 @@
 		<result column="city" property="city"/>	
 	</resultMap>
 	
+	<resultMap type="Customer" id="customerResult">
+		<result column="cus_num" property="cusNum"/>
+		<result column="user_id" property="userId"/>
+		<result column="name" property="name"/>
+		<result column="pass" property="pass"/>
+		<result column="phone" property="phone"/>
+		<result column="type" property="type"/>
+		<result column="status" property="status"/>
+	</resultMap>
+	
+	<resultMap type="Freelancer" id="freelancerResult">
+		<result column="free_num" property="freeNum"/>
+		<result column="user_id" property="userId"/>
+		<result column="name" property="name"/>
+		<result column="pass" property="pass"/>
+		<result column="tel" property="tel"/>
+		<result column="career" property="career"/>
+		<result column="gender" property="gender"/>
+		<result column="service_num" property="serviceNum"/>
+		<result column="location" property="location"/>
+		<result column="type" property="type"/>
+		<result column="status" property="status"/>
+	</resultMap>
+	
 	<select id="selectServiceList" resultMap="serviceResult">
 		select *
 		from categories
@@ -33,7 +57,7 @@
 	
 	<insert id="insertCustomer">
   		insert into customer 
-  				values(seq_cus.nextval, #{name},#{userId},  #{pass},  #{phone}, 'C', 'Y')
+  				values(seq_cus.nextval, #{name},#{userId},  #{pass},  #{phone}, 'C', null, 'Y')
     </insert>
 
     <select id="idCheck" resultType="_int">
@@ -45,5 +69,27 @@
 			from freelancer)
 			where user_id = #{checkId}
 	</select>
-
+	
+	<select id="loginMember" resultMap="customerResult">
+  		select user_id, pass, type
+		from customer
+		where user_id = #{userId}
+		union all
+		select user_id, pass, type
+		from freelancer
+		where user_id = #{userId}
+  	</select>
+	
+	<select id="loginMemberF" resultMap="freelancerResult">
+		select *
+		from freelancer
+		where user_id = #{userId}
+	</select>
+	
+	<select id="loginMemberC" resultMap="customerResult">
+		select *
+		from customer
+		where user_id = #{userId}
+	</select>
+	
 </mapper>

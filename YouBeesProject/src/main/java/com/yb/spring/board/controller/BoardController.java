@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
 import com.yb.spring.board.model.service.BoardService;
@@ -95,9 +94,7 @@ public class BoardController {
 		return "board/boardWrite";
 	}
 	
-	
 
-	
 	@RequestMapping("boardRead.bo")
 	public ModelAndView selectBoard(int bno, ModelAndView mv) {
 		int result = bService.increaseCount(bno);

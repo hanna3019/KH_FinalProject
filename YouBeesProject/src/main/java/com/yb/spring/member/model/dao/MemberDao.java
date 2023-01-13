@@ -33,5 +33,17 @@ public class MemberDao {
 	public int idCheck(SqlSessionTemplate sqlSession, String checkId) {
 		return sqlSession.selectOne("memberMapper.idCheck", checkId);
 	}
+	
+	public Customer loginMember(SqlSessionTemplate sqlSession, String userId) {
+		return sqlSession.selectOne("memberMapper.loginMember", userId);
+	}
+	
+	public Freelancer loginMemberF(SqlSessionTemplate sqlSession, String userId) {
+		return sqlSession.selectOne("memberMapper.loginMemberF", userId);
+	}
+	
+	public Customer loginMemberC(SqlSessionTemplate sqlSession, String userId) {
+		return sqlSession.selectOne("memberMapper.loginMemberC", userId);
+	}
 
 }

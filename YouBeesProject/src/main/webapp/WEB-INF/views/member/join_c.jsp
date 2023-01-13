@@ -47,16 +47,22 @@
             </table>
 
             <div class="tou">
-                <div class="tou1" colspan="2"><input class="agree" type="checkbox" name="agree" required
-                        value="Y,N">이용약관 동의 (필수)
+            	<label for="agree1"> 
+                <div class="tou1" colspan="2">
+                <input id="agree1" class="agree" type="checkbox" name="agree" required value="Y,N">이용약관 동의 (필수)
+                	</label>	
                 </div>
-                <div class="tou2" colspan="2"><input class="agree" type="checkbox" name="agree" required
-                        value="Y,N">개인정보
-                    수집 및 동의
-                    (필수)</div>
-
-                <div class="tou3" colspan="2"><input class="agree" type="checkbox" name="agree" required value="Y,N">만
-                    14세 이상 (필수)
+                <label for="agree2">
+                <div class="tou2" colspan="2"> 
+                 <input  id="agree2" class="agree" type="checkbox" name="agree" required value="Y,N">
+                       	개인정보 수집 및 동의(필수)
+                       	</label>
+                </div>
+				<label for="agree3">
+                <div class="tou3" colspan="2">
+                 <input  id="agree3" class="agree" type="checkbox" name="agree" required value="Y,N">
+                 	 만 14세 이상 (필수)
+                 	 </label>
                 </div>
             </div>
 

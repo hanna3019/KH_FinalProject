@@ -12,14 +12,14 @@ import lombok.ToString;
 @Getter
 @ToString
 public class Freelancer {
-	private int freeId;
+	private int freeNum;
 	private String name;
 	private String userId;
 	private String pass;
 	private String tel;
 	private String career;
 	private String gender;
-	private int serviceNum;
+	private int cateNum;
 	private String location;
 	private String type;
 	private String status;
