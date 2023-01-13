@@ -271,3 +271,17 @@ button:hover {
     position: relative;
     left: 12rem;
 }
+
+/* 페이징 처리 공간 */
+#pageArea{
+	padding-top: 3rem;
+}
+.pagination{
+	text-align:center;
+}
+.page-item{
+	display: inline-block;
+	font-size: 0.8rem;
+	margin: 0.2rem;
+}
+

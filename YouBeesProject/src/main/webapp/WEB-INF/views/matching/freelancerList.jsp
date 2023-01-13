@@ -9,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" type="text/css" href="${path}/resources/css/free_list.css?s">
+    <link rel="stylesheet" type="text/css" href="${path}/resources/css/free_list.css?q">
     <script src="http://code.jquery.com/jquery-latest.js"></script>
     <script type="text/javascript" src="${path}/resources/js/free_list.js?s"></script>
 </head>
@@ -58,7 +58,7 @@
                     </select>
                 </form>
             </div>
-
+            <div id="fListArea">
             <c:forEach var="l" items="${fList}">
 	            <table class="free_pro">
 	                <tr>
@@ -78,8 +78,31 @@
 	                </tr>
 	            </table>
             </c:forEach>
-        </div>
-        
+            </div>
+	       	<div id="pageArea">
+	      		<ul class="pagination">
+	               	<c:choose>
+	               		<c:when test="${pi.nowPage eq 1}">
+	                    	<li class="page-item disabled"><a class="page-link" href="#">이전</a></li>
+	                	</c:when>
+	                	<c:otherwise>
+	                		<li class="page-item"><a class="page-link" href="freelancerList.ma?cpage=${pi.nowPage-1}">이전</a></li>
+	                	</c:otherwise>
+	                </c:choose>
+	                <c:forEach var="p" begin="${pi.startPage}" end="${pi.endPage}">
+	                    <li class="page-item"><a class="page-link" href="javascript:paging(${p})">[${p}]</a></li>
+					</c:forEach>
+					<c:choose>
+						<c:when test="${pi.nowPage eq pi.maxPage }">
+	                    	<li class="page-item disabled"><a class="page-link" href="#">다음</a></li>
+	                    </c:when>
+	                    <c:otherwise>
+	                    	<li class="page-item"><a class="page-link" href="freelancerList.ma?cpage=${pi.nowPage+1}">다음</a></li>	                    
+	                    </c:otherwise>
+	               	</c:choose>
+	           </ul>
+	       	</div>
+       	</div>
 		<script>
 		$(function () {
 			/* 지역리스트 */
@@ -88,13 +111,11 @@
 		    });
 			
 		    /* 좋아요 누르기 */
-		    $(".bookmark_icon").on({
-		        'click': function () {
+		    $(document).on("click", ".bookmark_icon", function () {
 		            let src = ($(this).attr('src') === '${path}/resources/source/heart.png')
 		                ? '/spring/resources/source/heart2.png'
 		                : '/spring/resources/source/heart.png';
 		            $(this).attr('src', src);
-		        }
 		    });
 		    
 		    /* 지역 선택 후 div에 띄우기 */
@@ -115,8 +136,33 @@
 		   
 		});
 	
-		
-		
+		/* 페이징 처리 ajax */
+		 function paging(p){
+			$.ajax({
+				url:"freelancerListPaging.ma",
+				data:{nowPage:p, category:${fList[0].f.cateNum}},
+				success:function(fList){
+					console.log(fList);
+					let value = '';
+					for(let i in fList){
+						value += '<table class="free_pro">'
+							  + ' <tr><td colspan="4">'
+							  + '<a href="freelancerDetail.ma?fNum='+fList[i].freeNum+'"><h4>'+fList[i].f.name+'</h4></a></td>'
+							  + '<td rowspan="3" class="pro_img"><img src="/spring/resources/source/profile.png" alt="" class="pro_img"></td></tr>'
+							  + '<tr><td colspan="4" class="title">'+fList[i].oneContent+'</td></tr>'
+							  + '<tr class="review">'
+							  + '<td width="15%"><img src="/spring/resources/source/star.png" alt="" class="review"> 3.5(256)</td><td width="15%">경력 '+fList[i].f.career+'</td>'
+							  + '<td width="20%">평균응답시간 1시간</td>'
+			                  + '<td><img src="/spring/resources/source/heart.png" alt="" class="bookmark_icon">찜하기</td></tr></table>'
+					}
+					$("#fListArea").empty();
+					$("#fListArea").html(value);
+				},
+    			error:function(){
+    				console.log("페이징처리 ajax 통신 실패");
+    			}
+			});
+		} 
 		</script>
 
         <!-- 지역선택 모달창 -->

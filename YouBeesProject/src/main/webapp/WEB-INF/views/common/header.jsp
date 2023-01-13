@@ -18,7 +18,6 @@
                     <ul>
                         <li><img src="${path}/resources/source/logo.png" alt="logo" class="logo"
                                 onclick="location.href='main.me'"></li>
-                        >>>>>>> 3b035ca15b41450698718a29e5137d37117278cf
                         <li><a href="selectCategories.ma?sNum=1&sName=통번역"><span>프리랜서매칭</span></a></li>
                         <li><a href="boardList.bo"><span>커뮤니티</span></a></li>
                         <li>
@@ -42,7 +41,6 @@
                                 </c:choose>
                             </c:otherwise>
                         </c:choose>
-                        >>>>>>> 3b035ca15b41450698718a29e5137d37117278cf
                     </ul>
                 </nav>
             </header>
