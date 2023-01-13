@@ -3,7 +3,7 @@ package com.yb.spring.board.model.service;
 import java.util.ArrayList;
 
 import com.yb.spring.board.model.vo.Board;
-import com.yb.spring.board.model.vo.Comment;
+import com.yb.spring.board.model.vo.Comments;
 import com.yb.spring.board.model.vo.Likes;
 import com.yb.spring.common.model.vo.PageInfo;
 
@@ -30,10 +30,10 @@ public interface BoardService {
 	int updateBoard(Board b);
 	
 	// 8. 댓글 리스트(ajax)
-	ArrayList<Comment> selectCommentList(int bnum);
+	ArrayList<Comments> selectCommentList(int bnum);
 	
 	// 9. 댓글 작성(ajax)
-	int insertComment(Comment c);
+	int insertComment(Comments c);
 	
 	// 10. 좋아요 등록하기(ajax)
 	int insertLikes(Likes l);
