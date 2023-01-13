@@ -30,7 +30,7 @@
 
             <table id="profileContent">
                 <tr>
-                    <th class="title"><a href="freeProfile.me">내 프로필</a></th>
+                    <th class="title"><a href="freeProfile.ma?fNum=${loginUserF.freeNum}">내 프로필</a></th>
                 </tr>
                 <tr>
                     <th class="title"><a href="recievedRequest.re">받은요청</a></th>

@@ -23,7 +23,7 @@
             <div class="title">
                 <img class="pro_img" src="${path}/resources/source/santa.jpg" alt="프로필사진">
                 <h2>${f.f.name}</h2>
-                <p class="inline f13">${f.category} &emsp;<img class="img_small" src="${path}/resources/source/location.png" alt="">서울시 강남구</p>
+                <p class="inline f13">${f.category} &emsp;<img class="img_small" src="${path}/resources/source/location.png" alt="">${f.f.location}</p>
                 <h4>${f.oneContent}</h4>
             </div>
 

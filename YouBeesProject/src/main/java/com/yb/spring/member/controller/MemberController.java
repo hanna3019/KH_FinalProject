@@ -57,11 +57,6 @@ public class MemberController {
 			return "member/mypage_c";						
 		}
 	}
-	
-	@RequestMapping("freeProfile.me")
-	public String freeProfile() {
-		return "member/freeProfile";
-	}
 
 	@RequestMapping("toMain.me")
 	public String toMain() {

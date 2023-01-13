@@ -72,4 +72,12 @@ public class MatchingController {
 		model.addAttribute("f", f);
 		return "matching/freelancerDetail";
 	}
+	
+
+	@RequestMapping("freeProfile.ma")
+	public String freeProfile(int fNum, Model model) {
+		FreelancerProfile f = mService.selectFreelancerDetail(fNum);
+		model.addAttribute("f", f);
+		return "member/freeProfile";
+	}
 }
