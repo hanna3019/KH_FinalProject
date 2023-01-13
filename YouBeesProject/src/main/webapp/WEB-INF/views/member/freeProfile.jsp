@@ -9,9 +9,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" type="text/css" href="${path}/resources/css/free_profile2.css">
+    <link rel="stylesheet" type="text/css" href="${path}/resources/css/free_profile2.css?aa">
     <script src="http://code.jquery.com/jquery-latest.js"></script>
-    <script type="text/javascript" src="${path}/resources/js/profile.js"></script>
+    <script type="text/javascript" src="${path}/resources/js/profile.js?a"></script>
 </head>
 
 <body>
@@ -22,9 +22,9 @@
 
         <div class="title">
             <img class="pro_img" src="${path}/resources/source/santa.jpg" alt="프로필사진">
-            <h2>변진주</h2>
-            <p class="inline f13">독일어 통번역 &emsp;<img class="img_small" src="${path}/resources/source/location.png" alt="">서울시 강남구</p>
-            <h4>한줄 소개가 들어갈 자리입니다!</h4>
+            <h2>${f.f.name}</h2>
+            <p class="inline f13">${f.category} &emsp;<img class="img_small" src="${path}/resources/source/location.png" alt="">${f.f.location}</p>
+            <h4>${f.oneContent}</h4>
         </div>
 
         <div id="profile_tbl">
@@ -53,24 +53,18 @@
                 <tr>
                     <td colspan="2">
                         <div class="detail">
-                            안녕하세요! 저희 000는 기존의 번역회사 보다 유연하고 합리적인 가격으로 서비스를 제공 드리고자 실무진들이 구성한 회사로
-                            경험 많은 실무진들과 다수의 IR, 회사 소개서 번역 뿐만 아니라 유튜브 채널 등 다양한 분야의 번역을 진행하였던 전문 번역가님들과 함께 하고 있습니다.
-
-                            또한 영어, 중국어, 일본어 등의 기본 언어 뿐만 아니라 다양한 언어의 번역 및 더빙이 가능합니다.
-
-                            글로벌 비즈니스를 준비 하신다면
-                            회사 소개서 홈페이지 등 번역 뿐만 아니라 회사의 소개 영상등에 원어민 까지 저희 커넥투에서 함께 글로벌로 나아가시기 바랍니다.
+                          ${f.frContent}
+                         <textarea name="" class="detail_revise hidden" cols="80" rows="10"></textarea>
                          <div/>
-                            <textarea name="" id="detail_revise" class="hidden" cols="80" rows="10"></textarea>
                     </td>
                 </tr>
             </form>
             <tr>
                 <th>활동지역</th>
-                <th><span class="regBtn location_btn">등록하기</span></th>
+                <th><span class="regBtn location_btn">변경하기</span></th>
             </tr>
             <tr>
-                <td colspan="2">서울시 관악구</td>
+                <td colspan="2">${f.f.location}</td>
             </tr>
             <form action="" id="certifi_from">
                 <tr>
@@ -95,7 +89,7 @@
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <spen class="contect_time">00시 ~ 00시</spen>
+                        <spen class="contect_time">${f.callTime}</spen>
                         <input type="text" class="contect_revise hidden">
                     </td>
                 </tr>
@@ -107,7 +101,7 @@
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <span class="career">00년</span>
+                        <span class="career">${f.f.career}</span>
                         <input type="text" class="career_revise hidden">
                     </td>
                 </tr>

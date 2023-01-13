@@ -52,13 +52,25 @@ public class MemberController {
 	}
 
 	@RequestMapping("mypage.me")
-	public String mypage() {
-		return "member/mypage_c";
+	public String mypage(String type) {
+		if(type.equals("F")) {
+			return "member/mypage_f";			
+		}else {
+			return "member/mypage_c";						
+		}
 	}
 
+	@RequestMapping("toMain.me")
+	public String toMain() {
+		return "redirect:/";
+	}
 	@RequestMapping("freeProfile.me")
 	public String freeProfile() {
 		return "member/freeProfile";
+	
+	@RequestMapping("myInfoEdit.me")
+	public String myInfoEdit() {
+		return "member/myInfoEdit";
 	}
 
 	@RequestMapping("main.me")

@@ -19,7 +19,7 @@ public class Freelancer {
 	private String tel;
 	private String career;
 	private String gender;
-	private int serviceNum;
+	private int cateNum;
 	private String location;
 	private String type;
 	private String status;

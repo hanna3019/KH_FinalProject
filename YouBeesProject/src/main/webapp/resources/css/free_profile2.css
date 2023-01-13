@@ -180,7 +180,7 @@ td {
     cursor: pointer;
 }
 
-.profile_container input[type=text] {
+#profile_container input[type=text] {
     height: 2rem;
     padding: 0 0.5rem;
     box-sizing: border-box;
@@ -191,11 +191,11 @@ td {
     border-radius: 0.5rem;
 }
 
-.profile_container input[type=text]:focus {
+#profile_container input[type=text]:focus {
     border: 2px solid #555;
 }
 
-.profile_container textarea {
+#profile_container textarea {
     box-sizing: border-box;
     border: 2px solid #ccc;
     -webkit-transition: 0.5s;

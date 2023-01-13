@@ -23,14 +23,14 @@
 
             <div class="profileBox">
                 <img class="profileImg" src="${path}/resources/source/freelance.png" alt="프리랜서로고" onclick=""></a>
-                <div class="userInfo">
+                <div class="userInfo" onclick="location.href='myInfoEdit.me'">
                     <div>변진주 프리랜서님</div>
                 </div>
             </div>
 
             <table id="profileContent">
                 <tr>
-                    <th class="title"><a href="freeProfile.me">내 프로필</a></th>
+                    <th class="title"><a href="freeProfile.ma?fNum=${loginUserF.freeNum}">내 프로필</a></th>
                 </tr>
                 <tr>
                     <th class="title"><a href="recievedRequest.re">받은요청</a></th>
