@@ -9,6 +9,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title></title>
 	<link rel="stylesheet" href="${path}/resources/css/read.css">
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
 </head>
 
 <body>
@@ -78,29 +79,43 @@
 
 	<!-- 댓글  ajax -->
 
-	<script>
-		function addReply() {
-			if("#content").val().trim().length !=0 {
-				let type = '';
-				let name '';
-				if(${loginUserF} == null){
-					type = 'C';
-					name = ${loginUserC.name};
-				}else{
-					type = 'F';
-					name = ${loginUserF.name};
+	<c:choose>
+		<c:when test="${not empty loginUserF}">
+			<script>
+				function addReply(){
+					$.ajax({
+						url:"rinsert.bo",
+						data:{
+							bnum:${b.bnum},
+							cContent:$("#content").val(),
+							cWriter:"${loginUserF.name}",
+							type:'F'
+						},
+						success:function(result) {
+							if(result == "success") {
+								$("#content").val("");
+							}
+						},
+						error:function(){
+							console.log("댓글작성 ajax 통신 실패");
+						}
+					});
 				}
+			</script>
+		</c:when>
+		<c:otherwise>
+			<script>
+			function addReply(){
 				$.ajax({
 					url:"rinsert.bo",
 					data:{
 						bnum:${b.bnum},
 						cContent:$("#content").val(),
-						cWriter:name,
-						type:type
+						cWriter:"${loginUserC.name}",
+						type:'C'
 					},
 					success:function(result) {
 						if(result == "success") {
-							selectReplyList();
 							$("#content").val("");
 						}
 					},
@@ -108,24 +123,16 @@
 						console.log("댓글작성 ajax 통신 실패");
 					}
 				});
-			}else {
-				alerify.alert("댓글 작성후 등록해 주세요.")
 			}
-		}
+
+			</script>
+		</c:otherwise>
+	</c:choose>
+
+
+
+
 	
-	
-	
-		$(function() {
-			selectReplyList();
-		})
-		
-		function selectReplyList(){
-			$.ajax({
-				url:"rlist.bo",
-				data:
-			})
-		}
-	</script>
 </body>
 
 </html>

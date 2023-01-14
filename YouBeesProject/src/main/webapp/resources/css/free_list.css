@@ -163,12 +163,12 @@ ul li {
     width: 5rem;
     height: 5rem;
     vertical-align: bottom;
-    border: 1px solid #333;
     border-radius: 0.5rem;
 }
 
 .title {
     font-size: 0.8rem;
+    line-height: 1rem;
 }
 
 .review {

@@ -47,7 +47,7 @@ body {
 }
 input[type=text], input[type=password] {
 	width: 17.5rem;
-	height: 1.9rem;
+	height: 2rem;
 	border-radius: 0.5rem;
 	border: 1px solid #eee;
 	padding: 0rem 0.5rem;
@@ -55,7 +55,7 @@ input[type=text], input[type=password] {
 }
 input[type=number]{
 	width:9rem;
-	height: 1.9rem;
+	height: 2rem;
 	border-radius: 0.5rem;
 	border: 1px solid #eee;
 	padding: 0rem 0.5rem;
@@ -83,11 +83,18 @@ input[type=number]{
 	margin-left: 3rem;
 }
 
-#jobSelect, #jobSelect2 {
+#jobSelect {
 	width: 5rem;
-	height: 1.8rem;
+	height: 2rem;
 	border: 1px solid #eee;
 	border-radius: 0.5rem;
+}
+
+#jobSelect2{
+	width: 9rem;
+    height: 2rem;
+    border: 1px solid #eee;
+    border-radius: 0.5rem;
 }
 
 .jobSelected {

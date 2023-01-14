@@ -59,7 +59,7 @@
 	
 	<insert id="insertBoard">
 		insert into board(bnum, cus_num, service_num, title, location, content, origin_name, change_name)
-					values(seq_board.nextval, 1, #{serviceNum}, #{title}, #{location}, #{content}, #{originName}, #{changeName})	
+					values(seq_board.nextval, #{cusNum}, #{serviceNum}, #{title}, #{location}, #{content}, #{originName}, #{changeName})	
 	</insert>
 	
 	<update id="increaseCount">
@@ -86,10 +86,9 @@
           and bnum = #{bnum} 
 	</select>
 	
-	<insert id="insertReply">
-		insert into comments(cnum, bnum, cContent, cWriter, regDate, type, status) 
-					   value(seq_com.nextval,#{bnum} #{cContent}, #{cWriter}, #{regDate}, #{type}, #{status})
-					
+	<insert id="insertComment">
+		insert into comments(cnum, bnum, c_content, c_writer, reg_date, type, status) 
+					   values(seq_com.nextval,#{bnum}, #{cContent}, #{cWriter}, sysdate, #{type}, 'Y')
 	</insert>
 	
 </mapper>

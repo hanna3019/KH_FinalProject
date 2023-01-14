@@ -32,7 +32,7 @@
 		<result column="tel" property="tel"/>
 		<result column="career" property="career"/>
 		<result column="gender" property="gender"/>
-		<result column="service_num" property="serviceNum"/>
+		<result column="service_num" property="cateNum"/>
 		<result column="location" property="location"/>
 		<result column="type" property="type"/>
 		<result column="status" property="status"/>
@@ -52,7 +52,7 @@
 	
 	<insert id="insertFreelancer">
 		insert into freelancer
-			   values(seq_free.nextval, #{name}, #{userId}, #{pass}, #{tel}, #{career}, #{gender}, #{serviceNum}, #{location}, 'F', 'Y')
+			   values(seq_free.nextval, #{name}, #{userId}, #{pass}, #{tel}, #{career}, #{gender}, #{cateNum}, #{location}, 'F', 'Y')
 	</insert>
 	
 	<insert id="insertCustomer">
