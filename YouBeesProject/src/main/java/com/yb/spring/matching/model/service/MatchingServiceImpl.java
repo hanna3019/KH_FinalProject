@@ -51,6 +51,4 @@ public class MatchingServiceImpl implements MatchingService{
 		return mDao.selectFreelancerListCount(sqlSession, category);
 	}
 	
-
-
 }

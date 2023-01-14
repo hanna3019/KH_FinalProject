@@ -89,7 +89,7 @@
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <spen class="contect_time">${f.callTime}</spen>
+                        <span class="contect_time">${f.callTime}</spen>
                         <input type="text" class="contect_revise hidden">
                     </td>
                 </tr>
@@ -104,6 +104,16 @@
                         <span class="career">${f.f.career}</span>
                         <input type="text" class="career_revise hidden">
                     </td>
+                </tr>
+                <tr>
+                	<th>가격</th>
+                	<th><span class="regBtn fee_btn">수정하기</span></th>
+                </tr>
+                <tr>
+                	<td colspan="2">
+                		<span class="fee"></span>
+                		<input type="text" class="fee_revise hidden">
+                	</td>
                 </tr>
             </form>
         </table>

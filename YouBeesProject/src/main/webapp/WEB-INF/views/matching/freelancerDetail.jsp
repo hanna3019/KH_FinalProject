@@ -82,6 +82,12 @@
                 <tr>
                     <td>${f.f.career}</td>
                 </tr>
+                <tr>
+                	<th>가격</th>	
+                </tr>
+                <tr>
+                	<td></td>
+                </tr>
             </table>
             <table class="review_area">
                 <tr>
@@ -195,7 +201,13 @@
                             <option>일요일</option>
                         </select>
                         <div>
-                            <span>월요일</span>
+                        	<div>
+                            	<span>월요일</span>
+                            	<img src="${path}/resources/source/x.png" alt=닫기 class="close_img">
+                            </div>
+                            <div>
+                            
+                            </div>
                             <span>월요일</span>
                             <span>월요일</span>
                             <span>월요일</span>
@@ -203,6 +215,10 @@
                             <span>월요일</span>
                             <span>월요일</span>
                         </div>
+                    </div>
+                    <div class="quest4">
+                    	<div class="question4">그 외 전달하고 싶은 사항이 있다면 알려주세요.</div>
+                    	<textarea></textarea>
                     </div>
                 </div>
                 <button type="submit" value="sendRequest" class="request_send">요청전송</button>

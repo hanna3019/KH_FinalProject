@@ -109,7 +109,6 @@ main {
     z-index: 10000;
 }
 
-
 .window .request_title {
     background-color: #ffd100;
     display: flex;
@@ -136,7 +135,7 @@ main {
 
 .request_form textarea {
     width: 27rem;
-    height: 6rem;
+    height: 3rem;
     resize: none;
     border: 1px solid lightgray;
     border-radius: 0.5rem;
@@ -165,17 +164,22 @@ main {
     padding: 0 0.3rem;
 }
 
+.accNdec{
+	display: flex;
+}
 
-
-
-.request_send {
-    padding: 0.7rem 1rem;
+.btn1, 
+.btn2 {
+    padding: 1rem 2rem;
     background-color: #202020;
     border: none;
     border-radius: 0.5rem;
     color: white;
     display: flex;
-    margin: 3.5rem auto 0;
     cursor: pointer;
-    margin: 1rem auto;
+    font-size: 1rem;
+}
+
+.btn1 {
+	margin-right: 0;
 }

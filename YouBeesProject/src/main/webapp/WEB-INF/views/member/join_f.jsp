@@ -48,8 +48,8 @@
 				<tr>
 					<td class="closer">&nbsp;성별</td>
 					<td>
-						<input id="radio" type="radio" name="gender" value="M" checked>남
-						<input id="radio2" type="radio" name="gender" value="F">여
+						<input id="radio" type="radio" name="gender" value="M" checked><label for="radio">남</label>
+						<input id="radio2" type="radio" name="gender" value="F"><label for="radio2">여</label>
 					</td>
 				</tr>
 
@@ -65,7 +65,7 @@
 							<option value="5">인쇄</option>
 							<option value="6">기타</option>
 						</select>
-						<select name="serviceNum" id="jobSelect2" required>
+						<select name="cateNum" id="jobSelect2" required>
 							<option value="">선택</option>
 						</select>
 						<span class="jobSelected"></span>
