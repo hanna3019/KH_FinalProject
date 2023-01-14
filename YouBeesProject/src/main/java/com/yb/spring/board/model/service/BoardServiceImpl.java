@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.yb.spring.board.model.dao.BoardDao;
 import com.yb.spring.board.model.vo.Board;
-import com.yb.spring.board.model.vo.Comment;
+import com.yb.spring.board.model.vo.Comments;
 import com.yb.spring.board.model.vo.Likes;
 import com.yb.spring.common.model.vo.PageInfo;
 
@@ -24,14 +24,12 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public int selectListCount() {
-		// TODO Auto-generated method stub
-		return 0;
+		return bDao.selectListCount(sqlSession);
 	}
 
 	@Override
 	public ArrayList<Board> selectList(PageInfo pi) {
-		// TODO Auto-generated method stub
-		return null;
+		return bDao.selectList(sqlSession, pi);
 	}
 	
 	@Override
@@ -41,14 +39,12 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public int increaseCount(int bnum) {
-		// TODO Auto-generated method stub
-		return 0;
+		return bDao.increaseCount(sqlSession, bnum);
 	}
 
 	@Override
 	public Board selectBoard(int bnum) {
-		// TODO Auto-generated method stub
-		return null;
+		return bDao.selectBoard(sqlSession, bnum);
 	}
 
 	@Override
@@ -64,20 +60,18 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public ArrayList<Comment> selectCommentList(int bnum) {
+	public ArrayList<Comments> selectCommentList(int bnum) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public int insertComment(Comment c) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int insertComment(Comments c) {
+		return bDao.insertComment(sqlSession, c);
 	}
 
 	@Override
 	public int insertLikes(Likes l) {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 

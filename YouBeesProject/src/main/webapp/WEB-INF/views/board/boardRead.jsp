@@ -9,6 +9,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title></title>
 	<link rel="stylesheet" href="${path}/resources/css/read.css">
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
 </head>
 
 <body>
@@ -17,27 +18,24 @@
 	<div class="container">
 		<div class="container_header">
 			<div class="container_title">
-				<h3>이 정도면 영어 심각한 수준 아닌가요?</h3>
-				<p>경기/고양시</p>
+				<h3>${ b.title }</h3>
+				<p>${ b.location }</p>
 			</div>
 
 			<div class="container_writer">
 				<img class="writer_img" src="${path}/resources/source/lico.png">
 				<div class="writer_info">
-					<span class="writer_name">호로록</span>
-					<span class="create_date">2022.12.30 · 조회 100</span>
+					<span class="writer_name">${b.name }</span>
+					<span class="create_date">${b.regDate } · 조회수${b.count }</span>
 				</div>
 			</div>
 		</div>
 		<div class="container_main">
 			<div class="read_main">
-				<p>아니 어제 영화를 보는데 번역자가 오역 많을 수 있다고 미리 밑밥을 깔더라고요.
-					그리고 FRIDAY라는 타이틀이 나왔는데 '목요일'이라고 번역하신거 있죠?
-					이건 좀 심각한거 아닌가요? 진짜 기대 많이 했던 영화인데 결국 못 봤어요.
-					마음의 상처를 받아서 그러는데 혹시 컨설팅 잘 해주시는 분 계신가요?
-					저는 도저히 이 상처를 혼자 극복하지 못하겠어요. 마음 컨설팅 잘 해주시는 분 연락 주세요.
+				<p>
+				${b.content}
 				</p>
-				<img src="${path}/resources/source/movie.jpg" alt="main_img" class="read_main_img">
+				<img src="${ b.changeName }" alt="main_img" class="read_main_img">
 			</div>
 
 			<div class="read_footer">
@@ -49,6 +47,8 @@
 				</div>
 			</div>
 		</div>
+		
+		
 		<div class="comment">
 
 			<div class="comment_area">
@@ -72,12 +72,67 @@
 					<div class="comment_time">2023. 01. 09</div>
 				</div>
 			</div>
-
-			<textarea placeholder="댓글을 남겨보세요."></textarea>
-			<button class="submit">등록</button>
+			<textarea placeholder="댓글을 남겨보세요." name="cContent" id="content"></textarea>
+			<button class="submit" onclick="addReply();">등록</button>
 		</div>
 	</div>
 
+	<!-- 댓글  ajax -->
+
+	<c:choose>
+		<c:when test="${not empty loginUserF}">
+			<script>
+				function addReply(){
+					$.ajax({
+						url:"rinsert.bo",
+						data:{
+							bnum:${b.bnum},
+							cContent:$("#content").val(),
+							cWriter:"${loginUserF.name}",
+							type:'F'
+						},
+						success:function(result) {
+							if(result == "success") {
+								$("#content").val("");
+							}
+						},
+						error:function(){
+							console.log("댓글작성 ajax 통신 실패");
+						}
+					});
+				}
+			</script>
+		</c:when>
+		<c:otherwise>
+			<script>
+			function addReply(){
+				$.ajax({
+					url:"rinsert.bo",
+					data:{
+						bnum:${b.bnum},
+						cContent:$("#content").val(),
+						cWriter:"${loginUserC.name}",
+						type:'C'
+					},
+					success:function(result) {
+						if(result == "success") {
+							$("#content").val("");
+						}
+					},
+					error:function(){
+						console.log("댓글작성 ajax 통신 실패");
+					}
+				});
+			}
+
+			</script>
+		</c:otherwise>
+	</c:choose>
+
+
+
+
+	
 </body>
 
 </html>
