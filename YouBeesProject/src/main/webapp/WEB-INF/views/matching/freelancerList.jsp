@@ -127,6 +127,16 @@
 		    		$(".location").append($close);
 		    		$(".location").append(value).show();
 		    		$("#mask, .window").hide();
+		    		$.ajax({
+		    			url:"freelancerListFilter.ma",
+		    			data:{},
+		    			success:function(){
+		    				
+		    			},
+		    			error:function(){
+		    				console.log("지역필터링 ajax 통신 실패");
+		    			}
+		    		});
 		    	}
 		    })
 		    

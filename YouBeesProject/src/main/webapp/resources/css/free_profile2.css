@@ -210,6 +210,19 @@ td {
     border-radius: 0.5rem;
 }
 
+input[type=file]{
+	display:none;
+}
+
+
+.image_upload img{
+	float:left;
+	width: 4rem;
+	width: 5rem;
+	cursor: pointer;
+	margin-left: 2rem;
+}
+
 /*퀵메뉴*/
 .quick_area {
     position: sticky;

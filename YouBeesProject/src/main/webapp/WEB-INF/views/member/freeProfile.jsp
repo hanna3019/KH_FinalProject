@@ -9,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" type="text/css" href="${path}/resources/css/free_profile2.css?aa">
+    <link rel="stylesheet" type="text/css" href="${path}/resources/css/free_profile2.css?aq">
     <script src="http://code.jquery.com/jquery-latest.js"></script>
     <script type="text/javascript" src="${path}/resources/js/profile.js?a"></script>
 </head>
@@ -75,13 +75,93 @@
             <tr><!-- 등록 몇 개까지였는지 기억이 안나서 근데 4개 넘어가면 안 돼요! -->
                 <td colspan="2">
                     <form action="">
-                        <div><input type="file"></div>
-                        <div><input type="file"></div>
-                        <div><input type="file"></div>
-                        <div><input type="file"></div>
+                    	<div class="image_upload">
+                    		<label for="file_input1">
+                    			<img alt="" src="${path}/resources/source/upload.png" id="upload_img1">
+                    		</label>
+                    			<input type="file" id="file_input1" onchange="readURL1(this)">
+		                        <img id="preview1" onError="this.style.visibility='hidden'"/>
+							
+							<label for="file_input2">
+                    			<img alt="" src="${path}/resources/source/upload.png" id="upload_img2">
+                    		</label>
+                    			<input type="file" id="file_input2" onchange="readURL2(this)">
+		                        <img id="preview2" onError="this.style.visibility='hidden'"/>
+                    		
+                    		<label for="file_input3">
+                    			<img alt="" src="${path}/resources/source/upload.png" id="upload_img3">
+                    		</label>
+                    			<input type="file" id="file_input3" onchange="readURL3(this)">
+		                        <img id="preview3" onError="this.style.visibility='hidden'"/>
+                    		
+                    		<label for="file_input4">
+                    			<img alt="" src="${path}/resources/source/upload.png" id="upload_img4">
+                    		</label>
+                    			<input type="file" id="file_input4" onchange="readURL4(this)">
+		                        <img id="preview4" onError="this.style.visibility='hidden'"/>
+                        </div>
                     </form>
                 </td>
             </tr>
+            <script>
+			function readURL1(input) {
+			     if (input.files && input.files[0]) {
+			       var reader = new FileReader();
+			       reader.onload = function(e) {
+			         document.getElementById('preview1').src = e.target.result;
+			         document.getElementById('upload_img1').style.display = "none";			         
+			       };
+			       reader.readAsDataURL(input.files[0]);
+			     	
+			       
+			     } else {
+			       document.getElementById('preview1').src = "";
+			     }
+   		   }
+			function readURL2(input) {
+			     if (input.files && input.files[0]) {
+			       var reader = new FileReader();
+			       reader.onload = function(e) {
+			         document.getElementById('preview2').src = e.target.result;
+			         document.getElementById('upload_img2').style.display = "none";			         
+			       };
+			       reader.readAsDataURL(input.files[0]);
+			     	
+			       
+			     } else {
+			       document.getElementById('preview2').src = "";
+			     }
+  		   }
+			function readURL3(input) {
+			     if (input.files && input.files[0]) {
+			       var reader = new FileReader();
+			       reader.onload = function(e) {
+			         document.getElementById('preview3').src = e.target.result;
+			         document.getElementById('upload_img3').style.display = "none";			         
+			       };
+			       reader.readAsDataURL(input.files[0]);
+			     	
+			       
+			     } else {
+			       document.getElementById('preview3').src = "";
+			     }
+  		   }
+			function readURL4(input) {
+			     if (input.files && input.files[0]) {
+			       var reader = new FileReader();
+			       reader.onload = function(e) {
+			         document.getElementById('preview4').src = e.target.result;
+			         document.getElementById('upload_img4').style.display = "none";			         
+			       };
+			       reader.readAsDataURL(input.files[0]);
+			     	
+			       
+			     } else {
+			       document.getElementById('preview4').src = "";
+			     }
+  		   }
+
+			</script>
             <form action="" id="contect_form">
                 <tr>
                     <th>연락가능시간</th>
