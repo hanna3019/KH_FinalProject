@@ -7,14 +7,15 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title></title>
+	<title>YouBees</title>
 	<link rel="stylesheet" href="${path}/resources/css/read.css">
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
 </head>
 
 <body>
-<!-- header -->
+	<!-- header -->
 	<jsp:include page="../common/header.jsp"/>
+	
 	<div class="container">
 		<div class="container_header">
 			<div class="container_title">
@@ -30,6 +31,7 @@
 				</div>
 			</div>
 		</div>
+		
 		<div class="container_main">
 			<div class="read_main">
 				<p>
@@ -48,9 +50,7 @@
 			</div>
 		</div>
 		
-		
 		<div class="comment">
-
 			<div class="comment_area">
 				<img src="${path}/resources/source/lico.png" alt="user" class="comment_img">
 				<div class="comment_write">
@@ -78,7 +78,6 @@
 	</div>
 
 	<!-- 댓글  ajax -->
-
 	<c:choose>
 		<c:when test="${not empty loginUserF}">
 			<script>
@@ -124,14 +123,12 @@
 					}
 				});
 			}
-
 			</script>
 		</c:otherwise>
 	</c:choose>
-
-
-
-
+	
+	<!-- footer -->
+	<jsp:include page="../common/footer.jsp"/>
 	
 </body>
 

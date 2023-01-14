@@ -8,13 +8,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>YouBees</title>
     <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-neo.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="${path}/resources/css/matching.css?a">
 </head>
 
 <body>
-<!-- header -->
+	<!-- header -->
 	<jsp:include page="../common/header.jsp"/>
 	
     <div id="container">
@@ -55,8 +55,9 @@
     </div>
     </div>
     
-<!-- footer -->
+	<!-- footer -->
 	<jsp:include page="../common/footer.jsp"/>
+	
 </body>
 
 </html>

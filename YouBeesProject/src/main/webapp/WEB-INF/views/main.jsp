@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>YouBees</title>
 
     <!-- SWIPER 외부 라이브러리 연결-->
     <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
@@ -26,8 +26,9 @@
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
     <script defer src="${path}/resources/js/main.js"></script>
 </head>
+
 <body>
-<!-- header -->
+	<!-- header -->
 	<jsp:include page="common/header.jsp"/>
 
     <main class="mainMain">
@@ -277,7 +278,8 @@
 
     </main>
 
-<!-- footer -->
+	<!-- footer -->
 	<jsp:include page="common/footer.jsp"/>
+	
 </body>
 </html>

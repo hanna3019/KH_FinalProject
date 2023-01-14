@@ -1,7 +1,6 @@
 * {
 	padding: 0;
 	margin: 0 auto;
-
 }
 
 body {
@@ -11,15 +10,15 @@ body {
 .title {
 	text-align: center;
 	font-size: 1.8rem;
-	margin: 2rem 0;
+	margin: 3rem 0;
 	font-weight: bold;
 }
 
 .container {
 	padding-top: 9.5rem;
+	padding-bottom: 6rem;
 	margin: auto;
 	width: 970px;
-	margin-bottom: 9.375rem;
 }
 
 #loginTable {
@@ -55,6 +54,7 @@ input {
 #userId{
 	margin : 1rem 0 0 0;
 }
+
 #check {
 	border: 1px solid #eee;
 	width: 5rem;

@@ -11,57 +11,51 @@
     <link rel="stylesheet" href="${path}/resources/css/receivedRequest.css?b">
     <script src="http://code.jquery.com/jquery-latest.js"></script>
     <script type="text/javascript" src="${path}/resources/js/profile.js"></script>
-    <title>Document</title>
+    <title>YouBees</title>
 </head>
 
 <body>
-<!-- header -->
+	<!-- header -->
 	<jsp:include page="../common/header.jsp"/>
 
     <main>
+    
         <div class="mainTitle">받은요청</div>
-
+        
+        <!-- 요청1 -->
         <div class="requestProfile">
             <img src="${path}/resources/source/user.png" alt="user">
             <div class="requestInfo">
                 <div class="userName">정한나</div>
                 <div class="location">서울 영등포구</div>
-                <div class="detail">취미 / 50,000원~100,000원 / 토요일, 일요일</div>
+                <div class="detail">논문번역 / 50,000원~100,000원 / 1주일 안에 가능할까요?1주일 안에 가능할까요?1주일 안에 가능할까요?1주일 안에 가능할까요?1주일 안에 가능할까요?1주일 안에 가능할까요?1주일 안에 가능할까요?</div>
             </div>
-            <div class="requestTimeNdelete">
+            <div class="requestTimeNdetail">
                 <div class="createTime">2시간 전</div>
-
-             
-                <button type="button" class="detailBtn openMask">
-                    상세보기
-                </button>
+                <button type="button" class="detailBtn openMask">상세보기</button>
 			</div>
-			</div>
+		</div>
                
-        <!-- 요청 모달창 -->
+        <!-- 받은요청 모달창 -->
         <form action="" method="post">
             <div id="mask"></div>
             <div class="window">
                 <div class="request_title">
-                    <span>요청서</span>
+                    <span>받은 요청서</span>
                     <div class="close">X</div>
                 </div>
                 <div class="request_form">
                     <div class="quest1">
                         <div class="question2">매칭을 원하는 이유는 무엇인가요?</div>
-                            <textarea></textarea>
+                        <textarea></textarea>
                     </div>
                     <div class="quest2">
                         <div class="question2">원하는 가격대는 얼마인가요?</div>
-                            <textarea></textarea>
+                        <textarea></textarea>
                     </div>
                     <div class="quest3">
-                        <div class="question3">선호하는 요일은 언제인가요?</div>
-                            <textarea></textarea>
-                    </div>
-                    <div class="quest4">
-                        <div class="question4">그 외 전달하고 싶은 사항이 있다면 알려주세요.</div>
-                            <textarea></textarea>
+                        <div class="question3">그 외 전달하고 싶은 사항이 있다면 알려주세요.</div>
+                        <textarea></textarea>
                     </div>
                 </div>
                 <div class="accNdec">
@@ -70,31 +64,26 @@
                 </div>
             </div>
         </form>
-
+        
+		<!-- 요청2 -->
         <div class="requestProfile">
             <img src="${path}/resources/source/user.png" alt="user">
             <div class="requestInfo">
                 <div class="userName">정한나</div>
                 <div class="location">서울 영등포구</div>
-                <div class="detail">취미 / 50,000원~100,000원 / 토요일, 일요일</div>
+                <div class="detail">논문번역 / 50,000원~100,000원 / 1주일 안에 가능할까요?</div>
             </div>
-            <div class="requestTimeNdelete">
+            <div class="requestTimeNdetail">
                 <div class="createTime">2시간 전</div>
-
-                <!-- Button trigger modal -->
-                <button type="button" class="detailBtn openMask">
-                   	 상세보기
-                </button>
-             </div>
-         </div>
+                <button type="button" class="detailBtn openMask">상세보기</button>
+			</div>
+		</div>
 
     </main>
 
-    
-    
-
-<!-- footer -->
+	<!-- footer -->
 	<jsp:include page="../common/footer.jsp"/>
+	
 </body>
 
 </html>

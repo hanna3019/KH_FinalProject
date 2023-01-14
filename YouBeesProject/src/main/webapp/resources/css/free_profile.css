@@ -310,11 +310,11 @@ td {
 /* 팝업으로 뜨는 윈도우 css */
 .window {
     display: none;
-    position: fixed;
-    left: 40%;
+    position: absolute;
+    left: 35%;
     top: 10%;
     width: 30rem;
-    height: 50rem;
+    height: 40rem;
     background-color: #FFF;
     z-index: 10000;
 }
@@ -334,7 +334,7 @@ td {
 
 .window .close {
     position: relative;
-    left: 9rem;
+    left: 10rem;
 }
 
 .request_form {
@@ -352,15 +352,13 @@ td {
 
 .question1,
 .question2,
-.question3,
-.question4 {
+.question3 {
     margin: 1rem 0;
 }
 
 .quest1,
 .quest2,
-.quest3,
-.quest4 {
+.quest3 {
     margin: 2rem 0;
 }
 
@@ -370,18 +368,6 @@ td {
     border-radius: 0.5rem;
     border: 1px solid lightgray;
     padding: 0 0.3rem;
-}
-
-.quest3 select {
-    padding: 0.2rem;
-    border: 1px solid lightgray;
-    border-radius: 0.5rem;
-}
-
-.quest3 span {
-    color: rgb(91, 90, 90);
-    text-decoration: underline;
-    font-size: 0.9rem;
 }
 
 .quest3 div {
@@ -395,6 +381,7 @@ td {
     border-radius: 0.5rem;
     color: white;
     display: flex;
-    margin: 3.5rem auto 0;
+    margin: 0.5rem auto 0;
     cursor: pointer;
+    font-size: 1.1rem;
 }

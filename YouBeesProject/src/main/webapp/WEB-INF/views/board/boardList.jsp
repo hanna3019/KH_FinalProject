@@ -9,7 +9,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="${path}/resources/css/board.css">
-	<title>Document</title>
+	<title>YouBees</title>
 </head>
 <style>
  a:hover{
@@ -18,7 +18,7 @@
 </style>
 
 <body>
-<!-- header -->
+	<!-- header -->
 	<jsp:include page="../common/header.jsp"/>
 
 	<div class="board_container">
@@ -97,7 +97,7 @@
 
 	</div>
 
-<!-- footer -->
+	<!-- footer -->
 	<jsp:include page="../common/footer.jsp"/>
 
 </body>
