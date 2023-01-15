@@ -10,6 +10,7 @@ import com.yb.spring.common.model.vo.PageInfo;
 import com.yb.spring.matching.model.dao.MatchingDao;
 import com.yb.spring.matching.model.vo.FreelancerProfile;
 import com.yb.spring.member.model.vo.Categories;
+import com.yb.spring.member.model.vo.Freelancer;
 import com.yb.spring.member.model.vo.Location;
 
 @Service
@@ -42,13 +43,24 @@ public class MatchingServiceImpl implements MatchingService{
 	}
 
 	@Override
+	public ArrayList<FreelancerProfile> selectFreelancerListLoc(Freelancer f, PageInfo pi) {
+		return mDao.selectFreelancerListLoc(sqlSession, f, pi);
+	}
+	
+	@Override
 	public FreelancerProfile selectFreelancerDetail(int fNum) {
 		return mDao.selectFreelancerDetail(sqlSession, fNum);
 	}
 
 	@Override
-	public int selectFreelancerListCount(int category) {
-		return mDao.selectFreelancerListCount(sqlSession, category);
+	public int selectFreelancerListCount(Freelancer f) {
+		return mDao.selectFreelancerListCount(sqlSession, f);
 	}
+
+	@Override
+	public int selectFreelancerListCountLoc(Freelancer f) {
+		return mDao.selectFreelancerListCountLoc(sqlSession, f);
+	}
+
 	
 }

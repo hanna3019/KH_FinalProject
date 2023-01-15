@@ -15,6 +15,7 @@ import com.yb.spring.common.template.Pagination;
 import com.yb.spring.matching.model.service.MatchingService;
 import com.yb.spring.matching.model.vo.FreelancerProfile;
 import com.yb.spring.member.model.vo.Categories;
+import com.yb.spring.member.model.vo.Freelancer;
 import com.yb.spring.member.model.vo.Location;
 
 @Controller
@@ -37,13 +38,13 @@ public class MatchingController {
 	}
 	
 	@RequestMapping("freelancerList.ma")
-	public String freelancerList(@RequestParam(value="cpage", defaultValue="1") int nowPage, int category, String cName, Model model) {
+	public String freelancerList(@RequestParam(value="cpage", defaultValue="1") int nowPage, Freelancer f, String cName, Model model) {
 		ArrayList<Location> lList = mService.selectLocationList();
 		ArrayList<Location> cList = mService.selectCityList();
-		int listCount = mService.selectFreelancerListCount(category);
+		int listCount = mService.selectFreelancerListCount(f);
 		
 		PageInfo pi = Pagination.getPageInfo(listCount, nowPage, 5, 5);
-		ArrayList<FreelancerProfile> fList = mService.selectFreelancerList(category, pi);
+		ArrayList<FreelancerProfile> fList = mService.selectFreelancerList(f.getCateNum(), pi);
 		
 		model.addAttribute("lList", lList);
 		model.addAttribute("cList", cList);
@@ -54,12 +55,25 @@ public class MatchingController {
 	}
 	
 	@ResponseBody
-	@RequestMapping(value="freelancerListPaging.ma", produces="application/json; charset=utf-8")
-	public String freelancerListPaging(int nowPage, int category, Model model) {
-		int listCount = mService.selectFreelancerListCount(category);
+	@RequestMapping(value="freelancerListFilter.ma", produces="application/json; charset=utf-8")
+	public String freelancerListFilter(@RequestParam(value="cpage", defaultValue="1") int nowPage, Freelancer f, Model model) {
+		int listCount = mService.selectFreelancerListCountLoc(f);
 		
 		PageInfo pi = Pagination.getPageInfo(listCount, nowPage, 5, 5);
-		ArrayList<FreelancerProfile> fList = mService.selectFreelancerList(category, pi);
+		ArrayList<FreelancerProfile> fList = mService.selectFreelancerList(f.getCateNum(), pi);
+		
+		model.addAttribute("fList", fList);
+		model.addAttribute("pi", pi);
+		return new Gson().toJson(fList);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="freelancerListPaging.ma", produces="application/json; charset=utf-8")
+	public String freelancerListPaging(int nowPage, Freelancer f, Model model) {
+		int listCount = mService.selectFreelancerListCount(f);
+		
+		PageInfo pi = Pagination.getPageInfo(listCount, nowPage, 5, 5);
+		ArrayList<FreelancerProfile> fList = mService.selectFreelancerList(f.getCateNum(), pi);
 		
 		model.addAttribute("fList", fList);
 		model.addAttribute("pi", pi);
