@@ -67,7 +67,7 @@ public class MemberController {
 	@RequestMapping("freeProfile.me")
 	public String freeProfile() {
 		return "member/freeProfile";
-	
+	}
 	@RequestMapping("myInfoEdit.me")
 	public String myInfoEdit() {
 		return "member/myInfoEdit";
@@ -140,13 +140,13 @@ public class MemberController {
 			if (loginUser.getType().equals("F")) {
 				Freelancer loginUserF = mService.loginMemberF(c.getUserId());
 				session.setAttribute("loginUserF", loginUserF);
-				mv.addObject("customerMsg", "님이 로그인 하셨습니다.");
-				mv.setViewName("redirect:/");
+//				mv.addObject("customerMsg", "님이 로그인 하셨습니다.");
+				mv.setViewName("main");
 			} else {
 				Customer loginUserC = mService.loginMemberC(c.getUserId());
 				session.setAttribute("loginUserC", loginUserC);
-				mv.addObject("freelancerMsg", c.getUserId() + "님이 로그인 하셨습니다.");
-				mv.setViewName("redirect:/");
+//				mv.addObject("freelancerMsg", c.getUserId() + "님이 로그인 하셨습니다.");
+				mv.setViewName("main");
 			}
 		} else {
 			mv.addObject("errorMsg", "로그인 실패");
@@ -154,18 +154,6 @@ public class MemberController {
 		}
 		return mv;
 	}
-	/*
-	 * 로그인 검사
-	 * 
-	 * @RequestMapping(value = "/member/login", method = RequestMethod.POST,
-	 * produces = "text/html; charset=UTF-8") public String LoginCheck(HttpSession
-	 * session, Model model, Customer c) throws Exception {
-	 * 
-	 * try { Customer loginUser = mService.loginMember(c.getUserId()); //로그인 성공
-	 * model.addAttribute("msg","로그인 성공"); model.addAttribute("url","/"); } catch
-	 * (NullPointerException e) { //로그인 실패 model.addAttribute("errormsg","로그인 실패");
-	 * model.addAttribute("url","/"); } return "alert"; }
-	 */
 
 	/* 로그아웃 */
 	@RequestMapping("logout.me")

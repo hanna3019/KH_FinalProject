@@ -30,28 +30,6 @@
 <!-- header -->
 	<jsp:include page="common/header.jsp"/>
 
-	<c:choose>
-		<c:when test="${not empty errorMsg}">
-			<script>
-			Swal.fire({
-						icon: 'success',  // 여기다가 아이콘 종류를 쓰면 됩니다.                     
-				  		text: '${customerMsg}',    
-				});
-			</script>	
-		</c:when>	
-	</c:choose>
-	
-	<c:choose>
-		<c:when test="${not empty errorMsg}">
-			<script>
-			Swal.fire({
-						icon: 'success',  // 여기다가 아이콘 종류를 쓰면 됩니다.                     
-				  		text: '${freelancerMsg}',
-				});
-			</script>	
-		</c:when>	
-	</c:choose>
-		
     <main class="mainMain">
         <article id="content">
             <section id="imgslide">
@@ -219,7 +197,7 @@
 
         <h2 id="com_h2" >커뮤니티 인기글</h2>
         <div class="best_community" onclick="">
-            <div class="more_com" onclick="location.href='boardlist.bo'">전체보기 ></div>
+            <div class="more_com" onclick="location.href='boardList.bo'">전체보기 ></div>
             <div class="com_text">
                 <div class="com_main">
                     <p class="com_category">통번역</p>

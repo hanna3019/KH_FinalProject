@@ -21,7 +21,7 @@
 		<c:when test="${not empty errorMsg}">
 			<script>
 			Swal.fire({
-						icon: 'error',  // 여기다가 아이콘 종류를 쓰면 됩니다.                     
+						icon: 'error',                    
 				  		text: '${errorMsg}',    
 				});
 			</script>	
