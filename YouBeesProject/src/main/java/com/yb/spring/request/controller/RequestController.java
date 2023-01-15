@@ -34,6 +34,7 @@ public class RequestController {
 			mv.addObject("errorMsg", "요청서 전송에 실패했습니다😢");
 			mv.setViewName("matching/freeProfile");
 		}
+		
 		return mv;
 	}
 	
