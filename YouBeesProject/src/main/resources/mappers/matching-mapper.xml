@@ -54,7 +54,7 @@
 		from freelancer_profile p, freelancer f, categories c
 		where p.free_num = f.free_num
 		and f.cate_num = c.cate_num
-		and status = 'Y' and f.cate_num = #{category}
+		and status = 'Y' and f.cate_num = #{cateNum}
 		order by reg_date desc
 	</select>
 
@@ -76,7 +76,7 @@
 		select count(*)
 		from freelancer
 		where cate_num = #{cateNum}
-		and location = #{location}
+		and substr(location,4) = #{location}
 	</select>
 	
 	<select id="selectFreelancerListLoc" resultMap="ProfileResult">
@@ -84,7 +84,7 @@
 		from freelancer_profile p, freelancer f, categories c
 		where p.free_num = f.free_num
 		and f.cate_num = c.cate_num
-		and status = 'Y' and f.cate_num = #{category}
+		and status = 'Y' and f.cate_num = #{cateNum}
 		and substr(location,4) = #{location}
 		order by reg_date desc
 	</select>

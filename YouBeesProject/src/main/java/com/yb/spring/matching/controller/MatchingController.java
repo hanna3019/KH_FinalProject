@@ -41,8 +41,8 @@ public class MatchingController {
 	public String freelancerList(@RequestParam(value="cpage", defaultValue="1") int nowPage, Freelancer f, String cName, Model model) {
 		ArrayList<Location> lList = mService.selectLocationList();
 		ArrayList<Location> cList = mService.selectCityList();
+
 		int listCount = mService.selectFreelancerListCount(f);
-		
 		PageInfo pi = Pagination.getPageInfo(listCount, nowPage, 5, 5);
 		ArrayList<FreelancerProfile> fList = mService.selectFreelancerList(f.getCateNum(), pi);
 		
@@ -53,18 +53,23 @@ public class MatchingController {
 		model.addAttribute("cName", cName);
 		return "matching/freelancerList";
 	}
-	
-	@ResponseBody
-	@RequestMapping(value="freelancerListFilter.ma", produces="application/json; charset=utf-8")
-	public String freelancerListFilter(@RequestParam(value="cpage", defaultValue="1") int nowPage, Freelancer f, Model model) {
+
+	@RequestMapping("freelancerListFilter.ma")
+	public String freelancerListFilter(@RequestParam(value="cpage", defaultValue="1") int nowPage, Freelancer f, String cName, Model model) {
+		ArrayList<Location> lList = mService.selectLocationList();
+		ArrayList<Location> cList = mService.selectCityList();
+		
 		int listCount = mService.selectFreelancerListCountLoc(f);
-		
+
 		PageInfo pi = Pagination.getPageInfo(listCount, nowPage, 5, 5);
-		ArrayList<FreelancerProfile> fList = mService.selectFreelancerList(f.getCateNum(), pi);
+		ArrayList<FreelancerProfile> fList = mService.selectFreelancerListLoc(f, pi);
 		
+		model.addAttribute("lList", lList);
+		model.addAttribute("cList", cList);
 		model.addAttribute("fList", fList);
 		model.addAttribute("pi", pi);
-		return new Gson().toJson(fList);
+		model.addAttribute("cName", cName);
+		return "matching/freelancerList";
 	}
 	
 	@ResponseBody
