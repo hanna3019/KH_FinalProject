@@ -12,13 +12,11 @@ import lombok.ToString;
 @Getter
 @ToString
 
-public class Request {
+public class Answer {
 
 	private int reqNum; // 요청번호
-	private int cusNum; // 고객번호
-	private int freeNum; // 프리랜서 번호
-	private String regDate; // 요청날짜
-	private String accept; // 수락여부
-	private String acctDate; // 수락날짜
+	private String ans1; // 답변1(목적)
+	private String ans2; // 답변2(가격)
+	private String ans3; // 답변3(기타)
 	
 }

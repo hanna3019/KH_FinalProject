@@ -5,16 +5,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script src="http://code.jquery.com/jquery-latest.js"></script>
-<link rel="stylesheet" href="${path}/resources/css/join_f.css?l">
-<title>Insert title here</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+	<link rel="stylesheet" href="${path}/resources/css/join_f.css?l">
+	<title>YouBees</title>
 </head>
+
 <body>
 
-<!-- header -->
+	<!-- header -->
 	<jsp:include page="../common/header.jsp"/>
 
 	<div class="container">
@@ -29,7 +30,7 @@
 				</tr>
 				<tr>
 					<td class="closer">*아이디</td>
-					<td><input id="userId" name="userId" type="text" required placeholder=""><br>
+					<td><input id="userId" name="userId" type="text" required placeholder="5자 이상 입력하세요"><br>
 						<span class="idCheck"></span>
 					</td>
 				</tr>
@@ -242,7 +243,9 @@
 		</script>
 		
 	</div>
-<!-- footer -->
+	
+	<!-- footer -->
 	<jsp:include page="../common/footer.jsp"/>
+	
 </body>
 </html>

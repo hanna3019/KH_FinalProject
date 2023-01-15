@@ -89,7 +89,7 @@ public class MatchingController {
 	public String freelancerDetail(int fNum, Model model) {
 		FreelancerProfile f = mService.selectFreelancerDetail(fNum);
 		model.addAttribute("f", f);
-		return "matching/freelancerDetail";
+		return "matching/freeProfile";
 	}
 	
 
@@ -97,6 +97,6 @@ public class MatchingController {
 	public String freeProfile(int fNum, Model model) {
 		FreelancerProfile f = mService.selectFreelancerDetail(fNum);
 		model.addAttribute("f", f);
-		return "member/freeProfile";
+		return "member/freeProfile2";
 	}
 }
