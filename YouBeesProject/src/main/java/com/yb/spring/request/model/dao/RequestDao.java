@@ -14,7 +14,7 @@ public class RequestDao {
 	}
 	
 	public int insertAnswer(SqlSessionTemplate sqlSession, Answer ans) {
-		return sqlSession.insert("requestMapper.insertAnser", ans);
+		return sqlSession.insert("requestMapper.insertAnswer", ans);
 	}
 	
 }
