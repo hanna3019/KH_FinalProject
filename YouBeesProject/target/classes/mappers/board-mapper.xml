@@ -14,6 +14,7 @@
 		<result column="origin_name" property="originName" />
 		<result column="change_name" property="changeName" />
 		<result column="status" property="status" />
+		<result column="name" property="name" />
 	</resultMap>
 	
 	<resultMap type="Location" id="locationResult">
@@ -23,10 +24,78 @@
 		<result column="location" property="location"/>
 	</resultMap>
 	
+	<resultMap type="comments" id="CommentsResult">
+		<result column="cnum" property="cnum"/>
+		<result column="bnum" property="bnum"/>
+		<result column="c_content" property="cContent"/>
+		<result column="c_writer" property="cWriter"/>
+		<result column="reg_date" property="regDate"/>
+		<result column="type" property="type"/>
+		<result column="status" property="status"/>
+	</resultMap>
+	
+	<select id="selectListCount" resultType="_int">
+		select count(*)
+		  from board
+		 where status = 'Y' 
+	</select>
+	
+	<select id="selectList" resultMap="boardResult"> 
+		select bnum
+			  ,cus_num
+			  ,service_num
+			  ,title
+			  ,content
+			  ,reg_date
+			  ,location
+			  ,count
+			  ,origin_name
+			  ,change_name
+			  ,status
+		  from board
+		 where status='Y'
+		 order by bnum desc	  		 
+	</select>
+	
 	<insert id="insertBoard">
 		insert into board(bnum, cus_num, service_num, title, location, content, origin_name, change_name)
-					values(seq_board.nextval, 1, #{serviceNum}, #{title}, #{location}, #{content}, #{originName}, #{changeName})	
+					values(seq_board.nextval, #{cusNum}, #{serviceNum}, #{title}, #{location}, #{content}, #{originName}, #{changeName})	
 	</insert>
 	
+	<update id="increaseCount">
+		update board 
+		   set count = count+1
+		 where bnum = #{bnum} and status = 'Y'
+	</update>
+	
+	<select id="selectBoard" resultMap="boardResult">
+		select bnum
+			  ,b.cus_num
+			  ,service_num
+			  ,title
+			  ,content
+			  ,reg_date
+			  ,location
+			  ,count
+			  ,origin_name
+			  ,change_name
+			  ,b.status
+              ,c.name
+		  from board b, customer c
+          where b.cus_num = c.cus_num
+          and bnum = #{bnum} 
+	</select>
+	
+	<insert id="insertComment">
+		insert into comments(cnum, bnum, c_content, c_writer, reg_date, type, status) 
+					   values(seq_com.nextval,#{bnum}, #{cContent}, #{cWriter}, sysdate, #{type}, 'Y')
+	</insert>
+	
+	<select id="selectReplyList" resultMap="CommentsResult">
+		select cnum, bnum, c_content, c_writer, reg_date, type, status
+		from comments
+		where status = 'Y' and bnum=#{bnum}
+		order by cnum desc
+	</select>
 	
 </mapper>

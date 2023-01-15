@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>YouBees</title>
     <link rel="stylesheet" type="text/css" href="${path}/resources/css/free_profile.css?a">
     <script src="http://code.jquery.com/jquery-latest.js"></script>
     <script type="text/javascript" src="${path}/resources/js/profile.js"></script>
@@ -81,6 +81,12 @@
                 </tr>
                 <tr>
                     <td>${f.f.career}</td>
+                </tr>
+                <tr>
+                	<th>가격</th>	
+                </tr>
+                <tr>
+                	<td></td>
                 </tr>
             </table>
             <table class="review_area">
@@ -167,7 +173,7 @@
         </div>
 
         <!-- 요청 모달창 -->
-        <form action="" method="post">
+        <form action="insertRequest.re" method="post">
             <div id="mask"></div>
             <div class="window">
                 <div class="request_title">
@@ -175,34 +181,19 @@
                     <a href="#" class="close">X</a>
                 </div>
                 <div class="request_form">
+                <input type="hidden" name="cusNum" value="${loginUserC.cusNum}">
+                <input type="hidden" name="freeNum" value="${f.freeNum}">
                     <div class="quest1">
                         <div class="question1">매칭을 원하는 이유는 무엇인가요?</div>
-                        <textarea></textarea>
+                        <textarea name="ans1"></textarea>
                     </div>
                     <div class="quest2">
                         <div class="question2">원하는 가격대는 얼마인가요?</div>
-                        <input> ~ <input>
+                        <input name="ans2"> ~ <input name="ans2">
                     </div>
                     <div class="quest3">
-                        <div class="question3">선호하는 요일은 언제인가요?</div>
-                        <select>
-                            <option>월요일</option>
-                            <option>화요일</option>
-                            <option>수요일</option>
-                            <option>목요일</option>
-                            <option>금요일</option>
-                            <option>토요일</option>
-                            <option>일요일</option>
-                        </select>
-                        <div>
-                            <span>월요일</span>
-                            <span>월요일</span>
-                            <span>월요일</span>
-                            <span>월요일</span>
-                            <span>월요일</span>
-                            <span>월요일</span>
-                            <span>월요일</span>
-                        </div>
+                    	<div class="question3">그 외 전달하고 싶은 사항이 있다면 알려주세요.</div>
+                    	<textarea name="ans3"></textarea>
                     </div>
                 </div>
                 <button type="submit" value="sendRequest" class="request_send">요청전송</button>
@@ -210,21 +201,23 @@
         </form>
 			
 		<script>
-		 /* 좋아요 누르기 */
-				    $(".heart_box").on({
-				        'click': function () {
-				            let src = ($(".heart_icon").attr('src') === '${path}/resources/source/heart3.png')
-				                ? '/spring/resources/source/heart2.png'
-				                : '/spring/resources/source/heart3.png';
-				            $(".heart_icon").attr('src', src);
-				        }
-				    });
+		 	/* 좋아요 누르기 */
+		    $(".heart_box").on({
+		        'click': function () {
+		            let src = ($(".heart_icon").attr('src') === '${path}/resources/source/heart3.png')
+		                ? '/spring/resources/source/heart2.png'
+		                : '/spring/resources/source/heart3.png';
+		            $(".heart_icon").attr('src', src);
+		        }
+		    });
+		 
 		</script>
 		
 	</div>
 		    
-<!-- footer -->
+	<!-- footer -->
 	<jsp:include page="../common/footer.jsp"/>
+	
 </body>
 
 </html>

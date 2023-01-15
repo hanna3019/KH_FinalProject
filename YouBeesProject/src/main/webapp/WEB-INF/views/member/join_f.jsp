@@ -5,16 +5,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script src="http://code.jquery.com/jquery-latest.js"></script>
-<link rel="stylesheet" href="${path}/resources/css/join_f.css?l">
-<title>Insert title here</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+	<link rel="stylesheet" href="${path}/resources/css/join_f.css?l">
+	<title>YouBees</title>
 </head>
+
 <body>
 
-<!-- header -->
+	<!-- header -->
 	<jsp:include page="../common/header.jsp"/>
 
 	<div class="container">
@@ -29,7 +30,7 @@
 				</tr>
 				<tr>
 					<td class="closer">*아이디</td>
-					<td><input id="userId" name="userId" type="text" required placeholder=""><br>
+					<td><input id="userId" name="userId" type="text" required placeholder="5자 이상 입력하세요"><br>
 						<span class="idCheck"></span>
 					</td>
 				</tr>
@@ -48,8 +49,8 @@
 				<tr>
 					<td class="closer">&nbsp;성별</td>
 					<td>
-						<input id="radio" type="radio" name="gender" value="M" checked>남
-						<input id="radio2" type="radio" name="gender" value="F">여
+						<input id="radio" type="radio" name="gender" value="M" checked><label for="radio">남</label>
+						<input id="radio2" type="radio" name="gender" value="F"><label for="radio2">여</label>
 					</td>
 				</tr>
 
@@ -65,7 +66,7 @@
 							<option value="5">인쇄</option>
 							<option value="6">기타</option>
 						</select>
-						<select name="serviceNum" id="jobSelect2" required>
+						<select name="cateNum" id="jobSelect2" required>
 							<option value="">선택</option>
 						</select>
 						<span class="jobSelected"></span>
@@ -106,6 +107,7 @@
 							<option value="">선택</option>
 						</select>
 						<span class="regionSelected"></span>
+						<input type="hidden" name="region" class="region" value="">
 					</td>
 				</tr>
 			</table>
@@ -149,13 +151,14 @@
 						if($(this).val() != ""){
 							let lnum = $(this).val();
 							let location = $("#regionSelect  option:selected").text();
+							$(".region").val(location);
 							$.ajax({
 								url: "selectLocationList",
 								data: {lNum:$(this).val()},
 								success: function(list){
 									$("#regionSelectDetail").empty();
 									$("#regionSelectDetail").append("<option value='0'>선택</option>");
-									$("#regionSelectDetail").append("<option value='0'>"+ location +"전체</option>");
+									$("#regionSelectDetail").append("<option value='전체'>"+ location +"전체</option>");
 									for(let i in list){
 										let value = list[i].city;
 										let optionLabel = list[i].city;
@@ -175,7 +178,7 @@
 						if($(this).val() == 0){
 							$(".regionSelected").text($("#regionSelect option:selected").text()+" 전체");
 						}else{
-							$(".regionSelected").text($("#regionSelectDetail option:selected").text());							
+							$(".regionSelected").text($("#regionSelectDetail option:selected").text());
 						}
 					})
 				});
@@ -240,7 +243,9 @@
 		</script>
 		
 	</div>
-<!-- footer -->
+	
+	<!-- footer -->
 	<jsp:include page="../common/footer.jsp"/>
+	
 </body>
 </html>

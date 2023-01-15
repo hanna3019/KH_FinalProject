@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="requestMapper">
+
+	<resultMap type="Request" id="requestResult">
+		<result column="req_num" property="reqNum"/>
+		<result column="cus_num" property="cusNum"/>
+		<result column="free_num" property="freeNum"/>
+		<result column="reg_date" property="regDate"/>
+		<result column="accept" property="accept"/>
+		<result column="acct_date" property="acctDate"/>
+	</resultMap>
+
+	<insert id="insertRequest">
+		insert into request(req_num, cus_num, free_num, reg_date, accept, acct_date)
+			values(seq_req.nextval, #{cusNum}, #{freeNum}, sysdate, 'N', null)
+	</insert>
+	
+	<insert id="insertAnswer">
+		insert into answer(req_num, ans_1, ans_2, ans_3)
+			values(seq_req.currval, #{ans1}, #{ans2}, #{ans3})
+	</insert>
+	
+	<select id="selectRequestList" resultMap="requestResult">
+		select *
+		from request
+			join answer using (req_num)
+		where free_num = #{freeNum}
+	</select>
+	
+</mapper>
