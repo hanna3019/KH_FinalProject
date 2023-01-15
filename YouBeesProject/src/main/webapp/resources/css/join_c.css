@@ -1,7 +1,6 @@
 * {
 	padding: 0;
 	margin: 0 auto;
-
 }
 
 body {
@@ -11,15 +10,15 @@ body {
 .title {
 	text-align: center;
 	font-size: 1.8rem;
-	margin: 2rem 0;
+	margin: 3rem 0;
 	font-weight: bold;
 }
 
 .container {
 	padding-top: 9.5rem;
+	padding-bottom: 6rem;
 	margin: auto;
 	width: 970px;
-	margin-bottom: 9.375rem;
 }
 
 #loginTable {
@@ -40,7 +39,7 @@ body {
 
 input {
 	width: 17.5rem;
-	height: 1.9rem;
+	height: 2rem;
 	border-radius: 0.5rem;
 	border: 1px solid #eee;
 	padding: 0rem 0.5rem;
@@ -50,57 +49,18 @@ input {
 .idCheck{
 	font-size : 0.8rem; 
 	padding-left : 0.3rem;
-	
 }
 
 #userId{
 	margin : 1rem 0 0 0;
 }
+
 #check {
 	border: 1px solid #eee;
 	width: 5rem;
 	height: 1.6rem;
 	color: black;
 	cursor: pointer;
-}
-
-#radio {
-	width: 1.1rem;
-	vertical-align: middle;
-	margin-right: 0.9rem;
-}
-
-#radio2 {
-	width: 1.1rem;
-	vertical-align: middle;
-	margin-right: 0.9rem;
-	margin-left: 3rem;
-}
-
-#jobSelect {
-	width: 5rem;
-	height: 1.8rem;
-}
-
-.jobSelected {
-	margin-left: 0.8rem;
-	color: darkgray;
-	font-size: 0.9rem;
-	text-decoration: underline;
-}
-
-#regionSelect,
-#regionSelectDetail {
-	width: 5rem;
-	height: 1.8rem;
-
-}
-
-.regionSelected {
-	margin-left: 0.8rem;
-	color: darkgray;
-	font-size: 0.9rem;
-	text-decoration: underline;
 }
 
 .agreeForm {
@@ -145,5 +105,4 @@ input {
 .submit:hover {
 	color: white;
 	cursor: pointer;
-
 }

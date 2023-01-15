@@ -89,10 +89,11 @@ public class MemberController {
 	
 	/* 프리랜서 회원가입 */
 	@RequestMapping("FreelancerInsert.me")
-	public String insertFreelancer(Freelancer f, Model model, HttpSession session) {
+	public String insertFreelancer(Freelancer f, String region, Model model, HttpSession session) {
 		String encPwd = bcryptPasswordEncoder.encode(f.getPass());
 		f.setPass(encPwd);
-		
+		f.setCareer(f.getCareer()+"년");
+		f.setLocation(region + " " + f.getLocation());
 		int result = mService.insertFreelancer(f);
 		if(result > 0) {
 			session.setAttribute("alertMsg", "회원가입이 완료되었습니다");

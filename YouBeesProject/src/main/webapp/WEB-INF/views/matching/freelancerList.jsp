@@ -8,14 +8,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>YouBees</title>
     <link rel="stylesheet" type="text/css" href="${path}/resources/css/free_list.css?q">
     <script src="http://code.jquery.com/jquery-latest.js"></script>
     <script type="text/javascript" src="${path}/resources/js/free_list.js?s"></script>
 </head>
 
 <body>
-<!-- header -->
+	<!-- header -->
 	<jsp:include page="../common/header.jsp"/>
 	
     <div id="container">
@@ -79,29 +79,33 @@
 	            </table>
             </c:forEach>
             </div>
-	       	<div id="pageArea">
-	      		<ul class="pagination">
-	               	<c:choose>
-	               		<c:when test="${pi.nowPage eq 1}">
-	                    	<li class="page-item disabled"><a class="page-link" href="#">이전</a></li>
-	                	</c:when>
-	                	<c:otherwise>
-	                		<li class="page-item"><a class="page-link" href="freelancerList.ma?cpage=${pi.nowPage-1}">이전</a></li>
-	                	</c:otherwise>
-	                </c:choose>
-	                <c:forEach var="p" begin="${pi.startPage}" end="${pi.endPage}">
-	                    <li class="page-item"><a class="page-link" href="javascript:paging(${p})">[${p}]</a></li>
-					</c:forEach>
-					<c:choose>
-						<c:when test="${pi.nowPage eq pi.maxPage }">
-	                    	<li class="page-item disabled"><a class="page-link" href="#">다음</a></li>
-	                    </c:when>
-	                    <c:otherwise>
-	                    	<li class="page-item"><a class="page-link" href="freelancerList.ma?cpage=${pi.nowPage+1}">다음</a></li>	                    
-	                    </c:otherwise>
-	               	</c:choose>
-	           </ul>
-	       	</div>
+            <c:choose>
+            	<c:when test="${fList.size() gt 4}">
+			       	<div id="pageArea">
+			      		<ul class="pagination">
+			               	<c:choose>
+			               		<c:when test="${pi.nowPage eq 1}">
+			                    	<li class="page-item disabled"><a class="page-link" href="#">이전</a></li>
+			                	</c:when>
+			                	<c:otherwise>
+			                		<li class="page-item"><a class="page-link" href="freelancerList.ma?cpage=${pi.nowPage-1}">이전</a></li>
+			                	</c:otherwise>
+			                </c:choose>
+			                <c:forEach var="p" begin="${pi.startPage}" end="${pi.endPage}">
+			                    <li class="page-item"><a class="page-link" href="javascript:paging(${p})">[${p}]</a></li>
+							</c:forEach>
+							<c:choose>
+								<c:when test="${pi.nowPage eq pi.maxPage }">
+			                    	<li class="page-item disabled"><a class="page-link" href="#">다음</a></li>
+			                    </c:when>
+			                    <c:otherwise>
+			                    	<li class="page-item"><a class="page-link" href="freelancerList.ma?cpage=${pi.nowPage+1}">다음</a></li>	                    
+			                    </c:otherwise>
+			               	</c:choose>
+			           </ul>
+			       	</div>
+	       		</c:when>
+	       	</c:choose>
        	</div>
 		<script>
 		$(function () {
@@ -127,6 +131,8 @@
 		    		$(".location").append($close);
 		    		$(".location").append(value).show();
 		    		$("#mask, .window").hide();
+		    		$(".filterLocation").val(value);
+		    		$("#filterForm").submit();
 		    	}
 		    })
 		    
@@ -140,9 +146,8 @@
 		 function paging(p){
 			$.ajax({
 				url:"freelancerListPaging.ma",
-				data:{nowPage:p, category:${fList[0].f.cateNum}},
+				data:{nowPage:p, cateNum:${fList[0].f.cateNum}},
 				success:function(fList){
-					console.log(fList);
 					let value = '';
 					for(let i in fList){
 						value += '<table class="free_pro">'
@@ -166,6 +171,10 @@
 		</script>
 
         <!-- 지역선택 모달창 -->
+        <form action="freelancerListFilter.ma" id="filterForm">
+        <input type="hidden" name="location" class="filterLocation" value="">
+        <input type="hidden" name="cateNum" value="${fList[0].f.cateNum}">
+        <input type="hidden" name="cName" value="${cName}">
         <div id="mask"></div>
         <div class="window">
             <div>
@@ -188,9 +197,11 @@
             </ul>
         </div>
     </div>
+    </form>
     
-<!-- footer -->
+	<!-- footer -->
 	<jsp:include page="../common/footer.jsp"/>
+	
 </body>
 
 </html>

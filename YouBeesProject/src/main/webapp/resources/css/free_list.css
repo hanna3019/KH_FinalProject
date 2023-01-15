@@ -50,7 +50,6 @@ ul li {
 
 .region {
     margin-bottom: 2rem;
-
 }
 
 .drp_icon {
@@ -137,12 +136,13 @@ ul li {
 
 .free_pro {
     width: 100%;
-    padding: 0.8rem 1.5rem;
+    padding: 1rem 1.5rem;
     border-bottom: 1px solid #eee;
 }
 
 .free_pro h4 {
     display: inline-block;
+    padding-bottom: 0.5rem;
 }
 
 .bookmark_icon {
@@ -163,12 +163,12 @@ ul li {
     width: 5rem;
     height: 5rem;
     vertical-align: bottom;
-    border: 1px solid #333;
     border-radius: 0.5rem;
 }
 
 .title {
     font-size: 0.8rem;
+    line-height: 1rem;
 }
 
 .review {

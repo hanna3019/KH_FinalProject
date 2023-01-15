@@ -9,11 +9,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="${path}/resources/css/login.css">
-    <title>Document</title>
+    <title>YouBees</title>
 </head>
+
 <body>
-<!-- header -->
+	<!-- header -->
 	<jsp:include page="../common/header.jsp"/>
+	
     <main class="login_content">
         <div class="login_title">로그인</div>
         <form action="login.me" method="post" class="login_form">
@@ -35,8 +37,9 @@
         </form>
     </main>
     
-<!-- footer -->
+	<!-- footer -->
 	<jsp:include page="../common/footer.jsp"/>
+	
 </body>
 
 </html>

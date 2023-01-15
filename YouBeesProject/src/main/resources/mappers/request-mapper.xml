@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="requestMapper">
+	
+	<insert id="insertRequest">
+		insert into request(req_num, cus_num, free_num, reg_date, accept, acct_date)
+			values(seq_req.nextval, #{cusNum}, #{freeNum}, sysdate, 'N', null)
+	</insert>
+	
+	<insert id="insertAnswer">
+		insert into answer(req_num, ans_1, ans_2, ans_3)
+			values(seq_req.currval, #{ans1}, #{ans2}, #{ans3})
+	</insert>
+	
+</mapper>

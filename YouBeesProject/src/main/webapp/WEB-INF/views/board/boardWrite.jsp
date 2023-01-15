@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="${path}/resources/css/write.css">
     <script src="http://code.jquery.com/jquery-latest.js"></script>
-    <title></title>
+    <title>YouBees</title>
 </head>
 
 <script>
@@ -38,7 +38,7 @@ function resetimg() {
 </script>
 
 <body>
-<!-- header -->
+	<!-- header -->
 	<jsp:include page="../common/header.jsp"/>
 	
     <div class="main_container">
@@ -49,6 +49,7 @@ function resetimg() {
                 </label>
             </div>
 			<input type="hidden" name="cusNum" value="${loginUserC.cusNum}">
+			
             <div class="service_region">
                 <select class="service_box" name="serviceNum">
                     <option value="service">(선택) 서비스</option>
@@ -103,8 +104,9 @@ function resetimg() {
         </form>
     </div>
     
-<!-- footer -->
+	<!-- footer -->
 	<jsp:include page="../common/footer.jsp"/>
+	
 </body>
 
 </html>

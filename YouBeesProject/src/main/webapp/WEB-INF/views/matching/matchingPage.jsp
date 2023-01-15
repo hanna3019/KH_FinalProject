@@ -8,13 +8,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>YouBees</title>
     <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-neo.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="${path}/resources/css/matching.css?a">
 </head>
 
 <body>
-<!-- header -->
+	<!-- header -->
 	<jsp:include page="../common/header.jsp"/>
 	
     <div id="container">
@@ -48,15 +48,16 @@
     <div class="categories">
         <h2 class="title">${sName}</h2>
         <c:forEach var="c" items="${sList}">
-	        <div onclick="location.href='freelancerList.ma?category=${c.cateNum}&cName=${c.name}'"><img src="${path}/resources/source/service${c.cateNum}.jpg" alt="">
+	        <div onclick="location.href='freelancerList.ma?cateNum=${c.cateNum}&cName=${c.name}'"><img src="${path}/resources/source/service${c.cateNum}.jpg" alt="">
 	            <p>${c.name}</p>
 	        </div>        
         </c:forEach>
     </div>
     </div>
     
-<!-- footer -->
+	<!-- footer -->
 	<jsp:include page="../common/footer.jsp"/>
+	
 </body>
 
 </html>
