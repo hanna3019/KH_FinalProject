@@ -22,18 +22,22 @@ public class RequestController {
 	
 	@RequestMapping("insertRequest.re")
 	public ModelAndView insertRequest(Request req, Answer ans, ModelAndView mv) {
+		System.out.println(req.getCusNum());
+		System.out.println(ans.getAns1());
 		int result = rService.insertRequest(req);
 		int result2 = rService.insertAnswer(ans);
 		
-		if(result > 0) {
+		if(result > 0 && result2 > 0) {
 			mv.addObject("successMsg", "요청서 전송에 성공했습니다😀");
+			mv.setViewName("matching/freeProfile");
 		} else {
 			mv.addObject("errorMsg", "요청서 전송에 실패했습니다😢");
+			mv.setViewName("matching/freeProfile");
 		}
 		return mv;
 	}
 	
-//	@RequestMapping("acceptyRequest.re")
+//	@RequestMapping("acceptRequest.re")
 
 	
 }

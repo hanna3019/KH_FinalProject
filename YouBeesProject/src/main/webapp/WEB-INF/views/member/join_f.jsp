@@ -107,6 +107,7 @@
 							<option value="">선택</option>
 						</select>
 						<span class="regionSelected"></span>
+						<input type="hidden" name="region" class="region" value="">
 					</td>
 				</tr>
 			</table>
@@ -150,13 +151,14 @@
 						if($(this).val() != ""){
 							let lnum = $(this).val();
 							let location = $("#regionSelect  option:selected").text();
+							$(".region").val(location);
 							$.ajax({
 								url: "selectLocationList",
 								data: {lNum:$(this).val()},
 								success: function(list){
 									$("#regionSelectDetail").empty();
 									$("#regionSelectDetail").append("<option value='0'>선택</option>");
-									$("#regionSelectDetail").append("<option value='0'>"+ location +"전체</option>");
+									$("#regionSelectDetail").append("<option value='전체'>"+ location +"전체</option>");
 									for(let i in list){
 										let value = list[i].city;
 										let optionLabel = list[i].city;
@@ -176,7 +178,7 @@
 						if($(this).val() == 0){
 							$(".regionSelected").text($("#regionSelect option:selected").text()+" 전체");
 						}else{
-							$(".regionSelected").text($("#regionSelectDetail option:selected").text());							
+							$(".regionSelected").text($("#regionSelectDetail option:selected").text());
 						}
 					})
 				});

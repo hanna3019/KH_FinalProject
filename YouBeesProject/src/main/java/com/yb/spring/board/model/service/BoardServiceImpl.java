@@ -61,8 +61,7 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public ArrayList<Comments> selectCommentList(int bnum) {
-		// TODO Auto-generated method stub
-		return null;
+		return bDao.selectReplyList(sqlSession, bnum);
 	}
 
 	@Override

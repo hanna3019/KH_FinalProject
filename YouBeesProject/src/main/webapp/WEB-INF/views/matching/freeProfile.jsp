@@ -210,6 +210,7 @@
 		            $(".heart_icon").attr('src', src);
 		        }
 		    });
+		 
 		</script>
 		
 	</div>

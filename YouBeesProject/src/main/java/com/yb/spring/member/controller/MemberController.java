@@ -89,16 +89,17 @@ public class MemberController {
 	
 	/* 프리랜서 회원가입 */
 	@RequestMapping("FreelancerInsert.me")
-	public String insertFreelancer(Freelancer f, Model model, HttpSession session) {
+	public String insertFreelancer(Freelancer f, String region, Model model, HttpSession session) {
 		String encPwd = bcryptPasswordEncoder.encode(f.getPass());
 		f.setPass(encPwd);
-		
+		f.setCareer(f.getCareer()+"년");
+		f.setLocation(region + " " + f.getLocation());
 		int result = mService.insertFreelancer(f);
 		if(result > 0) {
-			session.setAttribute("alertMsg", "회원가입이 완료되었습니다");
+			session.setAttribute("alertMsg", "회원가입이 완료되었습니다😀");
 			return "redirect:/";
 		}else {
-			model.addAttribute("errorMsg", "회원가입 실패");
+			model.addAttribute("errorMsg", "회원가입에 실패했습니다😢");
 			return "member/join_f";
 		}
 	}
