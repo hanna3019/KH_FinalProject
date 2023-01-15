@@ -1,5 +1,6 @@
 package com.yb.spring.member.controller;
 
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpSession;
@@ -10,6 +11,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -22,33 +24,33 @@ import com.yb.spring.member.model.vo.Location;
 
 @Controller
 public class MemberController {
-	
+
 	@Autowired
 	private MemberService mService;
-	
+
 	@Autowired
 	private BCryptPasswordEncoder bcryptPasswordEncoder;
-	
+
 	@RequestMapping("joinMain.me")
 	public String selectJoin() {
 		return "member/joinMain";
 	}
-	
+
 	@RequestMapping("CustomerEnrollForm.me")
 	public String CustomerEnrollForm() {
 		return "member/join_c";
 	}
-	
+
 	@RequestMapping("FreelancerEnrollForm.me")
 	public String FreelancerEnrollForm() {
 		return "member/join_f";
 	}
-	
+
 	@RequestMapping("loginForm.me")
 	public String loginForm() {
 		return "member/login";
 	}
-	
+
 	@RequestMapping("mypage.me")
 	public String mypage(String type) {
 		if(type.equals("F")) {
@@ -62,36 +64,40 @@ public class MemberController {
 	public String toMain() {
 		return "redirect:/";
 	}
-	
+	@RequestMapping("freeProfile.me")
+	public String freeProfile() {
+		return "member/freeProfile";
+	}
 	@RequestMapping("myInfoEdit.me")
 	public String myInfoEdit() {
 		return "member/myInfoEdit";
 	}
-	
+
 	@RequestMapping("main.me")
 	public String main() {
 		return "../views/main";
 	}
 
 	@ResponseBody
-	@RequestMapping(value="selectServiceList", produces="application/json; charset=utf-8")
-	public String selectServiceList(int sNum){
+	@RequestMapping(value = "selectServiceList", produces = "application/json; charset=utf-8")
+	public String selectServiceList(int sNum) {
 		ArrayList<Categories> list = mService.selectServiceList(sNum);
 		return new Gson().toJson(list);
 	}
-	
+
 	@ResponseBody
-	@RequestMapping(value="selectLocationList", produces="application/json; charset=utf-8")
-	public String selectLocationList(int lNum){
+	@RequestMapping(value = "selectLocationList", produces = "application/json; charset=utf-8")
+	public String selectLocationList(int lNum) {
 		ArrayList<Location> list = mService.selectLocationList(lNum);
 		return new Gson().toJson(list);
 	}
-	
+
 	/* 프리랜서 회원가입 */
 	@RequestMapping("FreelancerInsert.me")
 	public String insertFreelancer(Freelancer f, String region, Model model, HttpSession session) {
 		String encPwd = bcryptPasswordEncoder.encode(f.getPass());
 		f.setPass(encPwd);
+
 		f.setCareer(f.getCareer()+"년");
 		f.setLocation(region + " " + f.getLocation());
 		int result = mService.insertFreelancer(f);
@@ -109,12 +115,12 @@ public class MemberController {
 	public String insertCustomer(Customer c, Model model, HttpSession session) {
 		String encPwd = bcryptPasswordEncoder.encode(c.getPass());
 		c.setPass(encPwd);
-		
+
 		int result = mService.insertCustomer(c);
-		if(result > 0) {
+		if (result > 0) {
 			session.setAttribute("alertMsg", "회원가입이 완료되었습니다");
 			return "redirect:/";
-		}else {
+		} else {
 			model.addAttribute("errorMsg", "회원가입 실패");
 			return "member/join_c";
 		}
@@ -124,34 +130,37 @@ public class MemberController {
 	@RequestMapping("idCheck.me")
 	public String idCheck(String checkId) {
 		int count = mService.idCheck(checkId);
-			return count > 0 ? "NNN" : "YYY";
+		return count > 0 ? "NNN" : "YYY";
 	}
-	/*로그인*/
+
+	/* 로그인 */
 	@RequestMapping("login.me")
 	public ModelAndView loginMemeber(Customer c, ModelAndView mv, HttpSession session) {
 		Customer loginUser = mService.loginMember(c.getUserId());
-		
-		if(loginUser != null && bcryptPasswordEncoder.matches(c.getPass(), loginUser.getPass())) {
-			if(loginUser.getType().equals("F")) {
+
+		if (loginUser != null && bcryptPasswordEncoder.matches(c.getPass(), loginUser.getPass())) {
+			if (loginUser.getType().equals("F")) {
 				Freelancer loginUserF = mService.loginMemberF(c.getUserId());
 				session.setAttribute("loginUserF", loginUserF);
-				mv.setViewName("redirect:/");
-			}else {
+//				mv.addObject("customerMsg", "님이 로그인 하셨습니다.");
+				mv.setViewName("main");
+			} else {
 				Customer loginUserC = mService.loginMemberC(c.getUserId());
 				session.setAttribute("loginUserC", loginUserC);
-				mv.setViewName("redirect:/");
+//				mv.addObject("freelancerMsg", c.getUserId() + "님이 로그인 하셨습니다.");
+				mv.setViewName("main");
 			}
-		}else {
+		} else {
 			mv.addObject("errorMsg", "로그인 실패");
 			mv.setViewName("member/login");
 		}
 		return mv;
 	}
-	/*로그아웃*/
+
+	/* 로그아웃 */
 	@RequestMapping("logout.me")
 	public String logoutMember(HttpSession session) {
 		session.invalidate();
 		return "redirect:/";
 	}
 }
-
