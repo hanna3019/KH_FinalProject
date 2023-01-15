@@ -19,8 +19,8 @@ public class RequestDao {
 		return sqlSession.insert("requestMapper.insertAnswer", ans);
 	}
 	
-	public ArrayList<Request> recievedRequestList(SqlSessionTemplate sqlSession, int rNum){
-		return (ArrayList)sqlSession.selectList("requestMapper.selectRequestList", rNum);
+	public ArrayList<Request> recievedRequestList(SqlSessionTemplate sqlSession, int free_num){
+		return (ArrayList)sqlSession.selectList("requestMapper.selectRequestList", free_num);
 	}
 	
 }

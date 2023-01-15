@@ -14,7 +14,7 @@ public interface RequestService {
 	int insertRequest(Request req);
 	
 	// 요청 리스트 가져오기
-	ArrayList<Request> recievedRequestList(int rNum);
+	ArrayList<Request> recievedRequestList(int freeNum);
 	
 	// 수락 시 매칭테이블 등록
 	
