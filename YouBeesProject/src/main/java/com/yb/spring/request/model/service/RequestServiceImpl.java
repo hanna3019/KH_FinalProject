@@ -1,5 +1,7 @@
 package com.yb.spring.request.model.service;
 
+import java.util.ArrayList;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,6 +29,11 @@ public class RequestServiceImpl implements RequestService{
 	public int insertAnswer(Answer ans) {
 		int result = rDao.insertAnswer(sqlSession, ans);
 		return result;
+	}
+
+	@Override
+	public ArrayList<Request> recievedRequestList(int rNum) {
+		return rDao.recievedRequestList(sqlSession, rNum);
 	}
 
 	

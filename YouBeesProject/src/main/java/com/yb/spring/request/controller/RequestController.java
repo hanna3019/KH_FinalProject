@@ -16,7 +16,7 @@ public class RequestController {
 	private RequestService rService;
 	
 	@RequestMapping("recievedRequest.re")
-	public String recievedRequest() {
+	public String recievedRequest(int rNum) {
 		return "request/recievedRequest";
 	}
 	
@@ -33,6 +33,7 @@ public class RequestController {
 		return mv;
 	}
 	
-	
+//	@RequestMapping("acceptyRequest.re")
+
 	
 }
