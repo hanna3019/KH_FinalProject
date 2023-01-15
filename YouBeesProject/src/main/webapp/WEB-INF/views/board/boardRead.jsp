@@ -43,7 +43,7 @@
 					<span><img src="${path}/resources/source/like.png?a" class="like"></span>
 					<span class="likeCnt">12</span>
 					<span><img src="${path}/resources/source/reply.png" class="speechBubble"></span>
-					<span class="commentCnt">17</span>
+					<span class="commentCnt" id="rcount">0</span>
 				</div>
 			</div>
 		</div>
@@ -52,24 +52,8 @@
 		<div class="comment">
 
 			<div class="comment_area">
-				<img src="${path}/resources/source/lico.png" alt="user" class="comment_img">
-				<div class="comment_write">
-					<div class="comment_writer" onclick="">밤하늘의 펄</div>
-					<div class="freelancer">컨설팅 프리랜서</div>
-					<div class="comment_content">서울 당산동에서 전문 컨설팅을 하고 있습니다.
-						마음 컨설팅 또한 전문가와 함께하면 더 쉽고 빠릅니다. 많은 분들이 마음의 안식을 얻고 가셨어요.
-						언제든 연락주세요^^</div>
-					<div class="comment_time">2022. 12. 30</div>
-				</div>
-			</div>
-
-			<div class="comment_area">
-				<img src="${path}/resources/source/lico.png" alt="user" class="comment_img">
-				<div class="comment_write">
-					<div class="comment_writer" onclick="">연승</div>
-					<div class="freelancer"></div>
-					<div class="comment_content">와 저기 옆 동네는 다이스키를 정말 싫어로 번역했다는데, 혹시 동일인물인가요? 킹리적갓심 ㅇㅈ?</div>
-					<div class="comment_time">2023. 01. 09</div>
+				<%-- <img src="${path}/resources/source/lico.png" alt="user" class="comment_img"> --%>
+				<div class="comment_write" id="comments_area">
 				</div>
 			</div>
 			<textarea placeholder="댓글을 남겨보세요." name="cContent" id="content"></textarea>
@@ -78,7 +62,35 @@
 	</div>
 
 	<!-- 댓글  ajax -->
-
+	<script>
+ 		$(function() {
+ 			setInterval(selectReplyList, 1000);
+		})
+		
+		function selectReplyList() {
+			$.ajax({
+				url:"rlist.bo",
+				data:{bno:${b.bnum}},
+				success:function(list){
+					console.log(list);
+					let value= "";
+					for(let i in list){
+						value += "<div class=comment_writer>" + list[i].cWriter  + "</div>"
+							  +	 "<div class=freelancer>"                     +"</div>"
+							  +	 "<div class=comment_content>"+ list[i].cContent + "</div>"
+							  +	 "<div class=comment_time>"   + list[i].regDate  + "</div>"
+					}
+					$("#comments_area").html(value);
+					$("#rcount").text(list.length);
+				},
+				error:function(){
+					console.log("댓글리스트 ajax통신 실패");
+				}
+			});
+		 }
+	 
+	</script>
+	
 	<c:choose>
 		<c:when test="${not empty loginUserF}">
 			<script>
