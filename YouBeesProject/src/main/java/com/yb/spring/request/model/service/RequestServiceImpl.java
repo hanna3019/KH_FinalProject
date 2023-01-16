@@ -32,8 +32,8 @@ public class RequestServiceImpl implements RequestService{
 	}
 
 	@Override
-	public ArrayList<Request> recievedRequestList(int rNum) {
-		return rDao.recievedRequestList(sqlSession, rNum);
+	public ArrayList<Request> recievedRequestList(int free_num) {
+		return rDao.recievedRequestList(sqlSession, free_num);
 	}
 
 	
