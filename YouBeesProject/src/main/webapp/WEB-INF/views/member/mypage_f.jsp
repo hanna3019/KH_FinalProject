@@ -33,7 +33,7 @@
                     <th class="title"><a href="freeProfile.ma?fNum=${loginUserF.freeNum}">내 프로필</a></th>
                 </tr>
                 <tr>
-                    <th class="title"><a href="recievedRequest.re">받은요청</a></th>
+                    <th class="title"><a href="recievedRequest.re?freeNum=${loginUserF.freeNum}">받은요청</a></th>
                 </tr>
                 <tr>
                     <th class="title"><a href="matchedFree.ma">매칭내역</a></th>

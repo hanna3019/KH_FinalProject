@@ -20,6 +20,7 @@ public class Request {
 	private String regDate; // 요청날짜
 	private String accept; // 수락여부
 	private String acctDate; // 수락날짜
+	private String name; // 고객이름
 	private Answer a;
 	
 }
