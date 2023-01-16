@@ -68,6 +68,12 @@
 
             <div class="joinSubmit">
                 <input class="submit" type="button" value="회원가입" onClick="inputCheck();" id="submitBtn">
+               
+                 <script>
+				function inputCheck() {
+				alert("가입에 성공하셨습니다");
+				}
+				</script>
                 <input class="submit" type="reset" value="돌아가기">
             </div>
         </form>

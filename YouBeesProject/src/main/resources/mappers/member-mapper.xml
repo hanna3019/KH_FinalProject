@@ -92,4 +92,15 @@
 		where user_id = #{userId}
 	</select>
 	
+	<update id="deleteFreeMember">
+  	update freelancer
+  	   set status = 'N'
+  	 where user_id = #{userId}
+  </update>
+  
+   <update id="deleteCusMember">
+  	update customer
+  	   set status = 'N'
+  	 where user_id = #{userId}
+  </update>
 </mapper>

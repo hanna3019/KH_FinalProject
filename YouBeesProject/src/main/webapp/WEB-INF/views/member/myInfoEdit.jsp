@@ -8,7 +8,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="${path}/resources/css/edit.css">
+    <link rel="stylesheet" href="${path}/resources/css/edit.css?q">
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+     <script type="text/javascript" src="${path}/resources/js/profile.js"></script>
     <title>Document</title>
 </head>
 
@@ -60,8 +62,40 @@
             </table>
 
             <button type="submit" class="editBtn">수정하기</button>
+        	<button type="submit" class="deleteBtn openMask">삭제하기</button>
         </form>
-    </div>
+       </div>
+        
+        <form action="freeDelete.me" method="post">
+            <div id="mask"></div>
+            <div class="window">
+                <div class="delete_title">
+                    <span>회원탈퇴</span>
+                   <div class="close">X</div>
+                </div>
+                <div class="delete_form">
+                    <div class="quest1">
+                        <div class="question1">탈퇴를 하는 이유는 무엇인가요? 있다면 적어주세요</div>
+                        <textarea></textarea>
+                    </div>
+                    <div class="quest2">
+                  		 <div class="question2">  비밀번호 : <input id="pass" type="password" name="pass" required>
+                      
+                      	
+                 </div>
+                </div>
+                 <button type="submit" value="sendRequest" class="request_send" onclick="warning()">탈퇴하기</button>
+               
+                 <script>
+				function warning() {
+				alert("탈퇴 후 복구가 불가능합니다.\n정말로 탈퇴 하시겠습니까? ");
+				}
+				</script>
+            </div>
+        </form>
+           
+           <!--  myInfoEdit 창 고객 프리랜서 2개로 나눠서 만들면 될거같음 -->      
+  
 
 <!-- footer -->
 	<jsp:include page="../common/footer.jsp"/>      

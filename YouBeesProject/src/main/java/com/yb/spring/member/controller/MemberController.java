@@ -152,5 +152,27 @@ public class MemberController {
 		session.invalidate();
 		return "redirect:/";
 	}
+	
+	
+	/*프리랜서 탈퇴*/
+	@RequestMapping("freeDelete.me")
+	public String deleteFreeMember(String pass, String userId, HttpSession session, Model model) {
+		String encPwd = ((Freelancer)session.getAttribute("loginUserF")).getPass(); //현재 입력한 비밀번호 가져오는거 encPwd는 지금 입력한 비밀번호
+		if(bcryptPasswordEncoder.matches(pass, encPwd)) {//지금 입력한 비밀번호와 원래 userPwd->데이터베이스에 들어가 있는 비밀번호가 맞는지 match로 확인
+			int result = mService.deleteFreeMember(userId); //맞으면 여기 실행
+			if(result > 0) { // result가 0보다 크면 회원가입이 잘 들어갈 시 1이 들어가니까 잘 들어갔다는 뜻
+				session.removeAttribute("loginUserF");
+				session.setAttribute("alertMsg", "성공적으로 탈퇴되었습니다<br> 그동안 이용해 주셔서 감사합니다.");
+				return "member/joinMain";
+			} else {
+				model.addAttribute("errorMsg", "회원 탈퇴 실패");
+				return "member/join_f";
+			}
+		} else {
+			session.setAttribute("alertMsg", "비밀번호를 잘못 입력하였습니다. 확인해 주세요");
+			return "member/myInfoEdit";
+		}
+		
+	}
 }
 

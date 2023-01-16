@@ -88,6 +88,111 @@
     border-radius: 0.4rem;
     background-color: #ffd100;
     margin-top: 2rem;
-    margin-bottom: 5rem;
+    margin-bottom: 2rem;
     cursor: pointer;
 }
+
+
+
+
+.deleteBtn{
+	display: flex;
+    border: none;
+    border-radius: 0.4rem;
+    background-color: #ffd100;
+    cursor: pointer;
+    
+}
+
+
+/* 마스크 띄우기 */
+#mask {
+    position: absolute;
+    z-index: 9000;
+    background-color: #555555;
+    display: none;
+    left: 0;
+    top: 0;
+}
+
+/* 팝업으로 뜨는 윈도우 css */
+.window {
+    display: none;
+    position: absolute;
+    left: 40%;
+    top: 7%;
+    width: 30rem;
+    height: 27rem;
+    background-color: #FFF;
+    z-index: 10000;
+}
+
+
+.window .delete_title {
+    background-color: #ffd100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.delete_title span {
+    font-weight: bold;
+    font-size: 1.4rem;
+    margin: 1rem;
+}
+
+.window .close {
+    position: relative;
+    left: 10rem;
+     cursor: pointer;
+    
+}
+
+.delete_form {
+    padding: 0 1rem;
+}
+
+.delete_form textarea {
+    width: 27rem;
+    height: 6rem;
+    resize: none;
+    border: 1px solid lightgray;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+}
+
+
+
+.question1,
+.question2
+ {
+    margin: 1rem 0;
+}
+
+.quest1,
+.quest2
+ {
+    margin: 2rem 0;
+}
+
+#pass{
+	width: 15rem;
+    height: 1.5rem;
+    resize: none;
+    border: 1px solid lightgray;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+}
+.request_send {
+    padding: 0.7rem 1rem;
+    background-color: #202020;
+    border: none;
+    border-radius: 0.5rem;
+    color: white;
+    display: flex;
+    margin: 3.5rem auto 0;
+    cursor: pointer;
+    margin: 1rem auto;
+}
+
+
