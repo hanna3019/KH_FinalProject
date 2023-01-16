@@ -38,13 +38,8 @@ public class MatchingServiceImpl implements MatchingService{
 	}
 
 	@Override
-	public ArrayList<FreelancerProfile> selectFreelancerList(int category, PageInfo pi) {
-		return mDao.selectFreelancerList(sqlSession, category, pi);
-	}
-
-	@Override
-	public ArrayList<FreelancerProfile> selectFreelancerListLoc(Freelancer f, PageInfo pi) {
-		return mDao.selectFreelancerListLoc(sqlSession, f, pi);
+	public ArrayList<FreelancerProfile> selectFreelancerList(Freelancer f, PageInfo pi) {
+		return mDao.selectFreelancerList(sqlSession, f, pi);
 	}
 	
 	@Override

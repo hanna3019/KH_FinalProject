@@ -27,18 +27,11 @@ public class MatchingDao {
 		return (ArrayList)sqlSession.selectList("matchingMapper.selectCityList");
 	}
 
-	public ArrayList<FreelancerProfile> selectFreelancerList(SqlSessionTemplate sqlSession, int category, PageInfo pi){
+	public ArrayList<FreelancerProfile> selectFreelancerList(SqlSessionTemplate sqlSession, Freelancer f, PageInfo pi){
 		int startNo = (pi.getNowPage()-1)*pi.getBoardLimit();
 		int limit = pi.getBoardLimit();
 		RowBounds rowBounds = new RowBounds(startNo, limit);
-		return (ArrayList)sqlSession.selectList("matchingMapper.selectFreelancerList", category, rowBounds);
-	}
-	
-	public ArrayList<FreelancerProfile>selectFreelancerListLoc(SqlSessionTemplate sqlSession, Freelancer f, PageInfo pi){
-		int startNo = (pi.getNowPage()-1)*pi.getBoardLimit();
-		int limit = pi.getBoardLimit();
-		RowBounds rowBounds = new RowBounds(startNo, limit);
-		return (ArrayList)sqlSession.selectList("matchingMapper.selectFreelancerListLoc", f, rowBounds);
+		return (ArrayList)sqlSession.selectList("matchingMapper.selectFreelancerList", f, rowBounds);
 	}
 	
 	public FreelancerProfile selectFreelancerDetail(SqlSessionTemplate sqlSession, int fNum) {
