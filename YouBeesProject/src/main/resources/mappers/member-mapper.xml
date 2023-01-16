@@ -92,4 +92,10 @@
 		where user_id = #{userId} and status = 'Y'
 	</select>
 	
+	<update id="deletefreeMember">
+  	update freeLancer
+  	   set status = 'N'
+  	 where free_num = #{freeNum}
+  	</update>
+	
 </mapper>

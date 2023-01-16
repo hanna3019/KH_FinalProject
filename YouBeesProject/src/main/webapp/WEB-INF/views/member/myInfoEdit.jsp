@@ -21,7 +21,7 @@
 	<jsp:include page="../common/header.jsp"/>
 	
     <div class="editContainer">
-        <form action="" method="">
+        <form action="myInfoEdit.me" method="post">
             <div class="editTitle">회원정보 수정</div>
             <table class="editTable">
                 <tr>
@@ -82,7 +82,7 @@
                     </div>
                     <div class="quest2">
                   		 <div class="question2">  비밀번호 : <input id="pass" type="password" name="pass" required>
-                      
+                      										<input type="hidden" name="freeNum" value="${loginUserF.freeNum}">
                       	
                  </div>
                 </div>
@@ -93,6 +93,7 @@
 				alert("탈퇴 후 복구가 불가능합니다.\n정말로 탈퇴 하시겠습니까? ");
 				}
 				</script>
+				</div>
             </div>
         </form>
            

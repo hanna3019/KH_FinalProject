@@ -92,31 +92,10 @@
 		where user_id = #{userId} and status = 'Y'
 	</select>
 	
-	<update id="deleteFreeMember">
-  	update freelancer
+	<update id="deletefreeMember">
+  	update freeLancer
   	   set status = 'N'
-  	 where user_id = #{userId}
-  </update>
-  
-   <update id="deleteCusMember">
-  	update customer
-  	   set status = 'N'
-  	 where user_id = #{userId}
-  </update>
-
-	 <select id="findPassword" resultType="_int">
-		    select count(*)
-			from (select user_id
-			from customer
-			union all
-			select user_id
-			from freelancer)
-			where user_id = #{checkId}
-			select * 
-			from customer 
-			where id=#{id} and name=#{name} and phone=#{phone}
-			union all
-			sele
-	</select> -->
-
+  	 where free_num = #{freeNum}
+  	</update>
+	
 </mapper>

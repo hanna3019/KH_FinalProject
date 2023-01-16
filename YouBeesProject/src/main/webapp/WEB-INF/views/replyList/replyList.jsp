@@ -23,7 +23,7 @@
         <div class="subTitle"><a href="replyList.jsp">작성 댓글</a></div>
 		
         <div class="replyList">
-           <label onclick="location.href='boardList.bo'">
+           <label onclick="location.href=''">
             <div class="replyInfo">
                 <div class="contentTitle">정한나</div>
                 <div class="detail">너무 어렵네요</div>
@@ -36,7 +36,7 @@
        
 
        <div class="replyList">
-           <label onclick="location.href='boardList.bo'">
+           <label onclick="location.href=''">
             <div class="replyInfo">
                 <div class="contentTitle">정한나</div>
                 <div class="detail">너무 어렵네요</div>

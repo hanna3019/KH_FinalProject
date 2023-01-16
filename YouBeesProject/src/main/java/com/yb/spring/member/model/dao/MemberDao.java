@@ -34,8 +34,8 @@ public class MemberDao {
 		return sqlSession.selectOne("memberMapper.idCheck", checkId);
 	}
 	
-	public int deleteFreeMember(SqlSessionTemplate sqlSession, String userId) {
-		return sqlSession.update("memberMapper.deleteFreeMember", userId);
+	public int deleteFreeMember(SqlSessionTemplate sqlSession, int freeNum) {
+		return sqlSession.update("memberMapper.deletefreeMember", freeNum);
 	}
 
 	public int deleteCusMember(SqlSessionTemplate sqlSession, String userId) {

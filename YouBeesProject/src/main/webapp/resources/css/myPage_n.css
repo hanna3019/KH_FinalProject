@@ -30,7 +30,7 @@ body {
 .profileBox {
 	display: flex;
 	margin-top: 2rem;
-	cursor: pointer;
+	
 }
 
 .profileImg {
@@ -42,6 +42,7 @@ body {
 .userInfo {
 	margin: auto 0;
 	margin-left: 2rem;
+	cursor: pointer;
 }
 
 .userInfo div {

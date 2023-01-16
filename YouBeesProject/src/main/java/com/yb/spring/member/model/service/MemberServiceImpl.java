@@ -47,8 +47,8 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
-	public int deleteFreeMember(String userId) {
-		return mDao.deleteFreeMember(sqlSession, userId);
+	public int deleteFreeMember(int freeNum) {
+		return mDao.deleteFreeMember(sqlSession, freeNum);
 	}
 
 	@Override
