@@ -67,7 +67,7 @@ public class BoardController {
 		}
 		else{
 			model.addAttribute("errorMsg","게시글 등록이 실패하였습니다.");
-			return "views/board/boardWrite";
+			return "/board/boardWrite";
 		}			
 	}
 	
@@ -108,6 +108,40 @@ public class BoardController {
 		return mv;
 	}
 	
+	@RequestMapping("updateForm.bo")
+	public String updateBoard(int bno, Model model) {
+		model.addAttribute("b", bService.selectBoard(bno));
+			return "board/boardUpdate";
+	}
+	
+	@RequestMapping("update.bo")
+	public String updateBoard(Board b, MultipartFile reupfile, HttpSession session, Model model) {
+		System.out.println(b);
+		if(!reupfile.getOriginalFilename().equals("")) {
+			if(b.getOriginName() != null) {
+			new File(session.getServletContext().getRealPath(b.getChangeName())).delete();
+		}
+		String changeName = changeFilename(reupfile, session);
+		
+		b.setOriginName(reupfile.getOriginalFilename());
+		b.setChangeName(changeName);
+	}
+	
+	int result = bService.updateBoard(b);
+	if(result > 0) {
+		session.setAttribute("alertMsg", "게시글이 수정되었습니다.");		
+		return "redirect:boardRead.bo?bno=" + b.getBnum();
+	} else {
+		model.addAttribute("errorMsg", "게시글 수정 실패");
+		return "board/errorpage";
+	}
+	
+}
+	
+	
+	
+	
+	
 	@ResponseBody
 	@RequestMapping("rinsert.bo")
 		public String ajaxInsertReply(Comments c) {
@@ -123,6 +157,8 @@ public class BoardController {
 		ArrayList<Comments> list = bService.selectCommentList(bno); 
 		return new Gson().toJson(list);	
 	}
+	
+	
 	
 	
 	
