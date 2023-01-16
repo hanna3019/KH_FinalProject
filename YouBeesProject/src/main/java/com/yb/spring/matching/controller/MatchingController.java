@@ -41,22 +41,24 @@ public class MatchingController {
 	public String freelancerList(@RequestParam(value="cpage", defaultValue="1") int nowPage, Freelancer f, String cName, Model model) {
 		ArrayList<Location> lList = mService.selectLocationList();
 		ArrayList<Location> cList = mService.selectCityList();
-		int listCount = 0;
+
 		if(f.getLocation() == null || f.getLocation().equals("")) {
 			f.setLocation(null);
-			listCount = mService.selectFreelancerListCount(f);			
-		}else {
-			listCount = mService.selectFreelancerListCountLoc(f);
 		}
+		int listCount = mService.selectFreelancerListCount(f);
 		PageInfo pi = Pagination.getPageInfo(listCount, nowPage, 5, 5);
-		ArrayList<FreelancerProfile> fList = mService.selectFreelancerList(f, pi); 
-		model.addAttribute("selectedlocation", f.getLocation());
+		ArrayList<FreelancerProfile> fList = mService.selectFreelancerList(f, pi);
+		model.addAttribute("selectedLocation", f.getLocation());
+		f.setLocation(f.getLocation());
+		f.setCateNum(f.getCateNum());
+		f.setPrice1(f.getPrice1());
+		f.setPrice2(f.getPrice2());
 		model.addAttribute("lList", lList); // location 리스트
 		model.addAttribute("cList", cList); // city 리스트
 		model.addAttribute("fList", fList); // freelancer 리스트
 		model.addAttribute("pi", pi);
 		model.addAttribute("cName", cName);
-		model.addAttribute("cateNum", f.getCateNum());
+		model.addAttribute("selected", f);
 		return "matching/freelancerList";
 	}
 	

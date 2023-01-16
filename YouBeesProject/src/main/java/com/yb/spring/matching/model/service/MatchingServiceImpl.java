@@ -52,10 +52,6 @@ public class MatchingServiceImpl implements MatchingService{
 		return mDao.selectFreelancerListCount(sqlSession, f);
 	}
 
-	@Override
-	public int selectFreelancerListCountLoc(Freelancer f) {
-		return mDao.selectFreelancerListCountLoc(sqlSession, f);
-	}
 
 	
 }

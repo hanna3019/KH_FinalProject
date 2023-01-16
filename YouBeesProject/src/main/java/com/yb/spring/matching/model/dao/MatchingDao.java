@@ -42,8 +42,6 @@ public class MatchingDao {
 		return sqlSession.selectOne("matchingMapper.selectFreelancerListCount", f);
 	}
 	
-	public int selectFreelancerListCountLoc(SqlSessionTemplate sqlSession, Freelancer f) {
-		return sqlSession.selectOne("matchingMapper.selectFreelancerListCountLoc", f);
-	}
+	
 	
 }

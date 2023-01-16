@@ -55,6 +55,9 @@
 		where p.free_num = f.free_num
 		and f.cate_num = c.cate_num
 		and status = 'Y' and f.cate_num = #{cateNum}
+		<if test="price1 != 0 and price2 != 0">
+			and price &gt;= #{price1} and price &lt;= #{price2}
+		</if>
 		<if test="location != null">
 			and substr(location,4) = #{location}
 		</if>
@@ -72,16 +75,16 @@
 	<select id="selectFreelancerListCount" resultType="_int">
 		select count(*)
 		from freelancer
+        join freelancer_profile
+        using(free_num)
 		where cate_num = #{cateNum}
+		<if test="price1 != 0 and price2 != 0">
+			and price &gt;= #{price1} and price &lt;= #{price2}
+		</if>
+		<if test="location != null">
+			and substr(location,4) = #{location}
+		</if>
 	</select>
-
-	<select id="selectFreelancerListCountLoc" resultType="_int">
-		select count(*)
-		from freelancer
-		where cate_num = #{cateNum}
-		and substr(location,4) = #{location}
-	</select>
-	
 	
 	
 </mapper>

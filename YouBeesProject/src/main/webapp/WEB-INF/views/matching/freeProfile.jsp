@@ -86,7 +86,7 @@
                 	<th>가격</th>	
                 </tr>
                 <tr>
-                	<td></td>
+                	<td>${f.price}</td>
                 </tr>
             </table>
             <table class="review_area">

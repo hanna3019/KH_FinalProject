@@ -9,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>YouBees</title>
-    <link rel="stylesheet" type="text/css" href="${path}/resources/css/free_list.css?aaq">
+    <link rel="stylesheet" type="text/css" href="${path}/resources/css/free_list.css?aa">
     <script src="http://code.jquery.com/jquery-latest.js"></script>
     <script type="text/javascript" src="${path}/resources/js/free_list.js?s"></script>
 </head>
@@ -27,8 +27,8 @@
                 <div><button class="openMask">지역<img src="${path}/resources/source/dropdown.png" alt="" class="drp_icon"></button></div>
                 <div class="selected">
                 <c:choose>
-                	<c:when test="${not empty selectedlocation}">
-                    	<div class="location">${fList[0].f.location}<img src="${path}/resources/source/x.png" class="close_region"></div>                	
+                	<c:when test="${not empty selected.location}">
+                    	<div class="location">${selected.location}<img src="${path}/resources/source/x.png" class="close_region"></div>                	
                 	</c:when>
                 	<c:otherwise>
                 		<div class="location"></div>
@@ -42,10 +42,13 @@
                     <button class="price_btn" onclick="priceBtn();">가격<img src="${path}/resources/source/dropdown.png" alt=""
                             class="drp_icon"></button>
                 </div>
-                <form action="">
-                    <input type="text" size="7" class="priceInp"> &ensp;~&ensp; <input type="text" size="7"
-                        class="priceInp">
-                    <input type="button" class="price_search" value="검색" onclick=""></input>
+                <form action="freelancerList.ma">
+                    <input type="text" size="7" class="priceInp" name="price1"> &ensp;~&ensp; <input type="text" size="7"
+                        class="priceInp" name="price2">
+                    <input type="hidden" name="location" class="filterLocation" value="${selectedLocation}">
+			        <input type="hidden" name="cateNum" value="${selected.cateNum}">
+			        <input type="hidden" name="cName" value="${cName}">
+                    <input type="submit" class="price_search" value="검색" onclick=""></input>
                     <input type="reset" class="price_reset" value="초기화"></input>
                 </form>
             </div>
@@ -87,7 +90,7 @@
             </c:forEach>
             </div>
             <c:choose>
-            	<c:when test="${fList.size() gt 4}">
+            	<c:when test="${pi.listCount gt 5}">
 			       	<div id="pageArea">
 			      		<ul class="pagination">
 			               	<c:choose>
@@ -153,7 +156,7 @@
 		 function paging(p){
 			$.ajax({
 				url:"freelancerListPaging.ma",
-				data:{nowPage:p, cateNum:${cateNum}},
+				data:{nowPage:p, cateNum:${selected.cateNum}, price1:${selected.price1}, price2:${selected.price2}},
 				success:function(fList){
 					let value = '';
 					for(let i in fList){
@@ -180,7 +183,7 @@
         <!-- 지역선택 모달창 -->
         <form action="freelancerList.ma" id="filterForm">
         <input type="hidden" name="location" class="filterLocation" value="">
-        <input type="hidden" name="cateNum" value="${cateNum}">
+        <input type="hidden" name="cateNum" value="${selected.cateNum}">
         <input type="hidden" name="cName" value="${cName}">
         <div id="mask"></div>
         <div class="window">

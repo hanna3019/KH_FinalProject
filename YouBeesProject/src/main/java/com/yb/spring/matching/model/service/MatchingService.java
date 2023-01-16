@@ -18,7 +18,6 @@ public interface MatchingService {
 	
 	// 서비스별 프리랜서 리스트 개수 가져오기
 	int selectFreelancerListCount(Freelancer f);
-	int selectFreelancerListCountLoc(Freelancer f);	// 지역별로 필터링한 결과
 	
 	// 프리랜서 평점
 	

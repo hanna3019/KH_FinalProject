@@ -23,4 +23,6 @@ public class Freelancer {
 	private String location;
 	private String type;
 	private String status;
+	private int price1;
+	private int price2;
 }
