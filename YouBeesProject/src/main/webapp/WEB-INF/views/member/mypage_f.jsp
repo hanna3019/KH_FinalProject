@@ -22,10 +22,11 @@
             <div class="myPageTitle">마이페이지</div>
 
             <div class="profileBox">
-                <img class="profileImg" src="${path}/resources/source/freelance.png" alt="프리랜서로고" onclick=""></a>
-                <div class="userInfo" onclick="location.href='myInfoEdit.me'">
-                    <div>변진주 프리랜서님</div>
-                </div>
+            
+                <img class="profileImg" src="${path}/resources/source/freelance.png" alt="프리랜서로고" onclick="">
+             	<div class="userInfo"  onclick="location.href='myInfoEdit.me'">
+                 	 <div>${loginUserF.name} 프리랜서님</div><p>수정하기</p>
+             	</div>         
             </div>
 
             <table id="profileContent">
@@ -39,7 +40,7 @@
                     <th class="title"><a href="matchedFree.ma">매칭내역</a></th>
                 </tr>
                 <tr>
-                    <th class="title"><a href="#">커뮤니티 작성글/댓글</a></th>
+                    <th class="title"><a href="boardList.bo">커뮤니티 작성글/댓글</a></th>
                 </tr>
                 <tr>
                     <th class="title"><a href="#">1:1 문의</a></th>

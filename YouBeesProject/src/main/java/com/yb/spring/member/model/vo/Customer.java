@@ -18,6 +18,7 @@ public class Customer {
 	private String pass;
 	private String phone;
 	private String type;
+	private String profileName;
 	private String status;
 		
 }
