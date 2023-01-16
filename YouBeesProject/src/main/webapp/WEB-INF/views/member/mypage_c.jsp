@@ -22,9 +22,9 @@
             <div class="myPageTitle">마이페이지</div>
 
             <div class="profileBox">
-                <img class="profileImg" src="${path}/resources/source/reading.png" alt="일반고객로고" onclick=""></a>
-                <div class="userInfo">
-                    <div>정한나 고객님</div>
+                <img class="profileImg" src="${path}/resources/source/reading.png" alt="일반고객로고" onclick="">
+                <div class="userInfo" onclick="location.href='myInfoEdit.me'">
+                    <div>${loginUserC.name} 님 </div><p>수정하기</p>
                 </div>
             </div>
 

@@ -1,5 +1,7 @@
 package com.yb.spring.request.model.dao;
 
+import java.util.ArrayList;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -15,6 +17,10 @@ public class RequestDao {
 	
 	public int insertAnswer(SqlSessionTemplate sqlSession, Answer ans) {
 		return sqlSession.insert("requestMapper.insertAnswer", ans);
+	}
+	
+	public ArrayList<Request> recievedRequestList(SqlSessionTemplate sqlSession, int free_num){
+		return (ArrayList)sqlSession.selectList("requestMapper.selectRequestList", free_num);
 	}
 	
 }

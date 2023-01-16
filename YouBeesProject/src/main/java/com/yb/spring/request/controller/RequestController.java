@@ -2,6 +2,7 @@ package com.yb.spring.request.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -16,7 +17,8 @@ public class RequestController {
 	private RequestService rService;
 	
 	@RequestMapping("recievedRequest.re")
-	public String recievedRequest() {
+	public String recievedRequest(int freeNum, Model md) {
+		md.addAttribute("", "");
 		return "request/recievedRequest";
 	}
 	
@@ -27,16 +29,18 @@ public class RequestController {
 		int result = rService.insertRequest(req);
 		int result2 = rService.insertAnswer(ans);
 		
-		if(result > 0) {
+		if(result > 0 && result2 > 0) {
 			mv.addObject("successMsg", "요청서 전송에 성공했습니다😀");
-			mv.setViewName("redirect:/");
+			mv.setViewName("matching/freeProfile");
 		} else {
 			mv.addObject("errorMsg", "요청서 전송에 실패했습니다😢");
-			mv.setViewName("redirect:/");
+			mv.setViewName("matching/freeProfile");
 		}
+		
 		return mv;
 	}
 	
-	
+//	@RequestMapping("acceptRequest.re")
+
 	
 }

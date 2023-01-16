@@ -176,16 +176,16 @@ td {
     line-height: 1.5rem;
 }
 
-.regBtn {
+.regBtn, .regBtn1, .regBtn2{
     font-size: 13px;
     color: #3807a8;
 }
 
-.regBtn:hover {
+.regBtn:hover, .regBtn1:hover, .regBtn2:hover {
     cursor: pointer;
 }
 
-#profile_container input[type=text] {
+#profile_container input[type=text], input[type=number] {
     height: 2rem;
     padding: 0 0.5rem;
     box-sizing: border-box;
@@ -196,8 +196,16 @@ td {
     border-radius: 0.5rem;
 }
 
-#profile_container input[type=text]:focus {
+#profile_container input[type=text]:focus, input[type=number]:focus {
     border: 2px solid #555;
+}
+
+#regionSelect,
+#regionSelectDetail {
+	width: 5rem;
+	height: 1.8rem;
+	border: 1px solid #eee;
+	border-radius: 0.5rem;
 }
 
 #profile_container textarea {

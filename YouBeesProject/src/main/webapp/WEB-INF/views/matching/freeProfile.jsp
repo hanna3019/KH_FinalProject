@@ -86,7 +86,7 @@
                 	<th>가격</th>	
                 </tr>
                 <tr>
-                	<td></td>
+                	<td>${f.price}</td>
                 </tr>
             </table>
             <table class="review_area">
@@ -201,15 +201,16 @@
         </form>
 			
 		<script>
-		 /* 좋아요 누르기 */
-				    $(".heart_box").on({
-				        'click': function () {
-				            let src = ($(".heart_icon").attr('src') === '${path}/resources/source/heart3.png')
-				                ? '/spring/resources/source/heart2.png'
-				                : '/spring/resources/source/heart3.png';
-				            $(".heart_icon").attr('src', src);
-				        }
-				    });
+		 	/* 좋아요 누르기 */
+		    $(".heart_box").on({
+		        'click': function () {
+		            let src = ($(".heart_icon").attr('src') === '${path}/resources/source/heart3.png')
+		                ? '/spring/resources/source/heart2.png'
+		                : '/spring/resources/source/heart3.png';
+		            $(".heart_icon").attr('src', src);
+		        }
+		    });
+		 
 		</script>
 		
 	</div>

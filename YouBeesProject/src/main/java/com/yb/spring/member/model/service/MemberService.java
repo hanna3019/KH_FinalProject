@@ -28,7 +28,7 @@ public interface MemberService {
 	int idCheck(String checkId);
 	
 	// 프리랜서 회원탈퇴 서비스
-	int deleteFreeMember(String userId);
+	int deleteFreeMember(int freeNum);
 	
 	// 일반고객 회원탈퇴 서비스
 	int deleteCusMember(String userId);
