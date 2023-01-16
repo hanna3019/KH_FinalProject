@@ -10,11 +10,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="${path}/resources/css/myPage_f.css">
-    <title>Document</title>
+    <title>YouBees</title>
 </head>
 
 <body>
-<!-- header -->
+	<!-- header -->
 	<jsp:include page="../common/header.jsp"/>
 	
     <main>
@@ -31,7 +31,7 @@
 
             <table id="profileContent">
                 <tr>
-                    <th class="title"><a href="freeProfile.me">내 프로필</a></th>
+                    <th class="title"><a href="freeProfile.ma?fNum=${loginUserF.freeNum}">내 프로필</a></th>
                 </tr>
                 <tr>
                     <th class="title"><a href="recievedRequest.re">받은요청</a></th>
@@ -49,8 +49,9 @@
         </div>
     </main>
 
-<!-- footer -->
+	<!-- footer -->
 	<jsp:include page="../common/footer.jsp"/>
+	
 </body>
 
 </html>

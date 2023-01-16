@@ -7,37 +7,37 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title></title>
+	<title>YouBees</title>
 	<link rel="stylesheet" href="${path}/resources/css/read.css">
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
 </head>
 
 <body>
-<!-- header -->
+	<!-- header -->
 	<jsp:include page="../common/header.jsp"/>
+	
 	<div class="container">
 		<div class="container_header">
 			<div class="container_title">
-				<h3>이 정도면 영어 심각한 수준 아닌가요?</h3>
-				<p>경기/고양시</p>
+				<h3>${ b.title }</h3>
+				<p>${ b.location }</p>
 			</div>
 
 			<div class="container_writer">
 				<img class="writer_img" src="${path}/resources/source/lico.png">
 				<div class="writer_info">
-					<span class="writer_name">호로록</span>
-					<span class="create_date">2022.12.30 · 조회 100</span>
+					<span class="writer_name">${b.name }</span>
+					<span class="create_date">${b.regDate } · 조회수${b.count }</span>
 				</div>
 			</div>
 		</div>
+		
 		<div class="container_main">
 			<div class="read_main">
-				<p>아니 어제 영화를 보는데 번역자가 오역 많을 수 있다고 미리 밑밥을 깔더라고요.
-					그리고 FRIDAY라는 타이틀이 나왔는데 '목요일'이라고 번역하신거 있죠?
-					이건 좀 심각한거 아닌가요? 진짜 기대 많이 했던 영화인데 결국 못 봤어요.
-					마음의 상처를 받아서 그러는데 혹시 컨설팅 잘 해주시는 분 계신가요?
-					저는 도저히 이 상처를 혼자 극복하지 못하겠어요. 마음 컨설팅 잘 해주시는 분 연락 주세요.
+				<p>
+				${b.content}
 				</p>
-				<img src="${path}/resources/source/movie.jpg" alt="main_img" class="read_main_img">
+				<img src="${ b.changeName }" alt="main_img" class="read_main_img">
 			</div>
 
 			<div class="read_footer">
@@ -45,39 +45,105 @@
 					<span><img src="${path}/resources/source/like.png?a" class="like"></span>
 					<span class="likeCnt">12</span>
 					<span><img src="${path}/resources/source/reply.png" class="speechBubble"></span>
-					<span class="commentCnt">17</span>
+					<span class="commentCnt" id="rcount">0</span>
 				</div>
 			</div>
 		</div>
+		
 		<div class="comment">
-
 			<div class="comment_area">
-				<img src="${path}/resources/source/lico.png" alt="user" class="comment_img">
-				<div class="comment_write">
-					<div class="comment_writer" onclick="">밤하늘의 펄</div>
-					<div class="freelancer">컨설팅 프리랜서</div>
-					<div class="comment_content">서울 당산동에서 전문 컨설팅을 하고 있습니다.
-						마음 컨설팅 또한 전문가와 함께하면 더 쉽고 빠릅니다. 많은 분들이 마음의 안식을 얻고 가셨어요.
-						언제든 연락주세요^^</div>
-					<div class="comment_time">2022. 12. 30</div>
+				<%-- <img src="${path}/resources/source/lico.png" alt="user" class="comment_img"> --%>
+				<div class="comment_write" id="comments_area">
 				</div>
 			</div>
-
-			<div class="comment_area">
-				<img src="${path}/resources/source/lico.png" alt="user" class="comment_img">
-				<div class="comment_write">
-					<div class="comment_writer" onclick="">연승</div>
-					<div class="freelancer"></div>
-					<div class="comment_content">와 저기 옆 동네는 다이스키를 정말 싫어로 번역했다는데, 혹시 동일인물인가요? 킹리적갓심 ㅇㅈ?</div>
-					<div class="comment_time">2023. 01. 09</div>
-				</div>
-			</div>
-
-			<textarea placeholder="댓글을 남겨보세요."></textarea>
-			<button class="submit">등록</button>
+			<textarea placeholder="댓글을 남겨보세요." name="cContent" id="content"></textarea>
+			<button class="submit" onclick="addReply();">등록</button>
 		</div>
 	</div>
 
+	<!-- 댓글  ajax -->
+
+	<script>
+ 		$(function() {
+ 			setInterval(selectReplyList, 1000);
+		})
+		
+		function selectReplyList() {
+			$.ajax({
+				url:"rlist.bo",
+				data:{bno:${b.bnum}},
+				success:function(list){
+					console.log(list);
+					let value= "";
+					for(let i in list){
+						value += "<div class=comment_writer>" + list[i].cWriter  + "</div>"
+							  +	 "<div class=freelancer>"                     +"</div>"
+							  +	 "<div class=comment_content>"+ list[i].cContent + "</div>"
+							  +	 "<div class=comment_time>"   + list[i].regDate  + "</div>"
+					}
+					$("#comments_area").html(value);
+					$("#rcount").text(list.length);
+				},
+				error:function(){
+					console.log("댓글리스트 ajax통신 실패");
+				}
+			});
+		 }
+	 
+	</script>
+	
+	<c:choose>
+		<c:when test="${not empty loginUserF}">
+			<script>
+				function addReply(){
+					$.ajax({
+						url:"rinsert.bo",
+						data:{
+							bnum:${b.bnum},
+							cContent:$("#content").val(),
+							cWriter:"${loginUserF.name}",
+							type:'F'
+						},
+						success:function(result) {
+							if(result == "success") {
+								$("#content").val("");
+							}
+						},
+						error:function(){
+							console.log("댓글작성 ajax 통신 실패");
+						}
+					});
+				}
+			</script>
+		</c:when>
+		<c:otherwise>
+			<script>
+			function addReply(){
+				$.ajax({
+					url:"rinsert.bo",
+					data:{
+						bnum:${b.bnum},
+						cContent:$("#content").val(),
+						cWriter:"${loginUserC.name}",
+						type:'C'
+					},
+					success:function(result) {
+						if(result == "success") {
+							$("#content").val("");
+						}
+					},
+					error:function(){
+						console.log("댓글작성 ajax 통신 실패");
+					}
+				});
+			}
+			</script>
+		</c:otherwise>
+	</c:choose>
+	
+	<!-- footer -->
+	<jsp:include page="../common/footer.jsp"/>
+	
 </body>
 
 </html>

@@ -49,7 +49,11 @@ td {
 
 .title h2,
 .title h4 {
-    padding: 0.5rem 0;
+    padding: 2rem 0;
+}
+
+.title h4{
+	line-height: 1.5rem;
 }
 
 .f13 {
@@ -145,6 +149,7 @@ td {
     width: 40rem;
     border-bottom: 1px solid #eee;
     margin-left: 10.3rem;
+    padding: 2rem 0;
 }
 
 .review_area td {
@@ -180,7 +185,7 @@ td {
     cursor: pointer;
 }
 
-.profile_container input[type=text] {
+#profile_container input[type=text] {
     height: 2rem;
     padding: 0 0.5rem;
     box-sizing: border-box;
@@ -191,11 +196,11 @@ td {
     border-radius: 0.5rem;
 }
 
-.profile_container input[type=text]:focus {
+#profile_container input[type=text]:focus {
     border: 2px solid #555;
 }
 
-.profile_container textarea {
+#profile_container textarea {
     box-sizing: border-box;
     border: 2px solid #ccc;
     -webkit-transition: 0.5s;
@@ -210,6 +215,19 @@ td {
     border-radius: 0.5rem;
 }
 
+input[type=file]{
+	display:none;
+}
+
+
+.image_upload img{
+	float:left;
+	width: 4rem;
+	width: 5rem;
+	cursor: pointer;
+	margin-left: 2rem;
+}
+
 /*퀵메뉴*/
 .quick_area {
     position: sticky;
@@ -217,9 +235,9 @@ td {
     z-index: 100;
     border: 1px solid #eee;
     border-radius: 1rem;
-    width: 30rem;
-    height: 10rem;
-    padding-top: 1rem;
+    width: 15rem;
+    height: 6.5rem;
+    padding: 1.5rem 0;
 }
 
 .quick_area h4 {

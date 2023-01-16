@@ -87,10 +87,11 @@
 }
 
 .uploadedFile {
-	background-color: skyblue;
+	/*background-color: skyblue;*/
 	width: 6rem;
 	height: 6rem;
 	border-radius: 0.5rem;
+	border:0px solid;
 }
 
 .btn_container {

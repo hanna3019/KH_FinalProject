@@ -9,11 +9,16 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="${path}/resources/css/board.css">
-	<title>Document</title>
+	<title>YouBees</title>
 </head>
+<style>
+ a:hover{
+ 	cursor: pointer;
+ }
+</style>
 
 <body>
-<!-- header -->
+	<!-- header -->
 	<jsp:include page="../common/header.jsp"/>
 
 	<div class="board_container">
@@ -27,21 +32,27 @@
 			<button class="write_button" name="" onclick="location.href='boardWriteForm.bo'">글쓰기</button>
 		</div>
 
-		<article class="board_comment">
+		<article class="board_comment" id="boardList">
 			<ul>
-				<li>
-					
-					<a href="boardRead.bo">
-						<div class="board_content">
+				<c:forEach var="b" items="${ list }">
+				<li>	
+					 <a href="boardRead.bo?bno=${b.bnum}"> 
+						<div class="board_content">			
 							<div class="board_post">
 								<div class="board_main">
-									<h4>이 정도면 영어 심각한 수준 아닌가요?</h4>
-									<p>아니 어제 영화를 보는데 번역자가 오역 많을 수 있다고 미리 밑밥을 깔더라고요. 그리고 FRIDAY라는 타이틀이 나왔는데 '목요일'이라고
-										번역하신거 있죠? 이건 좀 심각한거 아닌가요? 진짜 기대 많이 했던 영화인데 결국 못 봤어요. 마음의 상처를 받아서 그러는데 혹시 컨설팅 잘
-										해주시는 분 계신가요? 저는 도저히 이 상처를 혼자 극복하지 못하겠어요. 마음 컨설팅 잘 하시는 분 연락 주세요.</p>
-									<p class="location">경기/고양시</p>
+								
+								
+								
+									<h4>${ b.title }</h4>
+									<p>${ b.content }</p>
+									<p class="location">${ b.location }</p>			
+								
 								</div>
-								<img src="${path}/resources/source/santa.jpg" class="board_img">
+								<%-- <c:if test="${ not empty b.changeName }"> 
+										<img class="board_img" src="${path}/resources/source/santa.jpg">
+								</c:if> --%>
+								<img src="${ b.changeName }" class="board_img">
+								
 							</div>
 							<div class="board_footer">
 								<div class="likeNcomment">
@@ -53,39 +64,40 @@
 								<div class="time">20분 전</div>
 							</div>
 						</div>
-					</a>
+				 	</a> 
 				</li>
-				<li>
-					<a href="boardRead.bo">
-						<div class="board_content">
-							<div class="board_post">
-								<div class="board_main">
-									<h4>이 정도면 영어 심각한 수준 아닌가요?</h4>
-									<p>아니 어제 영화를 보는데 번역자가 오역 많을 수 있다고 미리 밑밥을 깔더라고요. 그리고 FRIDAY라는 타이틀이 나왔는데 '목요일'이라고
-										번역하신거 있죠? 이건 좀 심각한거 아닌가요? 진짜 기대 많이 했던 영화인데 결국 못 봤어요. 마음의 상처를 받아서 그러는데 혹시 컨설팅 잘
-										해주시는 분 계신가요? 저는 도저히 이 상처를 혼자 극복하지 못하겠어요. 마음 컨설팅 잘 하시는 분 연락 주세요.</p>
-									<p class="location">경기/고양시</p>
-								</div>
-								<img src="${path}/resources/source/santa.jpg" class="board_img">
-							</div>
-							<div class="board_footer">
-								<div class="likeNcomment">
-									<span><img src="${path}/resources/source/like.png?a" class="like"></span>
-									<span class="likecnt">12</span>
-									<span><img src="${path}/resources/source/reply.png" class="speechBubble"></span>
-									<span>17</span>
-								</div>
-								<div class="time">20분 전</div>
-							</div>
-						</div>
-					</a>
-				</li>
+				</c:forEach>
 			</ul>
 		</article>
+		
+		
+		<div id="pagingArea">
+                <ul class="pagination" style="display:flex">
+                	<c:choose>
+                		<c:when test="${ pi.nowPage eq 1 }">
+	                    	<li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
+	                	</c:when>
+	                	<c:otherwise>
+	                		<li class="page-item"><a class="page-link" href="boardList.bo?cpage=${ pi.nowPage-1 }">Previous</a></li>
+	                	</c:otherwise>
+	                </c:choose>
+	                <c:forEach var="p" begin="${ pi.startPage }" end="${ pi.endPage }">
+	                    <li class="page-item"><a class="page-link" href="boardList.bo?cpage=${p}">${p}</a></li>
+					</c:forEach>
+					<c:choose>
+						<c:when test="${ pi.nowPage eq pi.maxPage }">
+	                    	<li class="page-item disabled"><a class="page-link" href="#">Next</a></li>
+                		</c:when>
+                		<c:otherwise>
+                			<li class="page-item"><a class="page-link" href="boardList.bo?cpage=${ pi.nowPage+1 }">Next</a></li>
+                		</c:otherwise>
+                	</c:choose>
+                </ul>
+            </div>
 
 	</div>
 
-<!-- footer -->
+	<!-- footer -->
 	<jsp:include page="../common/footer.jsp"/>
 
 </body>

@@ -11,11 +11,15 @@
 		<typeAlias type="com.yb.spring.member.model.vo.Categories" alias="Categories"/>
 		<typeAlias type="com.yb.spring.member.model.vo.Location" alias="Location"/>
 		<typeAlias type="com.yb.spring.board.model.vo.Board" alias="Board"/>
+		<typeAlias type="com.yb.spring.board.model.vo.Comments" alias="Comments"/>
+		<typeAlias type="com.yb.spring.matching.model.vo.FreelancerProfile" alias="FreelancerProfile"/>
+		<typeAlias type="com.yb.spring.request.model.vo.Request" alias="Request"/>
 	</typeAliases>
 	
 	<mappers>
 		<mapper resource="/mappers/member-mapper.xml"/>
 		<mapper resource="/mappers/board-mapper.xml"/>
 		<mapper resource="/mappers/matching-mapper.xml"/>
+		<mapper resource="/mappers/request-mapper.xml"/>
 	</mappers>
 </configuration>

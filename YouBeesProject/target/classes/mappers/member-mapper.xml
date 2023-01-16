@@ -32,7 +32,7 @@
 		<result column="tel" property="tel"/>
 		<result column="career" property="career"/>
 		<result column="gender" property="gender"/>
-		<result column="service_num" property="serviceNum"/>
+		<result column="service_num" property="cateNum"/>
 		<result column="location" property="location"/>
 		<result column="type" property="type"/>
 		<result column="status" property="status"/>
@@ -52,12 +52,12 @@
 	
 	<insert id="insertFreelancer">
 		insert into freelancer
-			   values(seq_free.nextval, #{name}, #{userId}, #{pass}, #{tel}, #{career}, #{gender}, #{serviceNum}, #{location}, 'F', 'Y')
+			   values(seq_free.nextval, #{name}, #{userId}, #{pass}, #{tel}, #{career}, #{gender}, #{cateNum}, #{location}, 'F', 'Y')
 	</insert>
 	
 	<insert id="insertCustomer">
   		insert into customer 
-  				values(seq_cus.nextval, #{name},#{userId},  #{pass},  #{phone}, 'C', 'Y')
+  				values(seq_cus.nextval, #{name},#{userId},  #{pass},  #{phone}, 'C', null, 'Y')
     </insert>
 
     <select id="idCheck" resultType="_int">
@@ -77,19 +77,19 @@
 		union all
 		select user_id, pass, type
 		from freelancer
-		where user_id = #{userId}
+		where user_id = #{userId} and status = 'Y'
   	</select>
 	
 	<select id="loginMemberF" resultMap="freelancerResult">
 		select *
 		from freelancer
-		where user_id = #{userId}
+		where user_id = #{userId} and status = 'Y'
 	</select>
 	
 	<select id="loginMemberC" resultMap="customerResult">
 		select *
 		from customer
-		where user_id = #{userId}
+		where user_id = #{userId} and status = 'Y'
 	</select>
 	
 	<update id="deleteFreeMember">
@@ -103,4 +103,20 @@
   	   set status = 'N'
   	 where user_id = #{userId}
   </update>
+
+	 <select id="findPassword" resultType="_int">
+		    select count(*)
+			from (select user_id
+			from customer
+			union all
+			select user_id
+			from freelancer)
+			where user_id = #{checkId}
+			select * 
+			from customer 
+			where id=#{id} and name=#{name} and phone=#{phone}
+			union all
+			sele
+	</select> -->
+
 </mapper>

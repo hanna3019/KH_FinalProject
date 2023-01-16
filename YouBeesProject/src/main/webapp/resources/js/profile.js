@@ -1,6 +1,6 @@
 $(function () {
     $(".detail_rev_btn").click(function () {
-        $("#detail_revise").toggleClass("hidden");
+        $(".detail_revise").toggleClass("hidden");
         $(".detail").toggleClass("hidden");
     });
 

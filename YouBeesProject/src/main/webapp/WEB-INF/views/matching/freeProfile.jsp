@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>YouBees</title>
     <link rel="stylesheet" type="text/css" href="${path}/resources/css/free_profile.css?a">
     <script src="http://code.jquery.com/jquery-latest.js"></script>
     <script type="text/javascript" src="${path}/resources/js/profile.js"></script>
@@ -22,9 +22,9 @@
         <div class="profile_main">
             <div class="title">
                 <img class="pro_img" src="${path}/resources/source/santa.jpg" alt="프로필사진">
-                <h2>변진주</h2>
-                <p class="inline f13">독일어 통번역 &emsp;<img class="img_small" src="${path}/resources/source/location.png" alt="">서울시 강남구</p>
-                <h4>한줄 소개가 들어갈 자리입니다!</h4>
+                <h2>${f.f.name}</h2>
+                <p class="inline f13">${f.category} &emsp;<img class="img_small" src="${path}/resources/source/location.png" alt="">${f.f.location}</p>
+                <h4>${f.oneContent}</h4>
             </div>
 
             <div id="profile_tbl">
@@ -49,13 +49,7 @@
                 <tr>
                     <td>
                         <div class="detail">
-                            안녕하세요! 저희 YB는 기존의 번역회사 보다 유연하고 합리적인 가격으로 서비스를 제공 드리고자 실무진들이 구성한 회사로
-                            경험 많은 실무진들과 다수의 IR, 회사 소개서 번역 뿐만 아니라 유튜브 채널 등 다양한 분야의 번역을 진행하였던 전문 번역가님들과 함께 하고 있습니다.
-
-                            또한 영어, 중국어, 일본어 등의 기본 언어 뿐만 아니라 다양한 언어의 번역 및 더빙이 가능합니다.
-
-                            글로벌 비즈니스를 준비 하신다면
-                            회사 소개서 홈페이지 등 번역 뿐만 아니라 회사의 소개 영상등에 원어민 까지 저희 YB에서 함께 글로벌로 나아가시기 바랍니다.
+                           ${f.frContent}
                         </div>
                     </td>
                 </tr>
@@ -63,7 +57,7 @@
                     <th>활동지역</th>
                 </tr>
                 <tr>
-                    <td>서울시 관악구</td>
+                    <td>${f.f.location}</td>
                 </tr>
                 <tr>
                     <th>작업물 및 자격정보</th>
@@ -80,13 +74,19 @@
                     <th>연락가능시간</th>
                 </tr>
                 <tr>
-                    <td>00시 ~ 00시</td>
+                    <td>${f.callTime}</td>
                 </tr>
                 <tr>
                     <th>경력</th>
                 </tr>
                 <tr>
-                    <td>00년</td>
+                    <td>${f.f.career}</td>
+                </tr>
+                <tr>
+                	<th>가격</th>	
+                </tr>
+                <tr>
+                	<td></td>
                 </tr>
             </table>
             <table class="review_area">
@@ -173,7 +173,7 @@
         </div>
 
         <!-- 요청 모달창 -->
-        <form action="" method="post">
+        <form action="insertRequest.re" method="post">
             <div id="mask"></div>
             <div class="window">
                 <div class="request_title">
@@ -181,34 +181,19 @@
                     <a href="#" class="close">X</a>
                 </div>
                 <div class="request_form">
+                <input type="hidden" name="cusNum" value="${loginUserC.cusNum}">
+                <input type="hidden" name="freeNum" value="${f.freeNum}">
                     <div class="quest1">
                         <div class="question1">매칭을 원하는 이유는 무엇인가요?</div>
-                        <textarea></textarea>
+                        <textarea name="ans1"></textarea>
                     </div>
                     <div class="quest2">
                         <div class="question2">원하는 가격대는 얼마인가요?</div>
-                        <input> ~ <input>
+                        <input name="ans2"> ~ <input name="ans2">
                     </div>
                     <div class="quest3">
-                        <div class="question3">선호하는 요일은 언제인가요?</div>
-                        <select>
-                            <option>월요일</option>
-                            <option>화요일</option>
-                            <option>수요일</option>
-                            <option>목요일</option>
-                            <option>금요일</option>
-                            <option>토요일</option>
-                            <option>일요일</option>
-                        </select>
-                        <div>
-                            <span>월요일</span>
-                            <span>월요일</span>
-                            <span>월요일</span>
-                            <span>월요일</span>
-                            <span>월요일</span>
-                            <span>월요일</span>
-                            <span>월요일</span>
-                        </div>
+                    	<div class="question3">그 외 전달하고 싶은 사항이 있다면 알려주세요.</div>
+                    	<textarea name="ans3"></textarea>
                     </div>
                 </div>
                 <button type="submit" value="sendRequest" class="request_send">요청전송</button>
@@ -216,21 +201,23 @@
         </form>
 			
 		<script>
-		 /* 좋아요 누르기 */
-				    $(".heart_box").on({
-				        'click': function () {
-				            let src = ($(".heart_icon").attr('src') === '${path}/resources/source/heart3.png')
-				                ? '/spring/resources/source/heart2.png'
-				                : '/spring/resources/source/heart3.png';
-				            $(".heart_icon").attr('src', src);
-				        }
-				    });
+		 	/* 좋아요 누르기 */
+		    $(".heart_box").on({
+		        'click': function () {
+		            let src = ($(".heart_icon").attr('src') === '${path}/resources/source/heart3.png')
+		                ? '/spring/resources/source/heart2.png'
+		                : '/spring/resources/source/heart3.png';
+		            $(".heart_icon").attr('src', src);
+		        }
+		    });
+		 
 		</script>
 		
 	</div>
 		    
-<!-- footer -->
+	<!-- footer -->
 	<jsp:include page="../common/footer.jsp"/>
+	
 </body>
 
 </html>

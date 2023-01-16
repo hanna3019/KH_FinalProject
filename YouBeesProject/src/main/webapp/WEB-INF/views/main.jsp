@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>YouBees</title>
 
     <!-- SWIPER 외부 라이브러리 연결-->
     <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
@@ -26,8 +26,9 @@
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
     <script defer src="${path}/resources/js/main.js"></script>
 </head>
+
 <body>
-<!-- header -->
+	<!-- header -->
 	<jsp:include page="common/header.jsp"/>
 
     <main class="mainMain">
@@ -40,22 +41,22 @@
         </article>
         <div class="service_icons">
             <div>
-                <img class="main_translation" src="${path}/resources/source/translate.png" alt="번역아이콘" onclick="">
+                <img class="main_translation" src="${path}/resources/source/translate.png" alt="번역아이콘" onclick="location.href='selectCategories.ma?sNum=1&sName=통번역'">
                 <p>번역</p>
             </div>
-            <div><img class="main_marketing" src="${path}/resources/source/marketing.png" alt="마케팅아이콘" onclick="">
+            <div><img class="main_marketing" src="${path}/resources/source/marketing.png" alt="마케팅아이콘" onclick="location.href='selectCategories.ma?sNum=2&sName=마케팅'">
                 <p>마케팅</p>
             </div>
-            <div><img class="main_consulting" src="${path}/resources/source/consulting.png" alt="컨설팅아이콘" onclick="">
+            <div><img class="main_consulting" src="${path}/resources/source/consulting.png" alt="컨설팅아이콘" onclick="location.href='selectCategories.ma?sNum=2&sName=컨설팅'">
                 <p>컨설팅</p>
             </div>
-            <div><img class="main_security" src="${path}/resources/source/security.png" alt="보안아이콘" onclick="">
+            <div><img class="main_security" src="${path}/resources/source/security.png" alt="보안아이콘" onclick="location.href='selectCategories.ma?sNum=2&sName=보안'">
                 <p>보안</p>
             </div>
-            <div><img class="main_print" src="${path}/resources/source/print.png" alt="인쇄아이콘" onclick="">
+            <div><img class="main_print" src="${path}/resources/source/print.png" alt="인쇄아이콘" onclick="location.href='selectCategories.ma?sNum=2&sName=인쇄'">
                 <p>인쇄</p>
             </div>
-            <div><img class="main_etc" src="${path}/resources/source/etc.png" alt="기타아이콘">
+            <div><img class="main_etc" src="${path}/resources/source/etc.png" alt="기타아이콘" onclick="location.href='selectCategories.ma?sNum=6&sName=기타'">
                 <p>기타</p>
             </div>
         </div>
@@ -155,7 +156,7 @@
 
         <h2>인기 서비스</h2>
         <div class="best_service">
-            <div class="more_service">서비스 더보기 ></div>
+            <div class="more_service" onclick="location.href='selectCategories.ma?sNum=1&sName=통번역'">서비스 더보기 ></div>
 
             <div class="service_card" onclick="">
                 <img class="service_bigimg" src="${path}/resources/source/service25.jpg">
@@ -195,9 +196,9 @@
 
         </div>
 
-        <h2 id="com_h2">커뮤니티 인기글</h2>
+        <h2 id="com_h2" >커뮤니티 인기글</h2>
         <div class="best_community" onclick="">
-            <div class="more_com" onclick="location.href='board.html'">전체보기 ></div>
+            <div class="more_com" onclick="location.href='boardList.bo'">전체보기 ></div>
             <div class="com_text">
                 <div class="com_main">
                     <p class="com_category">통번역</p>
@@ -249,7 +250,7 @@
             <img src="${path}/resources/source/movie.jpg" alt="커뮤니티이미지" class="com_img">
         </div>
 
-        <div class="best_community" onclick="">
+        <div class="best_community" onclick="boardList.bo">
             <div class="com_text">
                 <div class="com_main">
                     <p class="com_category">통번역</p>
@@ -277,7 +278,8 @@
 
     </main>
 
-<!-- footer -->
+	<!-- footer -->
 	<jsp:include page="common/footer.jsp"/>
+	
 </body>
 </html>

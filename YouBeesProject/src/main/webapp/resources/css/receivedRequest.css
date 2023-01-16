@@ -14,7 +14,7 @@
 main {
     width: 970px;
     height: 50rem;
-    padding-top: 130px;
+    padding-top: 100px;
 }
 
 .mainTitle {
@@ -40,6 +40,7 @@ main {
 }
 
 .requestInfo {
+	width: 45%;
     margin-left: 0;
 }
 
@@ -62,9 +63,15 @@ main {
     margin-left: 0;
     color: gray;
     font-size: 0.7rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    height: 0.5rem;
 }
 
-.requestTimeNdelete {
+.requestTimeNdetail {
     display: flex;
     flex-direction: column;
 }
@@ -82,6 +89,7 @@ main {
     width: 5rem;
     height: 2.3rem;
 }
+
 .detailBtn:hover {
     cursor: pointer;
 }
@@ -104,11 +112,10 @@ main {
     left: 40%;
     top: 7%;
     width: 30rem;
-    height: 50rem;
+    height: 37rem;
     background-color: #FFF;
     z-index: 10000;
 }
-
 
 .window .request_title {
     background-color: #ffd100;
@@ -125,9 +132,8 @@ main {
 
 .window .close {
     position: relative;
-    left: 10rem;
-     cursor: pointer;
-    
+    left: 9rem;
+    cursor: pointer;
 }
 
 .request_form {
@@ -136,7 +142,7 @@ main {
 
 .request_form textarea {
     width: 27rem;
-    height: 6rem;
+    height: 3rem;
     resize: none;
     border: 1px solid lightgray;
     border-radius: 0.5rem;
@@ -145,15 +151,13 @@ main {
 
 .question1,
 .question2,
-.question3,
-.question4 {
+.question3 {
     margin: 1rem 0;
 }
 
 .quest1,
 .quest2,
-.quest3,
-.quest4 {
+.quest3 {
     margin: 2rem 0;
 }
 
@@ -165,17 +169,22 @@ main {
     padding: 0 0.3rem;
 }
 
+.accNdec{
+	display: flex;
+}
 
-
-
-.request_send {
-    padding: 0.7rem 1rem;
+.btn1, 
+.btn2 {
+    padding: 1rem 2rem;
     background-color: #202020;
     border: none;
     border-radius: 0.5rem;
     color: white;
     display: flex;
-    margin: 3.5rem auto 0;
     cursor: pointer;
-    margin: 1rem auto;
+    font-size: 1rem;
+}
+
+.btn1 {
+	margin-right: 0;
 }
