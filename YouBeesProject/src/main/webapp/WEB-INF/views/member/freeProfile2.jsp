@@ -9,9 +9,9 @@
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <title>YouBees</title>
-            <link rel="stylesheet" type="text/css" href="${path}/resources/css/free_profile2.css?aa">
+            <link rel="stylesheet" type="text/css" href="${path}/resources/css/free_profile2.css?asasl">
             <script src="http://code.jquery.com/jquery-latest.js"></script>
-            <script type="text/javascript" src="${path}/resources/js/profile.js?a"></script>
+            <script type="text/javascript" src="${path}/resources/js/profile.js?asses"></script>
         </head>
 
         <body>
@@ -49,27 +49,82 @@
                         <tr>
                             <th>상세소개</th>
                             <th width="10%">
-                                <span class="regBtn detail_rev_btn">수정하기</span>
-                                <!-- <a href="" class="regBtn hidden">등록하기</a> -->
+                                <span class="regBtn1 detail_rev_btn">수정하기</span>
+                                <a href="" class="regBtn1 hidden">등록하기</a>
                             </th>
                         </tr>
                         <tr>
                             <td colspan="2">
-                                <div class="detail">
-                                    ${f.frContent}
-                                    <textarea name="" class="detail_revise hidden" cols="80" rows="10"></textarea>
-                                    <div />
+                                <div class="detail">${f.frContent}</div>
+                                <textarea name="" class="detail_revise hidden" cols="80" rows="6">${f.frContent}</textarea>
                             </td>
                         </tr>
                     </form>
                     <tr>
                         <th>활동지역</th>
-                        <th><span class="regBtn location_btn">변경하기</span></th>
+                        <th><span class="regBtn2 location_btn">변경하기</span>
+                        	<a href="" class="regBtn2 hidden">등록하기</a>
+                        </th>
                     </tr>
                     <tr>
-                        <td colspan="2">${f.f.location}</td>
+                        <td colspan="2"><div class="location">${f.f.location}</div>
+ 						<select id="regionSelect" class="hidden">
+							<option value="">선택</option>
+							<option value="1">서울</option>
+							<option value="2">세종</option>
+							<option value="3">강원</option>
+							<option value="4">인천</option>
+							<option value="5">경기</option>
+							<option value="6">충북</option>
+							<option value="7">충남</option>
+							<option value="8">경북</option>
+							<option value="9">대전</option>
+							<option value="10">대구</option>
+							<option value="11">전북</option>
+							<option value="12">경남</option>
+							<option value="13">울산</option>
+							<option value="14">광주</option>
+							<option value="15">부산</option>
+							<option value="16">전남</option>
+							<option value="17">제주</option>
+						</select>          
+						<select id="regionSelectDetail" name="location" class="hidden">
+							<option value="">선택</option>
+						</select>
+						<input type="hidden" name="region" class="region" value="">             
+                        </td>
                     </tr>
                     <form action="" id="certifi_from">
+                    <script>
+                    /* 지역리스트 가져옴 */
+                    $("#regionSelect").change(function(){
+                    	if($(this).val() != ""){
+                    		let lnum = $(this).val();
+                    		let location = $("#regionSelect  option:selected").text();
+                    		$(".region").val(location);
+                    		$.ajax({
+                    			url: "selectLocationList",
+                    			data: {lNum:$(this).val()},
+                    			success: function(list){
+                    				$("#regionSelectDetail").empty();
+                    				$("#regionSelectDetail").append("<option value='0'>선택</option>");
+                    				$("#regionSelectDetail").append("<option value='전체'>"+ location +"전체</option>");
+                    				for(let i in list){
+                    					let value = list[i].city;
+                    					let optionLabel = list[i].city;
+                    					let option = $("<option value="+ value +">"+optionLabel+"</option>");
+                    					$("#regionSelectDetail").append(option);
+                    				}
+                    			},
+                    			error: function(){
+                    				console.log("service목록 ajax 통신실패");
+                    			}
+                    		});
+                    	}
+                    });
+
+                    </script>
+                    
                         <tr>
                             <th>작업물 및 자격정보</th>
                             <th><span class="regBtn certifi_btn">등록하기</span></th>
@@ -173,7 +228,7 @@
                         <tr>
                             <td colspan="2">
                                 <span class="contect_time">${f.callTime}</spen>
-                                    <input type="text" class="contect_revise hidden">
+                                <input type="text" class="contect_revise hidden" value="${f.callTime}">
                             </td>
                         </tr>
                     </form>
@@ -185,7 +240,7 @@
                         <tr>
                             <td colspan="2">
                                 <span class="career">${f.f.career}</span>
-                                <input type="text" class="career_revise hidden">
+                                <input type="number" class="career_revise hidden">
                             </td>
                         </tr>
                         <tr>
@@ -194,12 +249,13 @@
                         </tr>
                         <tr>
                             <td colspan="2">
-                                <span class="fee"></span>
-                                <input type="text" class="fee_revise hidden">
+                                <span class="fee">${f.price}</span>
+                                <input type="text" class="fee_revise hidden" value="${f.price}">
                             </td>
                         </tr>
                     </form>
                 </table>
+
                 <table class="review_area" align="left">
                     <tr>
                         <td width="10%">

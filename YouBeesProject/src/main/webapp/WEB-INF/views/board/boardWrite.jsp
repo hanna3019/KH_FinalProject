@@ -62,10 +62,10 @@ function resetimg() {
                 </select>
                 <select class="region_box" name="location">
                     <option value="">(선택) 지역</option>
-					<option value="1">서울</option>
-					<option value="2">세종</option>
-					<option value="3">강원</option>
-					<option value="4">인천</option>
+					<option value="서울">서울</option>
+					<option value="세종">세종</option>
+					<option value="강원">강원</option>
+					<option value="인천">인천</option>
 					<option value="5">경기</option>
 					<option value="6">충북</option>
 					<option value="7">충남</option>

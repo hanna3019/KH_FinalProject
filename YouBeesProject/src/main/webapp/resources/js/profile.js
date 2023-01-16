@@ -2,19 +2,33 @@ $(function () {
     $(".detail_rev_btn").click(function () {
         $(".detail_revise").toggleClass("hidden");
         $(".detail").toggleClass("hidden");
+        $(".regBtn1").toggleClass("hidden");
     });
 
     $(".contect_btn").click(function () {
         $(".contect_revise").toggleClass("hidden");
         $(".contect_time").toggleClass("hidden");
-    })
+    });
 
     $(".career_btn").click(function () {
         $(".career_revise").toggleClass("hidden");
         $(".career").toggleClass("hidden");
-    })
+    });
+    
+    $(".fee_btn").click(function () {
+        $(".fee_revise").toggleClass("hidden");
+        $(".fee").toggleClass("hidden");
+    });
+    
+    $(".location_btn").click(function () {
+        $("#regionSelect").toggleClass("hidden");
+        $("#regionSelectDetail").toggleClass("hidden");
+        $(".location").toggleClass("hidden");
+        $(".regBtn2").toggleClass("hidden");
+    });
 
 });
+
 
 function wrapWindowByMask() {
 

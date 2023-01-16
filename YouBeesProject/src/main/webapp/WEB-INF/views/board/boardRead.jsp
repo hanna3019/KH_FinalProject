@@ -48,8 +48,33 @@
 					<span class="commentCnt" id="rcount">0</span>
 				</div>
 			</div>
-		</div>
+			
+<!-- 수정, 삭제 -->		
+			<c:if test="${ loginUserC.name eq b.name}">
+				<div align="center">
+					 <a onclick="postFormSubmit(1);">수정하기</a>
+					 <a onclick="postFormSubmit(2);">삭제하기</a>
+				</div><br><br>
+			</c:if>
+			
+			<form action="" method="post" id="postForm">
+				<input type="hidden" name="bno" value="${ b.bnum }">
+	            <input type="hidden" name="filePath" value="${ b.changeName }">
+			</form>
 		
+		</div>
+	
+		<script>
+			function postFormSubmit(num) {
+				if(num == 1) {
+					$("#postForm").attr("action", "updateForm.bo").submit();
+				} else {
+					$("#postForm").attr("action", "delete.bo").submit();
+				}
+			}
+		</script>
+		
+<!-- 댓글  -->	
 		<div class="comment">
 			<div class="comment_area">
 				<%-- <img src="${path}/resources/source/lico.png" alt="user" class="comment_img"> --%>
@@ -61,7 +86,7 @@
 		</div>
 	</div>
 
-	<!-- 댓글  ajax -->
+<!-- 댓글  ajax -->
 
 	<script>
  		$(function() {
