@@ -8,7 +8,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>YouBees</title>
-	<link rel="stylesheet" href="${path}/resources/css/read.css">
+	<link rel="stylesheet" href="${path}/resources/css/read.css?a">
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
 </head>
 
@@ -26,7 +26,7 @@
 			<div class="container_writer">
 				<img class="writer_img" src="${path}/resources/source/lico.png">
 				<div class="writer_info">
-					<span class="writer_name">${b.name }</span>
+					<span class="writer_naome">${b.name }</span>
 					<span class="create_date">${b.regDate } · 조회수${b.count }</span>
 				</div>
 			</div>
@@ -61,7 +61,9 @@
 				<input type="hidden" name="bno" value="${ b.bnum }">
 	            <input type="hidden" name="filePath" value="${ b.changeName }">
 			</form>
-		
+			
+			
+					
 		</div>
 	
 		<script>
@@ -79,17 +81,38 @@
 			<div class="comment_area">
 				<%-- <img src="${path}/resources/source/lico.png" alt="user" class="comment_img"> --%>
 				<div class="comment_write" id="comments_area">
+				
+						
 				</div>
+					<form action="rdelete.bo" method="post" id="delete_postForm">
+							<input type="hidden" name="cnum" value="" class="cnum">
+					</form>
+				
+			
 			</div>
 			<textarea placeholder="댓글을 남겨보세요." name="cContent" id="content"></textarea>
 			<button class="submit" onclick="addReply();">등록</button>
 		</div>
 	</div>
+	
+
+	
+	
+	<!-- <script>
+			function commentSubmit(num) {
+				if(num == 1) {
+					$("#postForm").attr("action", "rupdate.bo").submit();
+				} else {
+					$("#postForm").attr("action", "rdelete.bo").submit();
+				}
+			}
+	</script> -->
 
 <!-- 댓글  ajax -->
 
 	<script>
  		$(function() {
+ 		/* 	selectReplyList(); */
  			setInterval(selectReplyList, 1000);
 		})
 		
@@ -101,10 +124,21 @@
 					console.log(list);
 					let value= "";
 					for(let i in list){
-						value += "<div class=comment_writer>" + list[i].cWriter  + "</div>"
-							  +	 "<div class=freelancer>"                     +"</div>"
-							  +	 "<div class=comment_content>"+ list[i].cContent + "</div>"
-							  +	 "<div class=comment_time>"   + list[i].regDate  + "</div>"
+						value += "<div class='comment_flex'>"          
+							  +	 "	<div>"
+							  +	 "		<div class='comment_writer'>" + list[i].cWriter  + "</div>"
+							  +	 "		<div class='freelancer'>"+ "프리랜서"+"</div>"
+							  +  "	</div>"
+							  
+							  +  "	<div class='update_delete_btn'>"
+							  +  "		<span id='rvsBtn'>수정</span>"  
+							  +  "		<a onclick='delete_postFormSubmit("+list[i].cnum+");'>삭제</a>"
+							  +  "  </div>"
+							  +  "</div>" 
+							  +	 "<div class='comment_content'>"+ list[i].cContent + "</div>"
+							  +  "<textarea class='commentRvs hidden'>"+ list[i].cContent +"</textarea>"
+							  +	 "<div class='comment_time'>"   + list[i].regDate  + "</div>"
+							
 					}
 					$("#comments_area").html(value);
 					$("#rcount").text(list.length);
@@ -114,8 +148,22 @@
 				}
 			});
 		 }
-	 
-	</script>
+ 		
+ 		function delete_postFormSubmit(cnum) {
+ 			$(".cnum").val(cnum)
+			$("#delete_postForm").submit();
+		}
+		
+ 		$(function(){
+ 			$(document).on("click", "#rvsBtn", function(){
+ 				$(".commentRvs").toggleClass("hidden");
+ 				$(".comment_content").toggleClass("hidden"); 				
+ 			})
+ 		})
+ 		
+ 		
+ 		
+ 		</script>
 	
 	<c:choose>
 		<c:when test="${not empty loginUserF}">
