@@ -76,16 +76,17 @@ public class MatchingController {
 	}
 	
 	@RequestMapping("freelancerDetail.ma")
-	public String freelancerDetail(int fNum, Model model) {
-		FreelancerProfile f = mService.selectFreelancerDetail(fNum);
+	public String freelancerDetail(Freelancer fc, Model model) {
+		System.out.println(fc);
+		FreelancerProfile f = mService.selectFreelancerDetail(fc);
 		model.addAttribute("f", f);
 		return "matching/freeProfile";
 	}
 	
 
 	@RequestMapping("freeProfile.ma")
-	public String freeProfile(int fNum, Model model) {
-		FreelancerProfile f = mService.selectFreelancerDetail(fNum);
+	public String freeProfile(Freelancer fc, Model model) {
+		FreelancerProfile f = mService.selectFreelancerDetail(fc);
 		model.addAttribute("f", f);
 		return "member/freeProfile2";
 	}

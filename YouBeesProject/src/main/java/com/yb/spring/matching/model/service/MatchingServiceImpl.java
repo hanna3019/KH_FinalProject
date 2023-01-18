@@ -44,8 +44,8 @@ public class MatchingServiceImpl implements MatchingService{
 	}
 	
 	@Override
-	public FreelancerProfile selectFreelancerDetail(int fNum) {
-		return mDao.selectFreelancerDetail(sqlSession, fNum);
+	public FreelancerProfile selectFreelancerDetail(Freelancer f) {
+		return mDao.selectFreelancerDetail(sqlSession, f);
 	}
 
 	@Override
