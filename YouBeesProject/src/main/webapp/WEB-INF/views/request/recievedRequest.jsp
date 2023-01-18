@@ -22,19 +22,20 @@
     
         <div class="mainTitle">받은요청</div>
         
-        <!-- 요청1 -->
+        <!-- 요청 1 -->
+        <c:forEach var="r" items="${rList}">
         <div class="requestProfile">
             <img src="${path}/resources/source/user.png" alt="user">
             <div class="requestInfo">
-                <div class="userName" name="">정한나</div>
-                <div class="location" name="">서울 영등포구</div>
-                <div class="detail"><span name=""><span> / <span name=""><span> / <span name=""><span></div>
+                <div class="userName">${r.name}</div>
+                <div class="detail"><span>${r.a.ans1}</span> / <span>${r.a.ans2}</span> / <span>${r.a.ans3}</span></div>
             </div>
             <div class="requestTimeNdetail">
-                <div class="createTime">2시간 전</div>
+                <div class="createTime">${r.regDate}</div>
                 <button type="button" class="detailBtn openMask">상세보기</button>
 			</div>
 		</div>
+		</c:forEach>
                
         <!-- 받은요청 모달창 -->
         <form action="" method="post">
@@ -47,15 +48,15 @@
                 <div class="request_form">
                     <div class="quest1">
                         <div class="question2">매칭을 원하는 이유는 무엇인가요?</div>
-                        <textarea name=""></textarea>
+                        <div>${r.a.ans1}</div>
                     </div>
                     <div class="quest2">
                         <div class="question2">원하는 가격대는 얼마인가요?</div>
-                        <textarea name=""></textarea>
+                        <div>${r.a.ans2}</div>
                     </div>
                     <div class="quest3">
                         <div class="question3">그 외 전달하고 싶은 사항이 있다면 알려주세요.</div>
-                        <textarea name=""></textarea>
+                        <div>${r.a.ans3}</div>
                     </div>
                 </div>
                 <div class="accNdec">

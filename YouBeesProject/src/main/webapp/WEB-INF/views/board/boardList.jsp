@@ -11,10 +11,49 @@
 	<link rel="stylesheet" href="${path}/resources/css/board.css">
 	<title>YouBees</title>
 </head>
+
 <style>
- a:hover{
+a:hover{
  	cursor: pointer;
+}
+
+.pagination li{ 
+    list-style: none;
+} 
+
+#pagingArea {
+    text-align:center;
+    font-size:0;
  }
+
+.pagination  {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top:1.4rem;
+}
+
+ 
+
+.pagination a {
+
+    display:block;
+    float:left;
+    width:2rem;
+    height:2rem;
+    line-height:2rem;
+    text-align:center;
+    background-color:#fff;
+    font-size:0.9rem;
+    color:black;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.pagination a:hover{
+    background-color:#CCC;
+    color:white;
+}
 </style>
 
 <body>
@@ -40,8 +79,6 @@
 						<div class="board_content">			
 							<div class="board_post">
 								<div class="board_main">
-								
-								
 								
 									<h4>${ b.title }</h4>
 									<p>${ b.content }</p>
@@ -75,7 +112,7 @@
                 <ul class="pagination" style="display:flex">
                 	<c:choose>
                 		<c:when test="${ pi.nowPage eq 1 }">
-	                    	<li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
+	                    	<li class="page-item disabled"><a class="page-link" href="#">Prev</a></li>
 	                	</c:when>
 	                	<c:otherwise>
 	                		<li class="page-item"><a class="page-link" href="boardList.bo?cpage=${ pi.nowPage-1 }">Previous</a></li>

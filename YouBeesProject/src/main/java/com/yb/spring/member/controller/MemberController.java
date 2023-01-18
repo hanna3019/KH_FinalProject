@@ -66,10 +66,12 @@ public class MemberController {
 	public String toMain() {
 		return "redirect:/";
 	}
+	
 	@RequestMapping("freeProfile.me")
 	public String freeProfile() {
 		return "member/freeProfile";
 	}
+	
 	@RequestMapping("myInfoEdit.me")
 	public String myInfoEdit() {
 		return "member/myInfoEdit";
@@ -128,10 +130,10 @@ public class MemberController {
 
 		int result = mService.insertCustomer(c);
 		if (result > 0) {
-			session.setAttribute("alertMsg", "회원가입이 완료되었습니다");
+			session.setAttribute("alertMsg", "회원가입이 완료되었습니다😀");
 			return "redirect:/";
 		} else {
-			model.addAttribute("errorMsg", "회원가입 실패");
+			model.addAttribute("errorMsg", "회원가입에 실패했습니다😢");
 			return "member/join_c";
 		}
 	}
@@ -161,7 +163,7 @@ public class MemberController {
 				mv.setViewName("main");
 			}
 		} else {
-			mv.addObject("errorMsg", "로그인 실패");
+			mv.addObject("errorMsg", "로그인에 실패했습니다😢");
 			mv.setViewName("member/login");
 		}
 		return mv;

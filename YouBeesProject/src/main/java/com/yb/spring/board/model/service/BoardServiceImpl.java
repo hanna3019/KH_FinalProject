@@ -55,8 +55,7 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public int updateBoard(Board b) {
-		// TODO Auto-generated method stub
-		return 0;
+		return bDao.updateBoard(sqlSession, b);
 	}
 
 	@Override
