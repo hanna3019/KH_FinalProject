@@ -174,7 +174,7 @@ public class BoardController {
 	  public String deleteComment(int cnum ,HttpSession session, Model model ) {
 		  int result = bService.deleteComment(cnum);
 		 
-		  return "redirect:rlist.bo"; 
+		  return "board/boardRead"; 
 	  }
 	  
 	  
