@@ -39,7 +39,7 @@ public interface MatchingService {
 	ArrayList<Location> selectCityList();
 	
 	// 프리랜서 프로필 정보 가져오기
-	FreelancerProfile selectFreelancerDetail(int fNum);
+	FreelancerProfile selectFreelancerDetail(Freelancer f);
 	
 	// 프리랜서의 매칭횟수 가져오기
 	

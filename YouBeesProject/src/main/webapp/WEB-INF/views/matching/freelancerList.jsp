@@ -81,7 +81,14 @@
 	            <table class="free_pro">
 	                <tr>
 	                    <td colspan="4">
-	                    <a href="freelancerDetail.ma?fNum=${l.freeNum}"><h4>${l.f.name}</h4></a>
+	                    <c:choose>
+	                    	<c:when test="${not empty loginUserC}">
+			                    <a href="freelancerDetail.ma?freeNum=${l.freeNum}&cusNum=${loginUserC.cusNum}"><h4>${l.f.name}</h4></a>
+	                    	</c:when>
+	                    	<c:otherwise>
+			                    <a href="freelancerDetail.ma?freeNum=${l.freeNum}"><h4>${l.f.name}</h4></a>
+	                    	</c:otherwise>
+	                    </c:choose>
 	                    </td>
 	                    <td rowspan="3" class="pro_img"><img src="${path}/resources/source/profile.png" alt="" class="pro_img"></td>
 	                </tr>
@@ -222,8 +229,14 @@
 					let value = '';
 					for(let i in fList){
 						value += '<table class="free_pro">'
-							  + ' <tr><td colspan="4">'
-							  + '<a href="freelancerDetail.ma?fNum='+fList[i].freeNum+'"><h4>'+fList[i].f.name+'</h4></a></td>'
+							  + ' <tr><td colspan="4">';
+							  
+							  if($("#cusNum").val() == '0'){
+								  value += '<a href="freelancerDetail.ma?freeNum='+fList[i].freeNum+'">';
+							  }else{
+								  value += '<a href="freelancerDetail.ma?freeNum='+fList[i].freeNum+'&cusNum='+${loginUserC.cusNum}+'">';
+							  }
+							  value += '<h4>'+fList[i].f.name+'</h4></a></td>'
 							  + '<td rowspan="3" class="pro_img"><img src="/spring/resources/source/profile.png" alt="" class="pro_img"></td></tr>'
 							  + '<tr><td colspan="4" class="title">'+fList[i].oneContent+'</td></tr>'
 							  + '<tr class="review">'

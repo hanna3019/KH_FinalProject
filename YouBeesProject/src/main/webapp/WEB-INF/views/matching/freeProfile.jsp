@@ -173,7 +173,14 @@
             <h4>프리랜서에게 요청을 보내보세요!</h4>
             <div>   
                 <button class="heart_box">
-                    <img src="${path}/resources/source/heart3.png" alt=찜하기 class="heart_icon">
+                <c:choose>
+                	<c:when test="${f.status eq 'Y'}">
+	                    <img src="${path}/resources/source/heart2.png" alt=찜하기 class="heart_icon">
+                	</c:when>
+                	<c:otherwise>
+	                    <img src="${path}/resources/source/heart3.png" alt=찜하기 class="heart_icon">
+                	</c:otherwise>
+                </c:choose>
                 </button>
              
                 <button class="openMask">요청하기</button>
