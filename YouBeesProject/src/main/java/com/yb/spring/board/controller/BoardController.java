@@ -89,13 +89,11 @@ public class BoardController {
 	      return changeName;
 	   }
 	
-	
 	@RequestMapping("boardWriteForm.bo")
 	public String boardWriteForm() {
 		return "board/boardWrite";
 	}
 	
-
 	@RequestMapping("boardRead.bo")
 	public ModelAndView selectBoard(int bno, ModelAndView mv) {
 		int result = bService.increaseCount(bno);
@@ -136,11 +134,7 @@ public class BoardController {
 		return "board/errorpage";
 	}
 	
-}
-	
-	
-	
-	
+}	
 	
 	@ResponseBody
 	@RequestMapping("rinsert.bo")
@@ -148,8 +142,6 @@ public class BoardController {
 			int result = bService.insertComment(c);
 			return result > 0 ? "success" : "fail";
 		}
-	
-	
 	
 	@ResponseBody 
 	@RequestMapping(value="rlist.bo", produces="application/json; charset=utf-8")

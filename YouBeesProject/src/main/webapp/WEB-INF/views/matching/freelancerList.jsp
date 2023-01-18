@@ -43,7 +43,7 @@
                             class="drp_icon"></button>
                 </div>
                 <form action="freelancerList.ma">
-                    <input type="text" size="7" class="priceInp" name="price1"> &ensp;~&ensp; <input type="text" size="7"
+                    <input type="number" min="0" size="7" class="priceInp" name="price1"> &ensp;~&ensp; <input type="number" min="0" size="7"
                         class="priceInp" name="price2">
                     <input type="hidden" name="location" class="filterLocation" value="${selectedLocation}">
 			        <input type="hidden" name="cateNum" value="${selected.cateNum}">

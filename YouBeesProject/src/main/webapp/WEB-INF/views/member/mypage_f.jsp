@@ -42,9 +42,6 @@
                 <tr>
                     <th class="title"><a href="boardList.bo">커뮤니티 작성글/댓글</a></th>
                 </tr>
-                <tr>
-                    <th class="title"><a href="#">1:1 문의</a></th>
-                </tr>
             </table>
         </div>
     </main>

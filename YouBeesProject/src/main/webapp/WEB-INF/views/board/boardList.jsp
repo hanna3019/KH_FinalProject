@@ -33,8 +33,6 @@ a:hover{
     margin-top:1.4rem;
 }
 
- 
-
 .pagination a {
 
     display:block;
@@ -54,6 +52,7 @@ a:hover{
     background-color:#CCC;
     color:white;
 }
+
 </style>
 
 <body>

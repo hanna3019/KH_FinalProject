@@ -19,7 +19,7 @@
 .editTitle {
     font-size: 1.8rem;
     font-weight: bold;
-    padding: 4rem 0;
+    padding: 3rem;
     border-bottom: 1px solid #eee;
 }
 
@@ -92,18 +92,15 @@
     cursor: pointer;
 }
 
-
-
-
 .deleteBtn{
 	display: flex;
     border: none;
-    border-radius: 0.4rem;
-    background-color: #ffd100;
     cursor: pointer;
-    
+    margin: 3rem auto;
+    color: lightgray;
+    text-decoration: underline;
+    background-color: white;
 }
-
 
 /* 마스크 띄우기 */
 #mask {
@@ -126,7 +123,6 @@
     background-color: #FFF;
     z-index: 10000;
 }
-
 
 .window .delete_title {
     background-color: #ffd100;
@@ -161,17 +157,13 @@
     padding: 0.5rem;
 }
 
-
-
 .question1,
-.question2
- {
+.question2 {
     margin: 1rem 0;
 }
 
 .quest1,
-.quest2
- {
+.quest2 {
     margin: 2rem 0;
 }
 
@@ -183,6 +175,7 @@
     border-radius: 0.5rem;
     padding: 0.5rem;
 }
+
 .request_send {
     padding: 0.7rem 1rem;
     background-color: #202020;
