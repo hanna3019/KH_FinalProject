@@ -57,7 +57,7 @@
 	
 	<insert id="insertCustomer">
   		insert into customer 
-  				values(seq_cus.nextval, #{name},#{userId},  #{pass},  #{phone}, 'C', null, 'Y')
+  				values(seq_cus.nextval, #{name}, #{userId}, #{pass}, #{phone}, 'C', null, 'Y')
     </insert>
 
     <select id="idCheck" resultType="_int">
@@ -92,8 +92,20 @@
 		where user_id = #{userId} and status = 'Y'
 	</select>
 	
+	<update id="updateFreeMember">
+  	update freelancer
+  	   set name=#{name}, user_id=#{userId}, tel=#{tel}, gender=#{gender}, pass=#{pass}
+  	 where free_num = #{freeNum}
+  </update>
+	
 	<update id="deletefreeMember">
   	update freeLancer
+  	   set status = 'N'
+  	 where free_num = #{freeNum}
+  	</update>
+  	
+  	<update id="deleteCusMember">
+  	update customer
   	   set status = 'N'
   	 where free_num = #{freeNum}
   	</update>

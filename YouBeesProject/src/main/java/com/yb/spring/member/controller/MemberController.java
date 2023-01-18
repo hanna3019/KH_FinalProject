@@ -39,6 +39,7 @@ public class MemberController {
 	@RequestMapping("CustomerEnrollForm.me")
 	public String CustomerEnrollForm() {
 		return "member/join_c";
+		
 	}
 
 	@RequestMapping("FreelancerEnrollForm.me")
@@ -68,10 +69,12 @@ public class MemberController {
 	public String freeProfile() {
 		return "member/freeProfile";
 	}
-	@RequestMapping("myInfoEdit.me")
-	public String myInfoEdit() {
-		return "member/myInfoEdit";
-	}
+	
+	  @RequestMapping("myInfoEdit.me")
+	  public String myInfoEdit() {
+	  return"member/myInfoEdit"; 
+	  }
+	 
 
 	@RequestMapping("main.me")
 	public String main() {
@@ -118,10 +121,10 @@ public class MemberController {
 
 		int result = mService.insertCustomer(c);
 		if (result > 0) {
-			session.setAttribute("alertMsg", "회원가입이 완료되었습니다");
+			session.setAttribute("alertMsg", "회원가입이 완료되었습니다😀");
 			return "redirect:/";
 		} else {
-			model.addAttribute("errorMsg", "회원가입 실패");
+			model.addAttribute("errorMsg", "회원가입 실패했습니다😢");
 			return "member/join_c";
 		}
 	}
@@ -139,6 +142,7 @@ public class MemberController {
 		Customer loginUser = mService.loginMember(c.getUserId());
 
 		if (loginUser != null && bcryptPasswordEncoder.matches(c.getPass(), loginUser.getPass())) {
+			System.out.println("성공 : id=" + loginUser.getUserId() +", type=" + loginUser.getType());
 			if (loginUser.getType().equals("F")) {
 				Freelancer loginUserF = mService.loginMemberF(c.getUserId());
 				session.setAttribute("loginUserF", loginUserF);
@@ -164,12 +168,28 @@ public class MemberController {
 		return "redirect:/";
 	}
 	
+	/*프리랜서 업데이트*/
+	@RequestMapping("myInfoUpdate.me")
+	public String updateFreeMember(Freelancer f, HttpSession session, Model model) {
+		String encPwd = bcryptPasswordEncoder.encode(f.getPass());
+		f.setPass(encPwd);
+		int result = mService.updateFreeMember(f);
+		if(result > 0) {
+			session.setAttribute("loginUserF", mService.loginMemberF(f.getUserId()));
+			session.setAttribute("alertMsg", "성공적으로 정보가 변경되었습니다");
+			return "redirect:/";
+	
+		} else {
+			model.addAttribute("errorMsg", "회원정보 변경 실패");
+			return "redirect:/";
+		}
+		
+	}
 	
 	/*프리랜서 탈퇴*/
 	@RequestMapping("freeDelete.me")
 	public String deleteFreeMember(String pass, int freeNum, HttpSession session, Model model) {
 		String encPwd = ((Freelancer)session.getAttribute("loginUserF")).getPass(); //현재 입력한 비밀번호 가져오는거 encPwd는 지금 입력한 비밀번호
-		System.out.println(freeNum);
 		if(bcryptPasswordEncoder.matches(pass, encPwd)) {//지금 입력한 비밀번호와 원래 userPwd->데이터베이스에 들어가 있는 비밀번호가 맞는지 match로 확인
 			int result = mService.deleteFreeMember(freeNum); //맞으면 여기 실행
 			if(result > 0) { // result가 0보다 크면 회원가입이 잘 들어갈 시 1이 들어가니까 잘 들어갔다는 뜻

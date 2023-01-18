@@ -22,69 +22,82 @@
                 <div class="title">일반 회원가입</div>
                 <tr>
                     <td class="closer">*이름</td>
-                    <td><input name="name" type="text" required placeholder=""></td>
+                    <td><input name="name" type="text"  placeholder=""></td>
+                   <!--  <tr colspan="2" id="name_hidden"></tr> -->
                 </tr>
+                
                 <tr>
                     <td class="closer">*아이디</td>
-                    <td><input id="userId" name="userId" type="text" required placeholder="5자 이상 입력하세요"><br>
+                    <td><input id="userId" name="userId" type="text"  placeholder="5자 이상 입력하세요"><br>
                     <span class="idCheck"></span>
                     </td>
                 </tr>
                 <tr>
                     <td class="closer">*비밀번호</td>
-                    <td><input type="password" name="pass" required placeholder=""></td></br>
+                    <td><input type="password" name="pass"  placeholder=""></td></br>
                 </tr>
                 <tr>
                     <td class="closer">*비밀번호 확인</td>
-                    <td><input type="password" name="repwd" required placeholder=""></td>
+                    <td><input type="password" name="repwd"  placeholder=""></td>
                 </tr>
                 <tr>
                     <td class="closer">*전화번호</td>
-                    <td><input name="phone" required placeholder=""></td>
+                    <td><input name="phone"  placeholder=""></td>
                 </tr>
             </table>
 
             <div class="tou">
-            	<label for="agree1"> 
-                <div class="tou1" colspan="2">
-                <input id="agree1" class="agree" type="checkbox" name="agree" required value="Y,N">이용약관 동의 (필수)
-                	</label>	
-                </div>
-                <label for="agree2">
-                <div class="tou2" colspan="2"> 
-                 <input  id="agree2" class="agree" type="checkbox" name="agree" required value="Y,N">
-                       	개인정보 수집 및 동의(필수)
-                       	</label>
-                </div>
-				<label for="agree3">
-                <div class="tou3" colspan="2">
-                 <input  id="agree3" class="agree" type="checkbox" name="agree" required value="Y,N">
-                 	 만 14세 이상 (필수)
-                 	 </label>
-                </div>
-            </div>
+            	<div class="tou1" colspan="2"><input class="agree" id="agree1" type="checkbox" name="agree"  value="Y,N">
+					<label for="agree1">이용약관 동의 (필수)</label>
+				</div>
+				<div class="tou2" colspan="2"><input class="agree" id="agree2" type="checkbox" name="agree2"  value="Y,N">
+					<label for="agree2">개인정보 수집 및 동의 (필수)</label></div>
+
+				<div class="tou3" colspan="2"><input class="agree" id="agree3" type="checkbox" name="agree3"  value="Y,N">
+					<label for="agree3">만 14세 이상 (필수)</label>
+				</div>
+			</div>
 
             <div class="joinSubmit">
-                <input class="submit" type="button" value="회원가입" onClick="inputCheck();" id="submitBtn">
-               
-                 <script>
-				function inputCheck() {
-				alert("가입에 성공하셨습니다");
-				}
-				</script>
+                <input class="submit" type="button" id="submitBtn" value="회원가입" onclick="inputCheck();">
+              
                 <input class="submit" type="reset" value="돌아가기">
             </div>
         </form>
+        
         	<script type="text/javascript">
         		function inputCheck(){
+        			if(customerEnrollFrm.name.value == ""){
+        				alert("이름을 입력해주세요");
+        				return;
+        			}
+        			if(customerEnrollFrm.userId.value== ""){
+        				alert("아이디를 입력해주세요");
+        				return;
+        			}
+        			if(customerEnrollFrm.pass.value== ""){
+        				alert("비밀번호를 입력해주세요");
+        				return;
+        			}
         			if(customerEnrollFrm.pass.value != customerEnrollFrm.repwd.value){
         				alert("비밀번호가 일치하지 않습니다");
         				customerEnrollFrm.repwd.focus();
         				return;
         			}
-        				customerEnrollFrm.submit();
+					if(customerEnrollFrm.phone.value == ""){
+						alert("전화번호를 입력해주세요");
+						return;
+        			}
+        			if(!customerEnrollFrm.agree.checked || !customerEnrollFrm.agree2.checked || !customerEnrollFrm.agree3.checked){
+        				alert("약관동의를 해주세요");
+        				return;
+        			}
+        			customerEnrollFrm.submit()
+        			
         		}
+        		
         	
+
         		$(function(){
         			const $idInput = $("#userId");
         			       $idInput.keyup(function(){
