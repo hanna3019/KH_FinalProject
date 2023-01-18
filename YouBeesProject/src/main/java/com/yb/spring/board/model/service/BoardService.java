@@ -35,6 +35,12 @@ public interface BoardService {
 	// 9. 댓글 작성(ajax)
 	int insertComment(Comments c);
 	
+	// 10. 댓글 수정(ajax)
+	int updateComment(Comments c);
+	
+	// 11. 댓글 삭제
+	int deleteComment(int cnum);
+	
 	// 10. 좋아요 등록하기(ajax)
 	int insertLikes(Likes l);
 	

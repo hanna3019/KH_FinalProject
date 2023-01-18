@@ -49,8 +49,7 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public int deleteBoard(int bnum) {
-		// TODO Auto-generated method stub
-		return 0;
+		return bDao.deleteBoard(sqlSession, bnum);
 	}
 
 	@Override
@@ -67,7 +66,17 @@ public class BoardServiceImpl implements BoardService {
 	public int insertComment(Comments c) {
 		return bDao.insertComment(sqlSession, c);
 	}
-
+	
+	@Override
+	public int updateComment(Comments c) {
+		return bDao.updateComment(sqlSession, c);
+	}
+	
+	@Override
+	public int deleteComment(int cnum) {
+		return bDao.deleteComment(sqlSession, cnum);
+	}
+	
 	@Override
 	public int insertLikes(Likes l) {
 		return 0;
@@ -90,6 +99,8 @@ public class BoardServiceImpl implements BoardService {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+
 	
 	
 }

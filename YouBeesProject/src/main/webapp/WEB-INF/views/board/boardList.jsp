@@ -10,7 +10,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="${path}/resources/css/board.css">
 	<title>YouBees</title>
-</head>
+</head> 
 
 <style>
 a:hover{
@@ -82,7 +82,8 @@ a:hover{
 								
 									<h4>${ b.title }</h4>
 									<p>${ b.content }</p>
-									<p class="location">${ b.location }</p>			
+									<p class="location">${ b.location }·${b.serviceNum}</p>	
+										
 								
 								</div>
 								<%-- <c:if test="${ not empty b.changeName }"> 
