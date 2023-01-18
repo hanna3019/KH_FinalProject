@@ -202,10 +202,10 @@ public class MemberController {
 	
 	/* 프리랜서 프로필 수정 */
 	@RequestMapping("profileUpdate.me")
-	public String profileUpdate(FreelancerProfile fp, Model model) {
+	public String profileUpdate(FreelancerProfile fp, Freelancer fc, Model model) {
 		int result = mService.updateProfile(fp);
 		if(result > 0) {
-			FreelancerProfile f = maService.selectFreelancerDetail(fp.getFreeNum());
+			FreelancerProfile f = maService.selectFreelancerDetail(fc);
 			model.addAttribute("f", f);
 		}
 		return "member/freeProfile2";			
@@ -218,7 +218,7 @@ public class MemberController {
 		}
 		int result = mService.updateFreelancer(free);
 		if(result > 0) {
-			FreelancerProfile f = maService.selectFreelancerDetail(free.getFreeNum());
+			FreelancerProfile f = maService.selectFreelancerDetail(free);
 			model.addAttribute("f", f);
 		}
 		return "member/freeProfile2";			

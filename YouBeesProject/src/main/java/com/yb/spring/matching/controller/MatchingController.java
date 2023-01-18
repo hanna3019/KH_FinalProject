@@ -77,7 +77,6 @@ public class MatchingController {
 	
 	@RequestMapping("freelancerDetail.ma")
 	public String freelancerDetail(Freelancer fc, Model model) {
-		System.out.println(fc);
 		FreelancerProfile f = mService.selectFreelancerDetail(fc);
 		model.addAttribute("f", f);
 		return "matching/freeProfile";
