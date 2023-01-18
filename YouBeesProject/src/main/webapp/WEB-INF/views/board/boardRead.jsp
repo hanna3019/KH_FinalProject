@@ -86,6 +86,7 @@
 				</div>
 					<form action="rdelete.bo" method="post" id="delete_postForm">
 							<input type="hidden" name="cnum" value="" class="cnum">
+							<input type="hidden" name="bno" value="${b.bnum }">
 					</form>
 				
 			

@@ -171,9 +171,11 @@ public class BoardController {
 	  }
 	  
 	  @RequestMapping("rdelete.bo")
-	  public String deleteComment(int cnum ,HttpSession session, Model model ) {
+	  public String deleteComment(int cnum, int bno, HttpSession session, Model model ) {
+		  System.out.println(bno);
 		  int result = bService.deleteComment(cnum);
-		 
+		  Board b = bService.selectBoard(bno);
+		  model.addAttribute("b", b);
 		  return "board/boardRead"; 
 	  }
 	  
