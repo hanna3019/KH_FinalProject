@@ -48,11 +48,17 @@
     <div class="categories">
         <h2 class="title">${sName}</h2>
         <c:forEach var="c" items="${sList}">
-	        <div onclick="location.href='freelancerList.ma?cateNum=${c.cateNum}&cName=${c.name}'"><img src="${path}/resources/source/service${c.cateNum}.jpg" alt="">
+        	<c:choose>
+        		<c:when test="${not empty loginUserC}">
+			        <div onclick="location.href='freelancerList.ma?cateNum=${c.cateNum}&cName=${c.name}&cusNum=${loginUserC.cusNum}'"><img src="${path}/resources/source/service${c.cateNum}.jpg" alt="">        		
+        		</c:when>
+        		<c:otherwise>
+			        <div onclick="location.href='freelancerList.ma?cateNum=${c.cateNum}&cName=${c.name}&cusNum=0'"><img src="${path}/resources/source/service${c.cateNum}.jpg" alt="">        		
+        		</c:otherwise>
+        	</c:choose>
 	            <p>${c.name}</p>
 	        </div>        
         </c:forEach>
-    </div>
     </div>
     
 	<!-- footer -->

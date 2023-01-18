@@ -1,6 +1,7 @@
 package com.yb.spring.common.model.vo;
 
 public class PageInfo {
+	
 	private int listCount;	// 총 게시글의 수
 	private int nowPage;	// 현재페이지(요청한 페이지)
 	private int pageLimit;	// 하단에 보여질 페이징바의 페이지 목록 최대 개수
@@ -72,7 +73,6 @@ public class PageInfo {
 	public void setEndPage(int endPage) {
 		this.endPage = endPage;
 	}
-	
 	
 	
 }

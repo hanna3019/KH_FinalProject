@@ -48,13 +48,13 @@
             <div><img class="main_marketing" src="${path}/resources/source/marketing.png" alt="마케팅아이콘" onclick="location.href='selectCategories.ma?sNum=2&sName=마케팅'">
                 <p>마케팅</p>
             </div>
-            <div><img class="main_consulting" src="${path}/resources/source/consulting.png" alt="컨설팅아이콘" onclick="location.href='selectCategories.ma?sNum=2&sName=컨설팅'">
+            <div><img class="main_consulting" src="${path}/resources/source/consulting.png" alt="컨설팅아이콘" onclick="location.href='selectCategories.ma?sNum=3&sName=컨설팅'">
                 <p>컨설팅</p>
             </div>
-            <div><img class="main_security" src="${path}/resources/source/security.png" alt="보안아이콘" onclick="location.href='selectCategories.ma?sNum=2&sName=보안'">
+            <div><img class="main_security" src="${path}/resources/source/security.png" alt="보안아이콘" onclick="location.href='selectCategories.ma?sNum=4&sName=보안'">
                 <p>보안</p>
             </div>
-            <div><img class="main_print" src="${path}/resources/source/print.png" alt="인쇄아이콘" onclick="location.href='selectCategories.ma?sNum=2&sName=인쇄'">
+            <div><img class="main_print" src="${path}/resources/source/print.png" alt="인쇄아이콘" onclick="location.href='selectCategories.ma?sNum=5&sName=인쇄'">
                 <p>인쇄</p>
             </div>
             <div><img class="main_etc" src="${path}/resources/source/etc.png" alt="기타아이콘" onclick="location.href='selectCategories.ma?sNum=6&sName=기타'">

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.yb.spring.matching.model.vo.FreelancerProfile;
 import com.yb.spring.member.model.vo.Categories;
 import com.yb.spring.member.model.vo.Customer;
 import com.yb.spring.member.model.vo.Freelancer;
@@ -57,5 +58,16 @@ public class MemberDao {
 	public Customer loginMemberC(SqlSessionTemplate sqlSession, String userId) {
 		return sqlSession.selectOne("memberMapper.loginMemberC", userId);
 	}
-
+	
+	public int insertFreelancerProfile(SqlSessionTemplate sqlSession, Freelancer f) {
+		return sqlSession.insert("memberMapper.insertFreelancerProfile", f);
+	}
+	
+	public int updateProfile(SqlSessionTemplate sqlSession, FreelancerProfile f) {
+		return sqlSession.update("memberMapper.updateProfile", f);
+	}
+	
+	public int updateFreelancer(SqlSessionTemplate sqlSession, Freelancer f) {
+		return sqlSession.update("memberMapper.updateFreelancer", f);
+	}
 }

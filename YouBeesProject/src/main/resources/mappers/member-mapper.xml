@@ -99,9 +99,9 @@
   </update>
 	
 	<update id="deletefreeMember">
-  	update freeLancer
-  	   set status = 'N'
-  	 where free_num = #{freeNum}
+  		update freeLancer
+  	    set status = 'N'
+  	 	where free_num = #{freeNum}
   	</update>
   	
   	<update id="deleteCusMember">
@@ -110,4 +110,35 @@
   	 where free_num = #{freeNum}
   	</update>
 	
+	<insert id="insertFreelancerProfile">
+		insert into freelancer_profile values(#{freeNum}, null, null, null, sysdate, null, null)
+	</insert>
+	
+	<update id="updateProfile">
+		update freelancer_profile
+		<if test="oneContent != null">
+		set one_content = #{oneContent}
+		</if>
+		<if test="frContent != null">
+		set fr_content = #{frContent}
+		</if>
+		<if test="callTime != null">
+		set call_time = #{callTime}
+		</if>
+		<if test="price != 0">
+		set price = #{price}
+		</if>
+		where free_num = #{freeNum}
+	</update>
+	
+	<update id="updateFreelancer">
+		update freelancer
+		<if test="location != null">
+		set location = #{location}
+		</if>
+		<if test="career != null">
+		set career = #{career}
+		</if>
+		where free_num = #{freeNum}
+	</update>
 </mapper>

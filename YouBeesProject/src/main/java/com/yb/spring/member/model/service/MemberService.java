@@ -2,6 +2,7 @@ package com.yb.spring.member.model.service;
 
 import java.util.ArrayList;
 
+import com.yb.spring.matching.model.vo.FreelancerProfile;
 import com.yb.spring.member.model.vo.Categories;
 import com.yb.spring.member.model.vo.Customer;
 import com.yb.spring.member.model.vo.Freelancer;
@@ -42,5 +43,10 @@ public interface MemberService {
 	// 지역리스트 가져오기(ajax)
 	ArrayList<Location> selectLocationList(int num);
 	
+	// 프리랜서 프로필 등록
+	int insertFreelancerProfile(Freelancer f);
 	
+	// 프리랜서 프로필 수정
+	int updateProfile(FreelancerProfile f);
+	int updateFreelancer(Freelancer f);
 }

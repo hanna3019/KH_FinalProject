@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.yb.spring.request.model.dao.RequestDao;
 import com.yb.spring.request.model.vo.Answer;
 import com.yb.spring.request.model.vo.Request;
+import com.yb.spring.request.model.vo.Sent;
 
 @Service
 public class RequestServiceImpl implements RequestService{
@@ -32,9 +33,25 @@ public class RequestServiceImpl implements RequestService{
 	}
 
 	@Override
-	public ArrayList<Request> recievedRequestList(int free_num) {
-		return rDao.recievedRequestList(sqlSession, free_num);
+	public ArrayList<Request> recievedRequestList(int freeNum) {
+		return rDao.recievedRequestList(sqlSession, freeNum);
+	}
+	
+	@Override
+	public Answer requestDetail(int cusNum) {
+		return rDao.requestDetail(sqlSession, cusNum);
 	}
 
-	
+	@Override
+	public ArrayList<Sent> sentRequestList(int cusNum) {
+		return rDao.sentRequestList(sqlSession, cusNum);
+	}
+
+	/*
+	 * @Override public int selectListCount() { return
+	 * rDao.selectListCount(sqlSession); }
+	 */
+
+
+
 }

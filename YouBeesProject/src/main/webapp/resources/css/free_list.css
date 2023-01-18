@@ -197,9 +197,10 @@ button:hover {
     height: 2rem;
     padding: 0.2rem 0 0.2rem 1.5rem;
     outline: none;
-    border: 0.1rem solid #ffd100;
-    border-radius: 2rem;
-   	box-sizing: border-box;
+    border: none;
+    border-radius: 0.5rem;
+    box-sizing: border-box;
+    background-color: #ebebeb;
 }
 
 .search_btn {

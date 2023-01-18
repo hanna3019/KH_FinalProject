@@ -36,11 +36,27 @@ public class BoardDao {
 		return sqlSession.selectOne("boardMapper.selectBoard", bnum);
 	}
 	
+	public int updateBoard(SqlSessionTemplate sqlSession, Board b) {
+		return sqlSession.update("boardMapper.updateBoard", b);
+	}
+	
+	public int deleteBoard(SqlSessionTemplate sqlSession, int bnum) {
+		return sqlSession.update("boardMapper.deleteBoard", bnum);
+	}
+	
 	public int insertComment(SqlSessionTemplate sqlSession, Comments c) {
 		return sqlSession.insert("boardMapper.insertComment", c);
 	}
 	
 	public ArrayList<Comments> selectReplyList(SqlSessionTemplate sqlSession, int bnum) {
 		return (ArrayList)sqlSession.selectList("boardMapper.selectReplyList", bnum);
+	}
+	
+	public int updateComment(SqlSessionTemplate sqlSession, Comments c) {
+		return sqlSession.update("boardMapper.updateComment", c);
+	}
+	
+	public int deleteComment(SqlSessionTemplate sqlSession, int cnum) {
+		return sqlSession.update("boardMapper.deleteComment", cnum);
 	}
 }

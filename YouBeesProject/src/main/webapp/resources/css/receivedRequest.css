@@ -19,7 +19,7 @@ main {
 
 .mainTitle {
     border-bottom: 1px solid #eee;
-    padding: 2rem 0 2rem 5rem;
+    padding: 3rem;
     font-size: 1.8rem;
     font-weight: bold;
 }
@@ -171,6 +171,14 @@ main {
 
 .accNdec{
 	display: flex;
+}
+
+#ans1::-webkit-scrollbar {
+    display: none;
+}
+
+#ans3::-webkit-scrollbar {
+    display: none;
 }
 
 .btn1, 

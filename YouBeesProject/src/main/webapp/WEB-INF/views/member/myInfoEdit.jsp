@@ -75,9 +75,9 @@
             </table>
 
             <button type="submit" class="editBtn">수정하기</button>
-        	<button type="button" class="deleteBtn openMask">삭제하기</button>
-        	
-        	
+
+        	<button type="submit" class="deleteBtn openMask">탈퇴하기</button>
+
         </form>
         	
        </div>
@@ -91,32 +91,32 @@
                 </div>
                 <div class="delete_form">
                     <div class="quest1">
-                        <div class="question1">탈퇴를 하는 이유는 무엇인가요? 있다면 적어주세요</div>
+                        <div class="question1">탈퇴사유를 알려주시면 저희가 더 나은 서비스를 제공하는 데 큰 도움이 된답니다!</div>
                         <textarea></textarea>
                     </div>
                     <div class="quest2">
-                  		 <div class="question2">  비밀번호 : <input id="pass" type="password" name="pass" required>
-                      										<input type="hidden" name="freeNum" value="${loginUserF.freeNum}">
+                  		<div class="question2">비밀번호  <input id="pass" type="password" name="pass" required>
+                      								  <input type="hidden" name="freeNum" value="${loginUserF.freeNum}">
                       	
-                 </div>
-                </div>
-                 <button type="submit" value="sendRequest" class="request_send" onclick="warning()">탈퇴하기</button>
+                 		</div>
+               		</div>
+                 	<button type="submit" value="sendRequest" class="request_send" onclick="warning()">탈퇴하기</button>
                
-                 <script>
-				function warning() {
-				alert("탈퇴 후 복구가 불가능합니다.\n정말로 탈퇴 하시겠습니까? ");
-				}
-				</script>
+	                 <script>
+						function warning() {
+						alert("탈퇴 후 복구가 불가능합니다.\n정말로 탈퇴 하시겠습니까? ");
+						}
+					</script>
+					
 				</div>
             </div>
         </form>
            
-           <!--  myInfoEdit 창 고객 프리랜서 2개로 나눠서 만들면 될거같음 -->      
+        <!--  myInfoEdit 창 고객 프리랜서 2개로 나눠서 만들면 될거같음 -->      
   
 
 	<!-- footer -->
 	<jsp:include page="../common/footer.jsp"/>
 	
 </body>
-
 </html>

@@ -45,17 +45,20 @@ td {
 .title {
     width: 40rem;
     margin: 0 auto;
+    text-align: left;
 }
 
 .title h2,
 .title h4 {
-    padding: 2rem 0;
+    padding: 1.8rem 0;
 }
 
-.title h4{
+.title h4, {
 	line-height: 1.5rem;
 }
-
+.oneContent_rev{
+	margin: 1.8rem 0;
+}
 .f13 {
     font-size: 13px;
 }
@@ -176,16 +179,16 @@ td {
     line-height: 1.5rem;
 }
 
-.regBtn {
+.regBtn, .regBtn0, .regBtn1, .regBtn2, .regBtn3, .regBtn4, .regBtn5{
     font-size: 13px;
     color: #3807a8;
 }
 
-.regBtn:hover {
+.regBtn:hover, .regBtn0:hover, .regBtn1:hover, .regBtn2:hover, .regBtn3:hover, .regBtn4:hover, .regBtn5:hover {
     cursor: pointer;
 }
 
-#profile_container input[type=text] {
+#profile_container input[type=text], input[type=number] {
     height: 2rem;
     padding: 0 0.5rem;
     box-sizing: border-box;
@@ -196,8 +199,16 @@ td {
     border-radius: 0.5rem;
 }
 
-#profile_container input[type=text]:focus {
+#profile_container input[type=text]:focus, input[type=number]:focus {
     border: 2px solid #555;
+}
+
+#regionSelect,
+#regionSelectDetail {
+	width: 5rem;
+	height: 1.8rem;
+	border: 1px solid #eee;
+	border-radius: 0.5rem;
 }
 
 #profile_container textarea {
@@ -225,7 +236,7 @@ input[type=file]{
 	width: 4rem;
 	width: 5rem;
 	cursor: pointer;
-	margin-left: 2rem;
+	margin-left: 3rem;
 }
 
 /*퀵메뉴*/

@@ -33,16 +33,13 @@
                     <th class="title"><a href="#">찜목록</a></th>
                 </tr>
                 <tr>
-                    <th class="title"><a href="#">보낸요청</a></th>
+                    <th class="title"><a href="sentRequest.re?cusNum=${loginUserC.cusNum}">보낸요청</a></th>
                 </tr>
                 <tr>
                     <th class="title"><a href="#">매칭내역</a></th>
                 </tr>
                 <tr>
                     <th class="title"><a href="#">커뮤니티 작성글/댓글</a></th>
-                </tr>
-                <tr>
-                    <th class="title"><a href="#">1:1 문의</a></th>
                 </tr>
             </table>
         </div>

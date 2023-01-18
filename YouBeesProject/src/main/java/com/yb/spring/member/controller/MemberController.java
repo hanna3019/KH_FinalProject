@@ -1,21 +1,20 @@
 package com.yb.spring.member.controller;
 
-import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpSession;
-import javax.websocket.Session;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
+import com.yb.spring.matching.model.service.MatchingService;
+import com.yb.spring.matching.model.vo.FreelancerProfile;
 import com.yb.spring.member.model.service.MemberService;
 import com.yb.spring.member.model.vo.Categories;
 import com.yb.spring.member.model.vo.Customer;
@@ -29,6 +28,9 @@ public class MemberController {
 	private MemberService mService;
 
 	@Autowired
+	private MatchingService maService;
+
+	@Autowired
 	private BCryptPasswordEncoder bcryptPasswordEncoder;
 
 	@RequestMapping("joinMain.me")
@@ -39,7 +41,7 @@ public class MemberController {
 	@RequestMapping("CustomerEnrollForm.me")
 	public String CustomerEnrollForm() {
 		return "member/join_c";
-		
+
 	}
 
 	@RequestMapping("FreelancerEnrollForm.me")
@@ -54,10 +56,10 @@ public class MemberController {
 
 	@RequestMapping("mypage.me")
 	public String mypage(String type) {
-		if(type.equals("F")) {
-			return "member/mypage_f";			
-		}else {
-			return "member/mypage_c";						
+		if (type.equals("F")) {
+			return "member/mypage_f";
+		} else {
+			return "member/mypage_c";
 		}
 	}
 
@@ -65,16 +67,16 @@ public class MemberController {
 	public String toMain() {
 		return "redirect:/";
 	}
+
 	@RequestMapping("freeProfile.me")
 	public String freeProfile() {
 		return "member/freeProfile";
 	}
-	
-	  @RequestMapping("myInfoEdit.me")
-	  public String myInfoEdit() {
-	  return"member/myInfoEdit"; 
-	  }
-	 
+
+	@RequestMapping("myInfoEdit.me")
+	public String myInfoEdit() {
+		return "member/myInfoEdit";
+	}
 
 	@RequestMapping("main.me")
 	public String main() {
@@ -101,13 +103,21 @@ public class MemberController {
 		String encPwd = bcryptPasswordEncoder.encode(f.getPass());
 		f.setPass(encPwd);
 
-		f.setCareer(f.getCareer()+"년");
+		f.setCareer(f.getCareer() + "년");
 		f.setLocation(region + " " + f.getLocation());
 		int result = mService.insertFreelancer(f);
-		if(result > 0) {
-			session.setAttribute("alertMsg", "회원가입이 완료되었습니다😀");
-			return "redirect:/";
-		}else {
+		int result2 = 0;
+		if (result > 0) {
+			Freelancer free = mService.loginMemberF(f.getUserId());
+			result2 = mService.insertFreelancerProfile(free);
+			if (result2 > 0) {
+				session.setAttribute("alertMsg", "회원가입이 완료되었습니다😀");
+				return "redirect:/";
+			} else {
+				model.addAttribute("errorMsg", "회원가입에 실패했습니다😢");
+				return "member/join_f";
+			}
+		} else {
 			model.addAttribute("errorMsg", "회원가입에 실패했습니다😢");
 			return "member/join_f";
 		}
@@ -124,7 +134,8 @@ public class MemberController {
 			session.setAttribute("alertMsg", "회원가입이 완료되었습니다😀");
 			return "redirect:/";
 		} else {
-			model.addAttribute("errorMsg", "회원가입 실패했습니다😢");
+
+			model.addAttribute("errorMsg", "회원가입에 실패했습니다😢");
 			return "member/join_c";
 		}
 	}
@@ -142,20 +153,20 @@ public class MemberController {
 		Customer loginUser = mService.loginMember(c.getUserId());
 
 		if (loginUser != null && bcryptPasswordEncoder.matches(c.getPass(), loginUser.getPass())) {
-			System.out.println("성공 : id=" + loginUser.getUserId() +", type=" + loginUser.getType());
+			System.out.println("성공 : id=" + loginUser.getUserId() + ", type=" + loginUser.getType());
 			if (loginUser.getType().equals("F")) {
 				Freelancer loginUserF = mService.loginMemberF(c.getUserId());
 				session.setAttribute("loginUserF", loginUserF);
-//				mv.addObject("customerMsg", "님이 로그인 하셨습니다.");
+				// mv.addObject("customerMsg", "님이 로그인 하셨습니다.");
 				mv.setViewName("main");
 			} else {
 				Customer loginUserC = mService.loginMemberC(c.getUserId());
 				session.setAttribute("loginUserC", loginUserC);
-//				mv.addObject("freelancerMsg", c.getUserId() + "님이 로그인 하셨습니다.");
+				// mv.addObject("freelancerMsg", c.getUserId() + "님이 로그인 하셨습니다.");
 				mv.setViewName("main");
 			}
 		} else {
-			mv.addObject("errorMsg", "로그인 실패");
+			mv.addObject("errorMsg", "로그인에 실패했습니다😢");
 			mv.setViewName("member/login");
 		}
 		return mv;
@@ -167,36 +178,37 @@ public class MemberController {
 		session.invalidate();
 		return "redirect:/";
 	}
-	
-	/*프리랜서 업데이트*/
+
+	/* 프리랜서 업데이트 */
 	@RequestMapping("myInfoUpdate.me")
 	public String updateFreeMember(Freelancer f, HttpSession session, Model model) {
 		String encPwd = bcryptPasswordEncoder.encode(f.getPass());
 		f.setPass(encPwd);
 		int result = mService.updateFreeMember(f);
-		if(result > 0) {
+		if (result > 0) {
 			session.setAttribute("loginUserF", mService.loginMemberF(f.getUserId()));
 			session.setAttribute("alertMsg", "성공적으로 정보가 변경되었습니다");
 			return "redirect:/";
-	
+
 		} else {
 			model.addAttribute("errorMsg", "회원정보 변경 실패");
 			return "redirect:/";
 		}
-		
+
 	}
-	
-	/*프리랜서 탈퇴*/
+
+	/* 프리랜서 탈퇴 */
 	@RequestMapping("freeDelete.me")
 	public String deleteFreeMember(String pass, int freeNum, HttpSession session, Model model) {
-		String encPwd = ((Freelancer)session.getAttribute("loginUserF")).getPass(); //현재 입력한 비밀번호 가져오는거 encPwd는 지금 입력한 비밀번호
-		if(bcryptPasswordEncoder.matches(pass, encPwd)) {//지금 입력한 비밀번호와 원래 userPwd->데이터베이스에 들어가 있는 비밀번호가 맞는지 match로 확인
-			int result = mService.deleteFreeMember(freeNum); //맞으면 여기 실행
-			if(result > 0) { // result가 0보다 크면 회원가입이 잘 들어갈 시 1이 들어가니까 잘 들어갔다는 뜻
+		String encPwd = ((Freelancer) session.getAttribute("loginUserF")).getPass(); // 현재 입력한 비밀번호 가져오는거 encPwd는 지금 입력한
+																						// 비밀번호
+		if (bcryptPasswordEncoder.matches(pass, encPwd)) {// 지금 입력한 비밀번호와 원래 userPwd->데이터베이스에 들어가 있는 비밀번호가 맞는지 match로 확인
+			int result = mService.deleteFreeMember(freeNum); // 맞으면 여기 실행
+			if (result > 0) { // result가 0보다 크면 회원가입이 잘 들어갈 시 1이 들어가니까 잘 들어갔다는 뜻
 				session.removeAttribute("loginUserF");
 				session.setAttribute("alertMsg", "성공적으로 탈퇴되었습니다<br> 그동안 이용해 주셔서 감사합니다.");
 				return "member/joinMain";
-				
+
 			} else {
 				model.addAttribute("errorMsg", "회원 탈퇴 실패");
 				return "member/join_f";
@@ -205,6 +217,30 @@ public class MemberController {
 			session.setAttribute("alertMsg", "비밀번호를 잘못 입력하였습니다. 확인해 주세요");
 			return "member/myInfoEdit";
 		}
-		
+
+	}
+
+	/* 프리랜서 프로필 수정 */
+	@RequestMapping("profileUpdate.me")
+	public String profileUpdate(FreelancerProfile fp, Model model) {
+		int result = mService.updateProfile(fp);
+		if (result > 0) {
+			FreelancerProfile f = maService.selectFreelancerDetail(fp.getFreeNum());
+			model.addAttribute("f", f);
+		}
+		return "member/freeProfile2";
+	}
+
+	@RequestMapping("FreelancerUpdate.me")
+	public String FreelancerUpdate(Freelancer free, Model model) {
+		if (free.getCareer() != null) {
+			free.setCareer(free.getCareer() + "년");
+		}
+		int result = mService.updateFreelancer(free);
+		if (result > 0) {
+			FreelancerProfile f = maService.selectFreelancerDetail(free.getFreeNum());
+			model.addAttribute("f", f);
+		}
+		return "member/freeProfile2";
 	}
 }

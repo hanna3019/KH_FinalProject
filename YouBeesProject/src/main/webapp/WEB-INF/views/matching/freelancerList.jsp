@@ -43,12 +43,20 @@
                             class="drp_icon"></button>
                 </div>
                 <form action="freelancerList.ma">
-                    <input type="text" size="7" class="priceInp" name="price1"> &ensp;~&ensp; <input type="text" size="7"
+                    <input type="number" min="0" size="7" class="priceInp" name="price1"> &ensp;~&ensp; <input type="number" min="0" size="7"
                         class="priceInp" name="price2">
                     <input type="hidden" name="location" class="filterLocation" value="${selectedLocation}">
 			        <input type="hidden" name="cateNum" value="${selected.cateNum}">
 			        <input type="hidden" name="cName" value="${cName}">
-                    <input type="submit" class="price_search" value="검색" onclick=""></input>
+			    <c:choose>
+			    	<c:when test="${not empty loginUserC}">
+	       				<input type="hidden" name="cusNum" value="${loginUserC.cusNum}">
+	       			</c:when>
+	       			<c:otherwise>
+	       				<input type="hidden" name="cusNum" value="0">
+	       			</c:otherwise>
+			    </c:choose>
+                    <input type="submit" class="price_search" value="검색"></input>
                     <input type="reset" class="price_reset" value="초기화"></input>
                 </form>
             </div>
@@ -73,7 +81,14 @@
 	            <table class="free_pro">
 	                <tr>
 	                    <td colspan="4">
-	                    <a href="freelancerDetail.ma?fNum=${l.freeNum}"><h4>${l.f.name}</h4></a>
+	                    <c:choose>
+	                    	<c:when test="${not empty loginUserC}">
+			                    <a href="freelancerDetail.ma?freeNum=${l.freeNum}&cusNum=${loginUserC.cusNum}"><h4>${l.f.name}</h4></a>
+	                    	</c:when>
+	                    	<c:otherwise>
+			                    <a href="freelancerDetail.ma?freeNum=${l.freeNum}"><h4>${l.f.name}</h4></a>
+	                    	</c:otherwise>
+	                    </c:choose>
 	                    </td>
 	                    <td rowspan="3" class="pro_img"><img src="${path}/resources/source/profile.png" alt="" class="pro_img"></td>
 	                </tr>
@@ -84,7 +99,14 @@
 	                    <td width="15%"><img src="${path}/resources/source/star.png" alt="" class="review"> 3.5(256)</td>
 	                    <td width="15%">경력 ${l.f.career}</td>
 	                    <td width="20%">평균응답시간 1시간</td>
-	                    <td><img src="${path}/resources/source/heart.png" alt="" class="bookmark_icon">찜하기</td>
+	                    <c:choose>
+	                    	<c:when test="${l.status eq 'Y'}">
+			                    <td><img src="${path}/resources/source/heart2.png" alt="" class="bookmark_icon" id="${l.freeNum}">찜하기</td>	                    		
+	                    	</c:when>
+	                    	<c:otherwise>
+			                    <td><img src="${path}/resources/source/heart.png" alt="" class="bookmark_icon" id="${l.freeNum}">찜하기</td>	                    	
+	                    	</c:otherwise>
+	                    </c:choose>
 	                </tr>
 	            </table>
             </c:forEach>
@@ -117,21 +139,66 @@
 	       		</c:when>
 	       	</c:choose>
        	</div>
+       	
+       	<c:choose>
+       		<c:when test="${not empty loginUserC}">
+	       	<input type="hidden" id="cusNum" value="${loginUserC.cusNum}">
+       			<script>
+       			/* 좋아요 누르기 */
+    		    $(document).on("click", ".bookmark_icon", function () {
+    		    	let src = "";
+    		    	let fNum = $(this).attr('id');
+    	    		let cNum = ${loginUserC.cusNum};
+    		    	if($(this).attr('src') === '${path}/resources/source/heart.png'){
+    		    		src = '/spring/resources/source/heart2.png';
+    		    		$.ajax({
+    		    			url:"insertDib.ma",
+    		    			data:{cusNum:cNum, freeNum:fNum},
+    		    			success:function(result){
+    		    				console.log(result);
+    		    			},
+    		    			error:function(){
+    		    				console.log("찜하기 ajax 통신 실패");
+    		    			}
+    		    		});
+    		    	}else{
+    		    		src = '/spring/resources/source/heart.png';
+    		    		fNum = $(this).attr('id');
+    		    		cNum = ${loginUserC.cusNum};
+    		    		$.ajax({
+    		    			url:"updateDib.ma",
+    		    			data:{cusNum:cNum, freeNum:fNum},
+    		    			success:function(result){
+    		    				console.log(result);
+    		    			},
+    		    			error:function(){
+    		    				console.log("찜하기 ajax 통신 실패");
+    		    			}
+    		    		});
+    		    	}
+    		            $(this).attr('src', src);
+    		    }); 
+       			</script>
+       		</c:when>
+       		<c:otherwise>
+       		<input type="hidden" id="cusNum" value="0">
+       			<script>
+       			$(document).on("click", ".bookmark_icon", function (){
+       				alert("일반 회원으로 로그인 후 이용이 가능합니다");
+       			});
+       			</script>
+       		</c:otherwise>
+       	</c:choose>
+       	
+       	
+       	
 		<script>
 		$(function () {
 			/* 지역리스트 */
 		    $("ul.locationList>li").click(function () {
-		        $(this).next().toggleClass("hidden")
+		        $(this).next().toggleClass("hidden");
 		    });
-			
-		    /* 좋아요 누르기 */
-		    $(document).on("click", ".bookmark_icon", function () {
-		            let src = ($(this).attr('src') === '${path}/resources/source/heart.png')
-		                ? '/spring/resources/source/heart2.png'
-		                : '/spring/resources/source/heart.png';
-		            $(this).attr('src', src);
-		    });
-		    
+
 		    /* 지역 선택 후 div에 띄우기 */
 		    $(".cityList>li").on({
 		    	'click' : function(){
@@ -156,19 +223,31 @@
 		 function paging(p){
 			$.ajax({
 				url:"freelancerListPaging.ma",
-				data:{nowPage:p, cateNum:${selected.cateNum}, price1:${selected.price1}, price2:${selected.price2}},
+				data:{nowPage:p, cusNum:$("#cusNum").val(), cateNum:${selected.cateNum}, price1:${selected.price1}, price2:${selected.price2}},
 				success:function(fList){
+					console.log(fList);
 					let value = '';
 					for(let i in fList){
 						value += '<table class="free_pro">'
-							  + ' <tr><td colspan="4">'
-							  + '<a href="freelancerDetail.ma?fNum='+fList[i].freeNum+'"><h4>'+fList[i].f.name+'</h4></a></td>'
+							  + ' <tr><td colspan="4">';
+							  
+							  if($("#cusNum").val() == '0'){
+								  value += '<a href="freelancerDetail.ma?freeNum='+fList[i].freeNum+'">';
+							  }else{
+								  value += '<a href="freelancerDetail.ma?freeNum='+fList[i].freeNum+'&cusNum='+${loginUserC.cusNum}+'">';
+							  }
+							  value += '<h4>'+fList[i].f.name+'</h4></a></td>'
 							  + '<td rowspan="3" class="pro_img"><img src="/spring/resources/source/profile.png" alt="" class="pro_img"></td></tr>'
 							  + '<tr><td colspan="4" class="title">'+fList[i].oneContent+'</td></tr>'
 							  + '<tr class="review">'
 							  + '<td width="15%"><img src="/spring/resources/source/star.png" alt="" class="review"> 3.5(256)</td><td width="15%">경력 '+fList[i].f.career+'</td>'
-							  + '<td width="20%">평균응답시간 1시간</td>'
-			                  + '<td><img src="/spring/resources/source/heart.png" alt="" class="bookmark_icon">찜하기</td></tr></table>'
+							  + '<td width="20%">평균응답시간 1시간</td><td>';
+							  if(fList[i].status == 'Y'){
+								  value += '<img src="/spring/resources/source/heart2.png" ';
+							  }else{
+								  value += '<img src="/spring/resources/source/heart.png" ';
+							  }
+			             value += 'alt="" class="bookmark_icon" id="'+fList[i].freeNum+'">찜하기</td></tr></table>'
 					}
 					$("#fListArea").empty();
 					$("#fListArea").html(value);
@@ -184,6 +263,14 @@
         <form action="freelancerList.ma" id="filterForm">
         <input type="hidden" name="location" class="filterLocation" value="">
         <input type="hidden" name="cateNum" value="${selected.cateNum}">
+        <c:choose>
+        	<c:when test="${not empty loginUserC}">
+		        <input type="hidden" name="cusNum" value="${loginUserC.cusNum}">        	
+        	</c:when>
+        	<c:otherwise>
+		        <input type="hidden" name="cusNum" value="0">        	        	
+        	</c:otherwise>
+        </c:choose>
         <input type="hidden" name="cName" value="${cName}">
         <div id="mask"></div>
         <div class="window">
