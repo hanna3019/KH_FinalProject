@@ -129,4 +129,10 @@
 		 where cnum = #{cnum}
 	</update>
 	
+	<update id="">
+		update likes 
+		   set stauts = 'N'
+		 where user_num = #{userNum}
+	</update>
+	
 </mapper>
