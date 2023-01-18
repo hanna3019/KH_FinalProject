@@ -1,4 +1,10 @@
 $(function () {
+	$(".oneContent_rev_btn").click(function () {
+        $(".oneContent_rev").toggleClass("hidden");
+        $(".oneContent").toggleClass("hidden");
+        $(".regBtn0").toggleClass("hidden");
+    });
+    
     $(".detail_rev_btn").click(function () {
         $(".detail_revise").toggleClass("hidden");
         $(".detail").toggleClass("hidden");
@@ -8,16 +14,19 @@ $(function () {
     $(".contect_btn").click(function () {
         $(".contect_revise").toggleClass("hidden");
         $(".contect_time").toggleClass("hidden");
+        $(".regBtn4").toggleClass("hidden");
     });
 
     $(".career_btn").click(function () {
         $(".career_revise").toggleClass("hidden");
         $(".career").toggleClass("hidden");
+        $(".regBtn3").toggleClass("hidden");
     });
     
     $(".fee_btn").click(function () {
         $(".fee_revise").toggleClass("hidden");
         $(".fee").toggleClass("hidden");
+        $(".regBtn5").toggleClass("hidden");
     });
     
     $(".location_btn").click(function () {
@@ -29,6 +38,24 @@ $(function () {
 
 });
 
+function updateSubmit1(){
+	oneContentFrm.submit();
+}
+function updateSubmit2(){
+	frContentFrm.submit();
+}
+function updateSubmit3(){
+	locationFrm.submit();
+}
+function updateSubmit4(){
+	creerFrm.submit();
+}
+function updateSubmit5(){
+	contectFrm.submit();
+}
+function updateSubmit6(){
+	priceFrm.submit();
+}
 
 function wrapWindowByMask() {
 

@@ -16,7 +16,6 @@
 
         <body>
             <!-- header -->
-
             <jsp:include page="../common/header.jsp" />
 
             <c:choose>

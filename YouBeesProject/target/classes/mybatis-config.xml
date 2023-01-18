@@ -14,6 +14,7 @@
 		<typeAlias type="com.yb.spring.board.model.vo.Comments" alias="Comments"/>
 		<typeAlias type="com.yb.spring.matching.model.vo.FreelancerProfile" alias="FreelancerProfile"/>
 		<typeAlias type="com.yb.spring.request.model.vo.Request" alias="Request"/>
+		<typeAlias type="com.yb.spring.request.model.vo.Answer" alias="Answer"/>
 	</typeAliases>
 	
 	<mappers>
