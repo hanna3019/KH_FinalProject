@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.yb.spring.matching.model.vo.FreelancerProfile;
 import com.yb.spring.member.model.dao.MemberDao;
 import com.yb.spring.member.model.vo.Categories;
 import com.yb.spring.member.model.vo.Customer;
@@ -69,6 +70,21 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public Customer loginMemberC(String userId) {
 		return mDao.loginMemberC(sqlSession, userId);
+	}
+
+	@Override
+	public int insertFreelancerProfile(Freelancer f) {
+		return mDao.insertFreelancerProfile(sqlSession, f);
+	}
+
+	@Override
+	public int updateProfile(FreelancerProfile f) {
+		return mDao.updateProfile(sqlSession, f);
+	}
+
+	@Override
+	public int updateFreelancer(Freelancer f) {
+		return mDao.updateFreelancer(sqlSession, f);
 	}
 
 }

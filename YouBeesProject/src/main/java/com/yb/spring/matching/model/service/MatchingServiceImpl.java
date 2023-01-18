@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.yb.spring.common.model.vo.PageInfo;
 import com.yb.spring.matching.model.dao.MatchingDao;
+import com.yb.spring.matching.model.vo.Dibs;
 import com.yb.spring.matching.model.vo.FreelancerProfile;
 import com.yb.spring.member.model.vo.Categories;
 import com.yb.spring.member.model.vo.Freelancer;
@@ -43,13 +44,33 @@ public class MatchingServiceImpl implements MatchingService{
 	}
 	
 	@Override
-	public FreelancerProfile selectFreelancerDetail(int fNum) {
-		return mDao.selectFreelancerDetail(sqlSession, fNum);
+	public FreelancerProfile selectFreelancerDetail(Freelancer f) {
+		return mDao.selectFreelancerDetail(sqlSession, f);
 	}
 
 	@Override
 	public int selectFreelancerListCount(Freelancer f) {
 		return mDao.selectFreelancerListCount(sqlSession, f);
+	}
+
+	@Override
+	public int insertDib(Dibs d) {
+		return mDao.insertDib(sqlSession, d);
+	}
+
+	@Override
+	public int selectDib(Dibs d) {
+		return mDao.selectDib(sqlSession, d);
+	}
+
+	@Override
+	public int updateDibN(Dibs d) {
+		return mDao.updateDibN(sqlSession, d);
+	}
+
+	@Override
+	public int updateDibY(Dibs d) {
+		return mDao.updateDibY(sqlSession, d);
 	}
 
 

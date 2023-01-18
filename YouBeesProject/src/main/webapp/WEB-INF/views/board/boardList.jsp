@@ -10,7 +10,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="${path}/resources/css/board.css">
 	<title>YouBees</title>
-</head>
+</head> 
 
 <style>
 a:hover{
@@ -66,7 +66,7 @@ a:hover{
 			<form action="" method="" class="search_form">
 				<input class="search_bar" type="text" placeholder="내용 또는 작성자를 검색할 수 있어요">
 				<img src="${path}/resources/source/search.png" alt="" class="search_btn" onclick="">
-			</form>
+			</form> 
 			<button class="write_button" name="" onclick="location.href='boardWriteForm.bo'">글쓰기</button>
 		</div>
 
@@ -81,7 +81,8 @@ a:hover{
 								
 									<h4>${ b.title }</h4>
 									<p>${ b.content }</p>
-									<p class="location">${ b.location }</p>			
+									<p class="location">${ b.location }·${b.serviceNum}</p>	
+										
 								
 								</div>
 								<%-- <c:if test="${ not empty b.changeName }"> 

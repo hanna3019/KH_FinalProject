@@ -11,6 +11,10 @@
     font-family: 'NanumSquareNeo-Variable';
 }
 
+.hidden{
+	display: none;
+}
+
 body {
     width: 100%;
 }
@@ -133,6 +137,14 @@ body {
     margin: 0 2rem;
 }
 
+#rvsBtn{
+	text-decoration:none;
+	font-size:0.5rem;
+}
+#rvsBtn:hover{
+	cursor: pointer;
+}
+
 .comment_write {
     margin: 2rem 0;
 }
@@ -159,6 +171,10 @@ body {
 .comment_time {
     color: darkgray;
     font-size: 0.7em;
+}
+
+.comment_flex {
+	display:flex
 }
 
 textarea {

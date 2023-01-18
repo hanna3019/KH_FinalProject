@@ -98,6 +98,12 @@
 		where bnum = #{bnum}
 	</update>
 	
+	<update id="deleteBoard">
+		update board
+		   set status = 'N'
+		 where bnum = #{bnum}
+	</update>
+	
 	<insert id="insertComment">
 		insert into comments(cnum, bnum, c_content, c_writer, reg_date, type, status) 
 					   values(seq_com.nextval,#{bnum}, #{cContent}, #{cWriter}, sysdate, #{type}, 'Y')
@@ -109,5 +115,24 @@
 		where status = 'Y' and bnum=#{bnum}
 		order by cnum desc
 	</select>
+	
+	<update id="updateComment">
+		update comments
+		   set c_content = #{cContent} 
+		 where cnum  = {#cnum} and 
+		      status = 'Y'
+	</update>
+	
+	<update id="deleteComment">
+		update comments 
+		   set status ='N'
+		 where cnum = #{cnum}
+	</update>
+	
+	<update id="">
+		update likes 
+		   set stauts = 'N'
+		 where user_num = #{userNum}
+	</update>
 	
 </mapper>
