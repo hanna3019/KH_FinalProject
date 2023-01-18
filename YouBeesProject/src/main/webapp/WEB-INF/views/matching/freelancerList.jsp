@@ -189,7 +189,7 @@
 		$(function () {
 			/* 지역리스트 */
 		    $("ul.locationList>li").click(function () {
-		        $(this).next().toggleClass("hidden")
+		        $(this).next().toggleClass("hidden");
 		    });
 
 		    /* 지역 선택 후 div에 띄우기 */

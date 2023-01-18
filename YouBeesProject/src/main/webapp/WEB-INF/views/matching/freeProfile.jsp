@@ -207,19 +207,55 @@
                 <button type="submit" value="sendRequest" class="request_send">요청전송</button>
             </div>
         </form>
-			
-		<script>
-		 	/* 좋아요 누르기 */
-		    $(".heart_box").on({
-		        'click': function () {
-		            let src = ($(".heart_icon").attr('src') === '${path}/resources/source/heart3.png')
-		                ? '/spring/resources/source/heart2.png'
-		                : '/spring/resources/source/heart3.png';
-		            $(".heart_icon").attr('src', src);
-		        }
-		    });
-		</script>
-		
+		<c:choose>
+       		<c:when test="${not empty loginUserC}">
+	       	<input type="hidden" id="cusNum" value="${loginUserC.cusNum}">
+       			<script>
+       			/* 좋아요 누르기 */
+    		    $(document).on("click", ".heart_box", function () {
+    		    	let src = "";
+    		    	let fNum = ${f.freeNum}
+    	    		let cNum = ${loginUserC.cusNum};
+    		    	if($(".heart_icon").attr('src') === '${path}/resources/source/heart3.png'){
+    		    		src = '/spring/resources/source/heart2.png';
+    		    		$.ajax({
+    		    			url:"insertDib.ma",
+    		    			data:{cusNum:cNum, freeNum:fNum},
+    		    			success:function(result){
+    		    				console.log(result);
+    		    			},
+    		    			error:function(){
+    		    				console.log("찜하기 ajax 통신 실패");
+    		    			}
+    		    		});
+    		    	}else{
+    		    		src = '/spring/resources/source/heart3.png';
+    		    		fNum = ${f.freeNum};
+    		    		cNum = ${loginUserC.cusNum};
+    		    		$.ajax({
+    		    			url:"updateDib.ma",
+    		    			data:{cusNum:cNum, freeNum:fNum},
+    		    			success:function(result){
+    		    				console.log(result);
+    		    			},
+    		    			error:function(){
+    		    				console.log("찜하기 ajax 통신 실패");
+    		    			}
+    		    		});
+    		    	}
+    		            $(".heart_icon").attr('src', src);
+    		    }); 
+       			</script>
+       		</c:when>
+       		<c:otherwise>
+       		<input type="hidden" id="cusNum" value="0">
+       			<script>
+       			$(document).on("click", ".bookmark_icon", function (){
+       				alert("일반 회원으로 로그인 후 이용이 가능합니다");
+       			});
+       			</script>
+       		</c:otherwise>
+       	</c:choose>	
 	</div>
 		    
 	<!-- footer -->
