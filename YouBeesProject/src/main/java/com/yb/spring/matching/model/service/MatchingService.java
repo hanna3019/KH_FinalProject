@@ -3,6 +3,7 @@ package com.yb.spring.matching.model.service;
 import java.util.ArrayList;
 
 import com.yb.spring.common.model.vo.PageInfo;
+import com.yb.spring.matching.model.vo.Dibs;
 import com.yb.spring.matching.model.vo.FreelancerProfile;
 import com.yb.spring.member.model.vo.Categories;
 import com.yb.spring.member.model.vo.Freelancer;
@@ -25,9 +26,11 @@ public interface MatchingService {
 	// 평균응답시간
 	
 	
-	// 찜하기 업데이트
-	
-	
+	// 찜하기
+	int insertDib(Dibs d);
+	int selectDib(Dibs d);
+	int updateDibN(Dibs d);
+	int updateDibY(Dibs d);
 	// 프리랜서 검색하기
 	
 	

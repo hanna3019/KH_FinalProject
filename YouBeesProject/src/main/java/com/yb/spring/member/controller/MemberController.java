@@ -1,21 +1,20 @@
 package com.yb.spring.member.controller;
 
-import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpSession;
-import javax.websocket.Session;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
+import com.yb.spring.matching.model.service.MatchingService;
+import com.yb.spring.matching.model.vo.FreelancerProfile;
 import com.yb.spring.member.model.service.MemberService;
 import com.yb.spring.member.model.vo.Categories;
 import com.yb.spring.member.model.vo.Customer;
@@ -27,6 +26,9 @@ public class MemberController {
 
 	@Autowired
 	private MemberService mService;
+
+	@Autowired
+	private MatchingService maService;
 
 	@Autowired
 	private BCryptPasswordEncoder bcryptPasswordEncoder;
@@ -97,13 +99,21 @@ public class MemberController {
 	public String insertFreelancer(Freelancer f, String region, Model model, HttpSession session) {
 		String encPwd = bcryptPasswordEncoder.encode(f.getPass());
 		f.setPass(encPwd);
-
+		
 		f.setCareer(f.getCareer()+"년");
 		f.setLocation(region + " " + f.getLocation());
 		int result = mService.insertFreelancer(f);
+		int result2 = 0;
 		if(result > 0) {
-			session.setAttribute("alertMsg", "회원가입이 완료되었습니다😀");
-			return "redirect:/";
+			Freelancer free = mService.loginMemberF(f.getUserId());
+			result2 = mService.insertFreelancerProfile(free);
+			if(result2 > 0) {
+				session.setAttribute("alertMsg", "회원가입이 완료되었습니다😀");
+				return "redirect:/";				
+			}else {
+				model.addAttribute("errorMsg", "회원가입에 실패했습니다😢");
+				return "member/join_f";
+			}
 		}else {
 			model.addAttribute("errorMsg", "회원가입에 실패했습니다😢");
 			return "member/join_f";
@@ -186,5 +196,29 @@ public class MemberController {
 			return "member/myInfoEdit";
 		}
 		
+	}
+	
+	/* 프리랜서 프로필 수정 */
+	@RequestMapping("profileUpdate.me")
+	public String profileUpdate(FreelancerProfile fp, Model model) {
+		int result = mService.updateProfile(fp);
+		if(result > 0) {
+			FreelancerProfile f = maService.selectFreelancerDetail(fp.getFreeNum());
+			model.addAttribute("f", f);
+		}
+		return "member/freeProfile2";			
+	}
+	
+	@RequestMapping("FreelancerUpdate.me")
+	public String FreelancerUpdate(Freelancer free, Model model) {
+		if(free.getCareer() != null) {
+			free.setCareer(free.getCareer() + "년");
+		}
+		int result = mService.updateFreelancer(free);
+		if(result > 0) {
+			FreelancerProfile f = maService.selectFreelancerDetail(free.getFreeNum());
+			model.addAttribute("f", f);
+		}
+		return "member/freeProfile2";			
 	}
 }

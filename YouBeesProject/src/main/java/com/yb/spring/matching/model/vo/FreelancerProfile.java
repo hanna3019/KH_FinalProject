@@ -25,4 +25,5 @@ public class FreelancerProfile {
 	private int price;
 	private String category;
 	private Freelancer f;
+	private String status;
 }
