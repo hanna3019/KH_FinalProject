@@ -81,12 +81,12 @@
 		order by r.reg_date desc
 	</select>
 	
-	<!-- <select id="selectListCount" resultType="_int">
+	<select id="selectListCount" resultType="_int">
 		select c.cus_num, r.req_num, r.free_num, r.reg_date, c.name, a.ans_1, a.ans_2, a.ans_3
 		from customer c, request r, answer a
         where c.cus_num = r.cus_num
         and r.req_num = a.req_num
 		and r.free_num = #{freeNum}
-	</select> -->
+	</select>
 	
 </mapper>
