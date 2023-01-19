@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.yb.spring.matching.model.service.MatchingService;
 import com.yb.spring.matching.model.vo.FreelancerProfile;
+import com.yb.spring.member.model.vo.Freelancer;
 import com.yb.spring.request.model.service.RequestService;
 import com.yb.spring.request.model.vo.Answer;
 import com.yb.spring.request.model.vo.Request;
@@ -31,14 +32,14 @@ public class RequestController {
 	}
 	
 	@RequestMapping("insertRequest.re")
-	public ModelAndView insertRequest(Request req, Answer ans, int ans2_1, int ans2_2, ModelAndView mv) {
+	public ModelAndView insertRequest(Request req, Answer ans, Freelancer fr, int ans2_1, int ans2_2, ModelAndView mv) {
 		System.out.println(req.getCusNum());
 		System.out.println(ans.getAns1());
 		ans.setAns2(ans2_1 + " ~ " + ans2_2);
 		int result = rService.insertRequest(req);
 		int result2 = rService.insertAnswer(ans);
 
-		FreelancerProfile f = mService.selectFreelancerDetail(req.getFreeNum());
+		FreelancerProfile f = mService.selectFreelancerDetail(fr);
 		mv.addObject("f", f);
 		
 		if(result > 0 && result2 > 0) {

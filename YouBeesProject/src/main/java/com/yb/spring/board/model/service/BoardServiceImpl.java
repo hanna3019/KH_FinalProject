@@ -78,27 +78,31 @@ public class BoardServiceImpl implements BoardService {
 	}
 	
 	@Override
+	public int selectLikes(Likes l) {	
+		return bDao.selectLikes(sqlSession, l);
+	}
+	
+	@Override
 	public int insertLikes(Likes l) {
-		return 0;
+		return bDao.insertLikes(sqlSession, l);
 	}
-
+	
 	@Override
-	public int updateLikes(int bnum, String userNum) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int updateLikes(Likes l) {
+		return bDao.updateLikes(sqlSession, l);
 	}
-
+	
 	@Override
-	public int selectLikesCount(int bnum) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int cancelLikes(Likes l) {
+		return bDao.cancelLikes(sqlSession, l);
 	}
 
 	@Override
 	public ArrayList<Board> selectTopBoardList() {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
+
 
 
 	

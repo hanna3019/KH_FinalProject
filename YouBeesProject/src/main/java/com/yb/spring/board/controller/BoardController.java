@@ -21,6 +21,7 @@ import com.google.gson.Gson;
 import com.yb.spring.board.model.service.BoardService;
 import com.yb.spring.board.model.vo.Board;
 import com.yb.spring.board.model.vo.Comments;
+import com.yb.spring.board.model.vo.Likes;
 import com.yb.spring.common.model.vo.PageInfo;
 import com.yb.spring.common.template.Pagination;
 
@@ -147,7 +148,45 @@ public class BoardController {
 			return "board/errorPage";
 		}
 	}
-
+	
+	  // 좋아요
+	  @ResponseBody	  
+	  @RequestMapping(value="lselect.bo",produces="application/json; charset=utf-8") 
+	  public String insertLikes(Likes l) {
+		  
+		  int result = bService.selectLikes(l); 
+		  System.out.println(result);
+		  String s = "";
+		  if(result > 0) { 
+			  
+			  bService.updateLikes(l); 
+			  s = "s"; 
+		}else {
+			  
+			  bService.insertLikes(l);
+			  s= "s"; 
+	    } 
+		   return new Gson().toJson(s); 
+		}
+	  
+	  @ResponseBody	  
+	  @RequestMapping(value="lcancel.bo",produces="application/json; charset=utf-8")
+	  public String cancelLikes(Likes l) {
+		  int result = bService.selectLikes(l);
+		  System.out.println(result);
+		  String s = "";
+		  if( result > 0 ) {
+			  bService.cancelLikes(l);
+			  s = "좋아요 취소됐어요";
+		  }
+		  
+		  return new Gson().toJson(s);	  
+	  }
+		 
+	 
+	
+	
+	//댓글
 	@ResponseBody
 	@RequestMapping("rinsert.bo")
 	public String ajaxInsertReply(Comments c) {
@@ -178,6 +217,8 @@ public class BoardController {
 		  model.addAttribute("b", b);
 		  return "board/boardRead"; 
 	  }
+	  
+	  
 	  
 	  
 	 
