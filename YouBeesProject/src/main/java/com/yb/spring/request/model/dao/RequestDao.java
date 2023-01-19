@@ -24,18 +24,32 @@ public class RequestDao {
 		return (ArrayList)sqlSession.selectList("requestMapper.selectRequestList", freeNum);
 	}
 	
-	public Answer requestDetail(SqlSessionTemplate sqlSession, int cusNum) {
-		return sqlSession.selectOne("requestMapper.requestDetail", cusNum);
+	public Answer requestDetail(SqlSessionTemplate sqlSession, int reqNum) {
+		return sqlSession.selectOne("requestMapper.requestDetail", reqNum);
 	}
 	
 	public ArrayList<Sent> sentRequestList(SqlSessionTemplate sqlSession, int cusNum){
 		return (ArrayList)sqlSession.selectList("requestMapper.sentRequestList", cusNum);
 	}
-
-	/*
-	 * public int selectListCount(SqlSessionTemplate sqlSession) { return
-	 * sqlSession.selectOne("requestMapper.selectListCount"); }
-	 */
 	
+	public int acceptRequest(SqlSessionTemplate sqlSession, int reqNum){
+		return sqlSession.update("requestMapper.acceptRequest", reqNum);
+	}
+	
+	public int declineRequest(SqlSessionTemplate sqlSession, int reqNum){
+		return sqlSession.update("requestMapper.declineRequest", reqNum);
+	}
+	
+	public ArrayList<Request> fMatchedList(SqlSessionTemplate sqlSession, int freeNum){
+		return (ArrayList)sqlSession.selectList("requestMapper.fMatchedList", freeNum);
+	}
+	
+	public int cancelRequest(SqlSessionTemplate sqlSession, int reqNum){
+		return sqlSession.update("requestMapper.declineRequest", reqNum);
+	}
+	
+	public ArrayList<Sent> cMatchedList(SqlSessionTemplate sqlSession, int cusNum){
+		return (ArrayList)sqlSession.selectList("requestMapper.cMatchedList", cusNum);
+	}
 	
 }

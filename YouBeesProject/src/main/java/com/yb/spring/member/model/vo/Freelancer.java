@@ -27,4 +27,5 @@ public class Freelancer {
 	private int price1;
 	private int price2;
 	private String cateName;
+	private int cusNum;
 }

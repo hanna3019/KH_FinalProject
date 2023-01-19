@@ -15,10 +15,7 @@
 		<typeAlias type="com.yb.spring.matching.model.vo.FreelancerProfile" alias="FreelancerProfile"/>
 		<typeAlias type="com.yb.spring.request.model.vo.Request" alias="Request"/>
 		<typeAlias type="com.yb.spring.request.model.vo.Answer" alias="Answer"/>
-<<<<<<< HEAD
 		<typeAlias type="com.yb.spring.request.model.vo.Sent" alias="Sent"/>
-=======
->>>>>>> a477548f20f47571c60b19736096d300cd77014a
 	</typeAliases>
 	
 	<mappers>

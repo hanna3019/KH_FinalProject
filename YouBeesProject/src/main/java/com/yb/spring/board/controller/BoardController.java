@@ -123,10 +123,10 @@ public class BoardController {
 
 		int result = bService.updateBoard(b);
 		if (result > 0) {
-			session.setAttribute("alertMsg", "게시글이 수정되었습니다.");
+			session.setAttribute("alertMsg", "게시글이 수정되었습니다😀");
 			return "redirect:boardRead.bo?bno=" + b.getBnum();
 		} else {
-			model.addAttribute("errorMsg", "게시글 수정 실패");
+			model.addAttribute("errorMsg", "게시글 수정에 실패했습니다😢");
 			return "board/errorpage";
 		}
 
@@ -139,10 +139,10 @@ public class BoardController {
 			if (!filePath.equals("")) {
 				new File(session.getServletContext().getRealPath(filePath)).delete();
 			}
-			session.setAttribute("alertMsg", "성공적으로 게시글이 삭제되었습니다");
+			session.setAttribute("alertMsg", "게시글이 삭제되었습니다");
 			return "redirect:boardList.bo";
 		} else {
-			model.addAttribute("errorMsg", "게시글 삭제 실패");
+			model.addAttribute("errorMsg", "게시글 삭제에 실패했습니다😢");
 			return "board/errorPage";
 		}
 	}
