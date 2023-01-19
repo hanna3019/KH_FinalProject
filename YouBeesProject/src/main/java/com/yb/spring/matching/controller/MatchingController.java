@@ -69,7 +69,6 @@ public class MatchingController {
 		int listCount = mService.selectFreelancerListCount(f);
 		PageInfo pi = Pagination.getPageInfo(listCount, nowPage, 5, 5);
 		ArrayList<FreelancerProfile> fList = mService.selectFreelancerList(f, pi);
-		
 		model.addAttribute("fList", fList);
 		model.addAttribute("pi", pi);
 		return new Gson().toJson(fList);

@@ -91,7 +91,6 @@ public class BoardController {
 	public String boardWriteForm() {
 		return "board/boardWrite";
 	}
-
 	@RequestMapping("boardRead.bo")
 	public ModelAndView selectBoard(int bno, ModelAndView mv) {
 		int result = bService.increaseCount(bno);

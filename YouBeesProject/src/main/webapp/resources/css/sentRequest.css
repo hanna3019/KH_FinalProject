@@ -169,16 +169,16 @@ main {
     padding: 0 0.3rem;
 }
 
-.accNdec{
-	display: flex;
-}
-
 #ans1::-webkit-scrollbar {
     display: none;
 }
 
 #ans3::-webkit-scrollbar {
     display: none;
+}
+
+.accNdec{
+	display: flex;
 }
 
 .btn1, 

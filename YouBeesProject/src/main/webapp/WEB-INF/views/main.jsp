@@ -28,9 +28,10 @@
 </head>
 
 <body>
+
 	<!-- header -->
 	<jsp:include page="common/header.jsp"/>
-
+	
     <main class="mainMain">
         <article id="content">
             <section id="imgslide">

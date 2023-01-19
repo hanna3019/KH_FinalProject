@@ -12,7 +12,7 @@ body {
 	margin: 0 auto;
 	width: 970px;
 	height: 42rem;
-	padding-top: 8.5rem;
+	padding-top: 6.5rem;
 }
 
 .myPageContainer a {
@@ -23,7 +23,7 @@ body {
 .myPageTitle {
 	font-size: 1.8rem;
 	font-weight: bold;
-	padding-bottom: 2rem;
+	padding: 3rem;
 	border-bottom: 1px solid #eee;
 }
 
@@ -42,18 +42,17 @@ body {
 	margin: auto 0;
 	margin-left: 2rem;
 	cursor : pointer;
-	
 }
 
 .userInfo div {
 	font-size: 1.1rem;
 	font-weight: bold;
-
 }
 
 .userInfo p {
 	color: darkgray;
 	font-size: 0.9rem;
+	margin: 1rem 0;
 }
 
 #profileContent {

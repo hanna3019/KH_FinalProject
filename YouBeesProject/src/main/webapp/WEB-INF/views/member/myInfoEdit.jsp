@@ -21,7 +21,8 @@
 	<jsp:include page="../common/header.jsp"/>
 	
     <div class="editContainer">
-        <form action="myInfoEdit.me" method="post">
+     
+        <form action="myInfoUpdate.me" method="post">
             <div class="editTitle">회원정보 수정</div>
             <table class="editTable">
                 <tr>
@@ -32,40 +33,53 @@
                             <img src="${path}/resources/source/camera.png" alt="파일선택" class="selectFileImg">
                         </label>
                         <input type="file" id="selectFile">
+                        <input type="hidden" value="${loginUserF.freeNum }" name="freeNum">
                     </td>
                 </tr>
                 <tr>
                     <th><label for="name">이름</label></th>
-                    <td><input id="name" value=""></td>
+                    <td><input id="name" name="name" value="${loginUserF.name }"></td>
                 </tr>
                 <tr>
                     <th><label for="id">아이디</label></th>
-                    <td><input id="name" value="" readonly></td>
+                    <td><input id="name" name="userId" value="${loginUserF.userId }" readonly></td>
                 </tr>
-                <tr>
-                    <th><label for="pw">패스워드</label></th>
-                    <td><input type="password" value="" id="pw"></td>
-                </tr>
-                <tr>
-                    <th><label for="cpw">패스워드 확인</label></th>
-                    <td><input type="password" value="" id="cpw"></td>
-                </tr>
+              
                 <tr>
                     <th><label for="phone">전화번호</label></th>
-                    <td><input id="phone" value=""></td>
+                    <td><input id="phone" name="tel" value="${loginUserF.tel}"></td>
                 </tr>
                 <tr>
                     <th>성별</th>
                     <td class="genderTd">
-                        <input type="radio" value="" id="male" name="gender"><label for="male">남</label>
-                        <input type="radio" value="" id="female" name="gender"><label for="female">여</label>
+                        <input type="radio" name="gender" value="M" id="male" name="gender"><label for="male">남</label>
+                        <input type="radio" name="gender" value="F" id="female" name="gender"><label for="female">여</label>
+                         <script>
+                    	$(function() {
+                    		if("${ loginUserF.gender }" != "") {
+                    			$("input[value=${loginUserF.gender}]").attr("checked", true);
+                    		}
+                    	})
+                    </script>
                     </td>
+                </tr>
+                
+                 <tr>
+                    <th><label for="pw">패스워드</label></th>
+                    <td><input type="password" name="pass" value="" id="pw"></td>
+                </tr>
+                <tr>
+                    <th><label for="cpw">패스워드 확인</label></th>
+                    <td><input type="password"  value="" id="cpw"></td>
                 </tr>
             </table>
 
             <button type="submit" class="editBtn">수정하기</button>
-        	<button type="submit" class="deleteBtn openMask">삭제하기</button>
+
+        	<button type="submit" class="deleteBtn openMask">탈퇴하기</button>
+
         </form>
+        	
        </div>
         
         <form action="freeDelete.me" method="post">
@@ -77,32 +91,32 @@
                 </div>
                 <div class="delete_form">
                     <div class="quest1">
-                        <div class="question1">탈퇴를 하는 이유는 무엇인가요? 있다면 적어주세요</div>
+                        <div class="question1">탈퇴사유를 알려주시면 저희가 더 나은 서비스를 제공하는 데 큰 도움이 된답니다!</div>
                         <textarea></textarea>
                     </div>
                     <div class="quest2">
-                  		 <div class="question2">  비밀번호 : <input id="pass" type="password" name="pass" required>
-                      										<input type="hidden" name="freeNum" value="${loginUserF.freeNum}">
+                  		<div class="question2">비밀번호  <input id="pass" type="password" name="pass" required>
+                      								  <input type="hidden" name="freeNum" value="${loginUserF.freeNum}">
                       	
-                 </div>
-                </div>
-                 <button type="submit" value="sendRequest" class="request_send" onclick="warning()">탈퇴하기</button>
+                 		</div>
+               		</div>
+                 	<button type="submit" value="sendRequest" class="request_send" onclick="warning()">탈퇴하기</button>
                
-                 <script>
-				function warning() {
-				alert("탈퇴 후 복구가 불가능합니다.\n정말로 탈퇴 하시겠습니까? ");
-				}
-				</script>
+	                 <script>
+						function warning() {
+						alert("탈퇴 후 복구가 불가능합니다.\n정말로 탈퇴 하시겠습니까? ");
+						}
+					</script>
+					
 				</div>
             </div>
         </form>
            
-           <!--  myInfoEdit 창 고객 프리랜서 2개로 나눠서 만들면 될거같음 -->      
+        <!--  myInfoEdit 창 고객 프리랜서 2개로 나눠서 만들면 될거같음 -->      
   
 
 	<!-- footer -->
 	<jsp:include page="../common/footer.jsp"/>
 	
 </body>
-
 </html>

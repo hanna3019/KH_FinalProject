@@ -16,7 +16,7 @@ public class Freelancer {
 	private int freeNum;
 	private String name;
 	private String userId;
-	private String pass;
+	private String pass;	
 	private String tel;
 	private String career;
 	private String gender;
@@ -26,5 +26,5 @@ public class Freelancer {
 	private String status;
 	private int price1;
 	private int price2;
-	private int cusNum;
+	private String cateName;
 }
