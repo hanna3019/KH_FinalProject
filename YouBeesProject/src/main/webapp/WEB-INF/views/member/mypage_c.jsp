@@ -23,7 +23,7 @@
 
             <div class="profileBox">
                 <img class="profileImg" src="${path}/resources/source/reading.png" alt="일반고객로고" onclick="">
-                <div class="userInfo" onclick="location.href='myInfoEdit.me'">
+                <div class="userInfo" onclick="location.href='myInfoEditC.me'">
                     <div>${loginUserC.name} 님 </div><p>수정하기</p>
                 </div>
             </div>

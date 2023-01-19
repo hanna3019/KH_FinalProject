@@ -24,7 +24,7 @@
             <div class="profileBox">
             
                 <img class="profileImg" src="${path}/resources/source/freelance.png" alt="프리랜서로고" onclick="">
-             	<div class="userInfo"  onclick="location.href='myInfoEdit.me'">
+             	<div class="userInfo"  onclick="location.href='myInfoEditF.me'">
                  	 <div>${loginUserF.name} 프리랜서님</div><p>수정하기</p>
              	</div>         
             </div>

@@ -22,47 +22,39 @@
 	
     <div class="editContainer">
      
-        <form action="myInfoUpdate.me" method="post">
+        <form action="myInfoUpdateC.me" method="post" enctype="multipart/form-data">
             <div class="editTitle">회원정보 수정</div>
             <table class="editTable">
                 <tr>
                     <th>프로필사진</th>
                     <td class="imgTd">
-                        <img src="${path}/resources/source/santa.jpg" alt="원래사진" class="profileImg">
+                        <img id="upfile" src="${path}/resources/source/santa.jpg" alt="원래사진" class="profileImg">
                         <label for="selectFile">
                             <img src="${path}/resources/source/camera.png" alt="파일선택" class="selectFileImg">
-                        </label>
-                        <input type="file" id="selectFile">
-                        <input type="hidden" value="${loginUserF.freeNum }" name="freeNum">
+                        </label> 
+                        <input type="file" name="upfile" id="selectfile" onchange="readURL(this);">
+                         
+                        <input type="hidden" value="${loginUserC.cusNum }" name="cusNum">
+                      
+							
                     </td>
                 </tr>
+            
+			   
                 <tr>
                     <th><label for="name">이름</label></th>
-                    <td><input id="name" name="name" value="${loginUserF.name }"></td>
+                    <td><input id="name" name="name" value="${loginUserC.name }"></td>
                 </tr>
                 <tr>
                     <th><label for="id">아이디</label></th>
-                    <td><input id="name" name="userId" value="${loginUserF.userId }" readonly></td>
+                    <td><input id="name" name="userId" value="${loginUserC.userId }" readonly></td>
                 </tr>
               
                 <tr>
                     <th><label for="phone">전화번호</label></th>
-                    <td><input id="phone" name="tel" value="${loginUserF.tel}"></td>
+                    <td><input id="phone" name="phone" value="${loginUserC.phone}"></td>
                 </tr>
-                <tr>
-                    <th>성별</th>
-                    <td class="genderTd">
-                        <input type="radio" name="gender" value="M" id="male" name="gender"><label for="male">남</label>
-                        <input type="radio" name="gender" value="F" id="female" name="gender"><label for="female">여</label>
-                         <script>
-                    	$(function() {
-                    		if("${ loginUserF.gender }" != "") {
-                    			$("input[value=${loginUserF.gender}]").attr("checked", true);
-                    		}
-                    	})
-                    </script>
-                    </td>
-                </tr>
+                
                 
                  <tr>
                     <th><label for="pw">패스워드</label></th>
@@ -75,14 +67,29 @@
             </table>
 
             <button type="submit" class="editBtn">수정하기</button>
-
+ 			<script>
+ 			 function readURL(input) {
+                 if (input.files && input.files[0]) {
+                     var reader = new FileReader();
+                     reader.onload = function (e) {
+                         document.getElementById('upfile').src = e.target.result;
+                         document.getElementById('selectfile').style.display = "none";
+                     };
+                     reader.readAsDataURL(input.files[0]);
+                 } else {
+                     document.getElementById('upfile').src = "";
+                 }
+             }
+			
+					
+		 	 </script>     
         	<button type="submit" class="deleteBtn openMask">탈퇴하기</button>
 
         </form>
         	
        </div>
         
-        <form action="freeDelete.me" method="post">
+        <form action="cusDelete.me" method="post">
             <div id="mask"></div>
             <div class="window">
                 <div class="delete_title">
@@ -96,7 +103,7 @@
                     </div>
                     <div class="quest2">
                   		<div class="question2">비밀번호  <input id="pass" type="password" name="pass" required>
-                      								  <input type="hidden" name="freeNum" value="${loginUserF.freeNum}">
+                      								  <input type="hidden" name="cusNum" value="${loginUserC.cusNum}">
                       	
                  		</div>
                		</div>
@@ -111,7 +118,7 @@
 				</div>
             </div>
         </form>
-           
+          
         <!--  myInfoEdit 창 고객 프리랜서 2개로 나눠서 만들면 될거같음 -->      
   
 

@@ -249,7 +249,7 @@
 				return;
 			}
 			freeEnrollFrm.submit()
-			
+			alert("회원가입이 완료되었습니다😀")
 		}
 			$(function(){
 				const $idInput = $("#userId");
