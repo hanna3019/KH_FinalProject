@@ -21,7 +21,8 @@
 	<jsp:include page="../common/header.jsp"/>
 	
     <div class="editContainer">
-        <form action="myInfoEdit.me" method="post">
+     
+        <form action="myInfoUpdate.me" method="post">
             <div class="editTitle">회원정보 수정</div>
             <table class="editTable">
                 <tr>
@@ -32,40 +33,53 @@
                             <img src="${path}/resources/source/camera.png" alt="파일선택" class="selectFileImg">
                         </label>
                         <input type="file" id="selectFile">
+                        <input type="hidden" value="${loginUserF.freeNum }" name="freeNum">
                     </td>
                 </tr>
                 <tr>
                     <th><label for="name">이름</label></th>
-                    <td><input id="name" value=""></td>
+                    <td><input id="name" name="name" value="${loginUserF.name }"></td>
                 </tr>
                 <tr>
                     <th><label for="id">아이디</label></th>
-                    <td><input id="name" value="" readonly></td>
+                    <td><input id="name" name="userId" value="${loginUserF.userId }" readonly></td>
                 </tr>
-                <tr>
-                    <th><label for="pw">패스워드</label></th>
-                    <td><input type="password" value="" id="pw"></td>
-                </tr>
-                <tr>
-                    <th><label for="cpw">패스워드 확인</label></th>
-                    <td><input type="password" value="" id="cpw"></td>
-                </tr>
+              
                 <tr>
                     <th><label for="phone">전화번호</label></th>
-                    <td><input id="phone" value=""></td>
+                    <td><input id="phone" name="tel" value="${loginUserF.tel}"></td>
                 </tr>
                 <tr>
                     <th>성별</th>
                     <td class="genderTd">
-                        <input type="radio" value="" id="male" name="gender"><label for="male">남</label>
-                        <input type="radio" value="" id="female" name="gender"><label for="female">여</label>
+                        <input type="radio" name="gender" value="M" id="male" name="gender"><label for="male">남</label>
+                        <input type="radio" name="gender" value="F" id="female" name="gender"><label for="female">여</label>
+                         <script>
+                    	$(function() {
+                    		if("${ loginUserF.gender }" != "") {
+                    			$("input[value=${loginUserF.gender}]").attr("checked", true);
+                    		}
+                    	})
+                    </script>
                     </td>
+                </tr>
+                
+                 <tr>
+                    <th><label for="pw">패스워드</label></th>
+                    <td><input type="password" name="pass" value="" id="pw"></td>
+                </tr>
+                <tr>
+                    <th><label for="cpw">패스워드 확인</label></th>
+                    <td><input type="password"  value="" id="cpw"></td>
                 </tr>
             </table>
 
             <button type="submit" class="editBtn">수정하기</button>
+
         	<button type="submit" class="deleteBtn openMask">탈퇴하기</button>
+
         </form>
+        	
        </div>
         
         <form action="freeDelete.me" method="post">

@@ -28,11 +28,14 @@ public interface MemberService {
 	// 아이디 중복체크 서비스(ajax)
 	int idCheck(String checkId);
 	
+	// 정보수정 서비스
+	int updateFreeMember(Freelancer f);
+	
 	// 프리랜서 회원탈퇴 서비스
 	int deleteFreeMember(int freeNum);
 	
 	// 일반고객 회원탈퇴 서비스
-	int deleteCusMember(String userId);
+	int deleteCusMember(int freeNum);
 	
 	// 서비스 리스트 가져오기(ajax)
 	ArrayList<Categories> selectServiceList(int num);

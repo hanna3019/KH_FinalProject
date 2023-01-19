@@ -8,7 +8,9 @@ import org.springframework.stereotype.Repository;
 
 import com.yb.spring.board.model.vo.Board;
 import com.yb.spring.board.model.vo.Comments;
+import com.yb.spring.board.model.vo.Likes;
 import com.yb.spring.common.model.vo.PageInfo;
+import com.yb.spring.matching.model.vo.Dibs;
 
 @Repository
 public class BoardDao {
@@ -59,4 +61,23 @@ public class BoardDao {
 	public int deleteComment(SqlSessionTemplate sqlSession, int cnum) {
 		return sqlSession.update("boardMapper.deleteComment", cnum);
 	}
+	
+	public int selectLikes(SqlSessionTemplate sqlSession, Likes l) {
+		return sqlSession.selectOne("boardMapper.selectLikes", l);
+	}
+	
+	public int insertLikes(SqlSessionTemplate sqlSession, Likes l) {
+		return sqlSession.insert("boardMapper.insertLikes", l);
+	}
+	
+	public int updateLikes(SqlSessionTemplate sqlSession, Likes l) {
+		return sqlSession.update("boardMapper.updateLikes", l);
+	}
+	
+	public int cancelLikes(SqlSessionTemplate sqlSession, Likes l) {
+		return sqlSession.update("boardMapper.cancleLikes", l);
+	}
+	
+	
+	
 }
