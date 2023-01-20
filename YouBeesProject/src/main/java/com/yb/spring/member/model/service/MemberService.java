@@ -53,9 +53,5 @@ public interface MemberService {
 	// 프리랜서 프로필 수정
 	int updateProfile(FreelancerProfile f);
 
-	
-	
-	
-
-	
+	int updateFreelancer(Freelancer free);
 }
