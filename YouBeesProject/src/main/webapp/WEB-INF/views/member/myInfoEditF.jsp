@@ -22,7 +22,7 @@
 	
     <div class="editContainer">
      
-        <form action="myInfoUpdateF.me" method="post" enctype="multipart/form-data">
+        <form action="myInfoUpdateF.me" method="post" enctype="multipart/form-data" name="editFrm">
             <div class="editTitle">회원정보 수정</div>
             <table class="editTable">
                 <tr>
@@ -47,12 +47,12 @@
                 </tr>
                 <tr>
                     <th><label for="id">아이디</label></th>
-                    <td><input id="name" name="userId" value="${loginUserF.userId }" readonly></td>
+                    <td><input id="userId" name="userId" value="${loginUserF.userId }" readonly></td>
                 </tr>
               
                 <tr>
-                    <th><label for="phone">전화번호</label></th>
-                    <td><input id="phone" name="tel" value="${loginUserF.tel}"></td>
+                    <th><label for="tel">전화번호</label></th>
+                    <td><input id="tel" name="tel" value="${loginUserF.tel}"></td>
                 </tr>
                 <tr>
                     <th>성별</th>
@@ -79,7 +79,7 @@
                 </tr>
             </table>
 
-            <button type="submit" class="editBtn">수정하기</button>
+            <button type="button" class="editBtn" onclick="submitCheck();">수정하기</button>
 				<script>
  			 function readURL(input) {
                  if (input.files && input.files[0]) {
@@ -125,13 +125,36 @@
 						function warning() {
 						alert("탈퇴 후 복구가 불가능합니다.\n정말로 탈퇴 하시겠습니까? ");
 						}
+						</script>
+						  <script>
+						function submitCheck(){
+							if($("#name").val() == ""){
+								alert("이름을 입력해주세요");
+								return;
+							}
+							if($("#tel").val() == ""){
+								alert("전화번호를 입력해주세요");
+								return;
+							}
+							if($("#pw").val() == ""){
+								alert("비밀번호를 입력해주세요");
+								return;
+							}
+							if($("#pw").val() != $("#cpw").val()){
+								alert("비밀번호가 일치하지 않습니다");
+								return;
+							}
+							
+							editFrm.submit();
+						};	
+					
 					</script>
 					
 				</div>
             </div>
         </form>
         
-        <!--  myInfoEdit 창 고객 프리랜서 2개로 나눠서 만들면 될거같음 -->      
+      
   
 
 	<!-- footer -->

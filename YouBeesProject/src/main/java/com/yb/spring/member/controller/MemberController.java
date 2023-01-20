@@ -2,25 +2,24 @@ package com.yb.spring.member.controller;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
 import javax.servlet.http.HttpSession;
-import javax.websocket.Session;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
+import com.yb.spring.matching.model.service.MatchingService;
+import com.yb.spring.matching.model.vo.FreelancerProfile;
 import com.yb.spring.member.model.service.MemberService;
 import com.yb.spring.member.model.vo.Categories;
 import com.yb.spring.member.model.vo.Customer;
@@ -206,7 +205,10 @@ public class MemberController {
 		}
 
 	}
-
+	
+	@Autowired
+	private MatchingService maService;
+	
 	/* 프리랜서 탈퇴 */
 	@RequestMapping("freeDelete.me")
 	public String deleteFreeMember(String pass, int freeNum, HttpSession session, Model model) {
@@ -230,14 +232,65 @@ public class MemberController {
 
 	}
 
+	/* 일반고객 업데이트 */
+	@RequestMapping("myInfoUpdateC.me")
+	public String updateCusMember(Customer c, MultipartFile upfile, HttpSession session, Model model) {
+		if (!upfile.getOriginalFilename().equals("")) {
+			if (c.getProfileName() != null) {
+				new File(session.getServletContext().getRealPath(c.getChangeName())).delete();
+			}
+			String changeName = changeFilename(upfile, session);
+			c.setProfileName(upfile.getOriginalFilename());
+			c.setChangeName("resources/uploadProfile/" + changeName);
+		}
+
+		String encPwd = bcryptPasswordEncoder.encode(c.getPass());
+		c.setPass(encPwd);
+		int result = mService.updateCusMember(c);
+		if (result > 0) {
+			session.setAttribute("loginUserC", mService.loginMemberC(c.getUserId()));
+			session.setAttribute("alertMsg", "성공적으로 정보가 변경되었습니다");
+			return "redirect:/";
+
+		} else {
+			model.addAttribute("errorMsg", "회원정보 변경 실패");
+			return "redirect:/";
+		}
+	}
+
 	/* 프리랜서 프로필 수정 */
 	@RequestMapping("profileUpdate.me")
-	public String profileUpdate(FreelancerProfile fp, Model model) {
+	public String profileUpdate(FreelancerProfile fp, Freelancer fc, Model model) {
 		int result = mService.updateProfile(fp);
+
 		if (result > 0) {
-			FreelancerProfile f = maService.selectFreelancerDetail(fp.getFreeNum());
+			FreelancerProfile f = maService.selectFreelancerDetail(fc);
+
 			model.addAttribute("f", f);
 		}
+		return "redirect:/";
+	}
+
+	public String changeFilename(MultipartFile reupfile, HttpSession session) {
+		String originName = reupfile.getOriginalFilename();
+		String currentTime = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
+		int ranNum = (int) (Math.random() * 90000 + 10000);
+		String ext = originName.substring(originName.lastIndexOf("."));
+		String changeName = currentTime + ranNum + ext;
+
+		// 업로드 시키고자 하는 폴더의 물리적인 경로 알아오기
+		String savePath = session.getServletContext().getRealPath("/resources/uploadProfile/");
+		System.out.println(savePath);
+		System.out.println(changeName);
+		System.out.println(savePath + changeName);
+		try {
+			reupfile.transferTo(new File(savePath + changeName));
+			System.out.println("트라이문성공");
+		} catch (IllegalStateException | IOException e) {
+			e.printStackTrace();
+		}
+		
+		return changeName;
 	}
 
 	@RequestMapping("FreelancerUpdate.me")
@@ -245,11 +298,56 @@ public class MemberController {
 		if (free.getCareer() != null) {
 			free.setCareer(free.getCareer() + "년");
 		}
-		int result = mService.updateFreelancer(free);
+		int result = mService.updateFreeMember(free); 
+
 		if (result > 0) {
-			FreelancerProfile f = maService.selectFreelancerDetail(free.getFreeNum());
+			FreelancerProfile f = maService.selectFreelancerDetail(free);
+
 			model.addAttribute("f", f);
+
+		}
+		return "redirect:/";
+	}
+
+	/* 일반고객 탈퇴 */
+	@RequestMapping("cusDelete.me")
+	public String deleteCusMember(String pass, int cusNum, HttpSession session, Model model) {
+		String encPwd = ((Customer) session.getAttribute("loginUserC")).getPass(); // 현재 입력한 비밀번호 가져오는거 encPwd는 지금 입력한
+																					// 비밀번호
+		if (bcryptPasswordEncoder.matches(pass, encPwd)) {// 지금 입력한 비밀번호와 원래 userPwd->데이터베이스에 들어가 있는 비밀번호가 맞는지 match로 확인
+			int result = mService.deleteCusMember(cusNum); // 맞으면 여기 실행
+			if (result > 0) { // result가 0보다 크면 회원가입이 잘 들어갈 시 1이 들어가니까 잘 들어갔다는 뜻
+				session.removeAttribute("loginUserC");
+				session.setAttribute("alertMsg", "성공적으로 탈퇴되었습니다<br> 그동안 이용해 주셔서 감사합니다.");
+				return "member/joinMain";
+
+			} else {
+				model.addAttribute("errorMsg", "회원 탈퇴 실패");
+				return "member/join_f";
+			}
+		} else {
+			session.setAttribute("alertMsg", "비밀번호를 잘못 입력하였습니다. 확인해 주세요");
+			return "member/myInfoEditC";
 		}
 
 	}
 }
+
+/*
+ * 프리랜서 프로필 수정
+ * 
+ * @RequestMapping("profileUpdate.me") public String
+ * profileUpdate(FreelancerProfile fp, Model model) { int result =
+ * mService.updateProfile(fp); if (result > 0) { FreelancerProfile f =
+ * maService.selectFreelancerDetail(fp.getFreeNum()); model.addAttribute("f",
+ * f); } }
+ * 
+ * @RequestMapping("FreelancerUpdate.me") public String
+ * FreelancerUpdate(Freelancer free, Model model) { if (free.getCareer() !=
+ * null) { free.setCareer(free.getCareer() + "년"); } int result =
+ * mService.updateFreelancer(free); if (result > 0) { FreelancerProfile f =
+ * maService.selectFreelancerDetail(free.getFreeNum()); model.addAttribute("f",
+ * f); }
+ * 
+ * }
+ */

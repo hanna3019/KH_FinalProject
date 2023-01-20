@@ -213,7 +213,6 @@ td {
 }
 
 .comment_area {
-    margin: 2rem 0;
     display: flex;
     flex-direction: column;
 }
@@ -223,6 +222,7 @@ td {
     border: 1px solid #eee;
     border-radius: 0.5rem;
     padding: 0.5rem 0.7rem;
+    margin-top: 0.8rem;
 }
 
 #write_comment:focus {
@@ -386,3 +386,27 @@ td {
     cursor: pointer;
     font-size: 1.1rem;
 }
+
+.star_select{
+	font-size: 0.8rem;	
+	color: #ccc;
+	margin-left: 0.8rem;
+}
+.star_select .star_t{
+	padding: 0.5rem 0.2rem;
+}
+
+.starRev{
+	margin: 0.7rem 0;
+}
+
+.starR{
+     background: url('/spring/resources/source/ico_review.png') no-repeat right 0;
+     background-size: auto 100%;
+     width: 1.5rem;
+     height: 1.5rem;
+     display: inline-block;
+     text-indent: -9999px;
+     cursor: pointer;
+}
+.starR.on{background-position:0 0;}

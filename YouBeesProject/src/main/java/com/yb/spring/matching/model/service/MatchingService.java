@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import com.yb.spring.common.model.vo.PageInfo;
 import com.yb.spring.matching.model.vo.Dibs;
 import com.yb.spring.matching.model.vo.FreelancerProfile;
+import com.yb.spring.matching.model.vo.ProfileFiles;
+import com.yb.spring.matching.model.vo.Review;
 import com.yb.spring.member.model.vo.Categories;
 import com.yb.spring.member.model.vo.Freelancer;
 import com.yb.spring.member.model.vo.Location;
@@ -40,17 +42,17 @@ public interface MatchingService {
 	
 	// 프리랜서 프로필 정보 가져오기
 	FreelancerProfile selectFreelancerDetail(Freelancer f);
+	ProfileFiles selectFiles(int freeNum);
 	
 	// 프리랜서의 매칭횟수 가져오기
 	
 	
 	// 자격정보 파일 리스트
-	
+	int insertFiles(ProfileFiles f);
 	
 	// 리뷰개수 가져오기
 	
 	
-	// 가격 필터링해서 가져오기
-	
-	
+	// 리뷰 등록하기
+	int insertReview(Review r);
 }

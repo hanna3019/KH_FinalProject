@@ -1,0 +1,207 @@
+@font-face {
+    font-family: 'NanumSquareNeo-Variable';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    padding: 0;
+    margin: 0 auto;
+    font-family: 'NanumSquareNeo-Variable';
+}
+
+.hidden{
+	display: none;
+}
+
+body {
+    width: 100%;
+}
+
+.container {
+    width: 970px;
+    padding: 130px 0 6rem;
+}
+
+.container_header {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 2rem;
+}
+
+.container_title h3 {
+    padding-bottom: 1rem;
+}
+
+.container_title p {
+    font-size: small;
+    color: darkgray;
+    padding-bottom: 2rem;
+}
+
+.container_writer {
+    display: flex;
+    align-items: center;
+}
+
+.writer_date {
+    display: flex;
+    align-items: center;
+    padding-left: 0;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #eee;
+}
+
+.writer_img {
+    border-radius: 0.5em;
+    margin: 0;
+    width: 3rem;
+    height: 3rem;
+}
+
+.writer_info {
+    margin: 0;
+    margin-left: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.writer_name {
+    margin: 0;
+    padding-bottom: 0.5rem;
+}
+
+.create_date {
+    font-size: small;
+    color: darkgray;
+}
+
+.container_main {
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #eee;
+}
+
+.read_main p {
+    line-height: 1.8rem;
+    font-size: 1rem;
+    color: #333;
+    padding: 2rem 0 3rem;
+}
+
+.read_main_img {
+    width: 50%;
+    border-radius: 0.7rem;
+}
+
+.read_footer {
+    padding-top: 4rem;
+}
+
+.likeNcomment {
+    display: flex;
+}
+
+.likeNcomment span {
+    margin: 0;
+}
+
+.like,
+.speechBubble {
+    width: 1rem;
+    padding-right: 0.3rem;
+}
+
+.likeCnt {
+    padding-right: 1.5rem;
+    color: #444;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.commentCnt {
+    color: #444;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.comment_area {
+    display: flex;
+    align-items: center;
+    width: 85%;
+}
+
+.comment_img {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 0.5rem;
+    margin: 0 2rem;
+}
+
+#rvsBtn{
+	text-decoration:none;
+	font-size:0.5rem;
+}
+#rvsBtn:hover{
+	cursor: pointer;
+}
+
+.comment_write {
+    margin: 2rem 0;
+}
+
+.comment_writer {
+    font-size: 0.9rem;
+    font-weight: bold;
+    margin: 0.5rem 0;
+    cursor: pointer;
+}
+
+.freelancer {
+    color: darkgray;
+    font-size: 0.8rem;
+}
+
+.comment_content {
+    font-size: 0.9rem;
+    color: #444;
+    margin: 1rem 0;
+    line-height: 1.5rem;
+}
+
+.comment_time {
+    color: darkgray;
+    font-size: 0.7em;
+}
+
+.comment_flex {
+	display:flex
+}
+
+textarea {
+    resize: none;
+    border: 1px solid #eee;
+    border-radius: 0.5rem;
+    padding: 0.8rem 1rem 1rem 1rem;
+    width: 85%;
+    display: flex;
+    line-height: 1.2rem;
+}
+
+textarea::placeholder {
+    color: #999;
+}
+
+textarea:focus {
+    outline: none;
+}
+
+.submit {
+    background-color: #ffd100;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    margin: 1rem auto;
+}

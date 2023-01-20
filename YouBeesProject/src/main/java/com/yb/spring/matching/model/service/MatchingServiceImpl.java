@@ -10,6 +10,8 @@ import com.yb.spring.common.model.vo.PageInfo;
 import com.yb.spring.matching.model.dao.MatchingDao;
 import com.yb.spring.matching.model.vo.Dibs;
 import com.yb.spring.matching.model.vo.FreelancerProfile;
+import com.yb.spring.matching.model.vo.ProfileFiles;
+import com.yb.spring.matching.model.vo.Review;
 import com.yb.spring.member.model.vo.Categories;
 import com.yb.spring.member.model.vo.Freelancer;
 import com.yb.spring.member.model.vo.Location;
@@ -71,6 +73,21 @@ public class MatchingServiceImpl implements MatchingService{
 	@Override
 	public int updateDibY(Dibs d) {
 		return mDao.updateDibY(sqlSession, d);
+	}
+
+	@Override
+	public int insertReview(Review r) {
+		return mDao.insertReview(sqlSession, r);
+	}
+
+	@Override
+	public int insertFiles(ProfileFiles f) {
+		return mDao.insertFiles(sqlSession, f);
+	}
+
+	@Override
+	public ProfileFiles selectFiles(int freeNum) {
+		return mDao.selectFiles(sqlSession, freeNum);
 	}
 
 

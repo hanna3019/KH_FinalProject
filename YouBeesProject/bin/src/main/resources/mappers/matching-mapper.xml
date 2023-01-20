@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="matchingMapper">
+	
+	<resultMap type="Categories" id="serviceResult">
+		<result column="cate_num" property="cateNum"/>
+		<result column="service_num" property="serviceNum"/>
+		<result column="name" property="name"/>	
+	</resultMap>
+
+	<resultMap type="Location" id="locationResult">
+		<result column="city_num" property="cityNum"/>
+		<result column="loc_num" property="locNum"/>
+		<result column="city" property="city"/>
+		<result column="location" property="location"/>
+	</resultMap>
+	
+	<resultMap type="FreelancerProfile" id="ProfileResult">
+		<result column="free_num" property="freeNum"/>
+		<result column="fr_content" property="frContent"/>
+		<result column="call_time" property="callTime"/>
+		<result column="reg_date" property="regDate"/>
+		<result column="one_content" property="oneContent"/>
+		<result column="price" property="price"/>
+		<result column="category" property="category"/>
+		<result column="status" property="status"/>
+		<association javaType="Freelancer" property="f">
+			<result column="name" property="name"/>
+			<result column="tel" property="tel"/>
+			<result column="career" property="career"/>
+			<result column="gender" property="gender"/>
+			<result column="location" property="location"/>
+			<result column="cate_num" property="cateNum"/>
+		</association>
+	</resultMap>
+	
+	<select id="selectServiceList" resultMap="serviceResult">
+		select *
+		from categories
+		where service_num = #{sNum}
+	</select>
+	
+	<select id="selectLocationList" resultMap="locationResult">
+		select *
+		from location
+	</select>
+	
+	<select id="selectCityList" resultMap="locationResult">
+		select *
+		from city
+	</select>
+	
+	<select id="selectFreelancerList" resultMap="ProfileResult">
+		select *
+		from (select f.free_num, fr_content, call_time, reg_date, one_content, price, f.name, tel, career, gender, substr(location,4) location, c.name category, f.cate_num
+		from freelancer_profile p, freelancer f, categories c
+		where p.free_num = f.free_num
+		and f.cate_num = c.cate_num
+		and status = 'Y' and f.cate_num = #{cateNum}) a
+        left join
+	    (select free_num, status
+	    from dibs
+	    where cus_num = #{cusNum}) b
+	    using(free_num)
+	    where free_num is not null
+		<if test="price1 != 0 and price2 != 0">
+			and price &gt;= #{price1} and price &lt;= #{price2}
+		</if>
+		<if test="location != null">
+			and location = #{location}
+		</if>
+		order by reg_date desc
+	</select>
+
+	<select id="selectFreelancerDetail" resultMap="ProfileResult">
+		select *
+		from (select f.free_num, fr_content, call_time, reg_date, one_content, price, f.name, tel, career, gender, location, c.name category
+				from freelancer_profile p, freelancer f, categories c
+				where p.free_num = f.free_num
+				and f.cate_num = c.cate_num
+				and status = 'Y' and f.free_num = #{freeNum})
+		<if test="cusNum != 0">
+		join (select free_num, status
+		    from dibs
+		    where cus_num = #{cusNum})
+		using(free_num)
+		</if>
+	</select>
+	
+	<select id="selectFreelancerListCount" resultType="_int">
+		select count(*)
+		from freelancer
+        join freelancer_profile
+        using(free_num)
+		where cate_num = #{cateNum}
+		<if test="price1 != 0 and price2 != 0">
+			and price &gt;= #{price1} and price &lt;= #{price2}
+		</if>
+		<if test="location != null">
+			and substr(location,4) = #{location}
+		</if>
+	</select>
+	
+	<insert id="insertDib">
+		insert into dibs values(#{cusNum}, #{freeNum}, sysdate, 'Y')
+	</insert>
+	
+	<select id="selectDib" resultType="_int">
+		select count(*)
+		from dibs
+		where cus_num = #{cusNum}
+		and free_num = #{freeNum}
+	</select>
+	
+	<update id="updateDibN">
+		update dibs
+		set status = 'N'
+		where cus_num = #{cusNum}
+		and free_num = #{freeNum}
+	</update>
+	
+	<update id="updateDibY">
+		update dibs
+		set status = 'Y'
+		where cus_num = #{cusNum}
+		and free_num = #{freeNum}
+	</update>
+</mapper>

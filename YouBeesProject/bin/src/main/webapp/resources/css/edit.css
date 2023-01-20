@@ -1,0 +1,191 @@
+@font-face {
+    font-family: 'NanumSquareNeo-Variable';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    padding: 0;
+    margin: 0 auto;
+    font-family: 'NanumSquareNeo-Variable';
+}
+
+.editContainer {
+    width: 970px;
+    padding-top: 100px;
+}
+
+.editTitle {
+    font-size: 1.8rem;
+    font-weight: bold;
+    padding: 3rem;
+    border-bottom: 1px solid #eee;
+}
+
+.imgTd {
+    display: flex;
+    align-items: flex-end;
+    position: relative;
+}
+
+.profileImg {
+    height: 5rem;
+    width: 5rem;
+    border-radius: 0.5rem;
+    margin: 0;
+}
+
+#selectFile {
+    display: none;
+}
+
+.selectFileImg {
+    cursor: pointer;
+    width: 1rem;
+    position: absolute;
+    left: 4rem;
+    top: 4rem;
+}
+
+.editTable {
+    padding: 2rem 0;
+    border-bottom: 1px solid #eee;
+}
+
+.editTable th {
+    padding: 2rem;
+}
+
+.editTable tr {
+    padding: 3rem;
+}
+
+.editTable input {
+    padding: 0.5rem 0.2rem;
+    width: 20rem;
+    border: 1px solid lightgray;
+    border-radius: 0.3rem;
+}
+
+.genderTd input {
+    margin-right: 0.5rem;
+}
+
+.genderTd label {
+    margin-right: 2rem;
+}
+
+#male,
+#female {
+    width: 1rem;
+}
+
+.editBtn {
+    display: flex;
+    padding: 1rem 1.5rem;
+    border: none;
+    border-radius: 0.4rem;
+    background-color: #ffd100;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    cursor: pointer;
+}
+
+.deleteBtn{
+	display: flex;
+    border: none;
+    cursor: pointer;
+    margin: 3rem auto;
+    color: lightgray;
+    text-decoration: underline;
+    background-color: white;
+}
+
+/* 마스크 띄우기 */
+#mask {
+    position: absolute;
+    z-index: 9000;
+    background-color: #555555;
+    display: none;
+    left: 0;
+    top: 0;
+}
+
+/* 팝업으로 뜨는 윈도우 css */
+.window {
+    display: none;
+    position: absolute;
+    left: 40%;
+    top: 7%;
+    width: 30rem;
+    height: 27rem;
+    background-color: #FFF;
+    z-index: 10000;
+}
+
+.window .delete_title {
+    background-color: #ffd100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.delete_title span {
+    font-weight: bold;
+    font-size: 1.4rem;
+    margin: 1rem;
+}
+
+.window .close {
+    position: relative;
+    left: 10rem;
+     cursor: pointer;
+    
+}
+
+.delete_form {
+    padding: 0 1rem;
+}
+
+.delete_form textarea {
+    width: 27rem;
+    height: 6rem;
+    resize: none;
+    border: 1px solid lightgray;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+}
+
+.question1,
+.question2 {
+    margin: 1rem 0;
+}
+
+.quest1,
+.quest2 {
+    margin: 2rem 0;
+}
+
+#pass{
+	width: 15rem;
+    height: 1.5rem;
+    resize: none;
+    border: 1px solid lightgray;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+}
+
+.request_send {
+    padding: 0.7rem 1rem;
+    background-color: #202020;
+    border: none;
+    border-radius: 0.5rem;
+    color: white;
+    display: flex;
+    margin: 3.5rem auto 0;
+    cursor: pointer;
+    margin: 1rem auto;
+}
+
+

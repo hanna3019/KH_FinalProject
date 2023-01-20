@@ -1,0 +1,48 @@
+@font-face {
+    font-family: 'NanumSquareNeo-Variable';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    padding: 0;
+    margin: 0 auto;
+    font-family: 'NanumSquareNeo-Variable';
+}
+
+footer {
+    border-top: 1px solid lightgray;
+    text-align: center;
+    padding: 1.5rem 0;
+    color: gray;
+    font-size: small;
+    background-color: white;
+}
+
+footer .logo {
+    width: 12rem;
+}
+
+footer a {
+    text-decoration: none;
+    color: black;
+    margin: 0 1rem;
+}
+
+footer div {
+    margin: 0.5rem 0;
+}
+
+footer .tou {
+    margin: 1rem 0;
+}
+
+footer .sns img {
+    width: 2rem;
+    margin: 0.5rem 0;
+}
+
+footer .sns img:hover {
+    cursor: pointer;
+}

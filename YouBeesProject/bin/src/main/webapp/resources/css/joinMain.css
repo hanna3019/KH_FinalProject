@@ -1,0 +1,86 @@
+@font-face {
+  font-family: 'NanumSquareNeo-Variable';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  padding: 0;
+  margin: 0 auto;
+  font-family: 'NanumSquareNeo-Variable';
+}
+
+body {
+  width: 100%;
+}
+
+.joinTitle {
+  font-size: 1.8rem;
+  margin-bottom: 5rem;
+  font-weight: bold;
+}
+
+.joinMainContainer {
+  padding-top: 15rem;
+  width: 975px;
+  text-align: center;
+  height: 43.125rem;
+}
+
+.joinSelectBox {
+  margin: 0 auto;
+}
+
+.normalBox {
+  box-sizing: border-box;
+  display: inline-block;
+  width: 15.625rem;
+  height: 12.5rem;
+  padding: 1.25rem;
+  margin: 0 2rem;
+  border: 0.3rem solid black;
+  background-color: white;
+  text-align: center;
+  border-radius: 1.3rem;
+  font-size: 1.5rem;
+}
+
+.normalBox:hover {
+  border: 3px solid #ffd100;
+  box-shadow: 1rem 1rem 1rem #eee;
+  cursor: pointer;
+  transform: scale(1.1);
+  transition: 0.2s;
+}
+
+
+.normalImg {
+  width: 6rem;
+}
+
+.freelancerBox {
+  box-sizing: border-box;
+  display: inline-block;
+  width: 15.625rem;
+  height: 12.5rem;
+  padding: 1.25rem;
+  margin: 0 2rem;
+  border: 0.3rem solid black;
+  background-color: white;
+  text-align: center;
+  border-radius: 1.3rem;
+  font-size: 1.5rem;
+}
+
+.freelancerBox:hover {
+  border: 3px solid #ffd100;
+  box-shadow: 1rem 1rem 1rem #eee;
+  cursor: pointer;
+  transform: scale(1.1);
+  transition: 0.2s;
+}
+
+.freelaceImg {
+  width: 6rem;
+}
