@@ -56,6 +56,9 @@ function updateSubmit5(){
 function updateSubmit6(){
 	priceFrm.submit();
 }
+function filesUpload(){
+	UploadFrm.submit();
+}
 
 function wrapWindowByMask() {
 

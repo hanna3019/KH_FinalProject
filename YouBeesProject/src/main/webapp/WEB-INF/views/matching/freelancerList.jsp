@@ -139,7 +139,7 @@
 	       		</c:when>
 	       	</c:choose>
        	</div>
-       	
+
        	<c:choose>
        		<c:when test="${not empty loginUserC}">
 	       	<input type="hidden" id="cusNum" value="${loginUserC.cusNum}">
@@ -229,14 +229,9 @@
 					let value = '';
 					for(let i in fList){
 						value += '<table class="free_pro">'
-							  + ' <tr><td colspan="4">';
-							  
-							  if($("#cusNum").val() == '0'){
-								  value += '<a href="freelancerDetail.ma?freeNum='+fList[i].freeNum+'">';
-							  }else{
-								  value += '<a href="freelancerDetail.ma?freeNum='+fList[i].freeNum+'&cusNum='+${loginUserC.cusNum}+'">';
-							  }
-							  value += '<h4>'+fList[i].f.name+'</h4></a></td>'
+							  + ' <tr><td colspan="4">'							  
+							  + '<a href="freelancerDetail.ma?freeNum='+fList[i].freeNum+'&cusNum='+$("#cusNum")+'">'
+							  + '<h4>'+fList[i].f.name+'</h4></a></td>'
 							  + '<td rowspan="3" class="pro_img"><img src="/spring/resources/source/profile.png" alt="" class="pro_img"></td></tr>'
 							  + '<tr><td colspan="4" class="title">'+fList[i].oneContent+'</td></tr>'
 							  + '<tr class="review">'
@@ -247,7 +242,7 @@
 							  }else{
 								  value += '<img src="/spring/resources/source/heart.png" ';
 							  }
-			             value += 'alt="" class="bookmark_icon" id="'+fList[i].freeNum+'">찜하기</td></tr></table>'
+			             value += 'alt="" class="bookmark_icon" id="'+fList[i].freeNum+'">찜하기</td></tr></table>';
 					}
 					$("#fListArea").empty();
 					$("#fListArea").html(value);

@@ -34,6 +34,14 @@
 		</association>
 	</resultMap>
 	
+	<resultMap type="ProfileFiles" id="filesResult">
+		<result column="free_num" property="freeNum"/>
+		<result column="filename1" property="filename1"/>
+		<result column="filename2" property="filename2"/>
+		<result column="filename3" property="filename3"/>
+		<result column="filename4" property="filename4"/>
+	</resultMap>
+	
 	<select id="selectServiceList" resultMap="serviceResult">
 		select *
 		from categories
@@ -80,7 +88,7 @@
 				and f.cate_num = c.cate_num
 				and status = 'Y' and f.free_num = #{freeNum})
 		<if test="cusNum != 0">
-		join (select free_num, status
+		left join (select free_num, status
 		    from dibs
 		    where cus_num = #{cusNum})
 		using(free_num)
@@ -125,4 +133,15 @@
 		where cus_num = #{cusNum}
 		and free_num = #{freeNum}
 	</update>
+	
+	<insert id="insertFiles">
+		insert into profile_file
+		values(#{freeNum}, #{filename1}, #{filename2}, #{filename3}, #{fileName4})
+	</insert>
+	
+	<select id="selectFiles" resultMap="filesResult">
+		select *
+		from profile_file
+		where free_num = #{freeNum}
+	</select>
 </mapper>

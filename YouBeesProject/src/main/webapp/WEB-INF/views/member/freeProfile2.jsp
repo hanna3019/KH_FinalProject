@@ -11,7 +11,7 @@
             <title>YouBees</title>
             <link rel="stylesheet" type="text/css" href="${path}/resources/css/free_profile2.css?jp">
             <script src="http://code.jquery.com/jquery-latest.js"></script>
-            <script type="text/javascript" src="${path}/resources/js/profile.js?qv"></script>
+            <script type="text/javascript" src="${path}/resources/js/profile.js?qvp"></script>
         </head>
 
         <body>
@@ -127,10 +127,11 @@
                     
                 
                     
-                  <form action="" id="certifi_form">
+                  <form action="certificateFilesUpload.ma" id="certifi_form" name="UploadFrm" method="post" enctype="multipart/form-data">
+                  <input type="hidden" name="freeNum" value="${loginUserF.freeNum}">
 	                    <tr>
 	                        <th>작업물 및 자격정보</th>
-	                        <th><span class="regBtn certifi_btn">등록하기</span></th>
+	                        <th><span class="regBtn certifi_btn" onclick="filesUpload();">등록하기</span></th>
 	                    </tr>
 	                    <tr><!-- 등록 몇 개까지였는지 기억이 안나서 근데 4개 넘어가면 안 돼요! -->
 	                        <td colspan="2">
@@ -138,25 +139,25 @@
 	                                <label for="file_input1">
 	                                    <img alt="" src="${path}/resources/source/upload.png" id="upload_img1">
 	                                </label>
-	                                <input type="file" id="file_input1" onchange="readURL1(this)">
+	                                <input type="file" name="file1" id="file_input1" onchange="readURL1(this)">
 	                                <img id="preview1" onError="this.style.visibility='hidden'" />
 	
 	                                <label for="file_input2">
 	                                    <img alt="" src="${path}/resources/source/upload.png" id="upload_img2">
 	                                </label>
-	                                <input type="file" id="file_input2" onchange="readURL2(this)">
+	                                <input type="file" name="file2" id="file_input2" onchange="readURL2(this)">
 	                                <img id="preview2" onError="this.style.visibility='hidden'" />
 	
 	                                <label for="file_input3">
 	                                    <img alt="" src="${path}/resources/source/upload.png" id="upload_img3">
 	                                </label>
-	                                <input type="file" id="file_input3" onchange="readURL3(this)">
+	                                <input type="file" name="file3" id="file_input3" onchange="readURL3(this)">
 	                                <img id="preview3" onError="this.style.visibility='hidden'" />
 	
 	                                <label for="file_input4">
 	                                    <img alt="" src="${path}/resources/source/upload.png" id="upload_img4">
 	                                </label>
-	                                <input type="file" id="file_input4" onchange="readURL4(this)">
+	                                <input type="file" name="file4" id="file_input4" onchange="readURL4(this)">
 	                                <img id="preview4" onError="this.style.visibility='hidden'" />
 	                            </div>
 	                        </td>

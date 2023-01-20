@@ -42,7 +42,7 @@
 
 			<div class="read_footer">
 				<div class="likeNcomment">
-					<span><img src="${path}/resources/source/like.png?a" class="like"></span>
+					<span><img src="${path}/resources/source/like.png" class="like"></span>
 					<span class="likeCnt">12</span>
 					<span><img src="${path}/resources/source/reply.png" class="speechBubble"></span>
 					<span class="commentCnt" id="rcount">0</span>
