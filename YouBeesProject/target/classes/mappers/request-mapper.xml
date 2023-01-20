@@ -55,64 +55,38 @@
 	</insert>
 	
 	<select id="selectRequestList" resultMap="requestResult">
-		select c.cus_num, r.req_num, r.free_num, r.reg_date, r.accept, c.name, a.ans_1, a.ans_2, a.ans_3
+		select c.cus_num, r.req_num, r.free_num, r.reg_date, c.name, a.ans_1, a.ans_2, a.ans_3
 		from customer c, request r, answer a
         where c.cus_num = r.cus_num
         and r.req_num = a.req_num
-        and r.accept is null
-        and r.free_num = #{freeNum}
+		and r.free_num = #{freeNum}
 		order by r.reg_date desc
 	</select>
 	
 	<select id="requestDetail" resultMap="detailResult">
-		select req_num, ans_1, ans_2, ans_3
-		from answer
-		where req_num = #{reqNum}
+		select r.req_num, r.cus_num, a.ans_1, a.ans_2, a.ans_3
+		from answer a, request r
+		where a.req_num = r.req_num
+		and r.cus_num = #{cusNum}
 	</select>
 	
 	<select id="sentRequestList" resultMap="sentList">
-		select f.name, f.location, c.name cateName, r.req_num, r.reg_date, r.accept, a.ans_1, a.ans_2, a.ans_3, t.cus_num
+		select f.name, f.location, c.name cateName, r.req_num, r.reg_date, a.ans_1, a.ans_2, a.ans_3, t.cus_num
 		from freelancer f, categories c, answer a, request r, customer t
 		where r.free_num = f.free_num
         and f.cate_num = c.cate_num
         and r.cus_num = t.cus_num
         and r.req_num = a.req_num
-        and r.accept is null
 		and r.cus_num = #{cusNum}
 		order by r.reg_date desc
 	</select>
 	
-	<update id="acceptRequest">
-		update request
-		set accept = 'Y'
-		where req_num = #{reqNum}
-	</update>
-	
-	<update id="declineRequest">
-		update request
-		set accept = 'N'
-		where req_num = #{reqNum}
-	</update>
-	
-	<select id="fMatchedList" resultMap="requestResult">
-		select c.cus_num, r.req_num, r.free_num, r.reg_date, r.accept, c.name, a.ans_1, a.ans_2, a.ans_3
+	<select id="selectListCount" resultType="_int">
+		select c.cus_num, r.req_num, r.free_num, r.reg_date, c.name, a.ans_1, a.ans_2, a.ans_3
 		from customer c, request r, answer a
         where c.cus_num = r.cus_num
         and r.req_num = a.req_num
-        and r.accept = 'Y'
-        and r.free_num = #{freeNum}
-		order by r.reg_date desc
-	</select>
-	
-	<select id="cMatchedList" resultMap="sentList">
-		select f.name, f.location, c.name cateName, r.req_num, r.reg_date, r.accept, a.ans_1, a.ans_2, a.ans_3, t.cus_num
-		from freelancer f, categories c, answer a, request r, customer t
-		where r.free_num = f.free_num
-        and f.cate_num = c.cate_num
-        and r.cus_num = t.cus_num
-        and r.accept ='Y'
-        and r.req_num = #{reqNum}
-		order by r.reg_date desc
+		and r.free_num = #{freeNum}
 	</select>
 	
 </mapper>
