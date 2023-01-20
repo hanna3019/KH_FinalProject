@@ -18,7 +18,6 @@
 		<typeAlias type="com.yb.spring.request.model.vo.Answer" alias="Answer"/>
 		<typeAlias type="com.yb.spring.matching.model.vo.ProfileFiles" alias="ProfileFiles"/>
 		<typeAlias type="com.yb.spring.request.model.vo.Sent" alias="Sent"/>
-
 	</typeAliases>
 	
 	<mappers>

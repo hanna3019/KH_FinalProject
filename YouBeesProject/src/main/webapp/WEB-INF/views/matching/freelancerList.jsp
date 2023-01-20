@@ -43,8 +43,8 @@
                             class="drp_icon"></button>
                 </div>
                 <form action="freelancerList.ma" name="filteringFrm">
-                    <input type="number" min="0" size="7" class="priceInp" name="price1" value=""> &ensp;~&ensp; <input type="number" min="0" size="7"
-                        class="priceInp" name="price2" value="">
+                    <input type="number" min="0" size="7" class="priceInp" name="price1" id="p1"> &ensp;~&ensp; <input type="number" min="0" size="7"
+                        class="priceInp" name="price2" value="" id="p2">
                     <input type="hidden" name="location" class="filterLocation" value="${selectedLocation}">
 			        <input type="hidden" name="cateNum" value="${selected.cateNum}">
 			        <input type="hidden" name="cName" value="${cName}">
@@ -66,9 +66,8 @@
                 		filteringFrm.submit();
                 	}
                 	function priceSubmit(){
-                		if(!$("input[name=price1]").val("") && !$("input[name=price2]").val("")){
-	                		filteringFrm.submit();	              	             			
-                		}
+                		if($("#p1").val() != "" && $("#p2").val())
+	                	filteringFrm.submit();	              	             			
                 	}
                 </script>
             </div>

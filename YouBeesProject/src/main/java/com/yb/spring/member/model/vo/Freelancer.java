@@ -29,5 +29,6 @@ public class Freelancer {
 	private int cusNum;
 	private String profileName;
 	private String changeName;
+	private String keyword;
 
 }
