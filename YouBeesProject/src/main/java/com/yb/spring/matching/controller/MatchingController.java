@@ -52,7 +52,7 @@ public class MatchingController {
 	}
 	
 	@RequestMapping("freelancerList.ma")
-	public String freelancerList(@RequestParam(value="cpage", defaultValue="1") int nowPage, Freelancer f, String cName, String keyword, Model model) {
+	public String freelancerList(@RequestParam(value="cpage", defaultValue="1") int nowPage, Freelancer f, String cName, Model model) {
 		ArrayList<Location> lList = mService.selectLocationList();
 		ArrayList<Location> cList = mService.selectCityList();
 		if(f.getLocation() == null || f.getLocation().equals("")) {
