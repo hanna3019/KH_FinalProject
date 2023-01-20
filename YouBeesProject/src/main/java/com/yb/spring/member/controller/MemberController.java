@@ -1,7 +1,10 @@
 package com.yb.spring.member.controller;
 
 import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.servlet.http.HttpSession;
 
@@ -15,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
+import com.yb.spring.matching.model.service.MatchingService;
 import com.yb.spring.matching.model.vo.FreelancerProfile;
 import com.yb.spring.member.model.service.MemberService;
 import com.yb.spring.member.model.vo.Categories;
@@ -201,7 +205,10 @@ public class MemberController {
 		}
 
 	}
-
+	
+	@Autowired
+	private MatchingService maService;
+	
 	/* 프리랜서 탈퇴 */
 	@RequestMapping("freeDelete.me")
 	public String deleteFreeMember(String pass, int freeNum, HttpSession session, Model model) {
@@ -261,6 +268,7 @@ public class MemberController {
 
 			model.addAttribute("f", f);
 		}
+		return "redirect:/";
 	}
 
 	public String changeFilename(MultipartFile reupfile, HttpSession session) {
@@ -281,6 +289,8 @@ public class MemberController {
 		} catch (IllegalStateException | IOException e) {
 			e.printStackTrace();
 		}
+		
+		return changeName;
 	}
 
 	@RequestMapping("FreelancerUpdate.me")
@@ -288,7 +298,7 @@ public class MemberController {
 		if (free.getCareer() != null) {
 			free.setCareer(free.getCareer() + "년");
 		}
-		int result = mService.updateFreelancer(free); 
+		int result = mService.updateFreeMember(free); 
 
 		if (result > 0) {
 			FreelancerProfile f = maService.selectFreelancerDetail(free);
@@ -296,7 +306,7 @@ public class MemberController {
 			model.addAttribute("f", f);
 
 		}
-		return changeName;
+		return "redirect:/";
 	}
 
 	/* 일반고객 탈퇴 */

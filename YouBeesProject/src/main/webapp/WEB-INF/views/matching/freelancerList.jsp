@@ -77,7 +77,6 @@
 
         <div class="free_list">
             <div class="search">
-            
                     <input class="search_bar" type="text" name="keyword" placeholder="어떤 프리랜서를 찾고 계신가요?">
                     <img src="${path}/resources/source/search.png" alt="" class="search_btn" onclick="">
                 </form>
