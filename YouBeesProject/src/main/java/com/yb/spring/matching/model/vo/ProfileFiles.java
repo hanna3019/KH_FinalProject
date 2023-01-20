@@ -17,5 +17,4 @@ public class ProfileFiles {
 	private String filename2;
 	private String filename3;
 	private String filename4;
-
 }
