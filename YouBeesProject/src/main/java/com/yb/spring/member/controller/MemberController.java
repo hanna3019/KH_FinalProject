@@ -205,15 +205,15 @@ public class MemberController {
 		}
 
 	}
-	
+
 	@Autowired
 	private MatchingService maService;
-	
+
 	/* 프리랜서 탈퇴 */
 	@RequestMapping("freeDelete.me")
 	public String deleteFreeMember(String pass, int freeNum, HttpSession session, Model model) {
 		String encPwd = ((Freelancer) session.getAttribute("loginUserF")).getPass(); // 현재 입력한 비밀번호 가져오는거 encPwd는 지금 입력한
-																						// 비밀번호
+		// 비밀번호
 		if (bcryptPasswordEncoder.matches(pass, encPwd)) {// 지금 입력한 비밀번호와 원래 userPwd->데이터베이스에 들어가 있는 비밀번호가 맞는지 match로 확인
 			int result = mService.deleteFreeMember(freeNum); // 맞으면 여기 실행
 			if (result > 0) { // result가 0보다 크면 회원가입이 잘 들어갈 시 1이 들어가니까 잘 들어갔다는 뜻
@@ -289,7 +289,7 @@ public class MemberController {
 		} catch (IllegalStateException | IOException e) {
 			e.printStackTrace();
 		}
-		
+
 		return changeName;
 	}
 
@@ -298,7 +298,7 @@ public class MemberController {
 		if (free.getCareer() != null) {
 			free.setCareer(free.getCareer() + "년");
 		}
-		int result = mService.updateFreeMember(free); 
+		int result = mService.updateFreeMember(free);
 
 		if (result > 0) {
 			FreelancerProfile f = maService.selectFreelancerDetail(free);
@@ -313,7 +313,7 @@ public class MemberController {
 	@RequestMapping("cusDelete.me")
 	public String deleteCusMember(String pass, int cusNum, HttpSession session, Model model) {
 		String encPwd = ((Customer) session.getAttribute("loginUserC")).getPass(); // 현재 입력한 비밀번호 가져오는거 encPwd는 지금 입력한
-																					// 비밀번호
+		// 비밀번호
 		if (bcryptPasswordEncoder.matches(pass, encPwd)) {// 지금 입력한 비밀번호와 원래 userPwd->데이터베이스에 들어가 있는 비밀번호가 맞는지 match로 확인
 			int result = mService.deleteCusMember(cusNum); // 맞으면 여기 실행
 			if (result > 0) { // result가 0보다 크면 회원가입이 잘 들어갈 시 1이 들어가니까 잘 들어갔다는 뜻
