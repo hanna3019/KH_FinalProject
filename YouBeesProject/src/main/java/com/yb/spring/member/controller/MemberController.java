@@ -34,9 +34,6 @@ public class MemberController {
 
 	@Autowired
 	private BCryptPasswordEncoder bcryptPasswordEncoder;
-	
-	@Autowired
-	private MatchingService maService;
 
 	@RequestMapping("joinMain.me")
 	public String selectJoin() {
@@ -209,11 +206,14 @@ public class MemberController {
 
 	}
 
+	@Autowired
+	private MatchingService maService;
+
 	/* 프리랜서 탈퇴 */
 	@RequestMapping("freeDelete.me")
 	public String deleteFreeMember(String pass, int freeNum, HttpSession session, Model model) {
 		String encPwd = ((Freelancer) session.getAttribute("loginUserF")).getPass(); // 현재 입력한 비밀번호 가져오는거 encPwd는 지금 입력한
-																						// 비밀번호
+		// 비밀번호
 		if (bcryptPasswordEncoder.matches(pass, encPwd)) {// 지금 입력한 비밀번호와 원래 userPwd->데이터베이스에 들어가 있는 비밀번호가 맞는지 match로 확인
 			int result = mService.deleteFreeMember(freeNum); // 맞으면 여기 실행
 			if (result > 0) { // result가 0보다 크면 회원가입이 잘 들어갈 시 1이 들어가니까 잘 들어갔다는 뜻
@@ -231,7 +231,6 @@ public class MemberController {
 		}
 
 	}
-
 
 	/* 일반고객 업데이트 */
 	@RequestMapping("myInfoUpdateC.me")
@@ -290,7 +289,8 @@ public class MemberController {
 		} catch (IllegalStateException | IOException e) {
 			e.printStackTrace();
 		}
-		return "redirect:/";
+
+		return changeName;
 	}
 
 	@RequestMapping("FreelancerUpdate.me")
@@ -298,7 +298,7 @@ public class MemberController {
 		if (free.getCareer() != null) {
 			free.setCareer(free.getCareer() + "년");
 		}
-		int result = mService.updateFreelancer(free);
+		int result = mService.updateFreeMember(free);
 
 		if (result > 0) {
 			FreelancerProfile f = maService.selectFreelancerDetail(free);
@@ -306,14 +306,14 @@ public class MemberController {
 			model.addAttribute("f", f);
 
 		}
-		return "";
+		return "redirect:/";
 	}
 
 	/* 일반고객 탈퇴 */
 	@RequestMapping("cusDelete.me")
 	public String deleteCusMember(String pass, int cusNum, HttpSession session, Model model) {
 		String encPwd = ((Customer) session.getAttribute("loginUserC")).getPass(); // 현재 입력한 비밀번호 가져오는거 encPwd는 지금 입력한
-																					// 비밀번호
+		// 비밀번호
 		if (bcryptPasswordEncoder.matches(pass, encPwd)) {// 지금 입력한 비밀번호와 원래 userPwd->데이터베이스에 들어가 있는 비밀번호가 맞는지 match로 확인
 			int result = mService.deleteCusMember(cusNum); // 맞으면 여기 실행
 			if (result > 0) { // result가 0보다 크면 회원가입이 잘 들어갈 시 1이 들어가니까 잘 들어갔다는 뜻
@@ -329,25 +329,25 @@ public class MemberController {
 			session.setAttribute("alertMsg", "비밀번호를 잘못 입력하였습니다. 확인해 주세요");
 			return "member/myInfoEditC";
 		}
+
 	}
-
-	/*
-	 * 프리랜서 프로필 수정
-	 * 
-	 * @RequestMapping("profileUpdate.me") public String
-	 * profileUpdate(FreelancerProfile fp, Model model) { int result =
-	 * mService.updateProfile(fp); if (result > 0) { FreelancerProfile f =
-	 * maService.selectFreelancerDetail(fp.getFreeNum()); model.addAttribute("f",
-	 * f); } }
-	 * 
-	 * @RequestMapping("FreelancerUpdate.me") public String
-	 * FreelancerUpdate(Freelancer free, Model model) { if (free.getCareer() !=
-	 * null) { free.setCareer(free.getCareer() + "년"); } int result =
-	 * mService.updateFreelancer(free); if (result > 0) { FreelancerProfile f =
-	 * maService.selectFreelancerDetail(free.getFreeNum()); model.addAttribute("f",
-	 * f); }
-	 * 
-	 * }
-	 */
-
 }
+
+/*
+ * 프리랜서 프로필 수정
+ * 
+ * @RequestMapping("profileUpdate.me") public String
+ * profileUpdate(FreelancerProfile fp, Model model) { int result =
+ * mService.updateProfile(fp); if (result > 0) { FreelancerProfile f =
+ * maService.selectFreelancerDetail(fp.getFreeNum()); model.addAttribute("f",
+ * f); } }
+ * 
+ * @RequestMapping("FreelancerUpdate.me") public String
+ * FreelancerUpdate(Freelancer free, Model model) { if (free.getCareer() !=
+ * null) { free.setCareer(free.getCareer() + "년"); } int result =
+ * mService.updateFreelancer(free); if (result > 0) { FreelancerProfile f =
+ * maService.selectFreelancerDetail(free.getFreeNum()); model.addAttribute("f",
+ * f); }
+ * 
+ * }
+ */

@@ -52,7 +52,7 @@ public class MatchingController {
 	}
 	
 	@RequestMapping("freelancerList.ma")
-	public String freelancerList(@RequestParam(value="cpage", defaultValue="1") int nowPage, Freelancer f, int cusNum, String cName, Model model) {
+	public String freelancerList(@RequestParam(value="cpage", defaultValue="1") int nowPage, Freelancer f, String cName, String keyword, Model model) {
 		ArrayList<Location> lList = mService.selectLocationList();
 		ArrayList<Location> cList = mService.selectCityList();
 		if(f.getLocation() == null || f.getLocation().equals("")) {
@@ -136,9 +136,7 @@ public class MatchingController {
 	
 	
 	/* 자격정보 파일 업로드 */
-	
 	private static final String CURR_IMAGE_REPO_PATH = "D:\\YB-finalPro\\YouBeesProject\\src\\main\\webapp\\resources\\uploadCertifi\\";
-
 	
 	@RequestMapping(value = "certificateFilesUpload.ma", method = RequestMethod.POST)
 	public ModelAndView filesUpload(MultipartHttpServletRequest multipartRequest,
@@ -208,6 +206,7 @@ public class MatchingController {
 
 		return fileList;
 	}
+	
 	
 	
 	
