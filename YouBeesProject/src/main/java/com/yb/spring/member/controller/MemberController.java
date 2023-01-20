@@ -242,7 +242,7 @@ public class MemberController {
 		if (free.getCareer() != null) {
 			free.setCareer(free.getCareer() + "년");
 		}
-		int result = mService.updateFreelancer(free);
+		int result = mService.updateFreelancer(free); 
 
 		if(result > 0) {
 			FreelancerProfile f = maService.selectFreelancerDetail(free);
