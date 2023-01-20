@@ -1,0 +1,87 @@
+@font-face {
+    font-family: 'NanumSquareNeo-Variable';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    padding: 0;
+    margin: 0 auto;
+    font-family: 'NanumSquareNeo-Variable';
+}
+
+main {
+    width: 970px;
+    height: 50rem;
+    padding-top: 130px;
+}
+
+.mainTitle {
+    border-bottom: 1px solid #eee;
+    padding: 2rem 0 2rem 5rem;
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.subTitle {
+    margin-left: 0;
+    color: gray;
+    font-size: 1rem;
+}
+
+.subTitle:hover{
+	 cursor: pointer;
+	 color: black;
+}
+
+.commentList {
+    display: flex;
+    padding: 1rem;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+}
+
+.commentList:last-of-type {
+    border-bottom: none;
+}
+
+.commentList img {
+    width: 5rem;
+}
+
+.commentInfo {
+    margin-left: 0;
+}
+
+.commentInfo div {
+    padding: 0.3rem;
+}
+
+.commenter {
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-left: 0;
+}
+
+
+.detail {
+    margin-left: 0;
+    color: gray;
+    font-size: 0.7rem;
+}
+
+.likeTimeNdelete {
+    display: flex;
+    flex-direction: column;
+}
+
+.createTime {
+    margin: 0 1.5rem 1.5rem;
+    color: rgb(165, 165, 165);
+    font-size: small;
+}
+
+
+
+
