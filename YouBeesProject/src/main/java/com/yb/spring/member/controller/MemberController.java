@@ -1,7 +1,10 @@
 package com.yb.spring.member.controller;
 
 import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.servlet.http.HttpSession;
 
@@ -15,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
+import com.yb.spring.matching.model.service.MatchingService;
 import com.yb.spring.matching.model.vo.FreelancerProfile;
 import com.yb.spring.member.model.service.MemberService;
 import com.yb.spring.member.model.vo.Categories;
@@ -30,6 +34,9 @@ public class MemberController {
 
 	@Autowired
 	private BCryptPasswordEncoder bcryptPasswordEncoder;
+	
+	@Autowired
+	private MatchingService maService;
 
 	@RequestMapping("joinMain.me")
 	public String selectJoin() {
@@ -225,6 +232,7 @@ public class MemberController {
 
 	}
 
+
 	/* 일반고객 업데이트 */
 	@RequestMapping("myInfoUpdateC.me")
 	public String updateCusMember(Customer c, MultipartFile upfile, HttpSession session, Model model) {
@@ -261,6 +269,7 @@ public class MemberController {
 
 			model.addAttribute("f", f);
 		}
+		return "redirect:/";
 	}
 
 	public String changeFilename(MultipartFile reupfile, HttpSession session) {
@@ -281,6 +290,7 @@ public class MemberController {
 		} catch (IllegalStateException | IOException e) {
 			e.printStackTrace();
 		}
+		return "redirect:/";
 	}
 
 	@RequestMapping("FreelancerUpdate.me")
@@ -296,7 +306,7 @@ public class MemberController {
 			model.addAttribute("f", f);
 
 		}
-		return changeName;
+		return "";
 	}
 
 	/* 일반고객 탈퇴 */
@@ -319,25 +329,25 @@ public class MemberController {
 			session.setAttribute("alertMsg", "비밀번호를 잘못 입력하였습니다. 확인해 주세요");
 			return "member/myInfoEditC";
 		}
-
 	}
-}
 
-/*
- * 프리랜서 프로필 수정
- * 
- * @RequestMapping("profileUpdate.me") public String
- * profileUpdate(FreelancerProfile fp, Model model) { int result =
- * mService.updateProfile(fp); if (result > 0) { FreelancerProfile f =
- * maService.selectFreelancerDetail(fp.getFreeNum()); model.addAttribute("f",
- * f); } }
- * 
- * @RequestMapping("FreelancerUpdate.me") public String
- * FreelancerUpdate(Freelancer free, Model model) { if (free.getCareer() !=
- * null) { free.setCareer(free.getCareer() + "년"); } int result =
- * mService.updateFreelancer(free); if (result > 0) { FreelancerProfile f =
- * maService.selectFreelancerDetail(free.getFreeNum()); model.addAttribute("f",
- * f); }
- * 
- * }
- */
+	/*
+	 * 프리랜서 프로필 수정
+	 * 
+	 * @RequestMapping("profileUpdate.me") public String
+	 * profileUpdate(FreelancerProfile fp, Model model) { int result =
+	 * mService.updateProfile(fp); if (result > 0) { FreelancerProfile f =
+	 * maService.selectFreelancerDetail(fp.getFreeNum()); model.addAttribute("f",
+	 * f); } }
+	 * 
+	 * @RequestMapping("FreelancerUpdate.me") public String
+	 * FreelancerUpdate(Freelancer free, Model model) { if (free.getCareer() !=
+	 * null) { free.setCareer(free.getCareer() + "년"); } int result =
+	 * mService.updateFreelancer(free); if (result > 0) { FreelancerProfile f =
+	 * maService.selectFreelancerDetail(free.getFreeNum()); model.addAttribute("f",
+	 * f); }
+	 * 
+	 * }
+	 */
+
+}
