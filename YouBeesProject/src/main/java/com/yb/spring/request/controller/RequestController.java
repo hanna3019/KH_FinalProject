@@ -31,7 +31,7 @@ public class RequestController {
 	// 요청 request테이블, answer테이블에 넣기
 	@RequestMapping("insertRequest.re")
 
-	public ModelAndView insertRequest(Request req, Answer ans, int ans2_1, int ans2_2, Freelancer fr, ModelAndView mv) {
+	public ModelAndView insertRequest(Request req, Freelancer fr, Answer ans, int ans2_1, int ans2_2, ModelAndView mv) {
 		ans.setAns2(ans2_1 + " ~ " + ans2_2);
 		int result = rService.insertRequest(req);
 		int result2 = rService.insertAnswer(ans);

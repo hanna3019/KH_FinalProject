@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "mybatis-3-config.dtd" >
+<configuration>
+	<settings>
+		<setting name="jdbcTypeForNull" value="NULL"/>
+	</settings>
+	
+	<typeAliases>
+		<typeAlias type="com.yb.spring.member.model.vo.Freelancer" alias="Freelancer"/>
+		<typeAlias type="com.yb.spring.member.model.vo.Customer" alias="Customer"/>
+		<typeAlias type="com.yb.spring.member.model.vo.Categories" alias="Categories"/>
+		<typeAlias type="com.yb.spring.member.model.vo.Location" alias="Location"/>
+		<typeAlias type="com.yb.spring.board.model.vo.Board" alias="Board"/>
+		<typeAlias type="com.yb.spring.board.model.vo.Comments" alias="Comments"/>
+		<typeAlias type="com.yb.spring.board.model.vo.Likes" alias="Likes"/>
+		<typeAlias type="com.yb.spring.matching.model.vo.FreelancerProfile" alias="FreelancerProfile"/>
+		<typeAlias type="com.yb.spring.request.model.vo.Request" alias="Request"/>
+		<typeAlias type="com.yb.spring.request.model.vo.Answer" alias="Answer"/>
+		<typeAlias type="com.yb.spring.request.model.vo.Sent" alias="Sent"/>
+
+	</typeAliases>
+	
+	<mappers>
+		<mapper resource="/mappers/member-mapper.xml"/>
+		<mapper resource="/mappers/board-mapper.xml"/>
+		<mapper resource="/mappers/matching-mapper.xml"/>
+		<mapper resource="/mappers/request-mapper.xml"/>
+	</mappers>
+</configuration>

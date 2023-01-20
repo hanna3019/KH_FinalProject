@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="requestMapper">
+
+	<resultMap type="Request" id="requestResult">
+		<result column="req_num" property="reqNum"/>
+		<result column="cus_num" property="cusNum"/>
+		<result column="free_num" property="freeNum"/>
+		<result column="reg_date" property="regDate"/>
+		<result column="accept" property="accept"/>
+		<result column="acct_date" property="acctDate"/>
+		<result column="name" property="name"/>
+		<association javaType="Answer" property="a">
+			<result column="ans_1" property="ans1"/>
+			<result column="ans_2" property="ans2"/>
+			<result column="ans_3" property="ans3"/>
+		</association>
+	</resultMap>
+	
+	<resultMap type="Answer" id="detailResult">
+		<result column="req_num" property="reqNum"/>
+		<result column="ans_1" property="ans1"/>
+		<result column="ans_2" property="ans2"/>
+		<result column="ans_3" property="ans3"/>
+	</resultMap>
+	
+	<resultMap type="Sent" id="sentList">
+		<association javaType="Freelancer" property="f">
+			<result column="name" property="name"/>
+			<result column="location" property="location"/>
+			<result column="cateName" property="cateName"/>
+		</association>
+		<association javaType="Request" property="r">
+			<result column="req_num" property="reqNum"/>
+			<result column="reg_date" property="regDate"/>
+		</association>
+		<association javaType="Answer" property="a">
+			<result column="ans_1" property="ans1"/>
+			<result column="ans_2" property="ans2"/>
+			<result column="ans_3" property="ans3"/>
+		</association>
+		<association javaType="Customer" property="t">
+			<result column="cus_num" property="cusNum"/>
+		</association>
+	</resultMap>
+
+	<insert id="insertRequest">
+		insert into request(req_num, cus_num, free_num, reg_date, accept, acct_date)
+			values(seq_req.nextval, #{cusNum}, #{freeNum}, sysdate, 'N', null)
+	</insert>
+	
+	<insert id="insertAnswer">
+		insert into answer(req_num, ans_1, ans_2, ans_3)
+			values(seq_req.currval, #{ans1}, #{ans2}, #{ans3})
+	</insert>
+	
+	<select id="selectRequestList" resultMap="requestResult">
+		select c.cus_num, r.req_num, r.free_num, r.reg_date, r.accept, c.name, a.ans_1, a.ans_2, a.ans_3
+		from customer c, request r, answer a
+        where c.cus_num = r.cus_num
+        and r.req_num = a.req_num
+        and r.accept is null
+        and r.free_num = #{freeNum}
+		order by r.reg_date desc
+	</select>
+	
+	<select id="requestDetail" resultMap="detailResult">
+		select req_num, ans_1, ans_2, ans_3
+		from answer
+		where req_num = #{reqNum}
+	</select>
+	
+	<select id="sentRequestList" resultMap="sentList">
+		select f.name, f.location, c.name cateName, r.req_num, r.reg_date, r.accept, a.ans_1, a.ans_2, a.ans_3, t.cus_num
+		from freelancer f, categories c, answer a, request r, customer t
+		where r.free_num = f.free_num
+        and f.cate_num = c.cate_num
+        and r.cus_num = t.cus_num
+        and r.req_num = a.req_num
+        and r.accept is null
+		and r.cus_num = #{cusNum}
+		order by r.reg_date desc
+	</select>
+	
+	<update id="acceptRequest">
+		update request
+		set accept = 'Y'
+		where req_num = #{reqNum}
+	</update>
+	
+	<update id="declineRequest">
+		update request
+		set accept = 'N'
+		where req_num = #{reqNum}
+	</update>
+	
+	<select id="fMatchedList" resultMap="requestResult">
+		select c.cus_num, r.req_num, r.free_num, r.reg_date, r.accept, c.name, a.ans_1, a.ans_2, a.ans_3
+		from customer c, request r, answer a
+        where c.cus_num = r.cus_num
+        and r.req_num = a.req_num
+        and r.accept = 'Y'
+        and r.free_num = #{freeNum}
+		order by r.reg_date desc
+	</select>
+	
+	<select id="cMatchedList" resultMap="sentList">
+		select f.name, f.location, c.name cateName, r.req_num, r.reg_date, r.accept, a.ans_1, a.ans_2, a.ans_3, t.cus_num
+		from freelancer f, categories c, answer a, request r, customer t
+		where r.free_num = f.free_num
+        and f.cate_num = c.cate_num
+        and r.cus_num = t.cus_num
+        and r.accept ='Y'
+        and r.req_num = #{reqNum}
+		order by r.reg_date desc
+	</select>
+	
+</mapper>

@@ -1,0 +1,227 @@
+@font-face {
+    font-family: 'NanumSquareNeo-Variable';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    padding: 0;
+    margin: 0 auto;
+    font-family: 'NanumSquareNeo-Variable';
+}
+
+main {
+    width: 970px;
+    height: 50rem;
+    padding-top: 100px;
+}
+
+.mainTitle {
+    border-bottom: 1px solid #eee;
+    padding: 3rem;
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.requestProfile {
+    display: flex;
+    padding: 1rem;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    position: relative;
+}
+
+.requestProfile:last-of-type {
+    border-bottom: none;
+}
+
+.requestProfile img {
+    width: 5rem;
+}
+
+.removeRequest {
+	position: absolute;
+    top: 0.5rem;
+    right: 1.5rem;
+    color: darkgray;
+    font-size: 0.5rem;
+    cursor: pointer;
+}
+
+.requestInfo {
+	width: 45%;
+    margin-left: 0;
+}
+
+.requestInfo div {
+    padding: 0.3rem;
+}
+
+.userName {
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-left: 0;
+}
+
+.freeloc {
+   color: #555555;
+}
+
+.detail {
+    margin-left: 0;
+    color: gray;
+    font-size: 0.7rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    height: 0.7rem;
+}
+
+.requestTimeNdetail {
+    display: flex;
+    flex-direction: column;
+}
+
+.createTime {
+    margin: 0 1.5rem 1.5rem;
+    color: rgb(165, 165, 165);
+    font-size: small;
+}
+
+.btns {
+	display: flex;
+	margin: 0;
+}
+
+.detailBtn{
+    background-color: #D6D6D6;
+    border: 1px solid #D6D6D6;
+    border-radius: 0.3rem;
+    width: 5rem;
+    height: 2.3rem;
+}
+
+.detailBtn:hover {
+    cursor: pointer;
+}
+
+
+/* 마스크 띄우기 */
+#mask {
+    position: absolute;
+    z-index: 9000;
+    background-color: #555555;
+    display: none;
+    left: 0;
+    top: 0;
+}
+
+/* 팝업으로 뜨는 윈도우 css */
+.window {
+    display: none;
+    position: absolute;
+    left: 40%;
+    top: 7%;
+    width: 30rem;
+    height: 37rem;
+    background-color: #FFF;
+    z-index: 10000;
+}
+
+.window .request_title {
+    background-color: #ffd100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.request_title span {
+    font-weight: bold;
+    font-size: 1.4rem;
+    margin: 1rem;
+}
+
+.window .close {
+    position: relative;
+    left: 9rem;
+    cursor: pointer;
+}
+
+.request_form {
+    padding: 0 1rem;
+}
+
+.request_form textarea {
+    width: 27rem;
+    height: 3rem;
+    resize: none;
+    border: 1px solid lightgray;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+}
+
+.question1,
+.question2,
+.question3 {
+    margin: 1rem 0;
+    font-weight: bold;
+}
+
+.quest1,
+.quest2,
+.quest3 {
+    margin: 2rem 0;
+}
+
+.quest2 input {
+    width: 7rem;
+    height: 1.5rem;
+    border-radius: 0.5rem;
+    border: 1px solid lightgray;
+    padding: 0 0.3rem;
+}
+
+#ans1{
+	height: 2rem;
+	overflow:scroll;
+}
+
+#ans1::-webkit-scrollbar {
+    display: none;
+}
+
+#ans2{
+	height: 2rem;
+}
+
+#ans3{
+	height: 10rem;
+	overflow:scroll;
+}
+
+#ans3::-webkit-scrollbar {
+    display: none;
+}
+
+.accNdec{
+	display: flex;
+}
+
+.btn1, 
+.btn2 {
+    padding: 1rem 2rem;
+    background-color: #202020;
+    border: none;
+    border-radius: 0.5rem;
+    color: white;
+    display: flex;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.btn1 {
+	margin-right: 0;
+}
