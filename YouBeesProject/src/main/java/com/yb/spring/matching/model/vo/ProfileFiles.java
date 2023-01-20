@@ -1,4 +1,4 @@
-package com.yb.spring.board.model.vo;
+package com.yb.spring.matching.model.vo;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,11 +11,11 @@ import lombok.ToString;
 @Setter
 @Getter
 @ToString
-public class Likes {
-	private int bnum;
-	private int userNum;
-	private String regDate;
-	private String status;
-	private String type;
+public class ProfileFiles {
+	private int freeNum;
+	private String filename1;
+	private String filename2;
+	private String filename3;
+	private String filename4;
 
 }

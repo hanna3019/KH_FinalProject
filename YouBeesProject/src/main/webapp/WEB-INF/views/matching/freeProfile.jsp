@@ -9,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>YouBees</title>
-    <link rel="stylesheet" type="text/css" href="${path}/resources/css/free_profile.css?a">
+    <link rel="stylesheet" type="text/css" href="${path}/resources/css/free_profile.css?ps">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script src="http://code.jquery.com/jquery-latest.js"></script>
     <script type="text/javascript" src="${path}/resources/js/profile.js"></script>
@@ -72,6 +72,10 @@
                 </tr>
                 <tr>
                     <td> <!-- 등록 몇 개까지였는지 기억이 안나서 근데 4개 넘어가면 안 돼요! -->
+                        <%-- <img src="${path}/resources/uploadCertifi/${files.filename1}" alt="작업물 및 자격정보" class="certification" onclick="확대">
+                        <img src="${path}/resources/uploadCertifi/${files.filename2}" alt="작업물 및 자격정보" class="certification" onclick="확대">
+                        <img src="${path}/resources/uploadCertifi/${files.filename3}" alt="작업물 및 자격정보" class="certification" onclick="확대">
+                        <img src="${path}/resources/uploadCertifi/${files.filename4}" alt="작업물 및 자격정보" class="certification" onclick="확대"> --%>
                         <img src="${path}/resources/source/sound.jpg" alt="작업물 및 자격정보" class="certification" onclick="확대">
                         <img src="${path}/resources/source/sound.jpg" alt="작업물 및 자격정보" class="certification" onclick="확대">
                         <img src="${path}/resources/source/sound.jpg" alt="작업물 및 자격정보" class="certification" onclick="확대">
@@ -162,7 +166,16 @@
                     <td colspan="2" class="f12">2023.01.02</td>
                 </tr>
             </table>
-
+			<div class="star_select">
+	            <div class="starRev">
+			        <span class="starR on">1</span>
+			        <span class="starR">2</span>
+			        <span class="starR">3</span>
+			        <span class="starR">4</span>
+			        <span class="starR">5</span>
+		      	</div>
+		      	<span class="star_t">별점을 선택해주세요</span>
+	      	</div>
             <form action="" method="" class="comment_area">
                 <textarea name="" id="write_comment" cols="81" rows="5" placeholder="후기를 남겨보세요"></textarea><br>
                 <button type="submit" class="submit_comment">등록</button>
@@ -186,7 +199,13 @@
                 <button class="openMask">요청하기</button>
             </div>
         </div>
-
+		<script>
+		 $('.starRev span').click(function(){
+		        $(this).parent().children('span').removeClass('on');
+		        $(this).addClass('on').prevAll('span').addClass('on');
+		            return false;
+		  });
+		</script>
         <!-- 요청 모달창 -->
         <form action="insertRequest.re" method="post">
             <div id="mask"></div>

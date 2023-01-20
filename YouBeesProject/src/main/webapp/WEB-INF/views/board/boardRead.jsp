@@ -41,7 +41,8 @@
 			</div>
 <!-- 좋아요  -->			
 			<div class="read_footer">
-				<div class="likeNcomment">			 
+
+				<div class="likeNcomment">		 
 					<span><img src="${path}/resources/source/like2.png" class="like"></span>                		
 					<span class="likeCnt" id="lcount">0</span>
 					<span><img src="${path}/resources/source/reply.png" class="speechBubble"></span>

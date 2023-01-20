@@ -9,6 +9,8 @@ import org.springframework.stereotype.Repository;
 import com.yb.spring.common.model.vo.PageInfo;
 import com.yb.spring.matching.model.vo.Dibs;
 import com.yb.spring.matching.model.vo.FreelancerProfile;
+import com.yb.spring.matching.model.vo.ProfileFiles;
+import com.yb.spring.matching.model.vo.Review;
 import com.yb.spring.member.model.vo.Categories;
 import com.yb.spring.member.model.vo.Freelancer;
 import com.yb.spring.member.model.vo.Location;
@@ -57,6 +59,18 @@ public class MatchingDao {
 	
 	public int updateDibY(SqlSessionTemplate sqlSession, Dibs d) {
 		return sqlSession.update("matchingMapper.updateDibY", d);
+	}
+	
+	public int insertReview(SqlSessionTemplate sqlSession, Review r) {
+		return sqlSession.insert("matchingMapper.insertReview", r);
+	}
+	
+	public int insertFiles(SqlSessionTemplate sqlSession, ProfileFiles f) {
+		return sqlSession.insert("matchingMapper.insertFiles", f);
+	}
+	
+	public ProfileFiles selectFiles(SqlSessionTemplate sqlSession, int freeNum) {
+		return sqlSession.selectOne("matchingMapper.selectFiles", freeNum);
 	}
 	
 }
