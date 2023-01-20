@@ -23,7 +23,7 @@
 
             <div class="profileBox">
                 <img class="profileImg" src="${path}/resources/source/reading.png" alt="일반고객로고" onclick="">
-                <div class="userInfo" onclick="location.href='myInfoEdit.me'">
+                <div class="userInfo" onclick="location.href='myInfoEditC.me'">
                     <div>${loginUserC.name} 님 </div><p>수정하기</p>
                 </div>
             </div>
@@ -33,16 +33,16 @@
                     <th class="title"><a href="#">찜목록</a></th>
                 </tr>
                 <tr>
-                    <th class="title"><a href="#">보낸요청</a></th>
+                    <th class="title"><a href="sentRequest.re?cusNum=${loginUserC.cusNum}">보낸요청</a></th>
                 </tr>
                 <tr>
-                    <th class="title"><a href="#">매칭내역</a></th>
+                    <th class="title"><a href="cMatched.re?cusNum=${loginUserC.cusNum}">매칭내역</a></th>
                 </tr>
                 <tr>
                     <th class="title"><a href="#">커뮤니티 작성글/댓글</a></th>
                 </tr>
                 <tr>
-                    <th class="title"><a href="#">1:1 문의</a></th>
+                    <th class="title"><a href="#">공지사항</a></th>
                 </tr>
             </table>
         </div>

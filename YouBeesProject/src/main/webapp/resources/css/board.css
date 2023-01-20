@@ -52,7 +52,7 @@
 
 .board_title {
 	margin: 0;
-	padding: 2rem 0 2rem 5rem;
+	padding: 3rem 0 3rem 3rem;
 }
 
 .search_form {
@@ -61,11 +61,14 @@
 
 .search_bar {
 	width: 20rem;
-	height: 2rem;
-	padding: 0.2rem 0 0.2rem 1.5rem;
-	outline: none;
-	border: 0.1rem solid #ffd100;
-	border-radius: 2rem;
+    height: 2rem;
+    padding: 0.2rem 0 0.2rem 1.5rem;
+    outline: none;
+    border: none;
+    border-radius: 0.5rem;
+    box-sizing: border-box;
+    background-color: #ebebeb;
+    margin-left: 10rem;
 }
 
 .search_btn {

@@ -76,7 +76,7 @@
 				<tr>
 					<td class="closer">&nbsp;경력</td>
 					<td>
-						<input name="career" type="number" placeholder="">&nbsp;년
+						<input name="career" type="number" min="0" placeholder="">&nbsp;년
 					</td>
 				</tr>
 
@@ -187,30 +187,70 @@
 				<div class="tou1" colspan="2"><input class="agree" id="agree1" type="checkbox" name="agree" required
 						value="Y,N"><label for="agree1">이용약관 동의 (필수)</label>
 				</div>
-				<div class="tou2" colspan="2"><input class="agree" id="agree2" type="checkbox" name="agree" required
+				<div class="tou2" colspan="2"><input class="agree" id="agree2" type="checkbox" name="agree2" required
 						value="Y,N"><label for="agree2">개인정보 수집 및 동의 (필수)</label></div>
 
-				<div class="tou3" colspan="2"><input class="agree" id="agree3" type="checkbox" name="agree" required value="Y,N">
+				<div class="tou3" colspan="2"><input class="agree" id="agree3" type="checkbox" name="agree3" required value="Y,N">
 					<label for="agree3">만 14세 이상 (필수)</label>
 				</div>
 			</div>
 
 			<div class="joinSubmit">
 				<input class="submit" type="button" value="회원가입" id="enrollBtn" onclick="inputCheck();">
+				
 				<input class="submit" type="reset" value="돌아가기">
 			</div>
 		</form>
 		
 		<script type="text/javascript">
-			function inputCheck(){
-				if(freeEnrollFrm.pass.value != freeEnrollFrm.repwd.value){
-					alert("비밀번호가 일치하지 않습니다");
-					freeEnrollFrm.repwd.focus();
-					return;
-				}
-				freeEnrollFrm.submit();
+		function inputCheck(){
+			if(freeEnrollFrm.name.value == ""){
+				alert("이름을 입력해주세요");
+				return;
+			}
+			if(freeEnrollFrm.userId.value== ""){
+				alert("아이디를 입력해주세요");
+				return;
+			}
+			if(freeEnrollFrm.pass.value== ""){
+				alert("비밀번호를 입력해주세요");
+				return;
+			}
+			if(freeEnrollFrm.pass.value != freeEnrollFrm.repwd.value){
+				alert("비밀번호가 일치하지 않습니다");
+				freeEnrollFrm.repwd.focus();
+				return;
+			}
+			if(freeEnrollFrm.tel.value == ""){
+				alert("전화번호를 입력해주세요");
+				return;
 			}
 			
+			if(freeEnrollFrm.jobSelect.value == ""){
+				alert("직종을 선택해주세요");
+				return;
+			}
+			
+			if(freeEnrollFrm.cateNum.value == ""){
+				alert("세부직종을 선택해주세요");
+				return;
+			}
+			
+			if(freeEnrollFrm.career.value == ""){
+				alert("경력을 선택해주세요");
+				return;
+			}
+			if(freeEnrollFrm.region.value == ""){
+				alert("활동지역을 선택해주세요");
+				return;
+			}
+			if(!freeEnrollFrm.agree.checked || !freeEnrollFrm.agree2.checked || !freeEnrollFrm.agree3.checked){
+				alert("약관동의를 해주세요");
+				return;
+			}
+			freeEnrollFrm.submit()
+			alert("회원가입이 완료되었습니다😀")
+		}
 			$(function(){
 				const $idInput = $("#userId");
 				$idInput.keyup(function(){

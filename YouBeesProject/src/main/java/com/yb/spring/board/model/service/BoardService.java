@@ -41,14 +41,19 @@ public interface BoardService {
 	// 11. 댓글 삭제
 	int deleteComment(int cnum);
 	
-	// 10. 좋아요 등록하기(ajax)
+	// 12. 좋아요 실행전, 훑어보기 
+	int selectLikes(Likes l);
+	
+	
+	// 10. 좋아요 등록하기(좋아요 처음 눌렀을때) (ajax)
 	int insertLikes(Likes l);
 	
-	// 11. 좋아요 업데이트 (눌렀다가 취소했을 경우)(ajax)
-	int updateLikes(int bnum, String userNum);
+	// 11. 좋아요 취소 (눌렀다가 취소했을 경우)(ajax)
+	int cancelLikes(Likes l);
 	
-	// 12. 좋아요 개수 가져오기
-	int selectLikesCount(int bnum);
+	// 12. 좋아요 취소였다가 다시 좋아요 
+	int updateLikes(Likes l);
+		
 	
 	// 13. 커뮤니티 인기글 리스트 (메인페이지)
 	ArrayList<Board> selectTopBoardList();

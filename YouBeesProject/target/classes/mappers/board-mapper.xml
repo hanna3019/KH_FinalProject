@@ -34,6 +34,15 @@
 		<result column="status" property="status"/>
 	</resultMap>
 	
+	<resultMap type="Likes" id="LikesResult">
+		<result column="bnum" property="bnum"/>
+		<result column="user_num" property="userNum"/>
+		<result column="reg_date" property="regDate"/>
+		<result column="status" property="stauts"/>
+		<result column="type" property="type"/>
+	</resultMap>
+	
+	
 	<select id="selectListCount" resultType="_int">
 		select count(*)
 		  from board
@@ -112,14 +121,15 @@
 	<select id="selectReplyList" resultMap="CommentsResult">
 		select cnum, bnum, c_content, c_writer, reg_date, type, status
 		from comments
-		where status = 'Y' and bnum=#{bnum}
+		where status = 'Y' and bnum= #{bnum}
 		order by cnum desc
 	</select>
+	
 	
 	<update id="updateComment">
 		update comments
 		   set c_content = #{cContent} 
-		 where cnum  = {#cnum} and 
+		 where cnum  = #{cnum} and 
 		      status = 'Y'
 	</update>
 	
@@ -129,10 +139,45 @@
 		 where cnum = #{cnum}
 	</update>
 	
-	<update id="">
-		update likes 
-		   set stauts = 'N'
-		 where user_num = #{userNum}
+	<select id="selectLikes" resultType="_int">
+		select count(*)
+		  from likes 
+		 where bnum = #{bnum} and user_num = #{userNum} and type = #{type}
+	</select>
+	
+	<insert id="insertLikes">
+		insert into likes
+		values(#{bnum}, #{userNum}, sysdate, 'Y', #{type})
+	</insert>
+	
+	<update id="updateLikes">
+		update likes
+		   set status = 'Y'
+		 where bnum = #{bnum} and user_num = #{userNum} and type = #{type}
 	</update>
+	
+	<update id="cancleLikes">
+		update likes 
+		   set status = 'N'
+		 where  bnum = #{bnum} and
+		 		user_num = #{userNum} and type = #{type}
+	</update>
+	
+	<select id="selectLcount" resultType="_int">
+		select count(*)
+		  from likes 
+		 where bum = #{bnum}
+	</select>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 </mapper>

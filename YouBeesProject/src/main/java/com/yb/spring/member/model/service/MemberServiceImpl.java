@@ -48,13 +48,23 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
+	public int updateFreeMember(Freelancer f) {
+		return mDao.updateFreeMember(sqlSession, f);
+	}
+
+	@Override
 	public int deleteFreeMember(int freeNum) {
 		return mDao.deleteFreeMember(sqlSession, freeNum);
 	}
 
 	@Override
-	public int deleteCusMember(String userId) {
-		return mDao.deleteCusMember(sqlSession, userId);
+	public int updateCusMember(Customer c) {
+		return mDao.updateCusMember(sqlSession, c);
+	}
+	
+	@Override
+	public int deleteCusMember(int cusNum) {
+		return mDao.deleteCusMember(sqlSession, cusNum);
 	}
 
 	@Override
@@ -82,9 +92,5 @@ public class MemberServiceImpl implements MemberService{
 		return mDao.updateProfile(sqlSession, f);
 	}
 
-	@Override
-	public int updateFreelancer(Freelancer f) {
-		return mDao.updateFreelancer(sqlSession, f);
-	}
 
 }

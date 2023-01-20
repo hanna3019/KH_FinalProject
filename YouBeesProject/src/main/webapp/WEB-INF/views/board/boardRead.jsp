@@ -39,15 +39,72 @@
 				</p>
 				<img src="${ b.changeName }" alt="main_img" class="read_main_img">
 			</div>
-
+<!-- 좋아요  -->			
 			<div class="read_footer">
-				<div class="likeNcomment">
-					<span><img src="${path}/resources/source/like.png" class="like"></span>
-					<span class="likeCnt">12</span>
+
+				<div class="likeNcomment">		 
+					<span><img src="${path}/resources/source/like2.png" class="like"></span>                		
+					<span class="likeCnt" id="lcount">0</span>
 					<span><img src="${path}/resources/source/reply.png" class="speechBubble"></span>
 					<span class="commentCnt" id="rcount">0</span>
 				</div>
 			</div>
+
+ <!--좋아요 script문 -->	
+		<c:choose>
+			<c:when test="${ not empty loginUserC }">
+	       		<input type="hidden" value="${ loginUserC.cusNum }" class="userNum">
+	        	<input type="hidden" value="C" class="userType">		
+	  		</c:when>
+	  		<c:when test="${ not empty loginUserF }">
+	       		<input type="hidden" value="${ loginUserF.freeNum }" class="userNum">
+	        	<input type="hidden" value="F" class="userType">		
+	  		</c:when>
+	  		<c:otherwise>
+	  			<input type="hidden" class="userNum" value="0">
+	  		</c:otherwise>
+	  	</c:choose>
+       		<script>
+       		
+    		    $(document).on("click", ".like", function () {
+    		    	if($(".userNum").val() === '0'){
+    		    		alert("로그인 후 이용가능합니다");
+    		    	}else{
+		    		    	let src = "";
+		    		    	if($(this).attr('src') === '${path}/resources/source/like2.png'){
+		    		    		src = '/spring/resources/source/like.png';
+		    		    		$.ajax({
+		    		    			url:"lselect.bo",
+		    		    			data:{bnum:${b.bnum}, userNum:$(".userNum").val(), type:$(".userType").val()},
+		    		    			success:function(result) {
+		    		    				console.log("좋아요 성공");
+		    		    			},
+		    		    			error:function() {
+		    		    				console.log("좋아요 실패")
+		    		    			}
+		    		    		});
+		    		    	}else{
+		    		    		src = '/spring/resources/source/like2.png';
+		    		    		$.ajax({
+		    		    			url:"lcancel.bo",
+		    		    			data:{bnum:${b.bnum}, userNum:$(".userNum").val(), type:$(".userType").val()},
+		    		    			success:function(result) {
+		    		    				console.log("싫어요 성공");
+		    		    			},
+		    		    			error:function() {
+		    		    				console.log("싫어요 실패");
+		    		    			}
+		    		    		});
+		    		    	}
+		    		           
+		    		    		$(this).attr('src', src);
+	    		    		
+	    		   }
+
+    		    }); 
+       			</script>
+
+
 			
 <!-- 수정, 삭제 -->		
 			<c:if test="${ loginUserC.name eq b.name}">

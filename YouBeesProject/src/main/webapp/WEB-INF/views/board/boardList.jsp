@@ -33,8 +33,6 @@ a:hover{
     margin-top:1.4rem;
 }
 
- 
-
 .pagination a {
 
     display:block;
@@ -54,6 +52,7 @@ a:hover{
     background-color:#CCC;
     color:white;
 }
+
 </style>
 
 <body>
@@ -67,7 +66,8 @@ a:hover{
 			<form action="" method="" class="search_form">
 				<input class="search_bar" type="text" placeholder="내용 또는 작성자를 검색할 수 있어요">
 				<img src="${path}/resources/source/search.png" alt="" class="search_btn" onclick="">
-			</form> 
+			</form>
+			 
 			<button class="write_button" name="" onclick="location.href='boardWriteForm.bo'">글쓰기</button>
 		</div>
 

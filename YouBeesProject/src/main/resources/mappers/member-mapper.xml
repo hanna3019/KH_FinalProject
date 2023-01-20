@@ -22,6 +22,8 @@
 		<result column="phone" property="phone"/>
 		<result column="type" property="type"/>
 		<result column="status" property="status"/>
+		<result column="profile_name" property="profileName"/>
+		<result column="changename" property="changeName"/>
 	</resultMap>
 	
 	<resultMap type="Freelancer" id="freelancerResult">
@@ -52,12 +54,12 @@
 	
 	<insert id="insertFreelancer">
 		insert into freelancer
-			   values(seq_free.nextval, #{name}, #{userId}, #{pass}, #{tel}, #{career}, #{gender}, #{cateNum}, #{location}, 'F', 'Y')
+			   values(seq_free.nextval, #{name}, #{userId}, #{pass}, #{tel}, #{career}, #{gender}, #{cateNum}, #{location}, 'F', 'Y', null, null)
 	</insert>
 	
 	<insert id="insertCustomer">
   		insert into customer 
-  				values(seq_cus.nextval, #{name},#{userId},  #{pass},  #{phone}, 'C', null, 'Y')
+  				values(seq_cus.nextval, #{name}, #{userId}, #{pass}, #{phone}, 'C', null, 'Y', null)
     </insert>
 
     <select id="idCheck" resultType="_int">
@@ -92,10 +94,36 @@
 		where user_id = #{userId} and status = 'Y'
 	</select>
 	
-	<update id="deletefreeMember">
+	<update id="updateFreeMember">
+  	update freelancer
+  	   set name=#{name}, tel=#{tel}, gender=#{gender},
+  	   <if test="pass != null">
+  	   pass=#{pass},
+  	   </if>
+  	    profile_name = #{profileName}, changename = #{changeName}
+  	 where free_num = #{freeNum}
+  </update>
+	
+	<update id="deleteFreeMember">
   		update freeLancer
   	    set status = 'N'
   	 	where free_num = #{freeNum}
+  	</update>
+  	
+  	<update id="updateCusMember">
+  	update customer
+  	   set name=#{name}, phone=#{phone},
+  	   <if test="pass != null">
+  	   pass=#{pass},
+  	   </if>
+  	   profile_name = #{profileName}, changename = #{changeName}
+  	 where cus_num = #{cusNum}
+  </update>
+  
+  	<update id="deleteCusMember">
+  	update customer
+  	   set status = 'N'
+  	 where cus_num = #{cusNum}
   	</update>
 	
 	<insert id="insertFreelancerProfile">
