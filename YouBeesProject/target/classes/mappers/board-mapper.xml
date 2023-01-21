@@ -1,183 +1,197 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
 <mapper namespace="boardMapper">
-	
-	<resultMap type="Board" id="boardResult">
-		<result column="bnum" property="bnum" />
-		<result column="cus_num" property="cusNum" />
-		<result column="service_num" property="serviceNum" />
-		<result column="title" property="title" />
-		<result column="content" property="content" />
-		<result column="reg_date" property="regDate" />
-		<result column="location" property="location" />
-		<result column="count" property="count" />
-		<result column="origin_name" property="originName" />
-		<result column="change_name" property="changeName" />
-		<result column="status" property="status" />
-		<result column="name" property="name" />
-	</resultMap>
-	
-	<resultMap type="Location" id="locationResult">
-		<result column="city_num" property="cityNum"/>
-		<result column="loc_num" property="locNum"/>
-		<result column="city" property="city"/>
-		<result column="location" property="location"/>
-	</resultMap>
-	
-	<resultMap type="comments" id="CommentsResult">
-		<result column="cnum" property="cnum"/>
-		<result column="bnum" property="bnum"/>
-		<result column="c_content" property="cContent"/>
-		<result column="c_writer" property="cWriter"/>
-		<result column="reg_date" property="regDate"/>
-		<result column="type" property="type"/>
-		<result column="status" property="status"/>
-	</resultMap>
-	
-	<resultMap type="Likes" id="LikesResult">
-		<result column="bnum" property="bnum"/>
-		<result column="user_num" property="userNum"/>
-		<result column="reg_date" property="regDate"/>
-		<result column="status" property="stauts"/>
-		<result column="type" property="type"/>
-	</resultMap>
-	
-	
-	<select id="selectListCount" resultType="_int">
-		select count(*)
-		  from board
-		 where status = 'Y' 
-	</select>
-	
-	<select id="selectList" resultMap="boardResult"> 
-		select bnum
-			  ,cus_num
-			  ,service_num
-			  ,title
-			  ,content
-			  ,reg_date
-			  ,location
-			  ,count
-			  ,origin_name
-			  ,change_name
-			  ,status
-		  from board
-		 where status='Y'
-		 order by bnum desc	  		 
-	</select>
-	
-	<insert id="insertBoard">
-		insert into board(bnum, cus_num, service_num, title, location, content, origin_name, change_name)
-					values(seq_board.nextval, #{cusNum}, #{serviceNum}, #{title}, #{location}, #{content}, #{originName}, #{changeName})	
-	</insert>
-	
-	<update id="increaseCount">
-		update board 
-		   set count = count+1
-		 where bnum = #{bnum} and status = 'Y'
-	</update>
-	
-	<select id="selectBoard" resultMap="boardResult">
-		select bnum
-			  ,b.cus_num
-			  ,service_num
-			  ,title
-			  ,content
-			  ,reg_date
-			  ,location
-			  ,count
-			  ,origin_name
-			  ,change_name
-			  ,b.status
+   
+   <resultMap type="Board" id="boardResult">
+      <result column="bnum" property="bnum" />
+      <result column="cus_num" property="cusNum" />
+      <result column="service_num" property="serviceNum" />
+      <result column="title" property="title" />
+      <result column="content" property="content" />
+      <result column="reg_date" property="regDate" />
+      <result column="location" property="location" />
+      <result column="count" property="count" />
+      <result column="origin_name" property="originName" />
+      <result column="change_name" property="changeName" />
+      <result column="status" property="status" />
+      <result column="name" property="name" />
+      <association javaType="Likes" property="l">
+         <result column="user_num" property="userNum" />
+         <result column="lstatus" property="status" />
+         <result column="type" property="type" />
+      </association>
+   </resultMap>
+   
+   <resultMap type="Location" id="locationResult">
+      <result column="city_num" property="cityNum"/>
+      <result column="loc_num" property="locNum"/>
+      <result column="city" property="city"/>
+      <result column="location" property="location"/>
+   </resultMap>
+   
+   <resultMap type="comments" id="CommentsResult">
+      <result column="cnum" property="cnum"/>
+      <result column="bnum" property="bnum"/>
+      <result column="c_content" property="cContent"/>
+      <result column="c_writer" property="cWriter"/>
+      <result column="reg_date" property="regDate"/>
+      <result column="type" property="type"/>
+      <result column="status" property="status"/>
+   </resultMap>
+   
+   <resultMap type="Likes" id="LikesResult">
+      <result column="bnum" property="bnum"/>
+      <result column="user_num" property="userNum"/>
+      <result column="reg_date" property="regDate"/>
+      <result column="status" property="stauts"/>
+      <result column="type" property="type"/>
+   </resultMap>
+   
+   
+   <select id="selectListCount" resultType="_int">
+      select count(*)
+        from board
+       where status = 'Y' 
+   </select>
+   
+   <select id="selectList" resultMap="boardResult"> 
+      select bnum
+           ,cus_num
+           ,service_num
+           ,title
+           ,content
+           ,reg_date
+           ,location
+           ,count
+           ,origin_name
+           ,change_name
+           ,status
+        from board
+       where status='Y'
+       order by bnum desc            
+   </select>
+   
+   <insert id="insertBoard">
+      insert into board(bnum, cus_num, service_num, title, location, content, origin_name, change_name)
+               values(seq_board.nextval, #{cusNum}, #{serviceNum}, #{title}, #{location}, #{content}, #{originName}, #{changeName})   
+   </insert>
+   
+   <update id="increaseCount">
+      update board 
+         set count = count+1
+       where bnum = #{bnum} and status = 'Y'
+   </update>
+   
+   <select id="selectBoard" resultMap="boardResult">
+      select *
+      from(select bnum
+           ,b.cus_num
+           ,service_num
+           ,title
+           ,content
+           ,reg_date
+           ,location
+           ,count
+           ,origin_name
+           ,change_name
+           ,b.status
               ,c.name
-		  from board b, customer c
+        from board b, customer c
           where b.cus_num = c.cus_num
-          and bnum = #{bnum} 
-	</select>
-	
-	<update id="updateBoard">
-		update board 
-		   set service_num  = #{serviceNum}
-		   	 , title        = #{title}
-		   	 , content      = #{content}
-		   	 , reg_date     = sysdate
-		   	 , location     = #{location}
-		   	 , origin_name  = #{originName}
-		   	 , change_name  = #{changeName}
-		where bnum = #{bnum}
-	</update>
-	
-	<update id="deleteBoard">
-		update board
-		   set status = 'N'
-		 where bnum = #{bnum}
-	</update>
-	
-	<insert id="insertComment">
-		insert into comments(cnum, bnum, c_content, c_writer, reg_date, type, status) 
-					   values(seq_com.nextval,#{bnum}, #{cContent}, #{cWriter}, sysdate, #{type}, 'Y')
-	</insert>
-	
-	<select id="selectReplyList" resultMap="CommentsResult">
-		select cnum, bnum, c_content, c_writer, reg_date, type, status
-		from comments
-		where status = 'Y' and bnum= #{bnum}
-		order by cnum desc
-	</select>
-	
-	
-	<update id="updateComment">
-		update comments
-		   set c_content = #{cContent} 
-		 where cnum  = #{cnum} and 
-		      status = 'Y'
-	</update>
-	
-	<update id="deleteComment">
-		update comments 
-		   set status ='N'
-		 where cnum = #{cnum}
-	</update>
-	
-	<select id="selectLikes" resultType="_int">
-		select count(*)
-		  from likes 
-		 where bnum = #{bnum} and user_num = #{userNum} and type = #{type}
-	</select>
-	
-	<insert id="insertLikes">
-		insert into likes
-		values(#{bnum}, #{userNum}, sysdate, 'Y', #{type})
-	</insert>
-	
-	<update id="updateLikes">
-		update likes
-		   set status = 'Y'
-		 where bnum = #{bnum} and user_num = #{userNum} and type = #{type}
-	</update>
-	
-	<update id="cancleLikes">
-		update likes 
-		   set status = 'N'
-		 where  bnum = #{bnum} and
-		 		user_num = #{userNum} and type = #{type}
-	</update>
-	
-	<select id="selectLcount" resultType="_int">
-		select count(*)
-		  from likes 
-		 where bum = #{bnum}
-	</select>
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+          and bnum = #{bnum})
+          left join
+          (select bnum, user_num, status lstatus, type
+            from likes
+            where user_num = #{userNum}
+            <if test="type != null">
+               and type = #{type})
+            </if>
+        using(bnum)
+   </select>
+   
+   <update id="updateBoard">
+      update board 
+         set service_num  = #{serviceNum}
+             , title        = #{title}
+             , content      = #{content}
+             , reg_date     = sysdate
+             , location     = #{location}
+             , origin_name  = #{originName}
+             , change_name  = #{changeName}
+      where bnum = #{bnum}
+   </update>
+   
+   <update id="deleteBoard">
+      update board
+         set status = 'N'
+       where bnum = #{bnum}
+   </update>
+   
+   <insert id="insertComment">
+      insert into comments(cnum, bnum, c_content, c_writer, reg_date, type, status) 
+                  values(seq_com.nextval,#{bnum}, #{cContent}, #{cWriter}, sysdate, #{type}, 'Y')
+   </insert>
+   
+   <select id="selectReplyList" resultMap="CommentsResult">
+      select cnum, bnum, c_content, c_writer, reg_date, type, status
+      from comments
+      where status = 'Y' and bnum= #{bnum}
+      order by cnum desc
+   </select>
+   
+   
+   <update id="updateComment">
+      update comments
+         set c_content = #{cContent} 
+       where cnum  = #{cnum} and 
+            status = 'Y'
+   </update>
+   
+   <update id="deleteComment">
+      update comments 
+         set status ='N'
+       where cnum = #{cnum}
+   </update>
+   
+   <select id="selectLikes" resultType="_int">
+      select count(*)
+        from likes 
+       where bnum = #{bnum} and user_num = #{userNum} and type = #{type}
+   </select>
+   
+   <insert id="insertLikes">
+      insert into likes
+      values(#{bnum}, #{userNum}, sysdate, 'Y', #{type})
+   </insert>
+   
+   <update id="updateLikes">
+      update likes
+         set status = 'Y'
+       where bnum = #{bnum} and user_num = #{userNum} and type = #{type}
+   </update>
+   
+   <update id="cancleLikes">
+      update likes 
+         set status = 'N'
+       where  bnum = #{bnum} and
+             user_num = #{userNum} and type = #{type}
+   </update>
+   
+   <select id="selectLcount" resultType="_int">
+      select count(*)
+        from likes 
+       where bum = #{bnum}
+   </select>
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
 </mapper>

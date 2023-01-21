@@ -31,7 +31,7 @@
             <div class="title">
             <c:choose>
             	<c:when test="${not empty f.f.changeName}">
-	                <img class="pro_img" src="${path}/${f.f.changeName}" alt="프로필사진">
+            		<img class="pro_img" src="${path}/${f.f.changeName}" alt="프로필사진">
             	</c:when>
             	<c:otherwise>
 	                <img class="pro_img" src="${path}/resources/source/santa.jpg" alt="프로필사진">
