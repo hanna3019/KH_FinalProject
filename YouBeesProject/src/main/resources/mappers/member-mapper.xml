@@ -102,7 +102,9 @@
   	   <if test="pass != null">
   	   pass=#{pass},
   	   </if>
+  	   <if test="profileName != null">
   	    profile_name = #{profileName}, changename = #{changeName}
+  	   </if>
   	 where free_num = #{freeNum}
   </update>
 	
@@ -129,7 +131,7 @@
   	</update>
 	
 	<insert id="insertFreelancerProfile">
-		insert into freelancer_profile values(#{freeNum}, null, null, null, sysdate, null, null)
+		insert into freelancer_profile values(seq_free.currval, null, null, null, sysdate, null, null)
 	</insert>
 	
 	<update id="updateProfile">

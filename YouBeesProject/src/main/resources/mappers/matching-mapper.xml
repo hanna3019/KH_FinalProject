@@ -31,6 +31,8 @@
 			<result column="gender" property="gender"/>
 			<result column="location" property="location"/>
 			<result column="cate_num" property="cateNum"/>
+			<result column="profile_name" property="profileName"/>
+			<result column="changename" property="changeName"/>
 		</association>
 	</resultMap>
 	
@@ -60,7 +62,7 @@
 	
 	<select id="selectFreelancerList" resultMap="ProfileResult">
 		select *
-		from (select f.free_num, fr_content, call_time, reg_date, one_content, price, f.name, tel, career, gender, substr(location,4) location, c.name category, f.cate_num
+		from (select f.free_num, fr_content, call_time, reg_date, one_content, price, f.name, tel, career, gender, substr(location,4) location, c.name category, f.cate_num, f.changename
 		from freelancer_profile p, freelancer f, categories c
 		where p.free_num = f.free_num
 		and f.cate_num = c.cate_num
@@ -85,7 +87,7 @@
 
 	<select id="selectFreelancerDetail" resultMap="ProfileResult">
 		select *
-		from (select f.free_num, fr_content, call_time, reg_date, one_content, price, f.name, tel, career, gender, location, c.name category
+		from (select f.free_num, fr_content, call_time, reg_date, one_content, price, f.name, tel, career, gender, location, c.name category, f.changename
 				from freelancer_profile p, freelancer f, categories c
 				where p.free_num = f.free_num
 				and f.cate_num = c.cate_num

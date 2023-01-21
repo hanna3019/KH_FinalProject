@@ -101,7 +101,7 @@ public class MatchingController {
 		ProfileFiles files = mService.selectFiles(fc.getFreeNum());
 		model.addAttribute("f", f);
 		model.addAttribute("files", files);
-		return "member/freeProfile";
+		return "member/freeProfile2";
 	}
 	
 	@ResponseBody

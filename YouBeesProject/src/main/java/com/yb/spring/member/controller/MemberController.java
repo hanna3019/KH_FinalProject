@@ -114,6 +114,7 @@ public class MemberController {
 		f.setLocation(region + " " + f.getLocation());
 		int result = mService.insertFreelancer(f);
 		if (result > 0) {
+			mService.insertFreelancerProfile(f);
 			session.setAttribute("alertMsg", "회원가입이 완료되었습니다😀");
 			return "redirect:/";
 		} else {
@@ -268,7 +269,7 @@ public class MemberController {
 
 			model.addAttribute("f", f);
 		}
-		return "redirect:/";
+		return "member/freeProfile2";
 	}
 
 	public String changeFilename(MultipartFile reupfile, HttpSession session) {

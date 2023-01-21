@@ -79,6 +79,7 @@ body {
     height: 7rem;
     vertical-align: bottom;
     border-radius: 0.5rem;
+    overflow: hidden;
 }
 
 .star_img {

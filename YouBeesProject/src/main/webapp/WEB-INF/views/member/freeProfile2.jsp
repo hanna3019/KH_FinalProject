@@ -20,7 +20,14 @@
 
             <div id="profile_container">
                 <div class="title">
-                    <img class="pro_img" src="${path}/resources/source/santa.jpg" alt="프로필사진">
+                <c:choose>
+                	<c:when test="${not empty f.f.changeName}">
+	                    <img class="pro_img" src="${path}/${f.f.changeName}" alt="프로필사진">
+                	</c:when>
+                	<c:otherwise>
+	                    <img class="pro_img" src="${path}/resources/source/profile.png" alt="프로필사진">
+                	</c:otherwise>
+                </c:choose>
                     <h2>${f.f.name}</h2>
                     <p class="inline f13">${f.category} &emsp;<img class="img_small"
                             src="${path}/resources/source/location.png" alt="">${f.f.location}</p><br>

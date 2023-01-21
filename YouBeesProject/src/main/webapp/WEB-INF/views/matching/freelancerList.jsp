@@ -99,7 +99,14 @@
 	                    	</c:otherwise>
 	                    </c:choose>
 	                    </td>
-	                    <td rowspan="3" class="pro_img"><img src="${path}/resources/source/profile.png" alt="" class="pro_img"></td>
+	                    <c:choose>
+	                    	<c:when test="${not empty l.f.changeName}">
+			                    <td rowspan="3" class="pro_img"><img src="${path}/${l.f.changeName}" alt="" class="pro_img"></td>
+	                    	</c:when>
+	                    	<c:otherwise>
+			                    <td rowspan="3" class="pro_img"><img src="${path}/resources/source/profile.png" alt="" class="pro_img"></td>	                    	
+	                    	</c:otherwise>
+	                    </c:choose>
 	                </tr>
 	                <tr>
 	                    <td colspan="4" class="title">${l.oneContent}</td>
@@ -226,9 +233,13 @@
 						value += '<table class="free_pro">'
 							  + ' <tr><td colspan="4">'							  
 							  + '<a href="freelancerDetail.ma?freeNum='+fList[i].freeNum+'&cusNum='+$("#cusNum").val()+'">'
-							  + '<h4>'+fList[i].f.name+'</h4></a></td>'
-							  + '<td rowspan="3" class="pro_img"><img src="/spring/resources/source/profile.png" alt="" class="pro_img"></td></tr>'
-							  + '<tr><td colspan="4" class="title">'+fList[i].oneContent+'</td></tr>'
+							  + '<h4>'+fList[i].f.name+'</h4></a></td>';
+							  if(fList[i].f.changeName != null){
+								  value += '<td rowspan="3" class="pro_img"><img src="/spring/'+fList[i].f.changeName+'" alt="" class="pro_img"></td></tr>';
+							  }else{
+								  value += '<td rowspan="3" class="pro_img"><img src="/spring/resources/source/profile.png" alt="" class="pro_img"></td></tr>';
+							  }
+					    value += '<tr><td colspan="4" class="title">'+fList[i].oneContent+'</td></tr>'
 							  + '<tr class="review">'
 							  + '<td width="15%"><img src="/spring/resources/source/star.png" alt="" class="review"> 3.5(256)</td><td width="15%">경력 '+fList[i].f.career+'</td>'
 							  + '<td width="20%">평균응답시간 1시간</td><td>';
