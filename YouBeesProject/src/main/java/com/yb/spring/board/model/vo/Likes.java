@@ -17,4 +17,5 @@ public class Likes {
 	private String regDate;
 	private String status;
 	private String type;
+
 }

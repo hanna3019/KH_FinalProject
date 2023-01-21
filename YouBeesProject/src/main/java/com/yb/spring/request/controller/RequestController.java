@@ -21,22 +21,24 @@ import com.yb.spring.request.model.vo.Sent;
 
 @Controller
 public class RequestController {
-	
+
 	@Autowired
 	private RequestService rService;
-	
+
 	@Autowired
 	private MatchingService mService;
-	
+
 	// 요청 request테이블, answer테이블에 넣기
 	@RequestMapping("insertRequest.re")
-	public ModelAndView insertRequest(Request req, Answer ans, int ans2_1, int ans2_2, Freelancer fr, ModelAndView mv) {
+
+	public ModelAndView insertRequest(Request req, Freelancer fr, Answer ans, int ans2_1, int ans2_2, ModelAndView mv) {
 		ans.setAns2(ans2_1 + " ~ " + ans2_2);
 		int result = rService.insertRequest(req);
 		int result2 = rService.insertAnswer(ans);
+
 		FreelancerProfile f = mService.selectFreelancerDetail(fr);
 		mv.addObject("f", f);
-		if(result > 0 && result2 > 0) {
+		if (result > 0 && result2 > 0) {
 			mv.addObject("msg", "요청서 전송에 성공했습니다😀");
 			mv.setViewName("matching/freeProfile");
 		} else {
@@ -45,37 +47,37 @@ public class RequestController {
 		}
 		return mv;
 	}
-	
+
 	// 받은요청 리스트(페이지 정보 매개변수에 추가해서 같이 가져오기)
 	@RequestMapping("recievedRequest.re")
 	public String recievedRequest(int freeNum, Model md) {
-		ArrayList<Request> rList = rService.recievedRequestList(freeNum); 
+		ArrayList<Request> rList = rService.recievedRequestList(freeNum);
 		md.addAttribute("rList", rList);
 		return "request/recievedRequest";
 	}
-	
+
 	// 보낸요청 리스트(페이지 정보 매개변수에 추가해서 같이 가져오기)
 	@RequestMapping("sentRequest.re")
 	public String sentRequest(int cusNum, Model md) {
-		ArrayList<Sent> sList = rService.sentRequestList(cusNum); 
+		ArrayList<Sent> sList = rService.sentRequestList(cusNum);
 		md.addAttribute("sList", sList);
 		return "request/sentRequest";
 	}
-	
+
 	// 요청상세
 	@ResponseBody
-	@RequestMapping(value="requestDetail.re", produces="application/json; charset=utf-8")
+	@RequestMapping(value = "requestDetail.re", produces = "application/json; charset=utf-8")
 	public String requestDetail(int reqNum, Model md) {
 		Answer ans = rService.requestDetail(reqNum);
 		md.addAttribute("ans", ans);
 		return new Gson().toJson(ans);
 	}
-	
+
 	// (프랜)매칭수락
-	@RequestMapping("acceptRequest.re") 
+	@RequestMapping("acceptRequest.re")
 	public String acceptRequest(int reqNum, int freeNum, Model md) {
 		int result = rService.acceptRequest(reqNum);
-		ArrayList<Request> rList = null; 
+		ArrayList<Request> rList = null;
 		if (result > 0) {
 			md.addAttribute("AcceptMsg", "매칭에 성공했습니다! 매칭내역을 확인 해 주세요😀");
 			rList = rService.recievedRequestList(freeNum);
@@ -83,15 +85,15 @@ public class RequestController {
 		} else {
 			md.addAttribute("AcceptMsg", "매칭에 실패했습니다😢");
 		}
-		
+
 		return "request/recievedRequest";
 	}
-	
+
 	// (프랜)매칭거절
-	@RequestMapping("declineRequest.re") 
+	@RequestMapping("declineRequest.re")
 	public String declineRequest(int reqNum, int freeNum, Model md) {
 		int result = rService.declineRequest(reqNum);
-		ArrayList<Request> rList = null; 
+		ArrayList<Request> rList = null;
 		if (result > 0) {
 			md.addAttribute("DeclineMsg", "요청 거절이 완료되었습니다.");
 			rList = rService.recievedRequestList(freeNum);
@@ -101,42 +103,35 @@ public class RequestController {
 		}
 		return "request/recievedRequest";
 	}
-	
+
 	// (프랜)매칭리스트
 	@RequestMapping("fMatched.re")
 	public String fMatched(int freeNum, Model md) {
-	ArrayList<Request> fmList = rService.fMatchedList(freeNum);
+		ArrayList<Request> fmList = rService.fMatchedList(freeNum);
 		md.addAttribute("fmList", fmList);
 		return "request/matched_f";
 	}
-	
+
 	// (고객)요청취소
-	@RequestMapping("cancelRequest.re") 
+	@RequestMapping("cancelRequest.re")
 	public String cancelRequest(int reqNum, int cusNum, Model md) {
 		int result = rService.cancelRequest(reqNum);
-		ArrayList<Sent> sList = null; 
-		if(result > 0) {
+		ArrayList<Sent> sList = null;
+		if (result > 0) {
 			md.addAttribute("CancelMsg", "요청이 취소되었습니다.");
-			sList = rService.sentRequestList(cusNum); 
+			sList = rService.sentRequestList(cusNum);
 		} else {
 			md.addAttribute("CancelMsg", "요청 취소에 실패했습니다.");
 		}
 		return "request/sentRequest";
 	}
-	 
+
 	// (고겍)매칭리스트
 	@RequestMapping("cMatched.re")
 	public String cMatched(int cusNum, Model md) {
-		ArrayList<Sent> cmList = rService.cMatchedList(cusNum); 
+		ArrayList<Sent> cmList = rService.cMatchedList(cusNum);
 		md.addAttribute("cmList", cmList);
 		return "request/matched_c";
 	}
-	
-	
-	
 
-	
-	
-	
-	
 }

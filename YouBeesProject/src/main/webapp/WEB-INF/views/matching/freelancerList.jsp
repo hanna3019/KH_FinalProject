@@ -42,9 +42,9 @@
                     <button class="price_btn" onclick="priceBtn();">가격<img src="${path}/resources/source/dropdown.png" alt=""
                             class="drp_icon"></button>
                 </div>
-                <form action="freelancerList.ma">
-                    <input type="number" min="0" size="7" class="priceInp" name="price1"> &ensp;~&ensp; <input type="number" min="0" size="7"
-                        class="priceInp" name="price2">
+                <form action="freelancerList.ma" name="filteringFrm">
+                    <input type="number" min="0" size="7" class="priceInp" name="price1" id="p1"> &ensp;~&ensp; <input type="number" min="0" size="7"
+                        class="priceInp" name="price2" value="" id="p2">
                     <input type="hidden" name="location" class="filterLocation" value="${selectedLocation}">
 			        <input type="hidden" name="cateNum" value="${selected.cateNum}">
 			        <input type="hidden" name="cName" value="${cName}">
@@ -56,25 +56,34 @@
 	       				<input type="hidden" name="cusNum" value="0">
 	       			</c:otherwise>
 			    </c:choose>
-                    <input type="submit" class="price_search" value="검색"></input>
-                    <input type="reset" class="price_reset" value="초기화"></input>
-                </form>
+                    <input type="button" class="price_search" value="검색" onclick="priceSubmit();"></input>
+                    <input type="button" class="price_reset" value="초기화" onclick="resetList();"></input>
+                
+                <script>
+                	function resetList(){
+                		$(".priceInp").val("0");
+                		$(".filterLocation").val("");
+                		filteringFrm.submit();
+                	}
+                	function priceSubmit(){
+                		if($("#p1").val() != "" && $("#p2").val())
+	                	filteringFrm.submit();	              	             			
+                	}
+                </script>
             </div>
 
         </div>
 
         <div class="free_list">
             <div class="search">
-            
-                <form action="" method="">
-                    <input class="search_bar" type="text" placeholder="어떤 프리랜서를 찾고 계신가요?">
+                    <input class="search_bar" type="text" name="keyword" placeholder="어떤 프리랜서를 찾고 계신가요?">
                     <img src="${path}/resources/source/search.png" alt="" class="search_btn" onclick="">
-                    <select name="" id="order">
-                        <option value="">리뷰많은순</option>
-                        <option value="">평점순</option>
-                        <option value="">매칭순</option>
-                    </select>
                 </form>
+                <select name="orderBy" id="order">
+                    <option value="1">리뷰많은순</option>
+                    <option value="2">평점순</option>
+                    <option value="3">매칭순</option>
+                </select>
             </div>
             <div id="fListArea">
             <c:forEach var="l" items="${fList}">
@@ -90,7 +99,14 @@
 	                    	</c:otherwise>
 	                    </c:choose>
 	                    </td>
-	                    <td rowspan="3" class="pro_img"><img src="${path}/resources/source/profile.png" alt="" class="pro_img"></td>
+	                    <c:choose>
+	                    	<c:when test="${not empty l.f.changeName}">
+			                    <td rowspan="3" class="pro_img"><img src="${path}/${l.f.changeName}" alt="" class="pro_img"></td>
+	                    	</c:when>
+	                    	<c:otherwise>
+			                    <td rowspan="3" class="pro_img"><img src="${path}/resources/source/profile.png" alt="" class="pro_img"></td>	                    	
+	                    	</c:otherwise>
+	                    </c:choose>
 	                </tr>
 	                <tr>
 	                    <td colspan="4" class="title">${l.oneContent}</td>
@@ -115,31 +131,17 @@
             	<c:when test="${pi.listCount gt 5}">
 			       	<div id="pageArea">
 			      		<ul class="pagination">
-			               	<c:choose>
-			               		<c:when test="${pi.nowPage eq 1}">
-			                    	<li class="page-item disabled"><a class="page-link" href="#">이전</a></li>
-			                	</c:when>
-			                	<c:otherwise>
-			                		<li class="page-item"><a class="page-link" href="freelancerList.ma?cpage=${pi.nowPage-1}">이전</a></li>
-			                	</c:otherwise>
-			                </c:choose>
+			               	
 			                <c:forEach var="p" begin="${pi.startPage}" end="${pi.endPage}">
 			                    <li class="page-item"><a class="page-link" href="javascript:paging(${p})">[${p}]</a></li>
 							</c:forEach>
-							<c:choose>
-								<c:when test="${pi.nowPage eq pi.maxPage }">
-			                    	<li class="page-item disabled"><a class="page-link" href="#">다음</a></li>
-			                    </c:when>
-			                    <c:otherwise>
-			                    	<li class="page-item"><a class="page-link" href="freelancerList.ma?cpage=${pi.nowPage+1}">다음</a></li>	                    
-			                    </c:otherwise>
-			               	</c:choose>
+							
 			           </ul>
 			       	</div>
 	       		</c:when>
 	       	</c:choose>
        	</div>
-       	
+
        	<c:choose>
        		<c:when test="${not empty loginUserC}">
 	       	<input type="hidden" id="cusNum" value="${loginUserC.cusNum}">
@@ -229,16 +231,15 @@
 					let value = '';
 					for(let i in fList){
 						value += '<table class="free_pro">'
-							  + ' <tr><td colspan="4">';
-							  
-							  if($("#cusNum").val() == '0'){
-								  value += '<a href="freelancerDetail.ma?freeNum='+fList[i].freeNum+'">';
+							  + ' <tr><td colspan="4">'							  
+							  + '<a href="freelancerDetail.ma?freeNum='+fList[i].freeNum+'&cusNum='+$("#cusNum").val()+'">'
+							  + '<h4>'+fList[i].f.name+'</h4></a></td>';
+							  if(fList[i].f.changeName != null){
+								  value += '<td rowspan="3" class="pro_img"><img src="/spring/'+fList[i].f.changeName+'" alt="" class="pro_img"></td></tr>';
 							  }else{
-								  value += '<a href="freelancerDetail.ma?freeNum='+fList[i].freeNum+'&cusNum='+${loginUserC.cusNum}+'">';
+								  value += '<td rowspan="3" class="pro_img"><img src="/spring/resources/source/profile.png" alt="" class="pro_img"></td></tr>';
 							  }
-							  value += '<h4>'+fList[i].f.name+'</h4></a></td>'
-							  + '<td rowspan="3" class="pro_img"><img src="/spring/resources/source/profile.png" alt="" class="pro_img"></td></tr>'
-							  + '<tr><td colspan="4" class="title">'+fList[i].oneContent+'</td></tr>'
+					    value += '<tr><td colspan="4" class="title">'+fList[i].oneContent+'</td></tr>'
 							  + '<tr class="review">'
 							  + '<td width="15%"><img src="/spring/resources/source/star.png" alt="" class="review"> 3.5(256)</td><td width="15%">경력 '+fList[i].f.career+'</td>'
 							  + '<td width="20%">평균응답시간 1시간</td><td>';
@@ -247,7 +248,7 @@
 							  }else{
 								  value += '<img src="/spring/resources/source/heart.png" ';
 							  }
-			             value += 'alt="" class="bookmark_icon" id="'+fList[i].freeNum+'">찜하기</td></tr></table>'
+			             value += 'alt="" class="bookmark_icon" id="'+fList[i].freeNum+'">찜하기</td></tr></table>';
 					}
 					$("#fListArea").empty();
 					$("#fListArea").html(value);

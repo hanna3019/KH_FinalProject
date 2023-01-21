@@ -4,15 +4,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-
-
-
-
-
 <meta charset="UTF-8">
 <title>YouBees</title>
 </head>
 <body>
 	<jsp:forward page="WEB-INF/views/main.jsp"/>
 </body>
-</html> 
+</html>

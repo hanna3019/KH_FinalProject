@@ -1,0 +1,103 @@
+@font-face {
+    font-family: 'NanumSquareNeo-Variable';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    padding: 0;
+    margin: 0 auto;
+    font-family: 'NanumSquareNeo-Variable';
+}
+
+header {
+    height: 100px;
+    width: 100%;
+    border-bottom: 1px solid lightgray;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    z-index:999;
+}
+
+header .logo {
+    width: 12rem;
+}
+
+header .logo:hover {
+    cursor: pointer;
+}
+
+header ul {
+    width: 970px;
+    position: relative;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+header ul li:first-of-type {
+    align-items: center;
+    display: flex;
+    padding-right: 20px;
+}
+
+header ul li:nth-of-type(2) {
+    white-space: nowrap;
+    padding: 0 20px;
+}
+
+header ul li:nth-of-type(3) {
+    white-space: nowrap;
+    padding: 0 20px;
+}
+
+header ul li:nth-of-type(4) {
+    position: relative;
+    width: 100%;
+    align-items: center;
+    display: flex;
+    padding: 0 20px;
+}
+
+header ul li:nth-of-type(5) {
+    white-space: nowrap;
+    padding: 0 20px;
+}
+
+header ul li:last-of-type {
+    white-space: nowrap;
+    padding-left: 20px;
+}
+
+header a {
+    text-decoration: none;
+    color: black;
+}
+
+header .searchBox {
+    width: 13rem;
+    height: 1.5rem;
+    padding: 0.3rem 4rem 0.3rem 1.5rem;
+    border: 0.1rem solid #ffd100;
+    border-radius: 2rem;
+    color: #202020;
+}
+
+header .searchBox:focus {
+    outline: #ffd100;
+}
+
+header .searchBtn {
+    width: 1rem;
+    position: absolute;
+    left: 18rem;
+}
+
+header .searchBtn:hover {
+    cursor: pointer;
+}

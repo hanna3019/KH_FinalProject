@@ -21,7 +21,7 @@ public interface BoardService {
 	int increaseCount(int bnum);
 	
 	// 5. 게시글 상세조회
-	Board selectBoard(int bnum);
+	Board selectBoard(Board b);
 	
 	// 6. 게시글 삭제
 	int deleteBoard(int bnum);

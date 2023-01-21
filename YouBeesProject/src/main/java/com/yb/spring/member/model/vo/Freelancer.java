@@ -1,6 +1,5 @@
 package com.yb.spring.member.model.vo;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,7 +15,7 @@ public class Freelancer {
 	private int freeNum;
 	private String name;
 	private String userId;
-	private String pass;	
+	private String pass;
 	private String tel;
 	private String career;
 	private String gender;
@@ -28,4 +27,8 @@ public class Freelancer {
 	private int price2;
 	private String cateName;
 	private int cusNum;
+	private String profileName;
+	private String changeName;
+	private String keyword;
+
 }

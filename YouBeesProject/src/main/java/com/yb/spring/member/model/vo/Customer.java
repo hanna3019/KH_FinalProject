@@ -20,5 +20,7 @@ public class Customer {
 	private String type;
 	private String profileName;
 	private String status;
+	private String changeName;
+
 		
 }
