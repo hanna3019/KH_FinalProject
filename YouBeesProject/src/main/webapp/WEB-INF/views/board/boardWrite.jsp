@@ -8,7 +8,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="${path}/resources/css/write.css">
+    <link rel="stylesheet" href="${path}/resources/css/write.css?a">
     <script src="http://code.jquery.com/jquery-latest.js"></script>
     <title>YouBees</title>
 </head>
@@ -25,13 +25,14 @@ function readURL(input) {
 	    $(".imgCnt").text("1/1");
 	    
 	  } else {
-	    document.getElementById('preview').src = "";
+	    document.getElementById('preview').src = "${path}/resources/source/background.png";
 	  }
 	}
 
 
 function resetimg() {
-	$("#preview").attr("src", "{path}/resoueces/source/hidden.png");
+	$("#file_input").val("");
+	$("#preview").attr("src", "${path}/resources/source/background.png");
 	$(".imgCnt").text("0/1");
 }
 //<img id="preview" class="uploadedFile" name="photo_file"/>
@@ -91,8 +92,8 @@ function resetimg() {
                 </label>
                 <input id="file_input" type="file" name="upfile" onchange="readURL(this);"/>
                 <span class="imgCnt">0/1</span>
-                <img id="preview" class="uploadedFile" name="photo_file" onError="this.style.visibility='hidden'"/>
-                <button type="button" value="초기화 버튼" id="filecancle" onclick="resetimg();">reset</button>
+                <img id="preview" class="uploadedFile" name="photo_file" src="${path}/resources/source/background.png"/>
+                <button type="button" value="초기화 버튼" id="filecancle" onclick="resetimg();">x</button>
             </div>
 			<script>
 		

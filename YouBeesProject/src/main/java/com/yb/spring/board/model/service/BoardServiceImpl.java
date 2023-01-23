@@ -103,6 +103,11 @@ public class BoardServiceImpl implements BoardService {
 		return null;
 	}
 
+	@Override
+	public int selectLikesCount(int bnum) {
+		return bDao.selectLikesCount(sqlSession, bnum);
+	}
+
 
 
 	

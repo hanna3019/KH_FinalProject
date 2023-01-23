@@ -44,6 +44,15 @@
 		<result column="filename4" property="filename4"/>
 	</resultMap>
 	
+	<resultMap type="Review" id="reviewResult">
+		<result column="review_num" property="reviewNum"/>
+		<result column="reg_date" property="regDate"/>
+		<result column="star" property="star"/>
+		<result column="content" property="content"/>
+		<result column="name" property="name"/>
+		<result column="service" property="service"/>
+	</resultMap>
+	
 	<select id="selectServiceList" resultMap="serviceResult">
 		select *
 		from categories
@@ -148,5 +157,19 @@
 		select *
 		from profile_file
 		where free_num = #{freeNum}
+	</select>
+	
+	<insert id="insertReview">
+		insert into review
+		values(seq_rev.nextval, sysdate, #{star}, #{freeNum}, #{cusNum}, #{content})
+	</insert>
+	
+	<select id="selectReviewList" resultMap="reviewResult">
+		select r.review_num, r.reg_date, r.star, r.content, c.name, s.name service
+		from review r, customer c, freelancer f, categories s
+		where r.cus_num = c.cus_num
+		and r.free_num = f.free_num
+		and f.cate_num = s.cate_num
+		and r.free_num = #{freeNum}
 	</select>
 </mapper>

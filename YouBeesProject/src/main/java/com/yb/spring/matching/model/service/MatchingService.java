@@ -52,6 +52,8 @@ public interface MatchingService {
 	
 	// 리뷰개수 가져오기
 	
+	// 리뷰 리스트 가져오기
+	ArrayList<Review> selectReviewList(int freeNum);
 	
 	// 리뷰 등록하기
 	int insertReview(Review r);

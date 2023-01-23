@@ -90,6 +90,11 @@ public class MatchingServiceImpl implements MatchingService{
 		return mDao.selectFiles(sqlSession, freeNum);
 	}
 
+	@Override
+	public ArrayList<Review> selectReviewList(int freeNum) {
+		return mDao.selectReviewList(sqlSession, freeNum);
+	}
+
 
 	
 }

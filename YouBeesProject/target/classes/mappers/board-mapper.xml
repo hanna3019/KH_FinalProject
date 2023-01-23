@@ -15,6 +15,9 @@
       <result column="change_name" property="changeName" />
       <result column="status" property="status" />
       <result column="name" property="name" />
+      <result column="service_name" property="serviceName" />
+      <result column="lcount" property="lcount" />
+      <result column="ccount" property="ccount" />
       <association javaType="Likes" property="l">
          <result column="user_num" property="userNum" />
          <result column="lstatus" property="status" />
@@ -55,20 +58,33 @@
    </select>
    
    <select id="selectList" resultMap="boardResult"> 
-      select bnum
-           ,cus_num
-           ,service_num
-           ,title
-           ,content
-           ,reg_date
-           ,location
-           ,count
-           ,origin_name
-           ,change_name
-           ,status
-        from board
-       where status='Y'
-       order by bnum desc            
+   	  	select *
+		from(select bnum
+		   ,cus_num
+		   ,b.service_num
+		   ,title
+		   ,content
+		   ,reg_date
+		   ,location
+		   ,count
+		   ,origin_name
+		   ,change_name
+		   ,status
+		   ,s.name service_name
+		from board b, services s
+		where b.service_num = s.service_num
+		and status='Y'
+		order by bnum desc)
+		left join (select bnum, count(*) lcount
+		from likes
+		where status = 'Y'
+		group by bnum)
+		using(bnum)
+		left join (select bnum, count(*) ccount
+		from comments
+		where status = 'Y'
+		group by bnum)
+		using(bnum)       
    </select>
    
    <insert id="insertBoard">
@@ -104,8 +120,9 @@
             from likes
             where user_num = #{userNum}
             <if test="type != null">
-               and type = #{type})
+               and type = #{type}
             </if>
+            )
         using(bnum)
    </select>
    
@@ -177,13 +194,12 @@
              user_num = #{userNum} and type = #{type}
    </update>
    
-   <select id="selectLcount" resultType="_int">
-      select count(*)
+   <select id="selectLikesCount" resultType="_int">
+   		select count(*)
         from likes 
-       where bum = #{bnum}
+       where bnum = #{bnum}
+       and status = 'Y'
    </select>
-   
-   
    
    
    

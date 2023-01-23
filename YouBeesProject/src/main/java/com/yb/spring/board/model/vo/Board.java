@@ -24,4 +24,10 @@ public class Board {
 	private String changeName;
 	private String status;
 	private String name;
+	private Likes l;
+	private String type;
+	private int userNum;
+	private String ServiceName;
+	private int lcount;
+	private int ccount;
 }

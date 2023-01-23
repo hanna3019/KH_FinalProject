@@ -37,7 +37,9 @@
             <p>
             ${b.content}
             </p>
-            <img src="${ b.changeName }" alt="main_img" class="read_main_img">
+            <c:if test="${not empty b.changeName }">
+	            <img src="${ b.changeName }" alt="main_img" class="read_main_img">
+            </c:if>
          </div>
 <!-- 좋아요  -->         
          <div class="read_footer">
@@ -51,8 +53,7 @@
                   <span><img src="${path}/resources/source/like2.png" class="like"></span>                                     
                </c:otherwise>
             </c:choose>
-            
-               <span class="likeCnt" id="lcount">0</span>
+               <span class="likeCnt" id="lcount">${likeCnt}</span>
                <span><img src="${path}/resources/source/reply.png" class="speechBubble"></span>
                <span class="commentCnt" id="rcount">0</span>
             </div>
@@ -85,7 +86,7 @@
                              url:"lselect.bo",
                              data:{bnum:${b.bnum}, userNum:$(".userNum").val(), type:$(".userType").val()},
                              success:function(result) {
-                                console.log("좋아요 성공");
+                                $("#lcount").text(result);
                              },
                              error:function() {
                                 console.log("좋아요 실패")
@@ -97,7 +98,7 @@
                              url:"lcancel.bo",
                              data:{bnum:${b.bnum}, userNum:$(".userNum").val(), type:$(".userType").val()},
                              success:function(result) {
-                                console.log("싫어요 성공");
+                            	 $("#lcount").text(result);
                              },
                              error:function() {
                                 console.log("싫어요 실패");
@@ -123,8 +124,8 @@
          </c:if>
          
          <form action="" method="post" id="postForm">
-            <input type="hidden" name="bno" value="${ b.bnum }">
-               <input type="hidden" name="filePath" value="${ b.changeName }">
+            <input type="hidden" name="bnum" value="${ b.bnum }">
+            <input type="hidden" name="filePath" value="${ b.changeName }">
          </form>
          
          
@@ -151,14 +152,16 @@
             </div>
                <form action="rdelete.bo" method="post" id="delete_postForm">
                      <input type="hidden" name="cnum" value="" class="cnum">
-                     <input type="hidden" name="bno" value="${b.bnum }">
+                     <input type="hidden" name="bnum" value="${b.bnum}">
                </form>
-            
          
          </div>
-         <textarea placeholder="댓글을 남겨보세요." name="cContent" id="content"></textarea>
-         <button class="submit" onclick="addReply();">등록</button>
+         <c:if test="${not empty loginUserC or not empty loginUserF}">
+	         <textarea placeholder="댓글을 남겨보세요." name="cContent" id="content"></textarea>
+	         <button class="submit" onclick="addReply();">등록</button>
+         </c:if>
       </div>
+   
    </div>
    
 
