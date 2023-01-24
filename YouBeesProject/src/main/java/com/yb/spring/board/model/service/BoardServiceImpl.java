@@ -99,8 +99,7 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public ArrayList<Board> selectTopBoardList() {
-		
-		return null;
+		return bDao.selectTopBoardList(sqlSession);
 	}
 
 	@Override

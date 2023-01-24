@@ -66,84 +66,6 @@
         <div class="best_free">
             <div class="swiper">
                 <div class="swiper-wrapper">
-
-                    <div class="swiper-slide free_card" onclick="">
-                        <section class="free_header">
-                            <img src="${path}/resources/source/profile.png" alt="프로필사진" class="free_profile">
-                            <div class="star_score">
-                                <img src="${path}/resources/source/star.png" alt="별점">
-                                <span>4.7</span>
-                            </div>
-                        </section>
-                        <p>변진주의독일어는짱</p>
-                        <section class="sub_info">
-                            <span>경력 5년 &ensp;·&ensp; 평균 30분 내 응답</span>
-                        </section>
-                    </div>
-
-                    <div class="swiper-slide free_card" onclick="">
-                        <section class="free_header">
-                            <img src="${path}/resources/source/profile.png" alt="프로필사진" class="free_profile">
-                            <div class="star_score">
-                                <img src="${path}/resources/source/star.png" alt="별점">
-                                <span>4.9</span>
-                            </div>
-                        </section>
-                        <p>저승원 인쇄소</p>
-                        <section class="sub_info">
-                            <span>경력 15년 &ensp;·&ensp; 평균 1시간 내 응답</span>
-                        </section>
-                    </div>
-
-                    <div class="swiper-slide free_card" onclick="">
-                        <section class="free_header">
-                            <img src="${path}/resources/source/profile.png" alt="프로필사진" class="free_profile">
-                            <div class="star_score">
-                                <img src="${path}/resources/source/star.png" alt="별점">
-                                <span>4.8</span>
-                            </div>
-                        </section>
-                        <p>연승 회계사무소</p>
-                        <section class="sub_info">
-                            <span>경력 3년 &ensp;·&ensp; 평균 45분 내 응답</span>
-                        </section>
-                    </div>
-
-                    <div class="swiper-slide free_card" onclick="">
-                        <section class="free_header">
-                            <img src="${path}/resources/source/profile.png" alt="프로필사진" class="free_profile">
-                            <div class="star_score">
-                                <img src="${path}/resources/source/star.png" alt="별점">
-                                <span>4.3</span>
-                            </div>
-                        </section>
-                        <p>호로록 마케팅</p>
-                        <section class="sub_info">
-                            <span>경력 20년 &ensp;·&ensp; 평균 20분 내 응답</span>
-                        </section>
-                    </div>
-
-                    <div class="swiper-slide free_card" onclick="location.href='freelancer_list.html'" id="first_card">
-                        <img src="${path}/resources/source/free_search.png" alt="돋보기사진" class="more_zoom">
-                        <div class="more_free_txt">
-                            더 많은 프리랜서<br>만나보기
-                        </div>
-                    </div>
-
-                    <div class="swiper-slide free_card" onclick="">
-                        <section class="free_header">
-                            <img src="${path}/resources/source/profile.png" alt="프로필사진" class="free_profile">
-                            <div class="star_score">
-                                <img src="${path}/resources/source/star.png" alt="별점">
-                                <span>4.6</span>
-                            </div>
-                        </section>
-                        <p>해나의 야매 오픽</p>
-                        <section class="sub_info">
-                            <span>경력 8년 &ensp;·&ensp; 평균 50분 내 응답</span>
-                        </section>
-                    </div>
-
                 </div>
 
                 <div class="swiper-button-prev">
@@ -157,128 +79,148 @@
 
         <h2>인기 서비스</h2>
         <div class="best_service">
-            <div class="more_service" onclick="location.href='selectCategories.ma?sNum=1&sName=통번역'">서비스 더보기 ></div>
-
-            <div class="service_card" onclick="">
-                <img class="service_bigimg" src="${path}/resources/source/service25.jpg">
-                <p>굿즈/판촉물 제작</p>
-                <div class="service_requset">
-                    <img src="${path}/resources/source/request.png" alt="요청이미지">
-                    <span>615명 요청</span>
-                </div>
-            </div>
-
-            <div class="service_card" onclick="">
-                <img class="service_bigimg" src="${path}/resources/source/service7.jpg">
-                <p>블로그 마케팅</p>
-                <div class="service_requset">
-                    <img src="${path}/resources/source/request.png" alt="요청이미지">
-                    <span>284명 요청</span>
-                </div>
-            </div>
-
-            <div class="service_card" onclick="">
-                <img class="service_bigimg" src="${path}/resources/source/service35.jpg">
-                <p>음악 편집 및 제작</p>
-                <div class="service_requset">
-                    <img src="${path}/resources/source/request.png" alt="요청이미지">
-                    <span>10,403명 요청</span>
-                </div>
-            </div>
-
-            <div class="service_card" onclick="">
-                <img class="service_bigimg" src="${path}/resources/source/service14.jpg">
-                <p>프렌차이즈 창업</p>
-                <div class="service_requset">
-                    <img src="${path}/resources/source/request.png" alt="요청이미지">
-                    <span>875명 요청</span>
-                </div>
-            </div>
-
         </div>
 
         <h2 id="com_h2" >커뮤니티 인기글</h2>
-        <div class="best_community" onclick="">
-            <div class="more_com" onclick="location.href='boardList.bo'">전체보기 ></div>
-            <div class="com_text">
-                <div class="com_main">
-                    <p class="com_category">통번역</p>
-                    <p class="com_title">이 정도면 영어 심각한 수준 아닌가요?</p>
-                    <p class="com_main_text">아니 어제 영화를 보는데 번역자가 오역 많을 수 있다고 미리 밑밥을 깔더라고요. 그리고 FRIDAY라는 타이틀이<br>
-                        나왔는데
-                        '목요일'이라고 번역하신거 있죠? 이건 좀 심각한거 아닌가요? 진짜 기대 많이 했던 영화인데 결국 못 봤어요.<br> 마음의 상처를 받아서 그러는데 혹시
-                        컨설팅 잘
-                        해주시는
-                        분 계신가요? 저는 블라블라블라블라블라</p>
-                </div>
-                <div class="com_like_comment">
-                    <div class="com_like_main">
-                        <img src="${path}/resources/source/like.png" alt="좋아요수" class="com_like">
-                        <span class="com_like_count">12</span>
-                    </div>
-                    <div class="com_comment_main">
-                        <img src="${path}/resources/source/reply.png" alt="댓글" class="com_comment">
-                        <span class="com_comment_count">17</span>
-                    </div>
-                </div>
-            </div>
-            <img src="${path}/resources/source/movie.jpg" alt="커뮤니티이미지" class="com_img">
-        </div>
-
-        <div class="best_community" onclick="">
-            <div class="com_text">
-                <div class="com_main">
-                    <p class="com_category">통번역</p>
-                    <p class="com_title">이 정도면 영어 심각한 수준 아닌가요?</p>
-                    <p class="com_main_text">아니 어제 영화를 보는데 번역자가 오역 많을 수 있다고 미리 밑밥을 깔더라고요. 그리고 FRIDAY라는 타이틀이<br>
-                        나왔는데
-                        '목요일'이라고 번역하신거 있죠? 이건 좀 심각한거 아닌가요? 진짜 기대 많이 했던 영화인데 결국 못 봤어요.<br> 마음의 상처를 받아서 그러는데 혹시
-                        컨설팅 잘
-                        해주시는
-                        분 계신가요? 저는 블라블라블라블라블라</p>
-                </div>
-                <div class="com_like_comment">
-                    <div class="com_like_main">
-                        <img src="${path}/resources/source/like.png" alt="좋아요수" class="com_like">
-                        <span class="com_like_count">15</span>
-                    </div>
-                    <div class="com_comment_main">
-                        <img src="${path}/resources/source/reply.png" alt="댓글" class="com_comment">
-                        <span class="com_comment_count">21</span>
-                    </div>
-                </div>
-            </div>
-            <img src="${path}/resources/source/movie.jpg" alt="커뮤니티이미지" class="com_img">
-        </div>
-
-        <div class="best_community" onclick="boardList.bo">
-            <div class="com_text">
-                <div class="com_main">
-                    <p class="com_category">통번역</p>
-                    <p class="com_title">이 정도면 영어 심각한 수준 아닌가요?</p>
-                    <p class="com_main_text">아니 어제 영화를 보는데 번역자가 오역 많을 수 있다고 미리 밑밥을 깔더라고요. 그리고 FRIDAY라는 타이틀이<br>
-                        나왔는데
-                        '목요일'이라고 번역하신거 있죠? 이건 좀 심각한거 아닌가요? 진짜 기대 많이 했던 영화인데 결국 못 봤어요.<br> 마음의 상처를 받아서 그러는데 혹시
-                        컨설팅 잘
-                        해주시는
-                        분 계신가요? 저는 블라블라블라블라블라</p>
-                </div>
-                <div class="com_like_comment">
-                    <div class="com_like_main">
-                        <img src="${path}/resources/source/like.png" alt="좋아요수" class="com_like">
-                        <span class="com_like_count">32</span>
-                    </div>
-                    <div class="com_comment_main">
-                        <img src="${path}/resources/source/reply.png" alt="댓글" class="com_comment">
-                        <span class="com_comment_count">19</span>
-                    </div>
-                </div>
-            </div>
-            <img src="${path}/resources/source/movie.jpg" alt="커뮤니티이미지" class="com_img">
-        </div>
+        <div class="more_com" onclick="location.href='boardList.bo'">전체보기 ></div>
+        <div id="Topboard_area">
+		</div>
+      
 
     </main>
-
+		<script type="text/javascript">
+		$(function(){
+    		selectTopFreeList();
+		});
+	
+		function selectTopFreeList(){
+			$.ajax({
+				url:"selectTopFreeList.bo",
+				success:function(list){
+					console.log(list);
+					let value = "";
+					let more = '<a href="freelancer_list.html">'
+									+'<div class="swiper-slide free_card" id="first_card">'
+	                    				+'<img src="${path}/resources/source/free_search.png" alt="돋보기사진" class="more_zoom">'
+	                    				+'<div class="more_free_txt">'
+	                                         +'더 많은 프리랜서<br>만나보기'
+	                    				+'</div>'
+	                				+'</div>'
+                				+'</a>'
+					for(let i in list) {
+						value += '<div class="swiper-slide free_card" onclick="">'
+					                +'<section class="free_header">'
+					                +'<img src="${path}/resources/source/profile.png" alt="프로필사진" class="free_profile">'
+					                    +'<div class="star_score">'
+					                    	+'<img src="${path}/resources/source/star.png" alt="별점">'
+					                		+'<span>'+ list[i].r.avgstar +'</span>'
+					            		+'</div>'
+					            	+'</section>'
+					            	+'<p>+'list[i].f.name'+</p>'
+					            	+'section class="sub_info">'
+					            		+'<span>경력 '+ list[i].f.career+'년 &ensp;·&ensp; 평균 50분 내 응답</span>'
+					            	+'</section>'
+					            +'</div>'
+								$(".swiper-wrapper").html(more+value);
+									}
+							},
+						error:function(){
+						console.log("조회수 top4 서비스 조회 ajax통신 실패");
+						}
+					});
+				}
+		</script>
+    	
+    	<script type="text/javascript">
+    	$(function(){
+    		selectTopServiceList();
+		});
+	
+		function selectTopServiceList(){
+			$.ajax({
+				url:"selectTopServiceList.bo",
+				success:function(list){
+					console.log(list);
+					let value = "";
+					let more = '<a href="selectCategories.ma?sNum=1&sName=통번역">'
+									+'<div class="more_service" onclick="">서비스 더보기 ></div>'
+							   +'</a>';
+					for(let i in list) {
+						value +='<a href="freelancerList.ma?cateNum='+list[i].cateNum+'&cName='+ list[i].name;
+						if("${loginUserC.cusNum}" != ""){
+							value += '&cusNum=${loginUserC.cusNum}">';
+						}else{
+							value += '&cusNum=0">';							
+						}
+						
+						value += '<div class="service_card" onclick="">'
+					                +'<img class="service_bigimg" src="${path}/resources/source/service'+ list[i].cateNum +'.jpg">'
+					                +'<p>'+ list[i].name +'</p>'
+					                +'<div class="service_requset">'
+					                    +'<img src="${path}/resources/source/request.png" alt="요청이미지">'
+					                    +'<span>'+list[i].mCount+'명 요청</span>'
+					                +'</div>'
+					            +'</div>'
+								$(".best_service").html(more+value);
+									}
+							},
+						error:function(){
+						console.log("조회수 top4 서비스 조회 ajax통신 실패");
+						}
+					});
+				}
+    		</script>
+    	
+    	<script type="text/javascript">
+    	$(function(){
+    		selectTopBoardList();
+		
+		});
+	
+		function selectTopBoardList(){
+			$.ajax({
+				url:"selectTopBoardList.bo",
+				success:function(list){
+					let value = "";
+					for(let i in list) {
+						value += '<a href="boardRead.bo?bnum='+list[i].bnum+'">'
+								  +'<div class="best_community" onclick="">'
+								  + '<div class="com_text">'
+								  
+			                	  	+ '<div class="com_main">'
+		                    	  		+ '<p class="com_category">' +list[i].location +'.'+ list[i].serviceNum + '</p>'
+		                    	  		+ '<p class="com_title">'+ list[i].title +'</p>'
+		                          		+ '<p class="com_main_text">'+ list[i].content +'</p>'
+		                          	+ '</div>'
+					              	+ '<div class="com_like_comment">'
+				                    +	'<div class="com_like_main">'
+				                    +		'<img src="${path}/resources/source/like.png" alt="좋아요수" class="com_like">'
+				                    +		'<span class="com_like_count">'+list[i].lcount +'</span>'
+				                   	+   '</div>'
+				                   	+	'<div class="com_comment_main">'
+			                        +		'<img src="${path}/resources/source/reply.png" alt="댓글수" class="com_comment">'
+				                    +		'<span class="com_comment_count" >'+list[i].commentCount+'</span>'
+				                    +		'</div>'
+				                    +	'<div class="com_count_main">'
+				                    +		'<img src="${path}/resources/source/count.png" alt="조회수" class="com_count">'
+				                    +		'<span class="com_view_count">' +list[i].count+ '</span>'
+				                   	+   '</div>'
+				                    + 	'</div>'
+				                    +'</div>'
+			            			+'<img src="${path}/resources/source/movie.jpg" alt="커뮤니티이미지" class="com_img">'
+			            			+'</div>'
+			            		    +'</div>'
+			            		    +'</a>'
+								$("#Topboard_area").html(value);
+								
+									}
+							},
+						error:function(){
+						console.log("조회수 top3게시글 조회 ajax통신 실패");
+						}
+					});
+				}
+    		</script>
 	<!-- footer -->
 	<jsp:include page="common/footer.jsp"/>
 	
