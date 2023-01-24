@@ -18,9 +18,6 @@
 
     <main>
     	<div class="mainTitle">작성 글/작성 댓글</div>
-    
-        <div class="subTitle"><a href="commentList.jsp" selected>작성 글</a></div>
-        <div class="subTitle"><a href="replyList.jsp">작성 댓글</a></div>
 		
         <div class="replyList">
            <label onclick="location.href=''">

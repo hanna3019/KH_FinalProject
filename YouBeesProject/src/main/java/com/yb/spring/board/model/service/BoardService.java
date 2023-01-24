@@ -59,4 +59,6 @@ public interface BoardService {
 	// 14. 커뮤니티 인기글 리스트 (메인페이지)
 	ArrayList<Board> selectTopBoardList();
 	
+	
+	//15. ArrayList<Board> selectMyBoardList(int cusNum);
 }

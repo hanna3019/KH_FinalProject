@@ -97,7 +97,6 @@ public class BoardController {
       int likeCnt = bService.selectLikesCount(d.getBnum());
       if (result > 0) {
          Board b = bService.selectBoard(d);
-         System.out.println(b);
          mv.addObject("likeCnt", likeCnt);
          mv.addObject("b", b).setViewName("board/boardRead");
       } else {
@@ -216,7 +215,11 @@ public class BoardController {
      }
      
      
-     
+ 	@RequestMapping("myComment.bo")
+ 	public String myCommentList(int cusNum, Model model) {
+ 		
+ 		return "member/replyList";
+ 	}
      
     
 
