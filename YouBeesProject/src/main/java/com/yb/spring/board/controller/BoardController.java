@@ -90,7 +90,7 @@ public class BoardController {
    public String boardWriteForm() {
       return "board/boardWrite";
    }
-   
+
    @RequestMapping("boardRead.bo")
    public ModelAndView selectBoard(Board d, ModelAndView mv) {
       int result = bService.increaseCount(d.getBnum());
@@ -149,41 +149,38 @@ public class BoardController {
          return "board/errorPage";
       }
    }
-   
-     // 좋아요
-     @ResponseBody     
-     @RequestMapping(value="lselect.bo",produces="application/json; charset=utf-8") 
-     public String insertLikes(Likes l) {
-        
-        int result = bService.selectLikes(l); 
-        int likeCnt = 0;
-        if(result > 0) { 
-           bService.updateLikes(l); 
-           likeCnt = bService.selectLikesCount(l.getBnum()); 
-        }else {         
-           bService.insertLikes(l);
-           likeCnt = bService.selectLikesCount(l.getBnum()); 
-        } 
-           return new Gson().toJson(likeCnt); 
+
+   // 좋아요
+   @ResponseBody
+   @RequestMapping(value = "lselect.bo", produces = "application/json; charset=utf-8")
+   public String insertLikes(Likes l) {
+
+      int result = bService.selectLikes(l);
+      int likeCnt = 0;
+      if (result > 0) {
+         bService.updateLikes(l);
+         likeCnt = bService.selectLikesCount(l.getBnum());
+      } else {
+         bService.insertLikes(l);
+         likeCnt = bService.selectLikesCount(l.getBnum());
       }
-     
-     @ResponseBody     
-     @RequestMapping(value="lcancel.bo",produces="application/json; charset=utf-8")
-     public String cancelLikes(Likes l) {
-        int result = bService.selectLikes(l);
-        int likeCnt = 0;
-        if( result > 0 ) {
-           bService.cancelLikes(l);
-           likeCnt = bService.selectLikesCount(l.getBnum()); 
-        }
-        
-        return new Gson().toJson(likeCnt);     
-     }
-       
-    
-   
-   
-   //댓글
+      return new Gson().toJson(likeCnt);
+   }
+
+   @ResponseBody
+   @RequestMapping(value = "lcancel.bo", produces = "application/json; charset=utf-8")
+   public String cancelLikes(Likes l) {
+      int result = bService.selectLikes(l);
+      int likeCnt = 0;
+      if (result > 0) {
+         bService.cancelLikes(l);
+         likeCnt = bService.selectLikesCount(l.getBnum());
+      }
+
+      return new Gson().toJson(likeCnt);
+   }
+
+   // 댓글
    @ResponseBody
    @RequestMapping("rinsert.bo")
    public String ajaxInsertReply(Comments c) {
@@ -198,48 +195,53 @@ public class BoardController {
       return new Gson().toJson(list);
    }
 
-   
-     @ResponseBody
-     @RequestMapping(value = "rupdate.bo", produces = "application/json; charset=utf-8") 
-     public String updateComment(Comments c) {
-        int result = bService.updateComment(c);
-        return result > 0 ? "success" : "fail";     
-     }
-     
-     @RequestMapping("rdelete.bo")
-     public String deleteComment(int cnum, Board d, HttpSession session, Model model ) {
-        int result = bService.deleteComment(cnum);
-        Board b = bService.selectBoard(d);
-        model.addAttribute("b", b);
-        return "board/boardRead"; 
-     }
-     
-     
-		/*
-		 * @RequestMapping("myComment.bo") public String myCommentList(int cusNum, Model
-		 * model) {
-		 * 
-		 * return "member/replyList"; }
-		 */
-     
- 	 @RequestMapping("myBoardList.bo")
-		public ModelAndView selectMyBoardList(int cusNum, ModelAndView mv) {
-		
-			ArrayList<Board> list = bService.selectMyBoardList(cusNum);
-			System.out.println(list);
-			mv.addObject("list", list).setViewName("member/commentList");
-			return mv;
+   @ResponseBody
+   @RequestMapping(value = "rupdate.bo", produces = "application/json; charset=utf-8")
+   public String updateComment(Comments c) {
+      int result = bService.updateComment(c);
+      return result > 0 ? "success" : "fail";
+   }
 
-		}
+   @RequestMapping("rdelete.bo")
+   public String deleteComment(int cnum, Board d, HttpSession session, Model model) {
+      int result = bService.deleteComment(cnum);
+      Board b = bService.selectBoard(d);
+      model.addAttribute("b", b);
+      return "board/boardRead";
+   }
 
- 	 @RequestMapping("myReplyList.bo")
-		public ModelAndView selectMyReplyList(String name, ModelAndView mv) {
-		
-			ArrayList<Comments> list = bService.selectMyReplyList(name);
-			System.out.println(list);
-			mv.addObject("list", list).setViewName("member/replyList");
-			return mv;
-			
-			
-		}
+   /*
+    * @RequestMapping("myComment.bo") public String myCommentList(int cusNum, Model
+    * model) {
+    * 
+    * return "member/replyList"; }
+    */
+
+   @RequestMapping("myBoardList.bo")
+   public ModelAndView selectMyBoardList(int cusNum, ModelAndView mv) {
+
+      ArrayList<Board> list = bService.selectMyBoardList(cusNum);
+      System.out.println(list);
+      mv.addObject("list", list).setViewName("member/commentList");
+      return mv;
+   }
+
+   // 인기커뮤니티 TOP4 가져오기(메인페이지)
+   @ResponseBody
+   @RequestMapping(value = "selectTopBoardList.bo", produces = "application/json; charset=utf-8")
+   public String selectTopBoardList() {
+
+      ArrayList<Board> list = bService.selectTopBoardList();
+      return new Gson().toJson(list);
+   }
+
+   @RequestMapping("myReplyList.bo")
+   public ModelAndView selectMyReplyList(String name, ModelAndView mv) {
+
+      ArrayList<Comments> list = bService.selectMyReplyList(name);
+      System.out.println(list);
+      mv.addObject("list", list).setViewName("member/replyList");
+      return mv;
+
+   }
 }

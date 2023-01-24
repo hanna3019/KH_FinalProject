@@ -152,7 +152,7 @@
    </insert>
    
    <select id="selectReplyList" resultMap="CommentsResult">
-      select cnum, bnum, c_content, c_writer, reg_date, type, status
+      select cnum, bnum, c_content, c_writer, reg_date, type, status 
       from comments
       where status = 'Y' and bnum= #{bnum}
       order by cnum desc
@@ -203,7 +203,6 @@
        and status = 'Y'
    </select>
    
-   
    <select id="selectMyBoardList" resultMap="boardResult">
 		select *
 		  from board 
@@ -216,5 +215,33 @@
 		 where c_Writer = #{cWriter} and status = 'Y'  order by reg_date desc
 	</select>
    
-   
+   <select id="selectTopBoardList" resultMap="boardResult">
+		select *
+		from (select bnum
+		  ,b.cus_num
+		  ,b.service_num
+		  ,title
+		  ,content
+		  ,reg_date
+		  ,location
+		  ,count
+		  ,origin_name
+		  ,change_name
+		  ,b.status
+		  ,c.name
+		  , s.name service_name
+		from board b, customer c, services s
+		where b.cus_num = c.cus_num
+		and b.service_num = s.service_num
+		order by count desc) a
+		left join (select bnum, count(bnum) ccount
+		from comments
+		group by bnum)
+		using (bnum)
+		left join (select bnum, count(bnum) lcount
+		from likes
+		group by bnum)
+		using(bnum)
+	  where rownum<![CDATA[ < ]]> 4
+          </select>
 </mapper>

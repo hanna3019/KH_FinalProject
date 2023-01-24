@@ -36,7 +36,23 @@
                <span class="writer_name">${b.name }</span><br>
                <span class="create_date">${b.regDate } · 조회수${b.count }</span>
             </div>
+         
+         <!-- 수정, 삭제 -->      
+         <c:if test="${ loginUserC.name eq b.name}">
+            <div class="upNdelete">
+                <a onclick="postFormSubmit(1);">수정</a>
+                ·
+                <a onclick="postFormSubmit(2);">삭제</a>
+            </div><br><br>
+         </c:if>
+         
          </div>
+         
+         <form action="" method="post" id="postForm">
+            <input type="hidden" name="bnum" value="${ b.bnum }">
+            <input type="hidden" name="filePath" value="${ b.changeName }">
+         </form>
+      
       </div>
       
       <div class="container_main">
@@ -81,7 +97,7 @@
            </c:otherwise>
         </c:choose>
              <script>
-             
+
               $(document).on("click", ".like", function () {
                  if($(".userNum").val() === '0'){
                     alert("로그인 후 이용가능합니다");
@@ -122,18 +138,6 @@
 
 
          
-<!-- 수정, 삭제 -->      
-         <c:if test="${ loginUserC.name eq b.name}">
-            <div align="center">
-                <a onclick="postFormSubmit(1);">수정하기</a>
-                <a onclick="postFormSubmit(2);">삭제하기</a>
-            </div><br><br>
-         </c:if>
-         
-         <form action="" method="post" id="postForm">
-            <input type="hidden" name="bnum" value="${ b.bnum }">
-            <input type="hidden" name="filePath" value="${ b.changeName }">
-         </form>
          
          
                
@@ -188,8 +192,8 @@
 
    <script>
        $(function() {
-       /*    selectReplyList(); */
-          setInterval(selectReplyList, 1000);
+           /* selectReplyList(); */ 
+          setInterval(selectReplyList, 1000); 
       })
       
       function selectReplyList() {
@@ -200,21 +204,30 @@
                console.log(list);
                let value= "";
                for(let i in list){
-                  value += "<div class='comment_flex'>"          
-                       +    "   <div>"
-                       +    "      <div class='comment_writer'>" + list[i].cWriter  + "</div>"
-                       +    "      <div class='freelancer'>"+ "프리랜서"+"</div>"
-                       +  "   </div>"
-                       
-                       +  "   <div class='update_delete_btn'>"
-                       +  "      <span id='rvsBtn'>수정</span>"  
-                       +  "      <a onclick='delete_postFormSubmit("+list[i].cnum+");'>삭제</a>"
+                  value +="<div class='comment_div'>" 
+                	   +	"<div class='comment_flexer'>"
+                	   +  "<img src='${path}/resources/source/default.png' alt='user' class='comment_img'>"
+                	   +  "<div class='comment_flex'>"          
+                       +  "   <div>"
+                       +  "      <div class='comment_writer'>" + list[i].cWriter  + "</div>";
+                       if(list[i].type == 'F'){
+                    	   value += "      <div class='freelancer'>"+ "프리랜서" +"</div>";
+                       }else{
+                    	   value += "      <div class='freelancer'>"+ "일반고객" +"</div>";                    	   
+                       }
+                      
+                  value +=  "   </div>"  
+                       +  "</div>"
+                       +  "   <div class='update_delete_btn'>";
+                       if("${loginUserC.name}" == list[i].cWriter || "${loginUserF.name}" == list[i].cWriter){
+	                      value +=  "      <a onclick='delete_postFormSubmit("+list[i].cnum+")'>x</a>";
+                       }
+                       value +=  "  </div>"
                        +  "  </div>"
-                       +  "</div>" 
                        +    "<div class='comment_content'>"+ list[i].cContent + "</div>"
                        +  "<textarea class='commentRvs hidden'>"+ list[i].cContent +"</textarea>"
                        +    "<div class='comment_time'>"   + list[i].regDate  + "</div>"
-                     
+                       +"</div>";
                }
                $("#comments_area").html(value);
                $("#rcount").text(list.length);

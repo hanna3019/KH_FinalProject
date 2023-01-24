@@ -166,7 +166,7 @@ body {
     font-size: 0.7em;
 }
 
-.comment_flex {
+.comment_flexer {
 	display:flex
 }
 
@@ -197,4 +197,38 @@ textarea:focus {
     justify-content: center;
     cursor: pointer;
     margin: 1rem auto;
+}
+
+.update_delete_btn > a {
+	font-size: 13px;
+	cursor: pointer;
+	color: darkgray;
+}
+
+.update_delete_btn {
+	margin-right: 0;
+}
+
+.comment_div {
+	margin-bottom: 2rem;
+}
+
+.comment_write {
+	width: 100%;
+}
+
+.comment_img {
+	margin-left: 0;
+}
+
+.comment_flex {
+	margin-left: 0;
+}
+
+.upNdelete {
+	text-align:right;
+	font-size: 0.8rem;
+	cursor: pointer;
+	color: gray;
+	margin-right:0;
 }
