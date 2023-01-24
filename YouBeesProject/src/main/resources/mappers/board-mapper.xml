@@ -152,7 +152,7 @@
    </insert>
    
    <select id="selectReplyList" resultMap="CommentsResult">
-      select cnum, bnum, c_content, c_writer, reg_date, type, status
+      select cnum, bnum, c_content, c_writer, reg_date, type, status 
       from comments
       where status = 'Y' and bnum= #{bnum}
       order by cnum desc
