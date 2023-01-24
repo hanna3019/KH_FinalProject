@@ -107,8 +107,14 @@ public class BoardServiceImpl implements BoardService {
 		return bDao.selectLikesCount(sqlSession, bnum);
 	}
 
-
-
+	@Override
+	public ArrayList<Board> selectMyBoardList(int cusNum){
+		return bDao.selectMyBoardList(sqlSession, cusNum);
 	
+	}
+	@Override
+	public ArrayList<Comments> selectMyReplyList(String cWriter){
+		return bDao.selectMyReplyList(sqlSession, cWriter);
 	
+	}
 }
