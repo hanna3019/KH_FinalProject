@@ -18,8 +18,10 @@ $(function () {
 
 new Swiper('.swiper', {
     loop: true,
+    loopAdditionalSlides : 1,
     slidesPerView: 5,
     spaceBetween: 10,
+    loopFillGroupWithBlank : true,
     centeredSlides: true,
     pagination: {
         el: '.swiper-pagination',

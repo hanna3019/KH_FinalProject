@@ -85,4 +85,8 @@ public class MatchingDao {
 		return sqlSession.selectOne("matchingMapper.selectAvgStar", freeNum);
 	}
 	
+	public ArrayList<FreelancerProfile> selectTopFreeList(SqlSessionTemplate sqlSession) {
+		return (ArrayList)sqlSession.selectList("matchingMapper.selectTopFreeList");
+	}
+	
 }

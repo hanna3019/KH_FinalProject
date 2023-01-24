@@ -88,7 +88,6 @@
     justify-content: center;
     align-items: center;
 }
-
 .material-icons {
     font-size: 20px;
     color: lightgray;
@@ -129,6 +128,7 @@
 /* 내 거 */
 #first_card {
     background-color: #fcf0be;
+    width: 10rem;
 }
 
 .more_zoom {
@@ -311,8 +311,7 @@
 .com_like,
 .com_comment,
 .com_count {
-    margin: 0;
-    margin-right: 0.3rem;
+    margin: 0 0.3rem;
     width: 1rem;
 }
 

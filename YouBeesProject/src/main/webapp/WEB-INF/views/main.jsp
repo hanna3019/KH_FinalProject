@@ -97,7 +97,6 @@
 			$.ajax({
 				url:"selectTopFreeList.bo",
 				success:function(list){
-					console.log(list);
 					let value = "";
 					let more = '<a href="freelancer_list.html">'
 									+'<div class="swiper-slide free_card" id="first_card">'
@@ -106,24 +105,25 @@
 	                                         +'더 많은 프리랜서<br>만나보기'
 	                    				+'</div>'
 	                				+'</div>'
-                				+'</a>'
+                				+'</a>';
 					for(let i in list) {
 						value += '<div class="swiper-slide free_card" onclick="">'
 					                +'<section class="free_header">'
 					                +'<img src="${path}/resources/source/profile.png" alt="프로필사진" class="free_profile">'
 					                    +'<div class="star_score">'
 					                    	+'<img src="${path}/resources/source/star.png" alt="별점">'
-					                		+'<span>'+ list[i].r.avgstar +'</span>'
+					                		+'<span>'+ list[i].avgStar +'</span>'
 					            		+'</div>'
 					            	+'</section>'
-					            	+'<p>+'list[i].f.name'+</p>'
-					            	+'section class="sub_info">'
-					            		+'<span>경력 '+ list[i].f.career+'년 &ensp;·&ensp; 평균 50분 내 응답</span>'
+					            	+'<p>'+list[i].f.name+'</p>'
+					            	+'<section class="sub_info">'
+					            		+'<span>경력 '+ list[i].f.career+'&ensp;·&ensp; 평균 50분 내 응답</span>'
 					            	+'</section>'
-					            +'</div>'
+					            +'</div>';
 								$(".swiper-wrapper").html(more+value);
 									}
 							},
+							
 						error:function(){
 						console.log("조회수 top4 서비스 조회 ajax통신 실패");
 						}
