@@ -82,6 +82,13 @@ public class BoardDao {
 		return sqlSession.selectOne("boardMapper.selectLikesCount", bnum);
 	}
 	
+	public ArrayList<Board> selectMyBoardList(SqlSessionTemplate sqlSession, int cusNum) {
+		return (ArrayList)sqlSession.selectList("boardMapper.selectMyBoardList", cusNum);
+	}
+
+	public ArrayList<Comments> selectMyReplyList(SqlSessionTemplate sqlSession, String cWriter) {
+		return (ArrayList)sqlSession.selectList("boardMapper.selectMyReplyList", cWriter);
+	}
 	
 	
 }

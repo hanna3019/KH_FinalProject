@@ -40,7 +40,7 @@
                     <th class="title"><a href="fMatched.re?freeNum=${loginUserF.freeNum}">매칭내역</a></th>
                 </tr>
                 <tr>
-                    <th class="title"><a href="boardList.bo">커뮤니티 작성글/댓글</a></th>
+                    <th class="title"><a href="myReplyList.bo?name=${loginUserF.name}">커뮤니티 작성 댓글</a></th>
                 </tr>
                 <tr>
                     <th class="title"><a href="#">공지사항</a></th>

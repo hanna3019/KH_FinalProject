@@ -33,7 +33,7 @@
       <result column="location" property="location"/>
    </resultMap>
    
-   <resultMap type="comments" id="CommentsResult">
+   <resultMap type="Comments" id="CommentsResult">
       <result column="cnum" property="cnum"/>
       <result column="bnum" property="bnum"/>
       <result column="c_content" property="cContent"/>
@@ -204,12 +204,17 @@
    </select>
    
    
-   
-   
-   
-   
-   
-   
+   <select id="selectMyBoardList" resultMap="boardResult">
+		select *
+		  from board 
+		 where cus_num = #{cusNum} and status = 'Y'  order by reg_date desc
+	</select>
+	
+	<select id="selectMyReplyList" resultMap="CommentsResult">
+		select *
+		  from comments 
+		 where c_Writer = #{cWriter} and status = 'Y'  order by reg_date desc
+	</select>
    
    
 </mapper>

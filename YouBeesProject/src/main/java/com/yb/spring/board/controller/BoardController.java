@@ -215,12 +215,31 @@ public class BoardController {
      }
      
      
- 	@RequestMapping("myComment.bo")
- 	public String myCommentList(int cusNum, Model model) {
- 		
- 		return "member/replyList";
- 	}
+		/*
+		 * @RequestMapping("myComment.bo") public String myCommentList(int cusNum, Model
+		 * model) {
+		 * 
+		 * return "member/replyList"; }
+		 */
      
-    
+ 	 @RequestMapping("myBoardList.bo")
+		public ModelAndView selectMyBoardList(int cusNum, ModelAndView mv) {
+		
+			ArrayList<Board> list = bService.selectMyBoardList(cusNum);
+			System.out.println(list);
+			mv.addObject("list", list).setViewName("member/commentList");
+			return mv;
 
+		}
+
+ 	 @RequestMapping("myReplyList.bo")
+		public ModelAndView selectMyReplyList(String name, ModelAndView mv) {
+		
+			ArrayList<Comments> list = bService.selectMyReplyList(name);
+			System.out.println(list);
+			mv.addObject("list", list).setViewName("member/replyList");
+			return mv;
+			
+			
+		}
 }

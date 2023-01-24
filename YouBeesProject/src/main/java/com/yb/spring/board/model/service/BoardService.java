@@ -61,4 +61,11 @@ public interface BoardService {
 	
 	
 	//15. ArrayList<Board> selectMyBoardList(int cusNum);
+	ArrayList<Board> selectMyBoardList(int cusNum);
+
+
+	ArrayList<Comments> selectMyReplyList(String cWriter);
+
+	
+
 }
