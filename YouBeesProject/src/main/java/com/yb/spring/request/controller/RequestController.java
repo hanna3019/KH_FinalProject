@@ -60,6 +60,9 @@ public class RequestController {
 	@RequestMapping("sentRequest.re")
 	public String sentRequest(int cusNum, Model md) {
 		ArrayList<Sent> sList = rService.sentRequestList(cusNum);
+		for(int i = 0; i<sList.size(); i++) {
+			System.out.println(sList.get(i));
+		}
 		md.addAttribute("sList", sList);
 		return "request/sentRequest";
 	}
@@ -73,7 +76,7 @@ public class RequestController {
 		return new Gson().toJson(ans);
 	}
 
-	// (프랜)매칭수락
+	// (프랜)요청수락
 	@RequestMapping("acceptRequest.re")
 	public String acceptRequest(int reqNum, int freeNum, Model md) {
 		int result = rService.acceptRequest(reqNum);
@@ -89,7 +92,7 @@ public class RequestController {
 		return "request/recievedRequest";
 	}
 
-	// (프랜)매칭거절
+	// (프랜)요청거절
 	@RequestMapping("declineRequest.re")
 	public String declineRequest(int reqNum, int freeNum, Model md) {
 		int result = rService.declineRequest(reqNum);
@@ -120,18 +123,49 @@ public class RequestController {
 		if (result > 0) {
 			md.addAttribute("CancelMsg", "요청이 취소되었습니다.");
 			sList = rService.sentRequestList(cusNum);
+			md.addAttribute("sList", sList);
 		} else {
 			md.addAttribute("CancelMsg", "요청 취소에 실패했습니다.");
 		}
 		return "request/sentRequest";
 	}
 
-	// (고겍)매칭리스트
+	// (고객)매칭리스트
 	@RequestMapping("cMatched.re")
 	public String cMatched(int cusNum, Model md) {
 		ArrayList<Sent> cmList = rService.cMatchedList(cusNum);
 		md.addAttribute("cmList", cmList);
 		return "request/matched_c";
+	}
+	
+	// (프랜)요청 삭제
+	@RequestMapping("deleteRequest.re")
+	public String deleteRequest(int reqNum, int freeNum, Model md) {
+		int result = rService.deleteRequest(reqNum);
+		ArrayList<Request> rList = null;
+		if (result > 0) {
+			md.addAttribute("DeleteMsg", "요청이 삭제되었습니다.");
+			rList = rService.recievedRequestList(freeNum);
+			md.addAttribute("rList", rList);
+		} else {
+			md.addAttribute("DeleteMsg", "요청 삭제에 실패했습니다.");
+		}
+		return "request/recievedRequest";
+	}
+	
+	// (고객)요청 삭제
+	@RequestMapping("deleteCanceledRequest.re")
+	public String deleteCanceledRequest(int reqNum, int cusNum, Model md) {
+		int result = rService.deleteCanceledRequest(reqNum);
+		ArrayList<Sent> sList = null;
+		if (result > 0) {
+			md.addAttribute("DeleteCanceledMsg", "요청이 삭제되었습니다.");
+			sList = rService.sentRequestList(cusNum);
+			md.addAttribute("sList", sList);
+		} else {
+			md.addAttribute("DeleteCanceledMsg", "요청 삭제에 실패했습니다.");
+		}
+		return "request/sentRequest";
 	}
 
 }

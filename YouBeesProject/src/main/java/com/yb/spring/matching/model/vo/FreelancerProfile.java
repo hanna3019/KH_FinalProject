@@ -27,4 +27,5 @@ public class FreelancerProfile {
 	private Freelancer f;
 	private String status;
 	private int rcount;
+	private float avgStar;
 }

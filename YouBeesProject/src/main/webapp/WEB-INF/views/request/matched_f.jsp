@@ -22,10 +22,10 @@
     
         <div class="mainTitle">매칭내역</div>
         
+        <!-- 요청 리스트 -->
         <c:forEach var="fm" items="${fmList}">
 	        <div class="requestProfile">
 	            <img src="${path}/resources/source/user.png" alt="user">
-	            <div class="removeRequest">X</div>
 	            <div class="requestInfo">
 	                <div class="userName">${fm.name}</div>
 	                <div class="detail"><span>${fm.a.ans1}</span> / <span>${fm.a.ans2}</span> / <span>${fm.a.ans3}</span></div>

@@ -54,4 +54,9 @@ public interface MemberService {
 	int updateProfile(FreelancerProfile f);
 
 	int updateFreelancer(Freelancer free);
+	
+	
+
+	
+	
 }

@@ -332,23 +332,13 @@ public class MemberController {
 		}
 
 	}
+	
+
+	
+	
+	
 }
 
-/*
- * 프리랜서 프로필 수정
- * 
- * @RequestMapping("profileUpdate.me") public String
- * profileUpdate(FreelancerProfile fp, Model model) { int result =
- * mService.updateProfile(fp); if (result > 0) { FreelancerProfile f =
- * maService.selectFreelancerDetail(fp.getFreeNum()); model.addAttribute("f",
- * f); } }
- * 
- * @RequestMapping("FreelancerUpdate.me") public String
- * FreelancerUpdate(Freelancer free, Model model) { if (free.getCareer() !=
- * null) { free.setCareer(free.getCareer() + "년"); } int result =
- * mService.updateFreelancer(free); if (result > 0) { FreelancerProfile f =
- * maService.selectFreelancerDetail(free.getFreeNum()); model.addAttribute("f",
- * f); }
- * 
- * }
- */
+
+
+

@@ -189,7 +189,8 @@ td {
 }
 
 #profile_container input[type=text], input[type=number] {
-    height: 2rem;
+    height: 2.5rem;
+    width: 40rem;
     padding: 0 0.5rem;
     box-sizing: border-box;
     border: 2px solid #ccc;
@@ -200,14 +201,14 @@ td {
 }
 
 #profile_container input[type=text]:focus, input[type=number]:focus {
-    border: 2px solid #555;
+    border: 2px solid #ccc;
 }
 
 #regionSelect,
 #regionSelectDetail {
 	width: 5rem;
 	height: 1.8rem;
-	border: 1px solid #eee;
+	border: 1px solid #ccc;
 	border-radius: 0.5rem;
 }
 
@@ -218,6 +219,9 @@ td {
     transition: 0.5s;
     outline: none;
     border-radius: 0.5rem;
+    resize: none;
+    padding: 0.5rem;
+    line-height: 1.2rem;
 }
 
 .certification {

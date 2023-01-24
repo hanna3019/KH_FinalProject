@@ -106,7 +106,7 @@ ul li {
 }
 
 .filter .priceInp {
-    border: 2px solid #eee;
+    border: 2px solid #ccc;
     height: 1.5rem;
     width: 6rem;
     border-radius: 0.3rem;
@@ -132,9 +132,11 @@ ul li {
     margin-left: 8rem;
     border: none;
 }
+
 #fListArea{
 	height:37rem;
 }
+
 .free_pro {
     width: 100%;
     padding: 1rem 1.5rem;

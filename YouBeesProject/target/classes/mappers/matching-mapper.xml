@@ -25,6 +25,7 @@
 		<result column="category" property="category"/>
 		<result column="status" property="status"/>
 		<result column="rcount" property="rcount"/>
+		<result column="avgstar" property="avgStar"/>
 		<association javaType="Freelancer" property="f">
 			<result column="name" property="name"/>
 			<result column="tel" property="tel"/>
@@ -101,22 +102,25 @@
 		<if test="location != null">
 			and location = #{location}
 		</if>
-		<if test="keyword != null">
+<!-- 		<if test="keyword != null">
 			and name like '%#{keyword}%'
-		</if>
+		</if> -->
 		order by reg_date desc
 	</select>
 
 	<select id="selectFreelancerDetail" resultMap="ProfileResult">
 		select *
 		from (select f.free_num, fr_content, call_time, reg_date, one_content, price, f.name, tel, career, gender, location, c.name category, f.changename, r.rcount
-				from freelancer_profile p, freelancer f, categories c, (select free_num ,count(*) rcount
-				from review
-				group by free_num) r
-				where p.free_num = f.free_num
-				and f.cate_num = c.cate_num
-                and f.free_num = r.free_num
-				and status = 'Y' and f.free_num = #{freeNum})
+		from freelancer_profile p
+		join freelancer f
+		on(p.free_num = f.free_num)
+		join categories c
+		on(f.cate_num = c.cate_num)
+		left join (select free_num ,count(*) rcount
+		from review
+		group by free_num) r
+		on(f.free_num = r.free_num)
+		where status = 'Y' and f.free_num = #{freeNum})
 		<if test="cusNum != 0">
 		left join (select free_num, status
 		    from dibs
@@ -199,7 +203,7 @@
 	</select>
 	
 	<select id="selectAvgStar" resultType="_float">
-		select avg(star)
+		select trunc(nvl2(avg(star), avg(star), 0.0),1) avgstar
 		from review
 		where free_num = #{freeNum}
 	</select>

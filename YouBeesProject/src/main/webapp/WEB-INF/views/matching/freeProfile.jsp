@@ -117,7 +117,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <h1>${avgStar }</h1>
+                        <h1>${avgStar}</h1>
                     </td>
                     <td>
                         <img class="review_img" src="${path}/resources/source/star.png" alt="별점">

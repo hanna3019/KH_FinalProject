@@ -25,13 +25,14 @@ function readURL(input) {
 	    $(".imgCnt").text("1/1");
 	    
 	  } else {
-	    document.getElementById('preview').src = "";
+	    document.getElementById('preview').src = "${path}/resources/source/background.png";
 	  }
 	}
 
 
 function resetimg() {
-	$("#preview").attr("src", "{path}/resoueces/source/hidden.png");
+	$("#file_input").val("");
+	$("#preview").attr("src", "${path}/resources/source/background.png");
 	$(".imgCnt").text("0/1");
 }
 //<img id="preview" class="uploadedFile" name="photo_file"/>
@@ -103,21 +104,19 @@ function resetimg() {
                 
 				<c:choose>
 					<c:when test="${ not empty b.originName }">
-						<a>
-							<img src="${b.changeName}">
-						</a>
+						<input id="file_input" type="file" name="reupfile" onchange="readURL(this);"/>
 						<span class="imgCnt">0/1</span>
-               			 <img id="preview" class="uploadedFile" name="photo_file" onError="this.style.visibility='hidden'"/>
+               			 <img id="preview" class="uploadedFile" name="photo_file" src="${path}/${b.changeName}"/>
 					</c:when>
 					<c:otherwise>
 						<input id="file_input" type="file" name="reupfile" onchange="readURL(this);"/>
 						<span class="imgCnt">0/1</span>
-               			 <img id="preview" class="uploadedFile" name="photo_file" onError="this.style.visibility='hidden'"/>
+               			 <img id="preview" class="uploadedFile" name="photo_file"/>
 					</c:otherwise>
 				</c:choose>
                
                 
-                <button type="button" value="초기화 버튼" id="filecancle" onclick="resetimg();">reset</button>
+                <button type="button" value="초기화 버튼" id="filecancle" onclick="resetimg();">x</button>
             </div>
             <div class="btn_container">
                 <button type="submit" class="postBtn">수정하기</button>
