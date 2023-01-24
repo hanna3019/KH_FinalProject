@@ -26,7 +26,7 @@
               <div class="replyContent">${r.cContent}</div>
             </div>
             <div class="replyTimeNdelete">
-			<div class="createTime">${r.regDate}</div>
+			<div class="createTime">${r.regDate}</div> 
 			</label> 
 		</div>
     </c:forEach>
