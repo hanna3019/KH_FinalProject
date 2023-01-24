@@ -91,6 +91,7 @@ public class MatchingController {
 	@RequestMapping("freelancerDetail.ma")
 	public String freelancerDetail(Freelancer fc, Model model) {
 		FreelancerProfile f = mService.selectFreelancerDetail(fc);
+		System.out.println(f);
 		ArrayList<Review> rList = mService.selectReviewList(fc.getFreeNum());
 		float avgStar = mService.selectAvgStar(fc.getFreeNum());
 		model.addAttribute("f", f);
