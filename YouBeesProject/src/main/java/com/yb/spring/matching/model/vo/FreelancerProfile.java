@@ -26,4 +26,5 @@ public class FreelancerProfile {
 	private String category;
 	private Freelancer f;
 	private String status;
+	private int rcount;
 }

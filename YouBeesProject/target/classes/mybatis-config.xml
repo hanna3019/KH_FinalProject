@@ -19,6 +19,7 @@
 		<typeAlias type="com.yb.spring.matching.model.vo.ProfileFiles" alias="ProfileFiles"/>
 		<typeAlias type="com.yb.spring.request.model.vo.Sent" alias="Sent"/>
 		<typeAlias type="com.yb.spring.matching.model.vo.Review" alias="Review"/>
+		<typeAlias type="com.yb.spring.matching.model.vo.Dibs" alias="Dibs"/>
 	</typeAliases>
 	
 	<mappers>

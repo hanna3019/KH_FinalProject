@@ -24,6 +24,7 @@
 		<result column="price" property="price"/>
 		<result column="category" property="category"/>
 		<result column="status" property="status"/>
+		<result column="rcount" property="rcount"/>
 		<association javaType="Freelancer" property="f">
 			<result column="name" property="name"/>
 			<result column="tel" property="tel"/>
@@ -51,6 +52,18 @@
 		<result column="content" property="content"/>
 		<result column="name" property="name"/>
 		<result column="service" property="service"/>
+	</resultMap>
+	
+	<resultMap type="Dibs" id="dibsResult">
+		<result column="cus_num" property="cusNum"/>
+		<result column="free_num" property="freeNum"/>
+		<result column="reg_date" property="regDate"/>
+		<association javaType="Freelancer" property="f">
+			<result column="name" property="name"/>
+			<result column="location" property="location"/>
+			<result column="changename" property="changeName"/>
+			<result column="catename" property="cateName"/>
+		</association>
 	</resultMap>
 	
 	<select id="selectServiceList" resultMap="serviceResult">
@@ -96,10 +109,13 @@
 
 	<select id="selectFreelancerDetail" resultMap="ProfileResult">
 		select *
-		from (select f.free_num, fr_content, call_time, reg_date, one_content, price, f.name, tel, career, gender, location, c.name category, f.changename
-				from freelancer_profile p, freelancer f, categories c
+		from (select f.free_num, fr_content, call_time, reg_date, one_content, price, f.name, tel, career, gender, location, c.name category, f.changename, r.rcount
+				from freelancer_profile p, freelancer f, categories c, (select free_num ,count(*) rcount
+				from review
+				group by free_num) r
 				where p.free_num = f.free_num
 				and f.cate_num = c.cate_num
+                and f.free_num = r.free_num
 				and status = 'Y' and f.free_num = #{freeNum})
 		<if test="cusNum != 0">
 		left join (select free_num, status
@@ -172,4 +188,20 @@
 		and f.cate_num = s.cate_num
 		and r.free_num = #{freeNum}
 	</select>
+	
+	<select id="selectDibsList" resultMap="dibsResult">
+		select d.cus_num, d.free_num, d.reg_date, f.name, f.location, f.changename, c.name catename
+		from dibs d, freelancer f, categories c
+		where d.free_num = f.free_num
+		and f.cate_num = c.cate_num
+		and cus_num = #{cusNum}
+		and d.status = 'Y'
+	</select>
+	
+	<select id="selectAvgStar" resultType="_float">
+		select avg(star)
+		from review
+		where free_num = #{freeNum}
+	</select>
+	
 </mapper>

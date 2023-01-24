@@ -35,7 +35,7 @@ function resetimg() {
 	$("#preview").attr("src", "${path}/resources/source/background.png");
 	$(".imgCnt").text("0/1");
 }
-//<img id="preview" class="uploadedFile" name="photo_file"/>
+
 </script>
 
 <body>

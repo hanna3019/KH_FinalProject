@@ -92,5 +92,10 @@ public class MemberServiceImpl implements MemberService{
 		return mDao.updateProfile(sqlSession, f);
 	}
 
+	@Override
+	public int updateFreelancer(Freelancer free) {
+		return mDao.updateFreelancer(sqlSession, free);
+	}
+
 
 }

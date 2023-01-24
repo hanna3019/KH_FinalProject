@@ -113,17 +113,13 @@
                     <td width="10%">
                         <h2>리뷰</h2>
                     </td>
-                    <td class="f12">(20개)</td>
+                    <td class="f12">(${f.rcount}개)</td>
                 </tr>
                 <tr>
                     <td>
-                        <h1>4.7</h1>
+                        <h1>${avgStar }</h1>
                     </td>
                     <td>
-                        <img class="review_img" src="${path}/resources/source/star.png" alt="별점">
-                        <img class="review_img" src="${path}/resources/source/star.png" alt="별점">
-                        <img class="review_img" src="${path}/resources/source/star.png" alt="별점">
-                        <img class="review_img" src="${path}/resources/source/star.png" alt="별점">
                         <img class="review_img" src="${path}/resources/source/star.png" alt="별점">
                     </td>
                 </tr>

@@ -92,8 +92,10 @@ public class MatchingController {
 	public String freelancerDetail(Freelancer fc, Model model) {
 		FreelancerProfile f = mService.selectFreelancerDetail(fc);
 		ArrayList<Review> rList = mService.selectReviewList(fc.getFreeNum());
+		float avgStar = mService.selectAvgStar(fc.getFreeNum());
 		model.addAttribute("f", f);
 		model.addAttribute("rList", rList);
+		model.addAttribute("avgStar", avgStar);
 		return "matching/freeProfile";
 	}
 	
@@ -222,6 +224,13 @@ public class MatchingController {
 		ArrayList<Review> rList = mService.selectReviewList(fc.getFreeNum());
 		model.addAttribute("rList", rList);
 		return "matching/freeProfile";
+	}
+	
+	@RequestMapping("dibsList.ma")
+	public String selectDibsList(int cusNum, Model model) {
+		ArrayList<Dibs> dList = mService.selectDibsList(cusNum);
+		model.addAttribute("dList", dList);
+		return "member/likeList";
 	}
 	
 }

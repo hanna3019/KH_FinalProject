@@ -30,7 +30,7 @@
 
             <table id="profileContent">
                 <tr>
-                    <th class="title"><a href="#">찜목록</a></th>
+                    <th class="title"><a href="dibsList.ma?cusNum=${loginUserC.cusNum}">찜목록</a></th>
                 </tr>
                 <tr>
                     <th class="title"><a href="sentRequest.re?cusNum=${loginUserC.cusNum}">보낸요청</a></th>

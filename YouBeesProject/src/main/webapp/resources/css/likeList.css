@@ -37,9 +37,15 @@ main {
 
 .likeList img {
     width: 5rem;
+    border-radius: 1rem;
+}
+
+.likeList img:hover{
+	cursor:pointer;
 }
 
 .freelancerInfo {
+	width:17rem;
     margin-left: 0;
 }
 
@@ -51,6 +57,10 @@ main {
     font-weight: bold;
     font-size: 1.2rem;
     margin-left: 0;
+}
+
+.freeLancerName:hover{
+	cursor:pointer;
 }
 
 .location {

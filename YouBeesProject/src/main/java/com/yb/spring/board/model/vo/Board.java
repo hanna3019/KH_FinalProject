@@ -30,4 +30,5 @@ public class Board {
 	private String ServiceName;
 	private int lcount;
 	private int ccount;
+	private String profile;
 }

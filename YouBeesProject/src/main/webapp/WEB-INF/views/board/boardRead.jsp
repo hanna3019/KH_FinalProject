@@ -8,7 +8,7 @@
    <meta charset="utf-8">
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <title>YouBees</title>
-   <link rel="stylesheet" href="${path}/resources/css/read.css?a">
+   <link rel="stylesheet" href="${path}/resources/css/read.css?aa">
    <script src="http://code.jquery.com/jquery-latest.js"></script>
 </head>
 
@@ -24,9 +24,16 @@
          </div>
 
          <div class="container_writer">
-            <img class="writer_img" src="${path}/resources/source/lico.png">
+         <c:choose>
+         	<c:when test="${not empty b.profile}">
+	            <img class="writer_img" src="${path}/${b.profile}">
+         	</c:when>
+         	<c:otherwise>
+	            <img class="writer_img" src="${path}/resources/source/default.png">
+         	</c:otherwise>
+         </c:choose>
             <div class="writer_info">
-               <span class="writer_naome">${b.name }</span>
+               <span class="writer_name">${b.name }</span><br>
                <span class="create_date">${b.regDate } · 조회수${b.count }</span>
             </div>
          </div>

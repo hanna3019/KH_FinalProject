@@ -18,6 +18,7 @@
       <result column="service_name" property="serviceName" />
       <result column="lcount" property="lcount" />
       <result column="ccount" property="ccount" />
+      <result column="profile" property="profile" />
       <association javaType="Likes" property="l">
          <result column="user_num" property="userNum" />
          <result column="lstatus" property="status" />
@@ -111,7 +112,8 @@
            ,origin_name
            ,change_name
            ,b.status
-              ,c.name
+           ,c.name
+           ,c.changename profile
         from board b, customer c
           where b.cus_num = c.cus_num
           and bnum = #{bnum})

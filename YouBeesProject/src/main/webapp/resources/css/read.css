@@ -62,13 +62,6 @@ body {
 .writer_info {
     margin: 0;
     margin-left: 1rem;
-    display: flex;
-    flex-direction: column;
-}
-
-.writer_name {
-    margin: 0;
-    padding-bottom: 0.5rem;
 }
 
 .create_date {
