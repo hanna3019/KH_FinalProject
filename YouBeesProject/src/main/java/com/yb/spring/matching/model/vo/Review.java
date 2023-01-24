@@ -20,4 +20,6 @@ public class Review {
 	private int freeNum;
 	private int cusNum;
 	private String content;
+	private String name;
+	private String service;
 }

@@ -77,6 +77,10 @@ public class BoardDao {
 	public int cancelLikes(SqlSessionTemplate sqlSession, Likes l) {
 		return sqlSession.update("boardMapper.cancleLikes", l);
 	}
+
+	public int selectLikesCount(SqlSessionTemplate sqlSession, int bnum) {
+		return sqlSession.selectOne("boardMapper.selectLikesCount", bnum);
+	}
 	
 	
 	

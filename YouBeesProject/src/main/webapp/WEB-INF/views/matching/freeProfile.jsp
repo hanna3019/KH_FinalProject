@@ -113,82 +113,76 @@
                     <td width="10%">
                         <h2>리뷰</h2>
                     </td>
-                    <td class="f12">(20개)</td>
+                    <td class="f12">(${f.rcount}개)</td>
                 </tr>
                 <tr>
                     <td>
-                        <h1>4.7</h1>
+                        <h1>${avgStar }</h1>
                     </td>
                     <td>
-                        <img class="review_img" src="${path}/resources/source/star.png" alt="별점">
-                        <img class="review_img" src="${path}/resources/source/star.png" alt="별점">
-                        <img class="review_img" src="${path}/resources/source/star.png" alt="별점">
-                        <img class="review_img" src="${path}/resources/source/star.png" alt="별점">
                         <img class="review_img" src="${path}/resources/source/star.png" alt="별점">
                     </td>
                 </tr>
             </table>
 
             <table id="review_tbl">
-                <tr class="first_row">
-                    <td class="first_row" colspan="2">이산</td>
-                </tr>
-                <tr>
-                    <td width="20%" class="f14">서비스카테고리</td>
-                    <td><img src="${path}/resources/source/star.png" alt="별점" class="img_small">5.0</td>
-                </tr>
-                <tr>
-                    <td colspan="2" class="review">댓글 내용이 들어갈 공간입니다!</td>
-                </tr>
-                <tr>
-                    <td colspan="2" class="f12">2023.01.02</td>
-                </tr>
+            <c:choose>
+            	<c:when test="${not empty rList}">
+		            <c:forEach var="r" items="${rList}">
+		                <tr class="first_row">
+		                    <td class="first_row" colspan="2">${r.name}</td>
+		                </tr>
+		                <tr>
+		                    <td width="20%" class="f14">${r.service}</td>
+		                    <td><img src="${path}/resources/source/star.png" alt="별점" class="img_small">${r.star}</td>
+		                </tr>
+		                <tr>
+		                    <td colspan="2" class="review">${r.content}</td>
+		                </tr>
+		                <tr>
+		                    <td colspan="2" class="f12">2023.01.02</td>
+		                </tr>
+		            </c:forEach>
+            	</c:when>
+            	<c:otherwise>
+           			<tr>
+	                    <td class="first_row" colspan="2">아직 등록된 리뷰가 없습니다</td>
+	                </tr>
+            	</c:otherwise>
+            </c:choose>
 
-                <tr class="first_row">
-                    <td class="first_row" colspan="2">제갈한나</td>
-                </tr>
-                <tr>
-                    <td width="20%" class="f14">서비스카테고리</td>
-                    <td><img src="${path}/resources/source/star.png" alt="별점" class="img_small">4.6</td>
-                </tr>
-                <tr>
-                    <td colspan="2" class="review">댓글 내용이 들어갈 공간입니다! 댓글 내용이 들어갈 공간입니다! 댓글 내용이 들어갈 공간입니다! 댓글 내용이 들어갈
-                        공간입니다!</td>
-                </tr>
-                <tr>
-                    <td colspan="2" class="f12">2023.01.02</td>
-                </tr>
-
-                <tr class="first_row">
-                    <td class="first_row" colspan="2">이박사</td>
-                </tr>
-                <tr>
-                    <td width="20%" class="f14">서비스카테고리</td>
-                    <td><img src="${path}/resources/source/star.png" alt="" class="img_small">5.0</td>
-                </tr>
-                <tr>
-                    <td colspan="2" class="review">댓글 내용이 들어갈 공간입니다!</td>
-                </tr>
-                <tr>
-                    <td colspan="2" class="f12">2023.01.02</td>
-                </tr>
             </table>
-			<div class="star_select">
-	            <div class="starRev">
-			        <span class="starR on">1</span>
-			        <span class="starR">2</span>
-			        <span class="starR">3</span>
-			        <span class="starR">4</span>
-			        <span class="starR">5</span>
+            <c:if test="${not empty loginUserC }">
+				<div class="star_select">
+		            <div class="starRev">
+				        <span class="starR on">1</span>
+				        <span class="starR">2</span>
+				        <span class="starR">3</span>
+				        <span class="starR">4</span>
+				        <span class="starR">5</span>
+			      	</div>
+			      	<span class="star_t">별점을 선택해주세요</span>
 		      	</div>
-		      	<span class="star_t">별점을 선택해주세요</span>
-	      	</div>
-            <form action="" method="" class="comment_area">
-                <textarea name="" id="write_comment" cols="81" rows="5" placeholder="후기를 남겨보세요"></textarea><br>
-                <button type="submit" class="submit_comment">등록</button>
-            </form>
+	            <form action="insertReview.ma" method="post" class="comment_area">
+	                <textarea name="content" id="write_comment" cols="81" rows="5" placeholder="후기를 남겨보세요" required></textarea><br>
+	                <button type="submit" class="submit_comment">등록</button>
+		                <input type="hidden" name="freeNum" value="${f.freeNum }">                	
+			            <input type="hidden" name="cusNum" value="${loginUserC.cusNum}">
+	                	<input type="hidden" name="star" value="" class="star_input">
+	            </form>
+            </c:if>
         </div>
-
+		<script>
+		 $('.starRev span').click(function(){
+		        $(this).parent().children('span').removeClass('on');
+		        $(this).addClass('on').prevAll('span').addClass('on');
+		        $('.star_input').val($(this).text());
+		            return false;
+		  });
+		 /* $('starR').click(function(){
+			 $('star_input').val($(this).text());
+		 }) */
+		</script>
         <div class="quick_area">
             <h4>프리랜서에게 요청을 보내보세요!</h4>
             <div>   
@@ -206,13 +200,6 @@
                 <button class="openMask">요청하기</button>
             </div>
         </div>
-		<script>
-		 $('.starRev span').click(function(){
-		        $(this).parent().children('span').removeClass('on');
-		        $(this).addClass('on').prevAll('span').addClass('on');
-		            return false;
-		  });
-		</script>
         <!-- 요청 모달창 -->
         <form action="insertRequest.re" method="post">
             <div id="mask"></div>

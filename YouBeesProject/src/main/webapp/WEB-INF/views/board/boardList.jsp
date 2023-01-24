@@ -75,30 +75,39 @@ a:hover{
       <article class="board_comment" id="boardList">
          <ul>
             <c:forEach var="b" items="${ list }">
-            <li>   
-                <a href="boardRead.bo?bnum=${b.bnum}&userNum=1&type=C"> 
+            <li>
+            <c:choose>
+            	<c:when test="${ not empty loginUserC }">
+	                <a href="boardRead.bo?bnum=${b.bnum}&userNum=${loginUserC.cusNum}&type=C"> 
+            	</c:when>
+            	<c:when test="${ not empty loginUserF }">
+	                <a href="boardRead.bo?bnum=${b.bnum}&userNum=${loginUserF.freeNum}&type=F"> 
+            	</c:when>
+            	<c:otherwise>
+	                <a href="boardRead.bo?bnum=${b.bnum}&userNum=0"> 
+            	</c:otherwise>
+            </c:choose>   
                   <div class="board_content">         
                      <div class="board_post">
                         <div class="board_main">
                         
                            <h4>${ b.title }</h4>
                            <p>${ b.content }</p>
-                           <p class="location">${ b.location }·${b.serviceNum}</p>   
+                           <p class="location">${ b.location }·${b.serviceName}</p>   
                               
                         
                         </div>
-                        <%-- <c:if test="${ not empty b.changeName }"> 
-                              <img class="board_img" src="${path}/resources/source/santa.jpg">
-                        </c:if> --%>
-                        <img src="${ b.changeName }" class="board_img">
+                        <c:if test="${ not empty b.changeName }"> 
+	                        <img src="${ b.changeName }" class="board_img">                              
+                        </c:if>
                         
                      </div>
                      <div class="board_footer">
                         <div class="likeNcomment">
-                           <span><img src="${path}/resources/source/like.png?a" class="like"></span>
-                           <span class="likecnt">12</span>
+                           <span><img src="${path}/resources/source/like.png" class="like"></span>
+                           <span class="likecnt">${b.lcount}</span>
                            <span><img src="${path}/resources/source/reply.png" class="speechBubble"></span>
-                           <span>17</span>
+                           <span>${b.ccount }</span>
                         </div>
                         <div class="time">20분 전</div>
                      </div>
@@ -123,6 +132,7 @@ a:hover{
                    <c:forEach var="p" begin="${ pi.startPage }" end="${ pi.endPage }">
                        <li class="page-item"><a class="page-link" href="boardList.bo?cpage=${p}">${p}</a></li>
                </c:forEach>
+
                <c:choose>
                   <c:when test="${ pi.nowPage eq pi.maxPage }">
                           <li class="page-item disabled"><a class="page-link" href="#">Next</a></li>

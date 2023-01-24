@@ -28,6 +28,7 @@ import com.yb.spring.matching.model.service.MatchingService;
 import com.yb.spring.matching.model.vo.Dibs;
 import com.yb.spring.matching.model.vo.FreelancerProfile;
 import com.yb.spring.matching.model.vo.ProfileFiles;
+import com.yb.spring.matching.model.vo.Review;
 import com.yb.spring.member.model.vo.Categories;
 import com.yb.spring.member.model.vo.Freelancer;
 import com.yb.spring.member.model.vo.Location;
@@ -90,7 +91,11 @@ public class MatchingController {
 	@RequestMapping("freelancerDetail.ma")
 	public String freelancerDetail(Freelancer fc, Model model) {
 		FreelancerProfile f = mService.selectFreelancerDetail(fc);
+		ArrayList<Review> rList = mService.selectReviewList(fc.getFreeNum());
+		float avgStar = mService.selectAvgStar(fc.getFreeNum());
 		model.addAttribute("f", f);
+		model.addAttribute("rList", rList);
+		model.addAttribute("avgStar", avgStar);
 		return "matching/freeProfile";
 	}
 	
@@ -99,8 +104,10 @@ public class MatchingController {
 	public String freeProfile(Freelancer fc, Model model) {
 		FreelancerProfile f = mService.selectFreelancerDetail(fc);
 		ProfileFiles files = mService.selectFiles(fc.getFreeNum());
+		ArrayList<Review> rList = mService.selectReviewList(fc.getFreeNum());
 		model.addAttribute("f", f);
 		model.addAttribute("files", files);
+		model.addAttribute("rList", rList);
 		return "member/freeProfile2";
 	}
 	
@@ -207,7 +214,23 @@ public class MatchingController {
 		return fileList;
 	}
 	
+	/* 리뷰등록 */
+	@RequestMapping("insertReview.ma")
+	public String insertReview(Freelancer fc, Review r, Model model) {
+		int result = mService.insertReview(r);
+		
+		FreelancerProfile f = mService.selectFreelancerDetail(fc);
+		model.addAttribute("f", f);
+		ArrayList<Review> rList = mService.selectReviewList(fc.getFreeNum());
+		model.addAttribute("rList", rList);
+		return "matching/freeProfile";
+	}
 	
-	
+	@RequestMapping("dibsList.ma")
+	public String selectDibsList(int cusNum, Model model) {
+		ArrayList<Dibs> dList = mService.selectDibsList(cusNum);
+		model.addAttribute("dList", dList);
+		return "member/likeList";
+	}
 	
 }
