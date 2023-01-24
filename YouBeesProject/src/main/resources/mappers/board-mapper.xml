@@ -204,26 +204,33 @@
    </select>
    
    <select id="selectTopBoardList" resultMap="boardResult">
-		 select *
-			 	from (select bnum
-				  ,b.cus_num
-				  ,service_num
-				  ,title
-				  ,content
-				  ,reg_date
-				  ,location
-				  ,count
-				  ,origin_name
-				  ,change_name
-				  ,b.status
-	              ,c.name
-	              ,(select count (*)
-                  from customer c,comments r
-                  where b.bnum = r.bnum) as commentCount
-			  from board b, customer c
-	          where b.cus_num = c.cus_num
-	          order by count desc)
-	      where rownum<![CDATA[ < ]]> 4
+		select *
+		from (select bnum
+		  ,b.cus_num
+		  ,b.service_num
+		  ,title
+		  ,content
+		  ,reg_date
+		  ,location
+		  ,count
+		  ,origin_name
+		  ,change_name
+		  ,b.status
+		  ,c.name
+		  , s.name service_name
+		from board b, customer c, services s
+		where b.cus_num = c.cus_num
+		and b.service_num = s.service_num
+		order by count desc) a
+		left join (select bnum, count(bnum) ccount
+		from comments
+		group by bnum)
+		using (bnum)
+		left join (select bnum, count(bnum) lcount
+		from likes
+		group by bnum)
+		using(bnum)
+	  where rownum<![CDATA[ < ]]> 4
           </select>
 
 </mapper>

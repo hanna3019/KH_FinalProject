@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="http://fonts.googleapis.com/icon?family=Material+Icons">
 
     <!-- main.css 연결 -->
-    <link rel="stylesheet" href="${path}/resources/css/main.css">
+    <link rel="stylesheet" href="${path}/resources/css/main.css?a">
 
     <!-- main.js 연결 -->
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
@@ -188,7 +188,7 @@
 								  + '<div class="com_text">'
 								  
 			                	  	+ '<div class="com_main">'
-		                    	  		+ '<p class="com_category">' +list[i].location +'.'+ list[i].serviceNum + '</p>'
+		                    	  		+ '<p class="com_category">' +list[i].location +'.'+ list[i].serviceName + '</p>'
 		                    	  		+ '<p class="com_title">'+ list[i].title +'</p>'
 		                          		+ '<p class="com_main_text">'+ list[i].content +'</p>'
 		                          	+ '</div>'
@@ -199,18 +199,21 @@
 				                   	+   '</div>'
 				                   	+	'<div class="com_comment_main">'
 			                        +		'<img src="${path}/resources/source/reply.png" alt="댓글수" class="com_comment">'
-				                    +		'<span class="com_comment_count" >'+list[i].commentCount+'</span>'
+				                    +		'<span class="com_comment_count" >'+list[i].ccount+'</span>'
 				                    +		'</div>'
 				                    +	'<div class="com_count_main">'
 				                    +		'<img src="${path}/resources/source/count.png" alt="조회수" class="com_count">'
 				                    +		'<span class="com_view_count">' +list[i].count+ '</span>'
 				                   	+   '</div>'
 				                    + 	'</div>'
-				                    +'</div>'
-			            			+'<img src="${path}/resources/source/movie.jpg" alt="커뮤니티이미지" class="com_img">'
-			            			+'</div>'
+				                    +'</div>';
+				                    if(list[i].changeName != null){
+				                    	value += '<img src="${path}/'+list[i].changeName+'" alt="커뮤니티이미지" class="com_img">';
+				                    }
+			            			
+			            			value += '</div>'
 			            		    +'</div>'
-			            		    +'</a>'
+			            		    +'</a>';
 								$("#Topboard_area").html(value);
 								
 									}
