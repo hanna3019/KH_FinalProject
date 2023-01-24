@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.yb.spring.member.model.vo.Categories;
 import com.yb.spring.request.model.vo.Answer;
 import com.yb.spring.request.model.vo.Request;
 import com.yb.spring.request.model.vo.Sent;
@@ -58,5 +59,9 @@ public class RequestDao {
 	
 	public int deleteCanceledRequest(SqlSessionTemplate sqlSession, int reqNum){
 		return sqlSession.update("requestMapper.deleteRequest", reqNum);
+	}
+	
+	public ArrayList<Categories> selectTopServiceList(SqlSessionTemplate sqlSession) {
+		return (ArrayList)sqlSession.selectList("requestMapper.selectTopServiceList");
 	}
 }
