@@ -98,7 +98,7 @@
                 </div>
                 <div class="delete_form">
                     <div class="quest1">
-                        <div class="question1">탈퇴사유를 알려주시면 저희가 더 나은 서비스를 제공하는 데 큰 도움이 된답니다!</div>
+                        <div class="question1">탈퇴사유를 알려주시면 저희가 더 나은 서비스를 제공하는 데<br>큰 도움이 된답니다!</div>
                         <textarea></textarea>
                     </div>
                     <div class="quest2">

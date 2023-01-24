@@ -24,12 +24,31 @@ main {
     font-weight: bold;
 }
 
+.declinedProfile{
+	background-color: #eee;
+	display: flex;
+    padding: 1rem;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    position: relative;
+    margin: 0.1rem;
+}
+
+.declinedProfile:last-of-type {
+    border-bottom: none;
+}
+
+.declinedProfile img {
+    width: 5rem;
+}
+
 .requestProfile {
     display: flex;
     padding: 1rem;
     align-items: center;
     border-bottom: 1px solid #eee;
     position: relative;
+     margin: 0.1rem;
 }
 
 .requestProfile:last-of-type {
@@ -55,7 +74,7 @@ main {
 }
 
 .requestInfo div {
-    padding: 0.3rem;
+    padding: 0.2rem;
 }
 
 .userName {
@@ -91,9 +110,9 @@ main {
     font-size: small;
 }
 
-.btns {
-	display: flex;
-	margin: 0;
+.information{
+	color: red;
+	font-weight: bold;
 }
 
 .detailBtn{

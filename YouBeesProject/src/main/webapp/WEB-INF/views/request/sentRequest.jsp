@@ -25,29 +25,56 @@
     	 		alert("${CancelMsg}");
     		</script>
     	</c:when>
+    	<c:when test="${not empty DeleteCanceledMsg}">
+    		<script>
+    			alert("${DeleteCanceledMsg}");
+    		</script>
+    	</c:when>
     </c:choose>
     
         <div class="mainTitle">보낸요청</div>
         
-        <!-- 요청 1 -->
+        <!-- 요청 리스트 -->
         <c:forEach var="s" items="${sList}">
-        <div class="requestProfile">
-            <img src="${path}/resources/source/user.png" alt="user">
-            <div class="removeRequest">X</div>
-            <div class="requestInfo">
-                <div class="userName">${s.f.name}</div>
-                <div class="cate">${s.f.cateName}</div>
-                <div class="freeLoc">${s.f.location}</div>
-                <div class="detail"><span>${s.a.ans1}</span> / <span>${s.a.ans2}</span> / <span>${s.a.ans3}</span></div>
-            </div>
-            <div class="requestTimeNdetail">
-                <div class="createTime">${s.r.regDate}</div>
-                <div class="btns">
-	                <button type="button" class="detailBtn" onclick="">채팅하기</button>
-	                <button type="button" class="detailBtn openMask" onclick="showDetail(${s.r.reqNum});">상세보기</button>
-	            </div>
-			</div>
-		</div>
+	        <c:choose>
+	        	<c:when test="${s.r.accept eq 'N'}">
+	        		<div class="declinedProfile">
+			            <img src="${path}/resources/source/user.png" alt="user">
+			            <div class="removeRequest" onclick="deleteReq(${s.r.reqNum});">X</div>
+			            <div class="requestInfo">
+			                <div class="userName">${s.f.name}</div>
+			                <div class="cate">${s.f.cateName}</div>
+			                <div class="freeLoc">${s.f.location}</div>
+			                <div class="detail"><span>${s.a.ans1}</span> / <span>${s.a.ans2}</span> / <span>${s.a.ans3}</span></div>
+			            </div>
+			            <div class="requestTimeNdetail">
+			                <div class="createTime">${s.r.regDate}</div>
+			                <div class="information">
+								취소된 요청입니다
+			                </div>
+						</div>
+					</div>
+	        	</c:when>
+	        	<c:otherwise>
+	        		<div class="requestProfile">
+			            <img src="${path}/resources/source/user.png" alt="user">
+			            <div class="removeRequest" onclick="deleteReq(${s.r.reqNum});">X</div>
+			            <div class="requestInfo">
+			                <div class="userName">${s.f.name}</div>
+			                <div class="cate">${s.f.cateName}</div>
+			                <div class="freeLoc">${s.f.location}</div>
+			                <div class="detail"><span>${s.a.ans1}</span> / <span>${s.a.ans2}</span> / <span>${s.a.ans3}</span></div>
+			            </div>
+			            <div class="requestTimeNdetail">
+			                <div class="createTime">${s.r.regDate}</div>
+			                <div class="btns">
+				                <button type="button" class="detailBtn" onclick="">채팅하기</button>
+				                <button type="button" class="detailBtn openMask" onclick="showDetail(${s.r.reqNum});">상세보기</button>
+				            </div>
+						</div>
+					</div>
+	        	</c:otherwise>
+	        </c:choose>
 		</c:forEach>
        
         <!-- 보낸요청 모달창 -->
@@ -96,6 +123,14 @@
         	function cancelReq(reqNum){
         		if(confirm("요청을 취소하시겠습니까?")){
         			location.href="cancelRequest.re?reqNum="+reqNum+"&cusNum="+${loginUserC.cusNum};
+        		} else {
+        			return;
+        		}
+        	}
+        	
+        	function deleteReq(reqNum){
+        		if(confirm("요청을 삭제하시겠습니까?\n삭제 후 복구 불가능합니다.")){
+        			location.href="deleteCanceledRequest.re?reqNum="+reqNum+"&cusNum="+${loginUserC.cusNum};
         		} else {
         			return;
         		}

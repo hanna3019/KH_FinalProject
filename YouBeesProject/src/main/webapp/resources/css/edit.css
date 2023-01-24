@@ -68,6 +68,14 @@
     border-radius: 0.3rem;
 }
 
+#upfile{
+	border: none;
+}
+
+#userId{
+	background-color: #eee;
+}
+
 .genderTd input {
     margin-right: 0.5rem;
 }
@@ -117,7 +125,7 @@
     display: none;
     position: absolute;
     left: 40%;
-    top: 7%;
+    top: 20%;
     width: 30rem;
     height: 27rem;
     background-color: #FFF;
@@ -140,8 +148,7 @@
 .window .close {
     position: relative;
     left: 10rem;
-     cursor: pointer;
-    
+     cursor: pointer;    
 }
 
 .delete_form {
@@ -162,6 +169,10 @@
     margin: 1rem 0;
 }
 
+.question1{
+	line-height: 1.4rem;
+}
+
 .quest1,
 .quest2 {
     margin: 2rem 0;
@@ -174,10 +185,11 @@
     border: 1px solid lightgray;
     border-radius: 0.5rem;
     padding: 0.5rem;
+    margin-left: 0.5rem;
 }
 
 .request_send {
-    padding: 0.7rem 1rem;
+    padding: 1rem 1.5rem;
     background-color: #202020;
     border: none;
     border-radius: 0.5rem;

@@ -35,8 +35,14 @@ public interface RequestService {
 	// (고객)요청 취소
 	int cancelRequest(int reqNum);
 	
-	// (고겍)매칭내역 리스트
+	// (고객)매칭내역 리스트
 	ArrayList<Sent> cMatchedList(int cusNum);
+	
+	// (프랜)요청삭제
+	int deleteRequest(int reqNum);
+	
+	// (고객)요청삭제
+	int deleteCanceledRequest(int reqNum);
 	
 	// 페이징
 	
