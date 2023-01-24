@@ -30,27 +30,52 @@
 	    		alert("${DeclineMsg}");
 	    	</script>
     	</c:when>
+    	<c:when test="${not empty DeleteMsg}">
+    		<script>
+    		alert("${DeleteMsg}");
+    		</script>
+    	</c:when>
     </c:choose>
     
         <div class="mainTitle">받은요청</div>
         
-        <!-- 요청 1 -->
+        <!-- 요청 리스트 -->
         <c:forEach var="r" items="${rList}">
-        <div class="requestProfile">
-            <img src="${path}/resources/source/user.png" alt="user">
-            <div class="removeRequest">X</div>
-            <div class="requestInfo">
-                <div class="userName">${r.name}</div>
-                <div class="detail"><span>${r.a.ans1}</span> / <span>${r.a.ans2}</span> / <span>${r.a.ans3}</span></div>
-            </div>
-            <div class="requestTimeNdetail">
-                <div class="createTime">${r.regDate}</div>
-                <div class="btns">
-	                <button type="button" class="detailBtn" onclick="">채팅하기</button>
-	                <button type="button" class="detailBtn openMask" onclick="showDetail(${r.reqNum});">상세보기</button>
-                </div>
-			</div>
-		</div>
+	        <c:choose>
+				<c:when test="${r.accept eq 'N'}">
+					<div class="declinedProfile">
+			            <img src="${path}/resources/source/user.png" alt="user">
+			            <div class="removeRequest" onclick="deleteReq(${r.reqNum});">X</div>
+			            <div class="requestInfo">
+			                <div class="userName">${r.name}</div>
+			                <div class="detail"><span>${r.a.ans1}</span> / <span>${r.a.ans2}</span> / <span>${r.a.ans3}</span></div>
+			            </div>
+			            <div class="requestTimeNdetail">
+			                <div class="createTime">${r.regDate}</div>
+			                <div class="information">
+								취소된 요청입니다
+			                </div>
+						</div>
+					</div>
+				</c:when>
+				<c:otherwise>
+					<div class="requestProfile">
+			            <img src="${path}/resources/source/user.png" alt="user">
+			            <div class="removeRequest" onclick="deleteReq(${r.reqNum});">X</div>
+			            <div class="requestInfo">
+			                <div class="userName">${r.name}</div>
+			                <div class="detail"><span>${r.a.ans1}</span> / <span>${r.a.ans2}</span> / <span>${r.a.ans3}</span></div>
+			            </div>
+			            <div class="requestTimeNdetail">
+			                <div class="createTime">${r.regDate}</div>
+			                <div class="btns">
+				                <button type="button" class="detailBtn" onclick="">채팅하기</button>
+				                <button type="button" class="detailBtn openMask" onclick="showDetail(${r.reqNum});">상세보기</button>
+			                </div>
+						</div>
+					</div>
+				</c:otherwise>        
+	        </c:choose>
 		</c:forEach>
        
         <!-- 받은요청 모달창 -->
@@ -58,7 +83,7 @@
          <div class="window">
              <div class="request_title">
                  <span>받은 요청서</span>
-                 <div class="close">X</div>
+                 <div class="close" onclick="">X</div>
              </div>
              <div class="request_form">
                  <div class="quest1">
@@ -91,6 +116,7 @@
 						$("#ans3").text(result.ans3);
 						$(".btn1").attr("onclick", "acceptReq("+result.reqNum+")");
 						$(".btn2").attr("onclick", "declineReq("+result.reqNum+")");
+						
        				},
        				error: function(){
        					console.log("ajax 통신실패");
@@ -109,6 +135,14 @@
         	function declineReq(reqNum){
         		if(confirm("요청을 거절하시겠습니까?")){
         			location.href="declineRequest.re?reqNum="+reqNum+"&freeNum="+${loginUserF.freeNum};
+        		} else {
+        			return;
+        		}
+        	}
+        	
+        	function deleteReq(reqNum){
+        		if(confirm("요청을 삭제하시겠습니까?\n삭제 후 복구 불가능하며, 수락 또는 거절을 하지 않고 삭제 시\n응답시간에 영향을 줄 수 있습니다.")){
+        			location.href="deleteRequest.re?reqNum="+reqNum+"&freeNum="+${loginUserF.freeNum};
         		} else {
         			return;
         		}

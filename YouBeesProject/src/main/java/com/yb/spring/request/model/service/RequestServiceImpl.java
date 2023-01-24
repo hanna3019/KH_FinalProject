@@ -40,7 +40,7 @@ public class RequestServiceImpl implements RequestService{
 		return rDao.recievedRequestList(sqlSession, freeNum);
 	}
 	
-	// 받은요청, 보낸요청 디테일 가져오기
+	// (프랜)받은요청, 보낸요청 디테일 가져오기
 	@Override
 	public Answer requestDetail(int reqNum) {
 		return rDao.requestDetail(sqlSession, reqNum);
@@ -52,13 +52,13 @@ public class RequestServiceImpl implements RequestService{
 		return rDao.sentRequestList(sqlSession, cusNum);
 	}
 
-	// (프랜)요청 수락
+	// (프랜)요청수락
 	@Override
 	public int acceptRequest(int reqNum) {
 		return rDao.acceptRequest(sqlSession, reqNum);
 	}
 	
-	// (프랜)매칭거절
+	// (프랜)요청거절
 	@Override
 	public int declineRequest(int reqNum) {
 		return rDao.declineRequest(sqlSession, reqNum);
@@ -80,6 +80,18 @@ public class RequestServiceImpl implements RequestService{
 	@Override
 	public ArrayList<Sent> cMatchedList(int cusNum) {
 		return rDao.cMatchedList(sqlSession, cusNum);
+	}
+	
+	// (프랜)요청 삭제
+	@Override
+	public int deleteRequest(int reqNum) {
+		return rDao.deleteRequest(sqlSession, reqNum);
+	}
+	
+	// (고객)요청 삭제
+	@Override
+	public int deleteCanceledRequest(int reqNum) {
+		return rDao.deleteRequest(sqlSession, reqNum);
 	}
 
 

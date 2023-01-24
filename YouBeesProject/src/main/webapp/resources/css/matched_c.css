@@ -40,15 +40,6 @@ main {
     width: 5rem;
 }
 
-.removeRequest {
-	position: absolute;
-    top: 0.5rem;
-    right: 1.5rem;
-    color: darkgray;
-    font-size: 0.5rem;
-    cursor: pointer;
-}
-
 .requestInfo {
 	width: 45%;
     margin-left: 0;

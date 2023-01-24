@@ -21,7 +21,7 @@ public class RequestDao {
 	}
 	
 	public ArrayList<Request> recievedRequestList(SqlSessionTemplate sqlSession, int freeNum){
-		return (ArrayList)sqlSession.selectList("requestMapper.selectRequestList", freeNum);
+		return (ArrayList)sqlSession.selectList("requestMapper.recievedRequestList", freeNum);
 	}
 	
 	public Answer requestDetail(SqlSessionTemplate sqlSession, int reqNum) {
@@ -52,4 +52,11 @@ public class RequestDao {
 		return (ArrayList)sqlSession.selectList("requestMapper.cMatchedList", cusNum);
 	}
 	
+	public int deleteRequest(SqlSessionTemplate sqlSession, int reqNum){
+		return sqlSession.update("requestMapper.deleteRequest", reqNum);
+	}
+	
+	public int deleteCanceledRequest(SqlSessionTemplate sqlSession, int reqNum){
+		return sqlSession.update("requestMapper.deleteRequest", reqNum);
+	}
 }

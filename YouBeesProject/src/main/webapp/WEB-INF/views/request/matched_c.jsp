@@ -22,11 +22,10 @@
     
      	<div class="mainTitle">매칭내역</div>
      
-        <!-- 요청 1 -->
+        <!-- 요청 리스트 -->
         <c:forEach var="cm" items="${cmList}">
 	        <div class="requestProfile">
 	            <img src="${path}/resources/source/user.png" alt="user">
-	            <div class="removeRequest">X</div>
 	            <div class="requestInfo">
 	                <div class="userName">${cm.f.name}</div>
 	                <div class="cate">${cm.f.cateName}</div>
@@ -47,7 +46,7 @@
         <div id="mask"></div>
         <div class="window">
             <div class="request_title">
-                <span>받은 요청서</span>
+                <span>보낸 요청서</span>
                 <div class="close">X</div>
             </div>
             <div class="request_form">
@@ -63,9 +62,6 @@
                     <div class="question3">그 외 전달하고 싶은 사항이 있다면 알려주세요.</div>
                     <div id="ans3"></div>
                 </div>
-            </div>
-            <div class="accNdec">
-           		<button type="button" value="거절" class="btn2" onclick="">요청취소</button>
             </div>
         </div>
         	
