@@ -109,7 +109,7 @@ a:hover{
                            <span><img src="${path}/resources/source/reply.png" class="speechBubble"></span>
                            <span>${b.ccount }</span>
                         </div>
-                        <div class="time">20분 전</div>
+                        <div class="time">${ b.regDate }</div>
                      </div>
                   </div>
                 </a> 
