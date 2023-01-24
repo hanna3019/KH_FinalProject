@@ -73,4 +73,16 @@ public class MatchingDao {
 		return sqlSession.selectOne("matchingMapper.selectFiles", freeNum);
 	}
 	
+	public ArrayList<Review> selectReviewList(SqlSessionTemplate sqlSession, int freeNum){
+		return (ArrayList)sqlSession.selectList("matchingMapper.selectReviewList", freeNum);
+	}
+	
+	public ArrayList<Dibs> selectDibsList(SqlSessionTemplate sqlSession, int cusNum){
+		return (ArrayList)sqlSession.selectList("matchingMapper.selectDibsList", cusNum);
+	}
+
+	public float selectAvgStar(SqlSessionTemplate sqlSession, int freeNum){
+		return sqlSession.selectOne("matchingMapper.selectAvgStar", freeNum);
+	}
+	
 }

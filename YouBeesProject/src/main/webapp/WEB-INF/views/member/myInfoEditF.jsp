@@ -28,11 +28,18 @@
                 <tr>
                     <th>프로필사진</th>
                     <td class="imgTd">
-                        <img id="upfile" src="${path}/resources/source/santa.jpg" alt="원래사진" class="profileImg">
+                    <c:choose>
+                    	<c:when test="${not empty loginUserF.changeName}">
+	                        <img id="upfile" src="${path}/${loginUserF.changeName}" alt="원래사진" class="profileImg">
+                    	</c:when>
+                    	<c:otherwise>
+	                        <img id="upfile" src="${path}/resources/source/background.png" alt="원래사진" class="profileImg">
+                    	</c:otherwise>
+                    </c:choose>
                         <label for="selectFile">
                             <img src="${path}/resources/source/camera.png" alt="파일선택" class="selectFileImg">
                         </label> 
-                        <input type="file" name="upfile" id="upfile" onchange="readURL(this);">
+                        <input type="file" name="upfile" id="selectFile" onchange="readURL(this);">
                         
                         <input type="hidden" value="${loginUserF.freeNum }" name="freeNum">
                            

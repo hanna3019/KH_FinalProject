@@ -33,6 +33,10 @@ public interface MatchingService {
 	int selectDib(Dibs d);
 	int updateDibN(Dibs d);
 	int updateDibY(Dibs d);
+	
+	// 찜목록 가져오기
+	ArrayList<Dibs> selectDibsList(int cusNum);
+	
 	// 프리랜서 검색하기
 	
 	
@@ -50,8 +54,11 @@ public interface MatchingService {
 	// 자격정보 파일 리스트
 	int insertFiles(ProfileFiles f);
 	
-	// 리뷰개수 가져오기
+	// 별점 평균
+	float selectAvgStar(int freeNum);
 	
+	// 리뷰 리스트 가져오기
+	ArrayList<Review> selectReviewList(int freeNum);
 	
 	// 리뷰 등록하기
 	int insertReview(Review r);

@@ -299,7 +299,7 @@ public class MemberController {
 		if (free.getCareer() != null) {
 			free.setCareer(free.getCareer() + "년");
 		}
-		int result = mService.updateFreeMember(free);
+		int result = mService.updateFreelancer(free);
 
 		if (result > 0) {
 			FreelancerProfile f = maService.selectFreelancerDetail(free);
@@ -307,7 +307,7 @@ public class MemberController {
 			model.addAttribute("f", f);
 
 		}
-		return "redirect:/";
+		return "member/freeProfile2";
 	}
 
 	/* 일반고객 탈퇴 */

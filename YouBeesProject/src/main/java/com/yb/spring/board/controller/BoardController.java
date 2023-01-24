@@ -39,7 +39,6 @@ public class BoardController {
    @RequestMapping("boardList.bo")
    public ModelAndView selectList(@RequestParam(value = "cpage", defaultValue = "1") int nowPage, ModelAndView mv) {
       int listCount = bService.selectListCount();
-
       PageInfo pi = Pagination.getPageInfo(listCount, nowPage, 10, 10);
       ArrayList<Board> list = bService.selectList(pi);
 
@@ -95,8 +94,11 @@ public class BoardController {
    @RequestMapping("boardRead.bo")
    public ModelAndView selectBoard(Board d, ModelAndView mv) {
       int result = bService.increaseCount(d.getBnum());
+      int likeCnt = bService.selectLikesCount(d.getBnum());
       if (result > 0) {
          Board b = bService.selectBoard(d);
+         System.out.println(b);
+         mv.addObject("likeCnt", likeCnt);
          mv.addObject("b", b).setViewName("board/boardRead");
       } else {
          mv.addObject("errorMsg", "접근 오류");
@@ -112,7 +114,7 @@ public class BoardController {
 
    @RequestMapping("update.bo")
    public String updateBoard(Board b, MultipartFile reupfile, HttpSession session, Model model) {
-      
+      System.out.println(b);
       if (!reupfile.getOriginalFilename().equals("")) {
          if (b.getOriginName() != null) {
             new File(session.getServletContext().getRealPath(b.getChangeName())).delete();
@@ -120,13 +122,13 @@ public class BoardController {
          String changeName = changeFilename(reupfile, session);
 
          b.setOriginName(reupfile.getOriginalFilename());
-         b.setChangeName(changeName);
+         b.setChangeName("resources/uploadFiles/" + changeName);
       }
 
       int result = bService.updateBoard(b);
       if (result > 0) {
          session.setAttribute("alertMsg", "게시글이 수정되었습니다😀");
-         return "redirect:boardRead.bo?bno=" + b.getBnum();
+         return "redirect:boardRead.bo?bnum=" + b.getBnum();
       } else {
          model.addAttribute("errorMsg", "게시글 수정에 실패했습니다😢");
          return "board/errorpage";
@@ -135,8 +137,8 @@ public class BoardController {
    }
 
    @RequestMapping("delete.bo")
-   public String deleteBoard(int bno, String filePath, HttpSession session, Model model) {
-      int result = bService.deleteBoard(bno);
+   public String deleteBoard(int bnum, String filePath, HttpSession session, Model model) {
+      int result = bService.deleteBoard(bnum);
       if (result > 0) {
          if (!filePath.equals("")) {
             new File(session.getServletContext().getRealPath(filePath)).delete();
@@ -155,32 +157,28 @@ public class BoardController {
      public String insertLikes(Likes l) {
         
         int result = bService.selectLikes(l); 
-        System.out.println(result);
-        String s = "";
+        int likeCnt = 0;
         if(result > 0) { 
-           
            bService.updateLikes(l); 
-           s = "s"; 
-      }else {
-           
+           likeCnt = bService.selectLikesCount(l.getBnum()); 
+        }else {         
            bService.insertLikes(l);
-           s= "s"; 
-       } 
-         return new Gson().toJson(s); 
+           likeCnt = bService.selectLikesCount(l.getBnum()); 
+        } 
+           return new Gson().toJson(likeCnt); 
       }
      
      @ResponseBody     
      @RequestMapping(value="lcancel.bo",produces="application/json; charset=utf-8")
      public String cancelLikes(Likes l) {
         int result = bService.selectLikes(l);
-        System.out.println(result);
-        String s = "";
+        int likeCnt = 0;
         if( result > 0 ) {
            bService.cancelLikes(l);
-           s = "좋아요 취소됐어요";
+           likeCnt = bService.selectLikesCount(l.getBnum()); 
         }
         
-        return new Gson().toJson(s);     
+        return new Gson().toJson(likeCnt);     
      }
        
     
@@ -211,7 +209,6 @@ public class BoardController {
      
      @RequestMapping("rdelete.bo")
      public String deleteComment(int cnum, Board d, HttpSession session, Model model ) {
-        System.out.println(d);
         int result = bService.deleteComment(cnum);
         Board b = bService.selectBoard(d);
         model.addAttribute("b", b);

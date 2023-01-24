@@ -104,7 +104,7 @@
 			                    <td rowspan="3" class="pro_img"><img src="${path}/${l.f.changeName}" alt="" class="pro_img"></td>
 	                    	</c:when>
 	                    	<c:otherwise>
-			                    <td rowspan="3" class="pro_img"><img src="${path}/resources/source/profile.png" alt="" class="pro_img"></td>	                    	
+			                    <td rowspan="3" class="pro_img"><img src="${path}/resources/source/default.png" alt="" class="pro_img"></td>	                    	
 	                    	</c:otherwise>
 	                    </c:choose>
 	                </tr>
@@ -237,7 +237,7 @@
 							  if(fList[i].f.changeName != null){
 								  value += '<td rowspan="3" class="pro_img"><img src="/spring/'+fList[i].f.changeName+'" alt="" class="pro_img"></td></tr>';
 							  }else{
-								  value += '<td rowspan="3" class="pro_img"><img src="/spring/resources/source/profile.png" alt="" class="pro_img"></td></tr>';
+								  value += '<td rowspan="3" class="pro_img"><img src="/spring/resources/source/default.png" alt="" class="pro_img"></td></tr>';
 							  }
 					    value += '<tr><td colspan="4" class="title">'+fList[i].oneContent+'</td></tr>'
 							  + '<tr class="review">'
