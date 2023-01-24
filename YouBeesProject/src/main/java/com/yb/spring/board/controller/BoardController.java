@@ -221,6 +221,14 @@ public class BoardController {
  		return "member/replyList";
  	}
      
+ 	// 인기커뮤니티 TOP4 가져오기(메인페이지)
+	@ResponseBody
+	@RequestMapping(value="selectTopBoardList.bo", produces="application/json; charset=utf-8")
+	public String selectTopBoardList() {
+		
+	ArrayList<Board> list = bService.selectTopBoardList();
+	return new Gson().toJson(list);
+	}
     
 
 }

@@ -82,6 +82,8 @@ public class BoardDao {
 		return sqlSession.selectOne("boardMapper.selectLikesCount", bnum);
 	}
 	
-	
+	public ArrayList<Board> selectTopBoardList(SqlSessionTemplate sqlSession) {
+		return (ArrayList)sqlSession.selectList("boardMapper.selectTopBoardList");
+	}
 	
 }

@@ -203,13 +203,27 @@
        and status = 'Y'
    </select>
    
-   
-   
-   
-   
-   
-   
-   
-   
-   
+   <select id="selectTopBoardList" resultMap="boardResult">
+		 select *
+			 	from (select bnum
+				  ,b.cus_num
+				  ,service_num
+				  ,title
+				  ,content
+				  ,reg_date
+				  ,location
+				  ,count
+				  ,origin_name
+				  ,change_name
+				  ,b.status
+	              ,c.name
+	              ,(select count (*)
+                  from customer c,comments r
+                  where b.bnum = r.bnum) as commentCount
+			  from board b, customer c
+	          where b.cus_num = c.cus_num
+	          order by count desc)
+	      where rownum<![CDATA[ < ]]> 4
+          </select>
+
 </mapper>

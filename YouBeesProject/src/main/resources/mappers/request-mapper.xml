@@ -44,7 +44,14 @@
          <result column="cus_num" property="cusNum"/>
       </association>
    </resultMap>
-
+   
+	<resultMap type="Categories" id="Categorieslist">
+		<result column="cate_num" property="cateNum"/>
+		<result column="service_num" property="serviceNum"/>
+		<result column="name" property="name"/>	
+		<result column="m_count" property="mCount"/>	
+	</resultMap>
+	
    <insert id="insertRequest">
       insert into request(req_num, cus_num, free_num, reg_date, accept, acct_date)
          values(seq_req.nextval, #{cusNum}, #{freeNum}, sysdate, 'N', null)
@@ -123,6 +130,19 @@
       where req_num = #{reqNum}
    </update>
 
-
+	<select id="selectTopServiceList" resultMap="Categorieslist">
+		select * 
+        from(select *
+        from(select count(cate_num) m_count, cate_num
+        from(select f.free_num, f.cate_num, c.name
+        from request r, freelancer f, categories c
+        where r.free_num = f.free_num
+        and f.cate_num = c.cate_num)
+        group by cate_num) a
+        join categories b
+        using(cate_num)
+        order by m_count desc)
+        where rownum <![CDATA[ < ]]> 5
+	</select>
    
 </mapper>

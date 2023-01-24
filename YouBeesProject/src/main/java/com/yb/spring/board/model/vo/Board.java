@@ -31,4 +31,5 @@ public class Board {
 	private int lcount;
 	private int ccount;
 	private String profile;
+	private int commentCount;
 }
