@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.yb.spring.member.model.vo.Categories;
 import com.yb.spring.request.model.dao.RequestDao;
 import com.yb.spring.request.model.vo.Answer;
 import com.yb.spring.request.model.vo.Request;
@@ -94,6 +95,11 @@ public class RequestServiceImpl implements RequestService{
 		return rDao.deleteRequest(sqlSession, reqNum);
 	}
 
+	// TOP4 서비스 가져오기 (메인페이지)
+	@Override
+	public ArrayList<Categories> selectTopServiceList() {
+		return rDao.selectTopServiceList(sqlSession);
+	}
 
 
 }

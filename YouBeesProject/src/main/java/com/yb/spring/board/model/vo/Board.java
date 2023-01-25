@@ -27,8 +27,9 @@ public class Board {
 	private Likes l;
 	private String type;
 	private int userNum;
-	private String ServiceName;
+	private String serviceName;
 	private int lcount;
 	private int ccount;
 	private String profile;
+	private int commentCount;
 }

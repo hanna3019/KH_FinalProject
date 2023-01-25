@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.google.gson.Gson;
 import com.yb.spring.matching.model.service.MatchingService;
 import com.yb.spring.matching.model.vo.FreelancerProfile;
+import com.yb.spring.member.model.vo.Categories;
 import com.yb.spring.member.model.vo.Freelancer;
 import com.yb.spring.request.model.service.RequestService;
 import com.yb.spring.request.model.vo.Answer;
@@ -168,4 +169,12 @@ public class RequestController {
 		return "request/sentRequest";
 	}
 
+	// 인기서비스 TOP4 가져오기(메인페이지)
+		@ResponseBody
+		@RequestMapping(value="selectTopServiceList.bo", produces="application/json; charset=utf-8")
+		public String selectTopServiceList() {
+			
+		ArrayList<Categories> list = rService.selectTopServiceList();
+		return new Gson().toJson(list);
+		}
 }

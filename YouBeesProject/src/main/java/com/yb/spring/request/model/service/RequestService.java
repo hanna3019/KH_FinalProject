@@ -2,6 +2,7 @@ package com.yb.spring.request.model.service;
 
 import java.util.ArrayList;
 
+import com.yb.spring.member.model.vo.Categories;
 import com.yb.spring.request.model.vo.Answer;
 import com.yb.spring.request.model.vo.Request;
 import com.yb.spring.request.model.vo.Sent;
@@ -46,5 +47,7 @@ public interface RequestService {
 	
 	// 페이징
 	
+	// TOP4 서비스 가져오기 (메인페이지)
+	ArrayList<Categories> selectTopServiceList();
 	
 }

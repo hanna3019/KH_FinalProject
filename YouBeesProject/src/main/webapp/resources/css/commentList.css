@@ -37,8 +37,8 @@ main {
 
 .commentList {
     display: flex;
-    padding: 1rem;
-    align-items: center;
+    padding: 1rem 3.3rem 0 0;
+    margin: 0 17.5rem 1rem 0;
     border-bottom: 1px solid #eee;
 }
 
@@ -46,40 +46,26 @@ main {
     border-bottom: none;
 }
 
-.commentList img {
-    width: 5rem;
-}
+
 
 .commentInfo {
     margin-left: 0;
+    padding :  0 5rem 0rem  0;
+    margin-top: 1rem;
 }
 
 .commentInfo div {
-    padding: 0.3rem;
-}
-
-.commenter {
-    font-weight: bold;
-    font-size: 1.2rem;
-    margin-left: 0;
+    margin: 1.5rem 0 0 0;
+    cursor: pointer;
 }
 
 
-.detail {
-    margin-left: 0;
-    color: gray;
-    font-size: 0.7rem;
-}
-
-.likeTimeNdelete {
-    display: flex;
-    flex-direction: column;
-}
 
 .createTime {
-    margin: 0 1.5rem 1.5rem;
+    margin: 1.3rem 0 0 0;
     color: rgb(165, 165, 165);
     font-size: small;
+     cursor: pointer;
 }
 
 

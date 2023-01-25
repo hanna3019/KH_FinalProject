@@ -39,7 +39,7 @@
                     <th class="title"><a href="cMatched.re?cusNum=${loginUserC.cusNum}">매칭내역</a></th>
                 </tr>
                 <tr>
-                    <th class="title"><a href="myComment.bo?cusNum=${loginUserC.cusNum}">커뮤니티 작성글/댓글</a></th>
+                    <th class="title"><a href="myBoardList.bo?cusNum=${loginUserC.cusNum}">커뮤니티 작성글</a></th>
                 </tr>
                 <tr>
                     <th class="title"><a href="#">공지사항</a></th>
