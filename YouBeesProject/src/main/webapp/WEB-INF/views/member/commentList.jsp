@@ -27,7 +27,7 @@
            	</div> 
 				<div class="createTime">${c.regDate}</div>
 			</label> 
-			</div>
+		</div>
     </c:forEach>
 
        

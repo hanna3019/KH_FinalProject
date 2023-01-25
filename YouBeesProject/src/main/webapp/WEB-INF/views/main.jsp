@@ -107,9 +107,13 @@
                             +'</a>';
                for(let i in list) {
                   value +='<div class="swiper-slide free_card" onclick="newPage('+list[i].freeNum+')">'
-                               +'<section class="free_header">'
-                               +'<img src="${path}/resources/source/profile.png" alt="프로필사진" class="free_profile">'
-                                   +'<div class="star_score">'
+                               +'<section class="free_header">';
+                               if(list[i].f.changeName != null){
+                            	   value += '<img src="${path}/'+list[i].f.changeName+'" alt="프로필사진" class="free_profile">';
+                               }else{
+                            	   value += '<img src="${path}/resources/source/default.png" alt="프로필사진" class="free_profile">';                            	   
+                               }                       
+                                   value +='<div class="star_score">'
                                       +'<img src="${path}/resources/source/star.png" alt="별점">'
                                      +'<span>'+ list[i].avgStar +'</span>'
                                  +'</div>'

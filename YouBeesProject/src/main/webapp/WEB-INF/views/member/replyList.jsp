@@ -21,10 +21,10 @@
 		
 	<c:forEach var="r" items="${list}">	
         <div class="replyList">
-        	<label onclick="location.href='boardRead.bo?bnum=${r.bnum}'"> 
+        	<div onclick="location.href='boardRead.bo?bnum=${r.bnum}'"> 
             	<div class="replyContent">${r.cContent}</div>
 				<div class="createTime">${r.regDate}</div> 
-			</label> 
+			</div> 
 		</div>
     </c:forEach>
 			

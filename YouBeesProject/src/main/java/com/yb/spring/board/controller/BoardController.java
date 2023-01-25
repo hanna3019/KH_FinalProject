@@ -39,7 +39,7 @@ public class BoardController {
    @RequestMapping("boardList.bo")
    public ModelAndView selectList(@RequestParam(value = "cpage", defaultValue = "1") int nowPage, ModelAndView mv) {
       int listCount = bService.selectListCount();
-      PageInfo pi = Pagination.getPageInfo(listCount, nowPage, 10, 10);
+      PageInfo pi = Pagination.getPageInfo(listCount, nowPage, 10, 5);
       ArrayList<Board> list = bService.selectList(pi);
 
       mv.addObject("pi", pi).addObject("list", list).setViewName("board/boardList");

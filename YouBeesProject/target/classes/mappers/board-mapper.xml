@@ -243,6 +243,7 @@
 		group by bnum)
 		using(bnum)
 	  where rownum<![CDATA[ < ]]> 4
+	  and status = 'Y'
           </select>
           
           

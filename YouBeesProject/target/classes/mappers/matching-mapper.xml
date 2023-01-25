@@ -95,6 +95,10 @@
 	    from dibs
 	    where cus_num = #{cusNum}) b
 	    using(free_num)
+	    left join (select free_num, avg(star) avgstar, count(*) rcount
+		from review
+		group by free_num)
+		using(free_num)
 	    where free_num is not null
 		<if test="price1 != 0 and price2 != 0">
 			and price &gt;= #{price1} and price &lt;= #{price2}
