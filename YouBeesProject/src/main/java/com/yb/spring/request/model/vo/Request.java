@@ -22,5 +22,5 @@ public class Request {
 	private String acctDate; // 수락날짜
 	private String name; // 고객이름
 	private Answer a;
-	
+	private String changeName;
 }

@@ -227,6 +227,8 @@ public class MatchingController {
 		model.addAttribute("f", f);
 		ArrayList<Review> rList = mService.selectReviewList(fc.getFreeNum());
 		model.addAttribute("rList", rList);
+		float avgStar = mService.selectAvgStar(fc.getFreeNum());
+		model.addAttribute("avgStar", avgStar);
 		return "matching/freeProfile";
 	}
 	

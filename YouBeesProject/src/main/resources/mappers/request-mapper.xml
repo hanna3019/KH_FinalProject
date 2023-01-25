@@ -10,6 +10,7 @@
       <result column="accept" property="accept"/>
       <result column="acct_date" property="acctDate"/>
       <result column="name" property="name"/>
+      <result column="changename" property="changeName"/>
       <association javaType="Answer" property="a">
          <result column="ans_1" property="ans1"/>
          <result column="ans_2" property="ans2"/>
@@ -63,7 +64,7 @@
    </insert>
 
    <select id="recievedRequestList" resultMap="requestList">
-      select c.cus_num, r.req_num, r.free_num, r.reg_date, r.accept, c.name, a.ans_1, a.ans_2, a.ans_3
+      select c.cus_num, r.req_num, r.free_num, r.reg_date, r.accept, c.name, a.ans_1, a.ans_2, a.ans_3, c.changename
       from customer c, request r, answer a
         where c.cus_num = r.cus_num
         and r.req_num = a.req_num
