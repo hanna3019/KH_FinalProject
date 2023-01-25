@@ -24,9 +24,8 @@
             <div class="commentInfo">
                <div class=commentTitle>${c.title}</div>
                <div class="commentContent">${c.content}</div>
-            </div>
-            <div class="commentTimeNdelete">
-			<div class="createTime">${c.regDate}</div>
+           	</div> 
+				<div class="createTime">${c.regDate}</div>
 			</label> 
 			</div>
     </c:forEach>

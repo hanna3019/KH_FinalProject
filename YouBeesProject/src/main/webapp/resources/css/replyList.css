@@ -24,32 +24,14 @@ main {
     font-weight: bold;
 }
 
-
 .replyList {
-    display: flex;
-    padding: 1rem 3.3rem 0 0;
-    margin: 0.5rem 10.5rem 0 0;
+  	display: flex;
+    padding: 1.2rem 0 1.2rem 5rem;
     border-bottom: 1px solid #eee;
 }
 
-.replyList:last-of-type {
-    border-bottom: none;
-}
-
-.replyInfo {
-    margin-left: 0;
-}
-
-.replyInfo div {
-    margin : 1rem 0 1rem 0;
-    cursor: pointer;
-}
-
-
-.replyTimeNdelete {
-    display: flex;
-    flex-direction: column;
-    padding-top: 0.5rem;
+.replyContent{
+	font-size:1.2rem;
 }
 
 .createTime {
@@ -58,7 +40,7 @@ main {
     font-size: small;
     cursor: pointer;
 }
-
-
          
-
+label {
+	margin-left: 0;
+}
