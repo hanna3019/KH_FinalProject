@@ -24,22 +24,11 @@ main {
     font-weight: bold;
 }
 
-.subTitle {
-    margin-left: 0;
-    color: gray;
-    font-size: 1rem;
-}
-
-.subTitle:hover{
-	 cursor: pointer;
-	 color: black;
-}
-
 
 .replyList {
     display: flex;
-    padding: 1rem;
-    align-items: center;
+    padding: 1rem 3.3rem 0 0;
+    margin: 0.5rem 10.5rem 0 0;
     border-bottom: 1px solid #eee;
 }
 
@@ -47,42 +36,29 @@ main {
     border-bottom: none;
 }
 
-.replyList img {
-    width: 5rem;
-}
-
 .replyInfo {
     margin-left: 0;
 }
 
 .replyInfo div {
-    padding: 0.3rem;
+    margin : 1rem 0 1rem 0;
+    cursor: pointer;
 }
 
-.contentTitle {
-    font-weight: bold;
-    font-size: 1.2rem;
-    margin-left: 0;
-}
-
-
-.detail {
-    margin-left: 0;
-    color: gray;
-    font-size: 0.7rem;
-}
 
 .replyTimeNdelete {
     display: flex;
     flex-direction: column;
+    padding-top: 0.5rem;
 }
 
 .createTime {
-    margin: 0 1.5rem 1.5rem;
+    margin:0.5rem 0 0 0;
     color: rgb(165, 165, 165);
     font-size: small;
+    cursor: pointer;
 }
 
 
-
+         
 
