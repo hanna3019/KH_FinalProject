@@ -217,4 +217,10 @@
 		and f.free_num = p.free_num
 	</select>
 	
+	<select id="selectAccept" resultType="String">
+      	select accept
+		from request
+		where cus_num = #{cusNum}
+		and free_num = #{freeNum}
+    </select>   
 </mapper>

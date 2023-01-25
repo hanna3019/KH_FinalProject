@@ -93,9 +93,11 @@ public class MatchingController {
 		FreelancerProfile f = mService.selectFreelancerDetail(fc);
 		ArrayList<Review> rList = mService.selectReviewList(fc.getFreeNum());
 		float avgStar = mService.selectAvgStar(fc.getFreeNum());
+		String accept = mService.accept(fc);
 		model.addAttribute("f", f);
 		model.addAttribute("rList", rList);
 		model.addAttribute("avgStar", avgStar);
+		model.addAttribute("accept", accept);
 		return "matching/freeProfile";
 	}
 	

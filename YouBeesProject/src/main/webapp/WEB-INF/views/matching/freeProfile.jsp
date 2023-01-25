@@ -148,7 +148,7 @@
             </c:choose>
 
             </table>
-            <c:if test="${not empty loginUserC }">
+            <c:if test="${accept eq 'Y' }">
 				<div class="star_select">
 		            <div class="starRev">
 				        <span class="starR on">1</span>
