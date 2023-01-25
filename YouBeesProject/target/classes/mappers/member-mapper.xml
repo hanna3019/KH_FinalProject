@@ -103,7 +103,7 @@
   	   pass=#{pass},
   	   </if>
   	   <if test="profileName != null">
-  	    profile_name = #{profileName}, changename = #{changeName},
+  	    profile_name = #{profileName}, changename = #{changeName}
   	   </if>
   	 where free_num = #{freeNum}
   </update>

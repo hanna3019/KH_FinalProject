@@ -54,7 +54,7 @@
 	
    <insert id="insertRequest">
       insert into request(req_num, cus_num, free_num, reg_date, accept, acct_date)
-         values(seq_req.nextval, #{cusNum}, #{freeNum}, sysdate, 'N', null)
+         values(seq_req.nextval, #{cusNum}, #{freeNum}, sysdate, null , null)
    </insert>
 
    <insert id="insertAnswer">

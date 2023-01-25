@@ -58,7 +58,7 @@
        where status = 'Y' 
    </select>
    
-   <select id="selectList" resultMap="boardResult"> 
+   <select id="selectList" resultMap="boardResult">
    	  	select *
 		from(select bnum
 		   ,cus_num
@@ -147,13 +147,13 @@
    </update>
    
    <insert id="insertComment">
-      insert into comments(cnum, bnum, c_content, c_writer, reg_date, type, status) 
-                  values(seq_com.nextval,#{bnum}, #{cContent}, #{cWriter}, sysdate, #{type}, 'Y')
+      insert into comments(cnum, bnum, c_content, c_writer, reg_date, type, status, usernum) 
+                  values(seq_com.nextval,#{bnum}, #{cContent}, #{cWriter}, sysdate, #{type}, 'Y', #{userNum})
    </insert>
    
    <select id="selectReplyList" resultMap="CommentsResult">
-      select cnum, bnum, c_content, c_writer, reg_date, type, status 
-      from comments
+     select cnum, bnum, c_content, c_writer, reg_date, r.type, r.status, usernum
+	 from comments r
       where status = 'Y' and bnum= #{bnum}
       order by cnum desc
    </select>

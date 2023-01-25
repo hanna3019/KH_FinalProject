@@ -207,6 +207,9 @@ body {
     height: 9rem;
     border-radius: 0.5rem;
 }
+.certification:hover{
+	cursor:pointer;
+}
 
 td {
     font-size: 0.9rem;
