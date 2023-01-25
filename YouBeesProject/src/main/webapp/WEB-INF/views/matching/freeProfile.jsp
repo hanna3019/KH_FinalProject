@@ -78,15 +78,11 @@
                     <th>작업물 및 자격정보</th>
                 </tr>
                 <tr>
-                    <td> <!-- 등록 몇 개까지였는지 기억이 안나서 근데 4개 넘어가면 안 돼요! -->
-                        <%-- <img src="${path}/resources/uploadCertifi/${files.filename1}" alt="작업물 및 자격정보" class="certification" onclick="확대">
-                        <img src="${path}/resources/uploadCertifi/${files.filename2}" alt="작업물 및 자격정보" class="certification" onclick="확대">
-                        <img src="${path}/resources/uploadCertifi/${files.filename3}" alt="작업물 및 자격정보" class="certification" onclick="확대">
-                        <img src="${path}/resources/uploadCertifi/${files.filename4}" alt="작업물 및 자격정보" class="certification" onclick="확대"> --%>
-                        <img src="${path}/resources/source/sound.jpg" alt="작업물 및 자격정보" class="certification" onclick="확대">
-                        <img src="${path}/resources/source/sound.jpg" alt="작업물 및 자격정보" class="certification" onclick="확대">
-                        <img src="${path}/resources/source/sound.jpg" alt="작업물 및 자격정보" class="certification" onclick="확대">
-                        <img src="${path}/resources/source/sound.jpg" alt="작업물 및 자격정보" class="certification" onclick="확대">
+                    <td>
+                        <img src="${path}/resources/source/certificate.png" alt="작업물 및 자격정보" class="certification" onclick="확대">
+                        <img src="${path}/resources/source/certificate.png" alt="작업물 및 자격정보" class="certification" onclick="확대">
+                        <img src="${path}/resources/source/certificate.png" alt="작업물 및 자격정보" class="certification" onclick="확대">
+                        <img src="${path}/resources/source/certificate.png" alt="작업물 및 자격정보" class="certification" onclick="확대">
                     </td>
                 </tr>
                 <tr>
