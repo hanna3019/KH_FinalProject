@@ -95,7 +95,7 @@
 	
 		function selectTopFreeList(){
 			$.ajax({
-				url:"selectTopFreeList.bo",
+				url:"selectTopFreeList.ma",
 				success:function(list){
 					let value = "";
 					let more = '<a href="freelancer_list.html">'
