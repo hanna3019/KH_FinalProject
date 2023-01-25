@@ -105,9 +105,11 @@ public class MatchingController {
 		FreelancerProfile f = mService.selectFreelancerDetail(fc);
 		ProfileFiles files = mService.selectFiles(fc.getFreeNum());
 		ArrayList<Review> rList = mService.selectReviewList(fc.getFreeNum());
+		float avgStar = mService.selectAvgStar(fc.getFreeNum());
 		model.addAttribute("f", f);
 		model.addAttribute("files", files);
 		model.addAttribute("rList", rList);
+		model.addAttribute("avgStar", avgStar);
 		return "member/freeProfile2";
 	}
 	
@@ -235,7 +237,7 @@ public class MatchingController {
 	
 	// 인기프리랜서 TOP4 가져오기(메인페이지)
 	@ResponseBody
-	@RequestMapping(value="selectTopFreeList.bo", produces="application/json; charset=utf-8")
+	@RequestMapping(value="selectTopFreeList.ma", produces="application/json; charset=utf-8")
 	public String selectTopFreeList() {
 		
 	ArrayList<FreelancerProfile> list = mService.selectTopFreeList();

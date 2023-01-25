@@ -239,7 +239,6 @@ public class BoardController {
    public ModelAndView selectMyReplyList(String name, ModelAndView mv) {
 
       ArrayList<Comments> list = bService.selectMyReplyList(name);
-      System.out.println(list);
       mv.addObject("list", list).setViewName("member/replyList");
       return mv;
 

@@ -12,48 +12,6 @@
    <title>YouBees</title>
 </head> 
 
-<style>
-a:hover{
-    cursor: pointer; 
-}
-
-.pagination li{ 
-    list-style: none;
-} 
-
-#pagingArea {
-    text-align:center;
-    font-size:0;
- }
-
-.pagination  {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top:1.4rem;
-}
-
-.pagination a {
-
-    display:block;
-    float:left;
-    width:2rem;
-    height:2rem;
-    line-height:2rem;
-    text-align:center;
-    background-color:#fff;
-    font-size:0.9rem;
-    color:black;
-    text-decoration:none;
-    font-weight:bold;
-}
-
-.pagination a:hover{
-    background-color:#CCC;
-    color:white;
-}
-
-</style>
 
 <body>
    <!-- header -->
@@ -109,7 +67,7 @@ a:hover{
                            <span><img src="${path}/resources/source/reply.png" class="speechBubble"></span>
                            <span>${b.ccount }</span>
                         </div>
-                        <div class="time">${ b.regDate }</div>
+                        <div class="time">${b.regDate }</div>
                      </div>
                   </div>
                 </a> 
@@ -117,6 +75,8 @@ a:hover{
             </c:forEach>
          </ul>
       </article>
+      
+      
       
       
       <div id="pagingArea">
@@ -148,6 +108,15 @@ a:hover{
 
    <!-- footer -->
    <jsp:include page="../common/footer.jsp"/>
+   
+   <script>
+   //현재시간 		
+   
+   
+
+   
+   		
+   </script>
 
 </body>
 

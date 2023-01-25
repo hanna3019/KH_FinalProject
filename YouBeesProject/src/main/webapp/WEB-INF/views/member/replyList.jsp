@@ -17,11 +17,11 @@
 	<jsp:include page="../common/header.jsp"/>
 
     <main>
-    	<div class="mainTitle"><a href="myReplyList.bo?name=${loginUserF.name}">작성댓글</a></div>
+    	<div class="mainTitle"href="myReplyList.bo?name=${loginUserF.name}">작성댓글</div>
 		
 	<c:forEach var="r" items="${list}">	
-        <div class="commentList">
-           <label onclick="location.href='CommentsList.bo?name=${loginUserF.name}'">
+        <div class="replyList">
+           <label onclick="location.href='boardRead.bo?bnum=${r.bnum}'"> 
             <div class="replyInfo">
               <div class="replyContent">${r.cContent}</div>
             </div>

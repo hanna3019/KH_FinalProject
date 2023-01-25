@@ -17,10 +17,10 @@
 	<jsp:include page="../common/header.jsp"/>
 
     <main>
-    <div class="mainTitle"><a href="myBoardList.bo?cusNum=${loginUserC.cusNum}">작성글</a></div>
+    <div class="mainTitle" href="myBoardList.bo?cusNum=${loginUserC.cusNum}">작성글</div>
 	<c:forEach var="c" items="${list}">	
         <div class="commentList">
-           <label onclick="location.href='boardRead.bo?bnum=${list.bnum}'"> 
+           <label onclick="location.href='boardRead.bo?bnum=${c.bnum}'"> 
             <div class="commentInfo">
                <div class=commentTitle>${c.title}</div>
                <div class="commentContent">${c.content}</div>

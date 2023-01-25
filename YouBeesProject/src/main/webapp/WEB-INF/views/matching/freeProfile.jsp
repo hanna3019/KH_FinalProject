@@ -140,7 +140,7 @@
 		                    <td colspan="2" class="review">${r.content}</td>
 		                </tr>
 		                <tr>
-		                    <td colspan="2" class="f12">2023.01.02</td>
+		                    <td colspan="2" class="f12">${r.regDate}</td>
 		                </tr>
 		            </c:forEach>
             	</c:when>
