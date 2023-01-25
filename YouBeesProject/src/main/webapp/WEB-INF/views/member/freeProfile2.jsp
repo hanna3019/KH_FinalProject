@@ -254,48 +254,30 @@
                 </table>
 
                 <table id="review_tbl">
-                    <tr class="first_row">
-                        <td class="first_row" colspan="2">이산</td>
-                    </tr>
-                    <tr>
-                        <td width="20%" class="f14">서비스카테고리</td>
-                        <td><img src="${path}/resources/source/star.png" alt="별점" class="img_small">5.0</td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" class="review">댓글 내용이 들어갈 공간입니다!</td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" class="f12">2023.01.02</td>
-                    </tr>
-
-                    <tr class="first_row">
-                        <td class="first_row" colspan="2">제갈한나</td>
-                    </tr>
-                    <tr>
-                        <td width="20%" class="f14">서비스카테고리</td>
-                        <td><img src="${path}/resources/source/star.png" alt="별점" class="img_small">4.6</td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" class="review">댓글 내용이 들어갈 공간입니다! 댓글 내용이 들어갈 공간입니다! 댓글 내용이 들어갈 공간입니다! 댓글 내용이 들어갈
-                            공간입니다!</td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" class="f12">2023.01.02</td>
-                    </tr>
-
-                    <tr class="first_row">
-                        <td class="first_row" colspan="2">이박사</td>
-                    </tr>
-                    <tr>
-                        <td width="20%" class="f14">서비스카테고리</td>
-                        <td><img src="${path}/resources/source/star.png" alt="" class="img_small">5.0</td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" class="review">댓글 내용이 들어갈 공간입니다!</td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" class="f12">2023.01.02</td>
-                    </tr>
+                     <c:choose>
+            	<c:when test="${not empty rList}">
+		            <c:forEach var="r" items="${rList}">
+		                <tr class="first_row">
+		                    <td class="first_row" colspan="2">${r.name}</td>
+		                </tr>
+		                <tr>
+		                    <td width="20%" class="f14">${r.service}</td>
+		                    <td><img src="${path}/resources/source/star.png" alt="별점" class="img_small">${r.star}</td>
+		                </tr>
+		                <tr>
+		                    <td colspan="2" class="review">${r.content}</td>
+		                </tr>
+		                <tr>
+		                    <td colspan="2" class="f12">${r.regDate}</td>
+		                </tr>
+		            </c:forEach>
+            	</c:when>
+            	<c:otherwise>
+           			<tr>
+	                    <td class="first_row" colspan="2">아직 등록된 리뷰가 없습니다</td>
+	                </tr>
+            	</c:otherwise>
+            </c:choose>
                 </table>
             </div>
 

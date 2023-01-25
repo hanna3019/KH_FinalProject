@@ -33,7 +33,7 @@ public class Comments {
 		private String regDate;
 		private String type;
 		private String status;
-		
+		private int userNum;
 		
 		
 		

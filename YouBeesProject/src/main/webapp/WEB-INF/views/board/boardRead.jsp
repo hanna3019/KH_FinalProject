@@ -13,6 +13,9 @@
 </head>
 
 <body>
+	
+	
+
    <!-- header -->
    <jsp:include page="../common/header.jsp"/>
    
@@ -57,9 +60,9 @@
       
       <div class="container_main">
          <div class="read_main">
-            <p>
-            ${b.content}
-            </p>
+
+            <pre>${b.content}</pre>
+
             <c:if test="${not empty b.changeName }">
 	            <img src="${ b.changeName }" alt="main_img" class="read_main_img">
             </c:if>
@@ -156,9 +159,7 @@
 <!-- 댓글  -->   
       <div class="comment">
          <div class="comment_area">
-            <%-- <img src="${path}/resources/source/lico.png" alt="user" class="comment_img"> --%>
-            <div class="comment_write" id="comments_area">
-            
+            <div class="comment_write" id="comments_area">       
                   
             </div>
                <form action="rdelete.bo" method="post" id="delete_postForm">
@@ -264,6 +265,7 @@
                      bnum:${b.bnum},
                      cContent:$("#content").val(),
                      cWriter:"${loginUserF.name}",
+                     userNum:"${loginUserF.freeNum}",
                      type:'F'
                   },
                   success:function(result) {
@@ -287,6 +289,7 @@
                   bnum:${b.bnum},
                   cContent:$("#content").val(),
                   cWriter:"${loginUserC.name}",
+                  userNum:"${loginUserC.cusNum}",
                   type:'C'
                },
                success:function(result) {

@@ -89,4 +89,8 @@ public class MatchingDao {
 		return (ArrayList)sqlSession.selectList("matchingMapper.selectTopFreeList");
 	}
 	
+	public String selectAccept(SqlSessionTemplate sqlSession, Freelancer f) {
+		return sqlSession.selectOne("matchingMapper.selectAccept", f);
+	}
+	
 }
