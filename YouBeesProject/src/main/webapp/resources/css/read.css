@@ -232,6 +232,10 @@ textarea:focus {
 	color: gray;
 	margin-right:0;
 }
+.read_main {
+	margin-top: 1.5rem;
+}
+
 
 .read_main pre {
 	line-height: 1.5rem;
