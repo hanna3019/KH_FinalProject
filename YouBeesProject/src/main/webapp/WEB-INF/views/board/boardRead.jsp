@@ -60,7 +60,9 @@
       
       <div class="container_main">
          <div class="read_main">
-<pre>${b.content}</pre>
+
+            <pre>${b.content}</pre>
+
             <c:if test="${not empty b.changeName }">
 	            <img src="${ b.changeName }" alt="main_img" class="read_main_img">
             </c:if>
