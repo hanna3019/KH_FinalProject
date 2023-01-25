@@ -62,4 +62,7 @@ public interface MatchingService {
 	
 	// 리뷰 등록하기
 	int insertReview(Review r);
+	
+	// 프리랜서 끌고오기(메인페이지)
+	ArrayList<FreelancerProfile> selectTopFreeList();
 }

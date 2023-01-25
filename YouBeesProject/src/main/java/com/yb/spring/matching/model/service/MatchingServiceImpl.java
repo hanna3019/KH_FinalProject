@@ -105,6 +105,9 @@ public class MatchingServiceImpl implements MatchingService{
 		return mDao.selectAvgStar(sqlSession, freeNum);
 	}
 
-
+	@Override
+	public ArrayList<FreelancerProfile> selectTopFreeList() {
+		return mDao.selectTopFreeList(sqlSession);
+	}
 	
 }

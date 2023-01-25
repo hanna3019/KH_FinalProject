@@ -233,4 +233,14 @@ public class MatchingController {
 		return "member/likeList";
 	}
 	
+	// 인기프리랜서 TOP4 가져오기(메인페이지)
+	@ResponseBody
+	@RequestMapping(value="selectTopFreeList.ma", produces="application/json; charset=utf-8")
+	public String selectTopFreeList() {
+		
+	ArrayList<FreelancerProfile> list = mService.selectTopFreeList();
+	System.out.print(list);
+	return new Gson().toJson(list);
+	}
+	
 }
