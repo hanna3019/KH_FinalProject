@@ -100,7 +100,7 @@ main {
 }
 
 .createTime {
-    margin: 0 1.5rem 1.5rem;
+    margin: 1.5rem auto;
     color: rgb(165, 165, 165);
     font-size: small;
 }

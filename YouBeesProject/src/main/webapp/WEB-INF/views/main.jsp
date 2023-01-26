@@ -104,7 +104,7 @@
                         success: function (list) {
                             let value = "";
                             let more = '<a href="freelancerList.ma?cateNum=1&cName=영어통번역&cusNum=0">'
-                                + '<div class="swiper-slide free_card" id="first_card">'
+                                + '<div class="swiper-slide free_card first_card_detail" id="free_more">'
                                 + '<img src="${path}/resources/source/free_search.png" alt="돋보기사진" class="more_zoom">'
                                 + '<div class="more_free_txt">'
                                 + '더 많은 프리랜서<br>만나보기'
@@ -113,7 +113,7 @@
                                 + '</a>';
                             for (let i in list) {
 
-                                value += '<div class="swiper-slide free_card" id="free_card" onclick="newPage(' + list[i].freeNum + ')">'
+                                value += '<div class="swiper-slide free_card first_card_detail" onclick="newPage(' + list[i].freeNum + ')">'
                                     + '<section class="free_header">';
                                 if (list[i].f.changeName != null) {
                                     value += '<img src="${path}/' + list[i].f.changeName + '" alt="프로필사진" class="free_profile">';
