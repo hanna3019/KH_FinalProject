@@ -65,4 +65,7 @@ public interface MatchingService {
 	
 	// 프리랜서 끌고오기(메인페이지)
 	ArrayList<FreelancerProfile> selectTopFreeList();
+	
+	// 매칭 여부
+	String accept(Freelancer f);
 }
