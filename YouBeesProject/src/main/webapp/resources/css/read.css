@@ -84,6 +84,7 @@ body {
 .read_main_img {
     width: 50%;
     border-radius: 0.7rem;
+    margin-top:5rem;
 }
 
 .read_footer {

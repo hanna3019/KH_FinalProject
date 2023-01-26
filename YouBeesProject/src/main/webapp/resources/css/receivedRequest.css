@@ -73,7 +73,7 @@ main {
 }
 
 .requestInfo div {
-    padding: 0.3rem;
+    padding: 0.1rem;
 }
 
 .userName {
@@ -175,6 +175,7 @@ main {
     border: 1px solid lightgray;
     border-radius: 0.5rem;
     padding: 0.5rem;
+    line-height:1.5rem;
 }
 
 .question1,

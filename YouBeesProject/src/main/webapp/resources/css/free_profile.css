@@ -352,6 +352,7 @@ td {
     border: 1px solid lightgray;
     border-radius: 0.5rem;
     padding: 0.5rem;
+    line-height: 1.1rem;
 }
 
 .question1,
