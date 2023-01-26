@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%> 
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html>
@@ -37,7 +38,7 @@
          </c:choose>
             <div class="writer_info">
                <span class="writer_name">${b.name }</span><br>
-               <span class="create_date">${b.regDate } · 조회수${b.count }</span>
+               <span class="create_date">${fn:substring(b.regDate,0,10)} · 조회수${b.count }</span>
             </div>
          
          <!-- 수정, 삭제 -->      

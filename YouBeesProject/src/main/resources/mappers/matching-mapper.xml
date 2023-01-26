@@ -216,9 +216,10 @@
 		select f.free_num, f.name, r.avgstar, f.career, f.changename
 		from (select free_num, round(avg(star),1) avgstar
 		from review
-		group by free_num) r, freelancer f, freelancer_profile p
+		group by free_num order by avgstar desc) r, freelancer f, freelancer_profile p
 		where r.free_num = f.free_num
 		and f.free_num = p.free_num
+		and rownum <![CDATA[ < ]]> 6
 	</select>
 	
 	<select id="selectAccept" resultType="String">

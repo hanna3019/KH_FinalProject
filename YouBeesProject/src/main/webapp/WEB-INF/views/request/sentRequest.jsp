@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html>
@@ -48,7 +49,7 @@
 			                <div class="detail"><span>${s.a.ans1}</span> / <span>${s.a.ans2}</span> / <span>${s.a.ans3}</span></div>
 			            </div>
 			            <div class="requestTimeNdetail">
-			                <div class="createTime">${s.r.regDate}</div>
+			                <div class="createTime">${fn:substring(s.r.regDate,0,10)}</div>
 			                <div class="information">
 								취소된 요청입니다
 			                </div>
@@ -66,7 +67,7 @@
 			                <div class="detail"><span>${s.a.ans1}</span> / <span>${s.a.ans2}</span> / <span>${s.a.ans3}</span></div>
 			            </div>
 			            <div class="requestTimeNdetail">
-			                <div class="createTime">${s.r.regDate}</div>
+			                <div class="createTime">${fn:substring(s.r.regDate,0,10)}</div>
 			                <div class="btns">
 				                <button type="button" class="detailBtn" onclick="">채팅하기</button>
 				                <button type="button" class="detailBtn openMask" onclick="showDetail(${s.r.reqNum});">상세보기</button>

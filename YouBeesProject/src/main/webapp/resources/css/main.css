@@ -127,11 +127,20 @@
 }
 
 /* 내 거 */
-#first_card {
-    background-color: #fcf0be;
-    width: 10rem;
+#free_more {
+    background-color: #fcf0be !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
+.first_card_detail{
+	overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width:11.3rem !important;
+    margin-right:1rem !important;
+}
 .more_zoom {
     width: 5rem;
 }
@@ -148,6 +157,10 @@
     border-radius: 0.8rem;
     cursor: pointer;
     margin-right: 2rem;
+}
+
+.free_more{
+	
 }
 
 .free_header {
@@ -283,9 +296,6 @@
 }
 
 .com_main_text {
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
