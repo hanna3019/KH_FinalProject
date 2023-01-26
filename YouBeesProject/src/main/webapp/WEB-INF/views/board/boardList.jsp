@@ -16,7 +16,7 @@
 <body>
    <!-- header -->
    <jsp:include page="../common/header.jsp"/>
-
+	
    <div class="board_container">
 
       <div class="board_header">
@@ -102,7 +102,7 @@
                       </c:otherwise>
                    </c:choose>
                 </ul>
-            </div>
+      </div>
 
    </div>
 
