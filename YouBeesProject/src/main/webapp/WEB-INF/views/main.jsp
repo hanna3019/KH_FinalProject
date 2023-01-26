@@ -84,52 +84,55 @@
         <h2 id="com_h2" >커뮤니티 인기글</h2>
         <div class="more_com" onclick="location.href='boardList.bo'">전체보기 ></div>
         <div id="Topboard_area">
-		</div>
-      
+      </div>
 
     </main>
-		<script type="text/javascript">
-		$(function(){
-    		selectTopFreeList();
-		});
-	
-		function selectTopFreeList(){
-			$.ajax({
-				url:"selectTopFreeList.ma",
-				success:function(list){
-					let value = "";
-					let more = '<a href="freelancer_list.html">'
-									+'<div class="swiper-slide free_card" id="first_card">'
-	                    				+'<img src="${path}/resources/source/free_search.png" alt="돋보기사진" class="more_zoom">'
-	                    				+'<div class="more_free_txt">'
-	                                         +'더 많은 프리랜서<br>만나보기'
-	                    				+'</div>'
-	                				+'</div>'
-                				+'</a>';
-					for(let i in list) {
-						value += '<div class="swiper-slide free_card" onclick="">'
-					                +'<section class="free_header">'
-					                +'<img src="${path}/resources/source/profile.png" alt="프로필사진" class="free_profile">'
-					                    +'<div class="star_score">'
-					                    	+'<img src="${path}/resources/source/star.png" alt="별점">'
-					                		+'<span>'+ list[i].avgStar +'</span>'
-					            		+'</div>'
-					            	+'</section>'
-					            	+'<p>'+list[i].f.name+'</p>'
-					            	+'<section class="sub_info">'
-					            		+'<span>경력 '+ list[i].f.career+'&ensp;·&ensp; 평균 50분 내 응답</span>'
-					            	+'</section>'
-					            +'</div>';
-								$(".swiper-wrapper").html(more+value);
-									}
-							},
-							
-						error:function(){
-						console.log("조회수 top4 서비스 조회 ajax통신 실패");
-						}
-					});
-				}
-		</script>
+      <script type="text/javascript">
+      $(function(){
+          selectTopFreeList();
+      });
+   
+      function selectTopFreeList(){
+         $.ajax({
+            url:"selectTopFreeList.ma",
+            success:function(list){
+               let value = "";
+               let more = '<a href="freelancerList.ma?cateNum=1&cName=영어통번역&cusNum=0">'
+                           +'<div class="swiper-slide free_card" id="first_card">'
+                                   +'<img src="${path}/resources/source/free_search.png" alt="돋보기사진" class="more_zoom">'
+                                   +'<div class="more_free_txt">'
+                                            +'더 많은 프리랜서<br>만나보기'
+                                   +'</div>'
+                               +'</div>'
+                            +'</a>';
+               for(let i in list) {
+                  value +='<div class="swiper-slide free_card" onclick="newPage('+list[i].freeNum+')">'
+                               +'<section class="free_header">';
+                               if(list[i].f.changeName != null){
+                            	   value += '<img src="${path}/'+list[i].f.changeName+'" alt="프로필사진" class="free_profile">';
+                               }else{
+                            	   value += '<img src="${path}/resources/source/default.png" alt="프로필사진" class="free_profile">';                            	   
+                               }                       
+                                   value +='<div class="star_score">'
+                                      +'<img src="${path}/resources/source/star.png" alt="별점">'
+                                     +'<span>'+ list[i].avgStar +'</span>'
+                                 +'</div>'
+                              +'</section>'
+                              +'<p>'+list[i].f.name+'</p>'
+                              +'<section class="sub_info">'
+                                 +'<span>경력 '+ list[i].f.career+'&ensp;·&ensp; 평균 50분 내 응답</span>'
+                              +'</section>'
+                           +'</div>';
+                        $(".swiper-wrapper").html(more+value);
+                           }
+                     },
+                     
+                  error:function(){
+                  console.log("조회수 top4 프리랜서 조회 ajax통신 실패");
+                  }
+               });
+            }
+      </script>
     	
     	<script type="text/javascript">
     	$(function(){
@@ -223,6 +226,17 @@
 						}
 					});
 				}
+    		</script>
+    		<script>
+    		function newPage(f)  {
+    			let value="";
+    			if("${loginUserC.cusNum}" != ""){
+					value = '${loginUserC.cusNum}';
+				}else{
+					value = '0';							
+				}
+    			  window.location.href = 'freelancerDetail.ma?freeNum='+f+'&cusNum='+value;
+    			}
     		</script>
 	<!-- footer -->
 	<jsp:include page="common/footer.jsp"/>

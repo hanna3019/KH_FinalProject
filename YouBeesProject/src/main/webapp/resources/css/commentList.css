@@ -24,34 +24,17 @@ main {
     font-weight: bold;
 }
 
-.subTitle {
-    margin-left: 0;
-    color: gray;
-    font-size: 1rem;
-}
 
-.subTitle:hover{
-	 cursor: pointer;
-	 color: black;
-}
 
 .commentList {
-    display: flex;
-    padding: 1rem 3.3rem 0 0;
-    margin: 0 17.5rem 1rem 0;
+   display: flex;
+    padding: 1.2rem 0 1.2rem 5rem;
     border-bottom: 1px solid #eee;
+    cursor: pointer;
 }
-
-.commentList:last-of-type {
-    border-bottom: none;
-}
-
-
 
 .commentInfo {
     margin-left: 0;
-    padding :  0 5rem 0rem  0;
-    margin-top: 1rem;
 }
 
 .commentInfo div {
@@ -59,7 +42,9 @@ main {
     cursor: pointer;
 }
 
-
+.commentTitle{
+	font-size : 1.3rem;
+}
 
 .createTime {
     margin: 1.3rem 0 0 0;
@@ -69,5 +54,8 @@ main {
 }
 
 
+label {
+	margin-left: 0;
+}
 
 

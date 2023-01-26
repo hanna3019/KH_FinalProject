@@ -44,7 +44,14 @@
 	        <c:choose>
 				<c:when test="${r.accept eq 'N'}">
 					<div class="declinedProfile">
-			            <img src="${path}/resources/source/user.png" alt="user">
+					<c:choose>
+						<c:when test="${not empty r.changeName}">
+				            <img src="${path}/${r.changeName}" alt="user">
+						</c:when>
+						<c:otherwise>
+				            <img src="${path}/resources/source/user.png" alt="user">
+						</c:otherwise>
+					</c:choose>
 			            <div class="removeRequest" onclick="deleteReq(${r.reqNum});">X</div>
 			            <div class="requestInfo">
 			                <div class="userName">${r.name}</div>

@@ -93,9 +93,11 @@ public class MatchingController {
 		FreelancerProfile f = mService.selectFreelancerDetail(fc);
 		ArrayList<Review> rList = mService.selectReviewList(fc.getFreeNum());
 		float avgStar = mService.selectAvgStar(fc.getFreeNum());
+		String accept = mService.accept(fc);
 		model.addAttribute("f", f);
 		model.addAttribute("rList", rList);
 		model.addAttribute("avgStar", avgStar);
+		model.addAttribute("accept", accept);
 		return "matching/freeProfile";
 	}
 	
@@ -225,6 +227,8 @@ public class MatchingController {
 		model.addAttribute("f", f);
 		ArrayList<Review> rList = mService.selectReviewList(fc.getFreeNum());
 		model.addAttribute("rList", rList);
+		float avgStar = mService.selectAvgStar(fc.getFreeNum());
+		model.addAttribute("avgStar", avgStar);
 		return "matching/freeProfile";
 	}
 	

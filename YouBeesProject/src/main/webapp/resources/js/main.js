@@ -20,15 +20,16 @@ new Swiper('.swiper', {
     loop: true,
     loopAdditionalSlides : 1,
     slidesPerView: 5,
-    spaceBetween: 10,
+    spaceBetween: 30,
     loopFillGroupWithBlank : true,
     centeredSlides: true,
+    initialSlide: 2,
     pagination: {
         el: '.swiper-pagination',
         clickable: true
     },
     navigation: {
         prevEl: '.swiper-button-prev',
-        nextEl: '.swiper-button-next'
+        nextEl: '.swiper-button-next',
     }
 })

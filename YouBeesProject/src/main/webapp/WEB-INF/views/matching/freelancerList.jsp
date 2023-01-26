@@ -112,7 +112,7 @@
 	                    <td colspan="4" class="title">${l.oneContent}</td>
 	                </tr>
 	                <tr class="review">
-	                    <td width="15%"><img src="${path}/resources/source/star.png" alt="" class="review"> 3.5(256)</td>
+	                    <td width="15%"><img src="${path}/resources/source/star.png" alt="" class="review"> ${l.avgStar }(${l.rcount })</td>
 	                    <td width="15%">경력 ${l.f.career}</td>
 	                    <td width="20%">평균응답시간 1시간</td>
 	                    <c:choose>

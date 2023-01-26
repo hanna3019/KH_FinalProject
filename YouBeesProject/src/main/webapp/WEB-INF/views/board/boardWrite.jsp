@@ -52,7 +52,7 @@ function resetimg() {
 			<input type="hidden" name="cusNum" value="${loginUserC.cusNum}">
 			
             <div class="service_region">
-                <select class="service_box" name="serviceNum">
+                <select class="service_box" name="serviceNum" required>
                     <option value="service">(선택) 서비스</option>
                     <option value="1">통번역</option>
 					<option value="2">마케팅</option>
@@ -61,7 +61,7 @@ function resetimg() {
 					<option value="5">인쇄</option>
 					<option value="6">기타</option>
                 </select>
-                <select class="region_box" name="location">
+                <select class="region_box" name="location" required>
                     <option value="">(선택) 지역</option>
 					<option value="서울">서울</option>
 					<option value="세종">세종</option>

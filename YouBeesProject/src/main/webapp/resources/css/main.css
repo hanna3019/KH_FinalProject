@@ -74,6 +74,7 @@
     margin: 1.3rem 0 6rem;
 }
 
+
 /* swiper */
 .swiper {
     width: 970px;
@@ -146,6 +147,7 @@
     background-color: #fffcee;
     border-radius: 0.8rem;
     cursor: pointer;
+    margin-right: 2rem;
 }
 
 .free_header {
@@ -157,6 +159,7 @@
     width: 3.5rem;
     height: 3.5rem;
     margin: 0;
+    border-radius:0.5rem;
 }
 
 .star_score {

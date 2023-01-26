@@ -109,5 +109,10 @@ public class MatchingServiceImpl implements MatchingService{
 	public ArrayList<FreelancerProfile> selectTopFreeList() {
 		return mDao.selectTopFreeList(sqlSession);
 	}
+
+	@Override
+	public String accept(Freelancer f) {
+		return mDao.selectAccept(sqlSession, f);
+	}
 	
 }

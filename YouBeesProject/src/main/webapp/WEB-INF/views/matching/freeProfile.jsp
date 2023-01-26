@@ -44,11 +44,11 @@
 
             <div id="profile_tbl">
                 <div class="prof_box">
-                    <div class="small_box"><img class="star_img" src="${path}/resources/source/star.png" alt="평점">4.7</div>
+                    <div class="small_box"><img class="star_img" src="${path}/resources/source/star.png" alt="평점">${avgStar}</div>
                     <h3>평점</h3>
                 </div>
                 <div class="prof_box">
-                    <div class="small_box">50</div>
+                    <div class="small_box">5</div>
                     <h3>고용수</h3>
                 </div>
                 <div class="prof_box">
@@ -148,7 +148,7 @@
             </c:choose>
 
             </table>
-            <c:if test="${not empty loginUserC }">
+            <c:if test="${accept eq 'Y' }">
 				<div class="star_select">
 		            <div class="starRev">
 				        <span class="starR on">1</span>
