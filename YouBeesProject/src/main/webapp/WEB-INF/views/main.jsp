@@ -106,7 +106,7 @@
                                +'</div>'
                             +'</a>';
                for(let i in list) {
-                  value +='<div class="swiper-slide free_card" onclick="newPage('+list[i].freeNum+')">'
+                  value +='<div class="swiper-slide free_card" id="free_card" onclick="newPage('+list[i].freeNum+')">'
                                +'<section class="free_header">'
                                +'<img src="${path}/resources/source/profile.png" alt="프로필사진" class="free_profile">'
                                    +'<div class="star_score">'
@@ -228,7 +228,7 @@
     			let value="";
     			if("${loginUserC.cusNum}" != ""){
 					value = '${loginUserC.cusNum}';
-				}else{
+				}else{ 
 					value = '0';							
 				}
     			  window.location.href = 'freelancerDetail.ma?freeNum='+f+'&cusNum='+value;
